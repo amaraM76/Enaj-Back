@@ -1,0 +1,453 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductCategory {
+  SKIN_BODY
+  HAIRCARE
+  MAKEUP
+  FOOD
+  CLEANING
+  FRAGRANCE
+  HOUSEHOLD
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  PREFER_NOT_TO_SAY
+}
+
+enum ConditionSource {
+  SELECTED
+  CUSTOM
+}
+
+enum PreferenceSource {
+  PRESELECTED
+  SELECTED
+  CUSTOM
+}
+
+enum FlagSource {
+  AILMENT
+  PREFERENCE
+}
+
+// ==========================================
+// Auth
+// Holds login credentials for a user. The password is stored as a
+// bcrypt/argon2 hash, never in plain text. Separated from profile
+// data for security.
+//
+// Connected to: UserProfile
+// - One-to-one: Each auth record belongs to exactly one user, and
+//   each user has exactly one auth record. For example, Sarah's
+//   login credentials point to Sarah's profile and no one else's.
+// ==========================================
+model UserAuth {
+  id           String      @id @default(uuid())
+  userId       String      @unique
+  user         UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  username     String      @unique
+  passwordHash String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([username])
+}
+
+// ==========================================
+// Profile
+// Holds personal information collected during onboarding — name,
+// email, location, age, gender, and where the user mainly shops.
+// This is the central user record that all other user-related
+// tables reference.
+//
+// Connected to:
+// - UserAuth (one-to-one): Each user has one set of login credentials.
+// - UserAilment (one-to-many): One user can have many health
+//   conditions. For example, Sarah might select both Rosacea and Eczema.
+// - UserPreference (one-to-many): One user can select many preferences.
+//   For example, Sarah selects No Sulfates, No Fragrance, and Cruelty-Free.
+// - SavedProduct (one-to-many): One user can save many products while
+//   browsing the shop.
+// ==========================================
+model UserProfile {
+  id               String            @id @default(uuid())
+  firstName        String
+  lastName         String
+  email            String            @unique
+  location         String?
+  age              String?
+  gender           Gender?
+  shoppingStores   String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  auth             UserAuth?
+  ailments         UserAilment[]
+  preferences      UserPreference[]
+  savedProducts    SavedProduct[]
+}
+
+// ==========================================
+// Ailment Categories
+// Groups health conditions into categories displayed on the Health
+// Conditions page (e.g. Skin Conditions, Digestive & Gut Health,
+// Allergies & Sensitivities, Neurological & Chronic Conditions,
+// Autoimmune & Inflammatory, Respiratory Conditions, Hormonal &
+// Reproductive, Surgery & Post-Operative). The sortOrder field
+// determines display order on the page.
+//
+// For example, the "Skin Conditions" category contains Rosacea,
+// Eczema, Sensitive Skin, Psoriasis, Perioral Dermatitis, Acne,
+// and Dandruff.
+//
+// Connected to:
+// - Ailment (one-to-many): One category contains many ailments.
+// ==========================================
+model AilmentCategory {
+  id        String    @id @default(uuid())
+  slug      String    @unique
+  label     String
+  sortOrder Int       @default(0)
+  ailments  Ailment[]
+
+  @@index([sortOrder])
+}
+
+// ==========================================
+// Ailments (Health Conditions)
+// Master list of all predefined health conditions users can choose
+// from on the Health Conditions page (e.g. Rosacea, Eczema, IBS,
+// Celiac Disease). Each ailment belongs to a category, has flagged
+// ingredients that users should watch out for, and links to
+// preferences that should be auto-selected on the Preferences page.
+//
+// For example, Rosacea belongs to "Skin Conditions", has flagged
+// ingredients like Alcohol Denat and Artificial Fragrance, and
+// links to preferences No Fragrance, No Alcohol, and No Sulfates.
+//
+// Connected to:
+// - AilmentCategory (many-to-one): Many ailments belong to one
+//   category. Rosacea, Eczema, and Psoriasis all belong to
+//   "Skin Conditions."
+// - AilmentFlaggedIngredient (one-to-many): One ailment flags many
+//   ingredients. Rosacea flags Alcohol Denat, Artificial Fragrance,
+//   Menthol, Witch Hazel, Eucalyptus Oil, and Sodium Lauryl Sulfate.
+// - AilmentLinkedPreference (one-to-many): One ailment links to many
+//   preferences to auto-select. Rosacea links to No Fragrance,
+//   No Alcohol, and No Sulfates.
+// - UserAilment (one-to-many): One ailment can be selected by many
+//   users.
+// ==========================================
+model Ailment {
+  id                  String                     @id @default(uuid())
+  slug                String                     @unique
+  name                String
+  categoryId          String
+  category            AilmentCategory            @relation(fields: [categoryId], references: [id])
+  flaggedIngredients  AilmentFlaggedIngredient[]
+  linkedPreferences   AilmentLinkedPreference[]
+  users               UserAilment[]
+
+  @@index([categoryId])
+}
+
+// ==========================================
+// Ailment Flagged Ingredients
+// The specific ingredients flagged for a health condition, along
+// with the reason why and optional source links. Each row says
+// "this ailment flags this ingredient because of this reason."
+//
+// For example, Rosacea flags "Alcohol Denat" with the reason
+// "Can cause skin irritation and flare-ups" and links to the
+// National Rosacea Society and AAD as sources.
+//
+// These are the ingredients that appear as warnings when a user
+// views a product in the shop. If Sarah has Rosacea and views a
+// product containing Alcohol Denat, the ScanResult will show
+// { ingredient: "Alcohol Denat", reason: "Can cause skin irritation
+// and flare-ups", source: "ailment", sourceName: "Rosacea" }.
+//
+// Connected to:
+// - Ailment (many-to-one): Many flagged ingredients belong to one
+//   ailment. Rosacea's six flagged ingredients all point to Rosacea.
+// - IngredientSource (one-to-many): One flagged ingredient can have
+//   many source citations.
+// ==========================================
+model AilmentFlaggedIngredient {
+  id         String             @id @default(uuid())
+  slug       String             @unique
+  name       String
+  reason     String
+  ailmentId  String
+  ailment    Ailment            @relation(fields: [ailmentId], references: [id], onDelete: Cascade)
+  sources    IngredientSource[]
+
+  @@index([ailmentId])
+}
+
+// ==========================================
+// Ingredient Sources
+// Citation links for flagged ingredients — the title and URL of
+// research, medical organizations, or regulatory bodies that
+// support why an ingredient is flagged for a condition.
+//
+// For example, "National Rosacea Society - Skin Care Ingredients
+// to Avoid" with the URL to their page is a source for Alcohol
+// Denat being flagged under Rosacea.
+//
+// Connected to:
+// - AilmentFlaggedIngredient (many-to-one): Many sources can back
+//   one flagged ingredient.
+// ==========================================
+model IngredientSource {
+  id                       String                    @id @default(uuid())
+  title                    String
+  url                      String
+  flaggedIngredientId      String
+  flaggedIngredient        AilmentFlaggedIngredient  @relation(fields: [flaggedIngredientId], references: [id], onDelete: Cascade)
+
+  @@index([flaggedIngredientId])
+}
+
+// ==========================================
+// User Ailments
+// Records which health conditions a specific user selected or typed
+// in on the Health Conditions page. If the user picked from the
+// predefined list, ailmentId links to Ailment. If they typed in a
+// custom condition using the text box, customEntry holds the text
+// and ailmentId is null. The source field tracks how it was added.
+//
+// For example, Sarah selected Rosacea (source: SELECTED) and Priya
+// typed in "Histamine Intolerance" (source: CUSTOM, customEntry:
+// "Histamine Intolerance", ailmentId: null).
+//
+// Connected to:
+// - UserProfile (many-to-one): Many ailment selections belong to
+//   one user.
+// - Ailment (many-to-one, optional): Many user selections can point
+//   to the same ailment. Null for custom entries.
+// ==========================================
+model UserAilment {
+  id          String          @id @default(uuid())
+  userId      String
+  user        UserProfile     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ailmentId   String?
+  ailment     Ailment?        @relation(fields: [ailmentId], references: [id], onDelete: SetNull)
+  customEntry String?
+  source      ConditionSource
+  createdAt   DateTime        @default(now())
+
+  @@index([userId])
+  @@index([ailmentId])
+}
+
+// ==========================================
+// Preference Categories
+// Groups preferences into categories displayed on the Preferences
+// page (e.g. Hormone & Endocrine Disruptors, Skin & Eye Irritants,
+// Harsh Preservatives & Antimicrobials, Artificial Additives & Food,
+// Metabolic & Blood Sugar Disruptors, Environmental & "Forever"
+// Chemicals). The description field holds the info icon text. The
+// sortOrder field determines display order on the page.
+//
+// Preferences are NOT just ingredients — they include broader
+// concepts like "Cruelty-Free", "Vegan Beauty", "Organic Only",
+// and "Eco-Friendly Packaging."
+//
+// Connected to:
+// - Preference (one-to-many): One category contains many preferences.
+//   "Artificial Additives & Food" contains No MSG, No Food Dyes,
+//   Gluten-Free, Dairy, Soy, Cruelty-Free, Vegan Beauty, etc.
+// ==========================================
+model PreferenceCategory {
+  id          String       @id @default(uuid())
+  slug        String       @unique
+  label       String
+  description String?
+  sortOrder   Int          @default(0)
+  preferences Preference[]
+
+  @@index([sortOrder])
+}
+
+// ==========================================
+// Preferences
+// The individual preference options users can select on the
+// Preferences page. Each has a name and description displayed
+// as the checkbox label and tooltip.
+//
+// These are NOT ingredients — they are broader rules or avoidances.
+// Some map to ingredients (e.g. "Sulfates" means avoid SLS in
+// products), some are lifestyle choices (e.g. "Cruelty-Free",
+// "Vegan Beauty", "Eco-Friendly Packaging").
+//
+// For example, { slug: "no-sulfates", name: "Sulfates",
+// description: "Avoid SLS and SLES that strip natural oils" }
+//
+// Connected to:
+// - PreferenceCategory (many-to-one): Many preferences belong to
+//   one category. "Sulfates" and "Alcohol in Skin Products" both
+//   belong to "Skin & Eye Irritants."
+// - AilmentLinkedPreference (one-to-many): Many ailments can link
+//   to this preference for auto-selection.
+// - UserPreference (one-to-many): Many users can select this
+//   preference.
+// ==========================================
+model Preference {
+  id             String                    @id @default(uuid())
+  slug           String                    @unique
+  name           String
+  description    String
+  categoryId     String
+  category       PreferenceCategory        @relation(fields: [categoryId], references: [id])
+  linkedAilments AilmentLinkedPreference[]
+  users          UserPreference[]
+
+  @@index([categoryId])
+}
+
+// ==========================================
+// Ailment Linked Preferences
+// Maps an ailment to the preferences that should be auto-selected
+// on the Preferences page when that ailment is chosen. This is the
+// table that replaces hardcoded frontend logic like
+// linkedPreferences: ['no-fragrance', 'no-alcohol-skin', 'no-sulfates']
+//
+// For example, when Sarah selects Rosacea, this table tells the API
+// to preselect the preferences "No Fragrance", "No Alcohol in Skin
+// Products", and "No Sulfates" on the Preferences page.
+//
+// Connected to:
+// - Ailment (many-to-one): Many linked preferences belong to one
+//   ailment. Rosacea's three linked preferences all point to Rosacea.
+// - Preference (many-to-one): Many ailments can link to the same
+//   preference. Both Rosacea and Eczema link to "No Fragrance."
+// ==========================================
+model AilmentLinkedPreference {
+  id           String     @id @default(uuid())
+  ailmentId    String
+  ailment      Ailment    @relation(fields: [ailmentId], references: [id], onDelete: Cascade)
+  preferenceId String
+  preference   Preference @relation(fields: [preferenceId], references: [id], onDelete: Cascade)
+
+  @@unique([ailmentId, preferenceId])
+  @@index([ailmentId])
+  @@index([preferenceId])
+}
+
+// ==========================================
+// User Preferences (confirmed selections from Preferences page)
+// The final list of preferences a user confirmed on the Preferences
+// page. Includes both preselected preferences (auto-checked from
+// ailments via AilmentLinkedPreference) and ones the user added
+// themselves. The source field tracks whether each entry was
+// PRESELECTED (auto-checked from an ailment), SELECTED (user
+// checked it manually), or CUSTOM (user typed it in).
+//
+// For example, Sarah selects Rosacea, so No Fragrance, No Alcohol,
+// and No Sulfates are preselected (source: PRESELECTED). She also
+// manually checks Cruelty-Free (source: SELECTED). That is four
+// rows in this table.
+//
+// When Sarah views a product in the shop, the product's ingredient
+// list is checked against her preferences to flag matches.
+//
+// Connected to:
+// - UserProfile (many-to-one): Many preference rows belong to one
+//   user.
+// - Preference (many-to-one, optional): Points to a predefined
+//   preference. Null for custom entries.
+// ==========================================
+model UserPreference {
+  id           String           @id @default(uuid())
+  userId       String
+  user         UserProfile      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  preferenceId String?
+  preference   Preference?      @relation(fields: [preferenceId], references: [id], onDelete: SetNull)
+  customEntry  String?
+  source       PreferenceSource
+  createdAt    DateTime         @default(now())
+
+  @@unique([userId, preferenceId])
+  @@index([userId])
+  @@index([preferenceId])
+}
+
+// ==========================================
+// Saved Products
+// Products a user has saved while browsing the shop. Allows users
+// to bookmark products they are interested in for later reference.
+//
+// For example, Sarah might save both "Pure Mineral Face Sunscreen"
+// and "Clean Coverage BB Cream" — two rows pointing to her profile.
+//
+// Connected to:
+// - UserProfile (many-to-one): Many saved products belong to one
+//   user.
+// - Product (many-to-one): Many users can save the same product.
+// ==========================================
+model SavedProduct {
+  id        String      @id @default(uuid())
+  userId    String
+  user      UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+
+  @@unique([userId, productId])
+  @@index([userId])
+  @@index([productId])
+}
+
+// ==========================================
+// Products
+// Every product in the Enaj catalog. Holds name, brand, price,
+// image URL, product URL, category, and its ingredients as a
+// string array. Ingredients are stored as plain strings (e.g.
+// ["Water", "Alcohol Denat", "Fragrance"]) because product labels
+// use varied naming and the matching logic is string-based.
+//
+// When a user views a product, its ingredients array is compared
+// against:
+// 1. Flagged ingredients from the user's ailments (AilmentFlaggedIngredient)
+// 2. The user's selected preferences (UserPreference)
+// to determine warnings and recommend safer alternatives.
+//
+// For example, "Glow Radiance Face Sunscreen" has category
+// SKIN_BODY, brand "SunCare Co.", and ingredients including
+// "Alcohol Denat" and "Fragrance". When Sarah (who has Rosacea)
+// views it, Enaj flags "Alcohol Denat" and "Fragrance" and
+// recommends "Pure Mineral Face Sunscreen" as an alternative.
+//
+// Connected to:
+// - SavedProduct (one-to-many): One product can be saved by many
+//   users.
+// ==========================================
+model Product {
+  id          String          @id @default(uuid())
+  slug        String          @unique
+  name        String
+  brand       String
+  image       String?
+  price       String
+  url         String?
+  ingredients String[]
+  category    ProductCategory
+  isActive    Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  savedBy     SavedProduct[]
+
+  @@index([category])
+  @@index([brand])
+  @@index([isActive])
+}
