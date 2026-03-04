@@ -17,11 +17,12 @@ export async function GET(
 ) {
   try {
     const { category } = await params;
-    const categoryEnum = VALID_CATEGORIES[category];
+    const isAll = category === "all";
+    const categoryEnum = isAll ? null : VALID_CATEGORIES[category];
 
-    if (!categoryEnum) {
+    if (!isAll && !categoryEnum) {
       return NextResponse.json(
-        { error: `Invalid category. Valid: ${Object.keys(VALID_CATEGORIES).join(", ")}` },
+        { error: `Invalid category. Valid: all, ${Object.keys(VALID_CATEGORIES).join(", ")}` },
         { status: 400 }
       );
     }
@@ -32,12 +33,13 @@ export async function GET(
 
     const products = await prisma.product.findMany({
       where: {
-        category: categoryEnum as any,
+        ...(categoryEnum && { category: categoryEnum as any }),
         isActive: true,
         ...(brand && { brand: { equals: brand, mode: "insensitive" as any } }),
       },
       orderBy: { createdAt: "desc" },
     });
+
 
     if (!userId) {
       return NextResponse.json({ products });
