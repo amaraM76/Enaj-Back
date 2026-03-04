@@ -7,11 +7,12 @@ import { prisma } from "@/app/lib/prisma";
 // For example, Rosacea returns: no-fragrance, no-alcohol-skin, no-sulfates
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params;
     const ailment = await prisma.ailment.findUnique({
-      where: { slug: params.slug },
+      where: { slug },
       include: {
         linkedPreferences: {
           include: {

@@ -6,11 +6,12 @@ import { prisma } from "@/app/lib/prisma";
 // and saved products — shaped to match the frontend UserProfile interface.
 export async function GET(
   request: Request,
-  { params }: { params: { userId: string } }
+  { params }: { params: Promise<{ userId: string }> }
 ) {
   try {
+    const { userId } = await params;
     const user = await prisma.userProfile.findUnique({
-      where: { id: params.userId },
+      where: { id: userId },
       include: {
         ailments: {
           include: {

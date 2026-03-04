@@ -441,6 +441,7 @@ model Product {
   price       String
   url         String?
   ingredients String[]
+  packaging   String[]
   category    ProductCategory
   isActive    Boolean         @default(true)
   createdAt   DateTime        @default(now())
