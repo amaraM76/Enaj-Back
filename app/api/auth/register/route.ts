@@ -38,10 +38,10 @@ export async function POST(request: Request) {
         firstName,
         lastName,
         email,
-        location: location || null,
-        age: age || null,
+        location,
+        age: parseInt(age, 10),
         gender: mappedGender as any,
-        shoppingStores: shoppingStores || null,
+        shoppingStores,
       },
     });
 

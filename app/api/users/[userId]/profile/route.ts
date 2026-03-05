@@ -22,7 +22,7 @@ export async function PUT(
     if (lastName !== undefined) updateData.lastName = lastName;
     if (email !== undefined) updateData.email = email;
     if (location !== undefined) updateData.location = location;
-    if (age !== undefined) updateData.age = age;
+    if (age !== undefined) updateData.age = parseInt(age, 10);
     if (shoppingStores !== undefined) updateData.shoppingStores = shoppingStores;
     if (gender !== undefined) {
       updateData.gender = GENDER_MAP[gender.toLowerCase()] || null;

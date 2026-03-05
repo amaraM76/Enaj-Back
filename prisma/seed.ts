@@ -391,7 +391,7 @@ async function main() {
 
   // --- Sarah: Rosacea, also manually selects Parabens & Cruelty-Free ---
   const sarah = await prisma.userProfile.create({
-    data: { firstName: "Sarah", lastName: "Johnson", email: "sarah@example.com", location: "New York, NY", age: "29", gender: "FEMALE", shoppingStores: "Sephora" },
+    data: { firstName: "Sarah", lastName: "Johnson", email: "sarah@example.com", location: "New York, NY", age: 29, gender: "FEMALE", shoppingStores: "Sephora" },
   });
   await prisma.userAuth.create({ data: { userId: sarah.id, username: "sarahj", passwordHash: await bcrypt.hash("password123", SALT_ROUNDS) } });
   await prisma.userAilment.create({ data: { userId: sarah.id, ailmentId: ailMap["rosacea"], source: ConditionSource.SELECTED } });
@@ -410,7 +410,7 @@ async function main() {
 
   // --- Marcus: Asthma + eco-conscious ---
   const marcus = await prisma.userProfile.create({
-    data: { firstName: "Marcus", lastName: "Chen", email: "marcus@example.com", location: "San Francisco, CA", age: "34", gender: "MALE", shoppingStores: "Whole Foods" },
+    data: { firstName: "Marcus", lastName: "Chen", email: "marcus@example.com", location: "San Francisco, CA", age: 34, gender: "MALE", shoppingStores: "Whole Foods" },
   });
   await prisma.userAuth.create({ data: { userId: marcus.id, username: "marcusc", passwordHash: await bcrypt.hash("password456", SALT_ROUNDS) } });
   await prisma.userAilment.create({ data: { userId: marcus.id, ailmentId: ailMap["asthma"], source: ConditionSource.SELECTED } });
@@ -427,7 +427,7 @@ async function main() {
 
   // --- Priya: Celiac + Dairy Allergy + custom condition ---
   const priya = await prisma.userProfile.create({
-    data: { firstName: "Priya", lastName: "Patel", email: "priya@example.com", location: "Austin, TX", age: "31", gender: "FEMALE", shoppingStores: "Target" },
+    data: { firstName: "Priya", lastName: "Patel", email: "priya@example.com", location: "Austin, TX", age: 31, gender: "FEMALE", shoppingStores: "Target" },
   });
   await prisma.userAuth.create({ data: { userId: priya.id, username: "priyap", passwordHash: await bcrypt.hash("password789", SALT_ROUNDS) } });
   await prisma.userAilment.create({ data: { userId: priya.id, ailmentId: ailMap["celiac"], source: ConditionSource.SELECTED } });
