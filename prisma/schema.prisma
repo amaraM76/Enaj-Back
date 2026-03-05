@@ -83,10 +83,10 @@ model UserProfile {
   firstName        String
   lastName         String
   email            String            @unique
-  location         String?
-  age              String?
-  gender           Gender?
-  shoppingStores   String?
+  location         String
+  age              Int
+  gender           Gender
+  shoppingStores   String
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
 
