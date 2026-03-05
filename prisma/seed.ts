@@ -405,11 +405,11 @@ async function main() {
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["no-parabens"], source: PreferenceSource.SELECTED } }),
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["cruelty-free"], source: PreferenceSource.SELECTED } }),
   ]);
-  await Promise.all([
-    prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["pure-mineral-sunscreen"] } }),
-    prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["clean-coverage-bb-cream"] } }),
-    prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["plant-based-multi-surface-spray"] } }),
-  ]);
+  // await Promise.all([
+  //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["pure-mineral-sunscreen"] } }),
+  //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["clean-coverage-bb-cream"] } }),
+  //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["plant-based-multi-surface-spray"] } }),
+  // ]);
 
   // --- Marcus: Asthma + eco-conscious ---
   const marcus = await prisma.userProfile.create({
@@ -423,10 +423,10 @@ async function main() {
     prisma.userPreference.create({ data: { userId: marcus.id, preferenceId: prefMap["no-microplastics"], source: PreferenceSource.SELECTED } }),
     prisma.userPreference.create({ data: { userId: marcus.id, preferenceId: prefMap["eco-packaging"], source: PreferenceSource.SELECTED } }),
   ]);
-  await Promise.all([
-    prisma.savedProduct.create({ data: { userId: marcus.id, productId: productMap["plant-based-multi-surface-spray"] } }),
-    prisma.savedProduct.create({ data: { userId: marcus.id, productId: productMap["soy-candle-vanilla"] } }),
-  ]);
+  // await Promise.all([
+  //   prisma.savedProduct.create({ data: { userId: marcus.id, productId: productMap["plant-based-multi-surface-spray"] } }),
+  //   prisma.savedProduct.create({ data: { userId: marcus.id, productId: productMap["soy-candle-vanilla"] } }),
+  // ]);
 
   // --- Priya: Celiac + Dairy Allergy + custom condition ---
   const priya = await prisma.userProfile.create({
