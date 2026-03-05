@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 
 // The three Open Facts databases — same API, different domains
 const DATABASES = {
-  food: "https://world.openfoodfacts.org",
-  beauty: "https://world.openbeautyfacts.org",
-  products: "https://world.openproductsfacts.org",
+  food: "https://us.openfoodfacts.org",
+  beauty: "https://us.openbeautyfacts.org",
+  products: "https://us.openproductsfacts.org",
 };
 
 // GET /api/product-search?q=nutella&source=food&page=1&pageSize=20
