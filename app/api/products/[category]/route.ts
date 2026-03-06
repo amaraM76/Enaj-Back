@@ -101,8 +101,7 @@ export async function GET(
         for (const keyword of keywords) {
           const kw = keyword.toLowerCase();
           const match = allProductItems.find(
-            (item) => item.name.toLowerCase().includes(kw) ||
-                     kw.includes(item.name.toLowerCase())
+            (item) => item.name.toLowerCase().includes(kw) 
           );
           if (match) {
             flaggedIngredients.push({

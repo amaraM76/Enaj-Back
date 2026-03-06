@@ -127,7 +127,7 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "soy flour", "soy milk", "soy sauce", "soy oil",
       "soybean oil", "hydrolyzed soy", "soy isolate",
       "textured soy", "edamame", "tofu", "tempeh", "miso",
-      "E322", "lecithin",
+      "E322",
     ],
   
     "Dairy": [
@@ -150,10 +150,9 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "semolina", "durum", "farina", "graham flour",
       "wheat flour", "whole wheat", "wheat starch", "wheat germ",
       "wheat bran", "wheat protein", "wheat gluten",
-      "malt", "malt extract", "malt vinegar", "malt flavoring",
+      "malt extract", "malt vinegar", "malt flavoring",
       "barley malt", "brewer's yeast",
       "gluten", "seitan", "vital wheat gluten",
-      "oats", "oat flour", "oat bran",
       "couscous", "bulgur", "einkorn", "emmer",
       "matzo", "panko", "orzo",
       "hydrolyzed wheat protein", "modified wheat starch",
