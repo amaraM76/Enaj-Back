@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { PREFERENCE_INGREDIENT_MAP } from "@/app/lib/preference-ingredients";
 
 const VALID_CATEGORIES: Record<string, string> = {
   "skin-body": "SKIN_BODY",
@@ -94,19 +95,25 @@ export async function GET(
 
       for (const up of userPreferences) {
         if (!up.preference) continue;
-        const prefName = up.preference.name.toLowerCase();
-        const match = allProductItems.find(
-          (item) => item.name.toLowerCase().includes(prefName) ||
-                   prefName.includes(item.name.toLowerCase())
-        );
-        if (match) {
-          flaggedIngredients.push({
-            ingredient: match.name,
-            reason: up.preference.description,
-            source: "preference",
-            sourceName: up.preference.name,
-            flaggedFrom: match.from,
-          });
+        const prefName = up.preference.name;
+        const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
+        
+        for (const keyword of keywords) {
+          const kw = keyword.toLowerCase();
+          const match = allProductItems.find(
+            (item) => item.name.toLowerCase().includes(kw) ||
+                     kw.includes(item.name.toLowerCase())
+          );
+          if (match) {
+            flaggedIngredients.push({
+              ingredient: match.name,
+              reason: up.preference.description,
+              source: "preference",
+              sourceName: up.preference.name,
+              flaggedFrom: match.from,
+            });
+            break; // stop checking more keywords for this preference
+          }
         }
       }
 
