@@ -75,21 +75,21 @@ export async function GET(
       if (!up.preference) continue;
       const prefName = up.preference.name;
       const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
+      const alreadyFlagged = new Set<string>();
       
       for (const keyword of keywords) {
         const kw = keyword.toLowerCase();
-        const match = allProductItems.find(
-          (item) => item.name.toLowerCase().includes(kw)
-        );
-        if (match) {
-          flaggedIngredients.push({
-            ingredient: match.name,
-            reason: up.preference.description,
-            source: "preference",
-            sourceName: up.preference.name,
-            flaggedFrom: match.from,
-          });
-          break; // stop checking more keywords for this preference
+        for (const item of allProductItems) {
+          if (item.name.toLowerCase().includes(kw) && !alreadyFlagged.has(item.name)) {
+            alreadyFlagged.add(item.name);
+            flaggedIngredients.push({
+              ingredient: item.name,
+              reason: up.preference.description,
+              source: "preference",
+              sourceName: up.preference.name,
+              flaggedFrom: item.from,
+            });
+          }
         }
       }
     }
@@ -104,13 +104,11 @@ export async function GET(
 
     const alternatives = allInCategory.filter((alt) => {
       const altItems = [...alt.ingredients, ...(alt.packaging || [])];
-      // Check if this alternative has zero overlap with user's flagged ingredients
       for (const ua of userAilments) {
         if (!ua.ailment) continue;
         for (const fi of ua.ailment.flaggedIngredients) {
           const match = altItems.find(
-            (item) => item.toLowerCase().includes(fi.name.toLowerCase()) ||
-                     fi.name.toLowerCase().includes(item.toLowerCase())
+            (item) => item.toLowerCase().includes(fi.name.toLowerCase())
           );
           if (match) return false;
         }
@@ -119,12 +117,10 @@ export async function GET(
         if (!up.preference) continue;
         const prefName = up.preference.name;
         const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
-        
         for (const keyword of keywords) {
           const kw = keyword.toLowerCase();
           const match = altItems.find(
-            (item) => item.toLowerCase().includes(kw) ||
-                     kw.includes(item.toLowerCase())
+            (item) => item.toLowerCase().includes(kw)
           );
           if (match) return false;
         }

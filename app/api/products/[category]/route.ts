@@ -97,21 +97,21 @@ export async function GET(
         if (!up.preference) continue;
         const prefName = up.preference.name;
         const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
+        const alreadyFlagged = new Set<string>();
         
         for (const keyword of keywords) {
           const kw = keyword.toLowerCase();
-          const match = allProductItems.find(
-            (item) => item.name.toLowerCase().includes(kw) 
-          );
-          if (match) {
-            flaggedIngredients.push({
-              ingredient: match.name,
-              reason: up.preference.description,
-              source: "preference",
-              sourceName: up.preference.name,
-              flaggedFrom: match.from,
-            });
-            break; // stop checking more keywords for this preference
+          for (const item of allProductItems) {
+            if (item.name.toLowerCase().includes(kw) && !alreadyFlagged.has(item.name)) {
+              alreadyFlagged.add(item.name);
+              flaggedIngredients.push({
+                ingredient: item.name,
+                reason: up.preference.description,
+                source: "preference",
+                sourceName: up.preference.name,
+                flaggedFrom: item.from,
+              });
+            }
           }
         }
       }

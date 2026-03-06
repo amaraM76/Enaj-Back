@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 const DATABASES = {
   food: "https://us.openfoodfacts.org",
   beauty: "https://us.openbeautyfacts.org",
-  products: "https://us.openproductsfacts.org",
+  products: "https://world.openproductsfacts.org",
 };
 
 // GET /api/product-search?q=nutella&source=food&page=1&pageSize=20
@@ -52,7 +52,7 @@ export async function GET(request: Request) {
       url.searchParams.set("json", "true");
       url.searchParams.set(
         "fields",
-        "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en"
+        "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags"
       );
       url.searchParams.set("page", page);
       url.searchParams.set("page_size", pageSize);
@@ -69,15 +69,16 @@ export async function GET(request: Request) {
           const products = (data.products || [])
             .filter((p: any) => p.product_name)
             .map((p: any) => ({
-              barcode: p.code || null,
-              name: p.product_name || "Unknown Product",
-              brand: p.brands || "Unknown Brand",
-              image: p.image_url || "",
-              ingredients: parseIngredients(p.ingredients_text),
-              packaging: parsePackaging(p.packaging_text_en),
-              category: mapCategory(p.categories_tags_en, db.name),
-              source: db.name,
-            }));
+                barcode: p.code || null,
+                name: p.product_name || "Unknown Product",
+                brand: p.brands || "Unknown Brand",
+                image: p.image_url || "",
+                ingredients: parseIngredients(p.ingredients_text),
+                packaging: parsePackaging(p.packaging_text_en),
+                allergens: parseAllergens(p.allergens_tags),
+                category: mapCategory(p.categories_tags_en, db.name),
+                source: db.name,
+              }));
 
           allProducts.push(...products);
         }
@@ -119,44 +120,45 @@ export async function POST(request: Request) {
     // Try each database until we find the product
     for (const [name, baseUrl] of Object.entries(DATABASES)) {
       try {
-        const url = `${baseUrl}/api/v2/product/${barcode}.json?fields=code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en`;
+        const url = `${baseUrl}/api/v2/product/${barcode}.json?fields=code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags`;
 
         const response = await fetch(url, {
           headers: { "User-Agent": "Enaj/1.0 (https://enaj.app)" },
         });
 
         if (response.ok) {
-          const data = await response.json();
-          if (data.product && data.product.product_name) {
-            const p = data.product;
-            return NextResponse.json({
-              product: {
-                barcode: p.code || barcode,
-                name: p.product_name,
-                brand: p.brands || "Unknown Brand",
-                image: p.image_url || "",
-                ingredients: parseIngredients(p.ingredients_text),
-                packaging: parsePackaging(p.packaging_text_en),
-                category: mapCategory(p.categories_tags_en, name),
-                source: name,
-              },
-            });
+            const data = await response.json();
+            if (data.product && data.product.product_name) {
+              const p = data.product;
+              return NextResponse.json({
+                product: {
+                  barcode: p.code || barcode,
+                  name: p.product_name,
+                  brand: p.brands || "Unknown Brand",
+                  image: p.image_url || "",
+                  ingredients: parseIngredients(p.ingredients_text),
+                  packaging: parsePackaging(p.packaging_text_en),
+                  allergens: parseAllergens(p.allergens_tags),
+                  category: mapCategory(p.categories_tags_en, name),
+                  source: name,
+                },
+              });
+            }
           }
+        } catch (err) {
+          continue;
         }
-      } catch (err) {
-        continue;
       }
+  
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    } catch (error) {
+      console.error("Error fetching product by barcode:", error);
+      return NextResponse.json(
+        { error: "Failed to fetch product" },
+        { status: 500 }
+      );
     }
-
-    return NextResponse.json({ error: "Product not found" }, { status: 404 });
-  } catch (error) {
-    console.error("Error fetching product by barcode:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch product" },
-      { status: 500 }
-    );
   }
-}
 
 function parseIngredients(text: string | undefined): string[] {
   if (!text) return [];
@@ -196,3 +198,12 @@ function mapCategory(
 
   return "food";
 }
+
+function parseAllergens(tags: string[] | undefined): string[] {
+    if (!tags) return [];
+    // Open Food Facts returns allergens like "en:gluten", "en:milk", "en:soybeans"
+    return tags.map((t) => {
+      const name = t.replace(/^[a-z]{2}:/, ""); // remove language prefix
+      return name.charAt(0).toUpperCase() + name.slice(1); // capitalize
+    });
+  }
