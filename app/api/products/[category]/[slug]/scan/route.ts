@@ -42,7 +42,7 @@ export async function GET(
       reason: string;
       source: "ailment" | "preference";
       sourceName: string;
-      flaggedFrom: "ingredients" | "packaging";
+      flaggedFrom: "ingredients" | "packaging" | "allergens";
       sources?: { title: string; url: string }[];
       flaggedFrom: "ingredients" | "packaging" | "allergens";
     }[] = [];
