@@ -163,29 +163,32 @@ export async function POST(request: Request) {
   function parseIngredients(text: string | undefined): string[] {
     if (!text) return [];
     
-    // Remove all parentheses but keep the content inside them
-    // "organic whole grains mix (oats, barley, rye)" becomes
-    // "organic whole grains mix, oats, barley, rye"
     let cleaned = text;
     
-    // Replace opening parentheses with commas
-    cleaned = cleaned.replace(/\s*\(/g, ", ");
-    // Remove closing parentheses
-    cleaned = cleaned.replace(/\)/g, "");
+    // Remove all parentheses but keep content — handle nested ones
+    // Keep replacing until no parentheses remain
+    while (cleaned.includes("(") || cleaned.includes(")")) {
+      cleaned = cleaned.replace(/\s*\(/g, ", ");
+      cleaned = cleaned.replace(/\)/g, "");
+    }
+    
     // Remove percentage info like "55%" or "< 2%"
-    cleaned = cleaned.replace(/\d+(\.\d+)?\s*%/g, "");
-    cleaned = cleaned.replace(/<\s*\d+/g, "");
-    // Remove brackets and their content style markers
-    cleaned = cleaned.replace(/\[([^\]]*)\]/g, ", $1");
+    cleaned = cleaned.replace(/<?\s*\d+(\.\d+)?\s*%/g, "");
+    
+    // Remove brackets and keep content
+    while (cleaned.includes("[") || cleaned.includes("]")) {
+      cleaned = cleaned.replace(/\s*\[/g, ", ");
+      cleaned = cleaned.replace(/\]/g, "");
+    }
     
     // Split on commas
     return cleaned
       .split(",")
-      .map((s) => s.replace(/^\s*[-–—]\s*/, "").trim()) // remove leading dashes
-      .map((s) => s.replace(/\s+/g, " ").trim()) // normalize whitespace
-      .filter((s) => s.length > 1) // filter out empty or single char
-      .filter((s) => !s.match(/^\d+$/)) // filter out standalone numbers
-      .filter((value, index, self) => self.indexOf(value) === index); // deduplicate
+      .map((s) => s.replace(/^\s*[-–—:]\s*/, "").trim())
+      .map((s) => s.replace(/\s+/g, " ").trim())
+      .filter((s) => s.length > 1)
+      .filter((s) => !s.match(/^\d+$/))
+      .filter((value, index, self) => self.indexOf(value) === index);
   }
 
 function parsePackaging(text: string | undefined): string[] {
