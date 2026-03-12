@@ -157,6 +157,25 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "matzo", "panko", "orzo",
       "hydrolyzed wheat protein", "modified wheat starch",
     ],
+    
+    "Nuts": [
+        "peanut", "peanuts", "peanut butter", "peanut oil",
+        "almond", "almonds", "almond butter", "almond oil", "almond flour", "almond milk",
+        "cashew", "cashews", "cashew butter",
+        "walnut", "walnuts",
+        "pecan", "pecans",
+        "pistachio", "pistachios",
+        "macadamia", "macadamia nuts",
+        "hazelnut", "hazelnuts", "filbert",
+        "brazil nut", "brazil nuts",
+        "pine nut", "pine nuts",
+        "chestnut", "chestnuts",
+        "coconut",
+        "tree nut", "tree nuts", "mixed nuts",
+        "nut butter", "nut oil", "nut flour",
+        "praline", "marzipan", "nougat", "gianduja",
+        "mandelonas", "nutella",
+      ],
   
     "Non-GMO": [
       "genetically modified", "bioengineered", "GMO",

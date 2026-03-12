@@ -208,6 +208,26 @@ async function main() {
     });
   }
 
+  // --- Nut Allergy ---
+  const nutAllergyIngredients = [
+    { slug: "peanuts", name: "Peanuts", reason: "Common nut allergen" },
+    { slug: "almonds", name: "Almonds", reason: "Tree nut allergen" },
+    { slug: "cashews", name: "Cashews", reason: "Tree nut allergen" },
+    { slug: "walnuts", name: "Walnuts", reason: "Tree nut allergen" },
+    { slug: "pecans", name: "Pecans", reason: "Tree nut allergen" },
+    { slug: "pistachios", name: "Pistachios", reason: "Tree nut allergen" },
+    { slug: "macadamia", name: "Macadamia Nuts", reason: "Tree nut allergen" },
+    { slug: "hazelnuts", name: "Hazelnuts", reason: "Tree nut allergen" },
+    { slug: "brazil-nuts", name: "Brazil Nuts", reason: "Tree nut allergen" },
+    { slug: "pine-nuts", name: "Pine Nuts", reason: "Tree nut allergen" },
+  ];
+
+  for (const ing of nutAllergyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["nut-allergy"] },
+    });
+  }
+
   // ==========================================
   // Preference Categories
   // ==========================================
@@ -255,6 +275,7 @@ async function main() {
       { slug: "no-carrageenan", name: "Carrageenan", description: "Avoid this common thickener linked to gut inflammation", categoryId: prefCatMap["artificial-food"] },
       { slug: "no-soy", name: "Soy", description: "Avoid all soy-based ingredients", categoryId: prefCatMap["artificial-food"] },
       { slug: "no-dairy", name: "Dairy", description: "Avoid all dairy products", categoryId: prefCatMap["artificial-food"] },
+      { slug: "no-nuts", name: "Nuts", description: "Avoid all tree nuts and peanuts", categoryId: prefCatMap["artificial-food"] },
       { slug: "no-gluten", name: "Gluten-Free", description: "Avoid gluten-containing ingredients", categoryId: prefCatMap["artificial-food"] },
       { slug: "non-gmo", name: "Non-GMO", description: "Only non-genetically modified ingredients", categoryId: prefCatMap["artificial-food"] },
       { slug: "organic", name: "Organic Only", description: "Prefer organic certified products", categoryId: prefCatMap["artificial-food"] },
@@ -290,6 +311,7 @@ async function main() {
     { ailmentSlug: "acne", prefSlugs: ["no-silicones"] },
     { ailmentSlug: "dandruff", prefSlugs: ["no-sulfates", "no-fragrance", "no-silicones"] },
     { ailmentSlug: "celiac", prefSlugs: ["no-gluten"] },
+    { ailmentSlug: "nut-allergy", prefSlugs: ["no-nuts"] },
     { ailmentSlug: "ibs", prefSlugs: ["no-artificial-sugar", "no-high-fructose"] },
     { ailmentSlug: "crohns", prefSlugs: ["no-carrageenan", "no-food-dyes"] },
     { ailmentSlug: "dairy-allergy", prefSlugs: ["no-dairy"] },
