@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 async function main() {
   // Clear existing data in correct order
   await prisma.userPreference.deleteMany();
-  await prisma.savedProduct.deleteMany();
+  // await prisma.savedProduct.deleteMany();
   await prisma.userAilment.deleteMany();
   await prisma.ailmentLinkedPreference.deleteMany();
   await prisma.ingredientSource.deleteMany();
@@ -15,7 +15,10 @@ async function main() {
   await prisma.preferenceCategory.deleteMany();
   await prisma.ailment.deleteMany();
   await prisma.ailmentCategory.deleteMany();
-  await prisma.product.deleteMany();
+  // Only delete seeded products, not imported ones (imported slugs start with "off-")
+  await prisma.product.deleteMany({
+  where: { slug: { not: { startsWith: "off-" } } }
+  });
   await prisma.userAuth.deleteMany();
   await prisma.userProfile.deleteMany();
 
