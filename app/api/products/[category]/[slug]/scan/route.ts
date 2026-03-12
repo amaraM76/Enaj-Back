@@ -44,7 +44,6 @@ export async function GET(
       sourceName: string;
       flaggedFrom: "ingredients" | "packaging" | "allergens";
       sources?: { title: string; url: string }[];
-      flaggedFrom: "ingredients" | "packaging" | "allergens";
     }[] = [];
 
     const allProductItems = [
