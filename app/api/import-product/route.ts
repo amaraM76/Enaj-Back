@@ -51,7 +51,17 @@ export async function POST(request: Request) {
     }
 
     if (existing) {
-      return NextResponse.json({ product: existing, created: false });
+      // Update ingredients/packaging/allergens in case parsing improved
+      const updated = await prisma.product.update({
+        where: { id: existing.id },
+        data: {
+          ingredients: ingredients || existing.ingredients,
+          packaging: packaging || existing.packaging,
+          allergens: allergens || existing.allergens,
+          image: image || existing.image,
+        },
+      });
+      return NextResponse.json({ product: updated, created: false });
     }
 
     // Map category string to enum
