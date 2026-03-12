@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
-import { PREFERENCE_INGREDIENT_MAP } from "@/app/lib/preference-ingredients";
 import { PREFERENCE_INGREDIENT_MAP, PREFERENCE_EXCLUSIONS } from "@/app/lib/preference-ingredients";
 
 const VALID_CATEGORIES: Record<string, string> = {
