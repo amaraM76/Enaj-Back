@@ -231,6 +231,77 @@ async function main() {
     });
   }
 
+  // --- Dairy Allergy ---
+  const dairyAllergyIngredients = [
+    { slug: "milk-dairy", name: "Milk", reason: "Contains dairy" },
+    { slug: "cream-dairy", name: "Cream", reason: "Contains dairy" },
+    { slug: "butter-dairy", name: "Butter", reason: "Contains dairy" },
+    { slug: "butterfat-dairy", name: "Butterfat", reason: "Contains dairy" },
+    { slug: "cheese-dairy", name: "Cheese", reason: "Contains dairy" },
+    { slug: "casein-dairy", name: "Casein", reason: "Dairy-derived protein" },
+    { slug: "caseinate-dairy", name: "Caseinate", reason: "Dairy-derived protein" },
+    { slug: "whey-dairy", name: "Whey", reason: "Dairy-derived protein" },
+    { slug: "lactose-dairy", name: "Lactose", reason: "Milk sugar" },
+    { slug: "lactalbumin-dairy", name: "Lactalbumin", reason: "Dairy-derived protein" },
+    { slug: "lactoglobulin-dairy", name: "Lactoglobulin", reason: "Dairy-derived protein" },
+    { slug: "milk-solids-dairy", name: "Milk Solids", reason: "Contains dairy" },
+    { slug: "milk-powder-dairy", name: "Milk Powder", reason: "Contains dairy" },
+    { slug: "yogurt-dairy", name: "Yogurt", reason: "Contains dairy" },
+    { slug: "ghee-dairy", name: "Ghee", reason: "Clarified butter, contains dairy" },
+  ];
+
+  for (const ing of dairyAllergyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["dairy-allergy"] },
+    });
+  }
+
+  // --- Soy Allergy ---
+  const soyAllergyIngredients = [
+    { slug: "soy-allergy", name: "Soy", reason: "Contains soy" },
+    { slug: "soybean-allergy", name: "Soybean", reason: "Contains soy" },
+    { slug: "soy-lecithin-allergy", name: "Soy Lecithin", reason: "Soy-derived emulsifier" },
+    { slug: "soy-protein-allergy", name: "Soy Protein", reason: "Contains soy" },
+    { slug: "soy-flour-allergy", name: "Soy Flour", reason: "Contains soy" },
+    { slug: "soybean-oil-allergy", name: "Soybean Oil", reason: "Soy-derived oil" },
+    { slug: "tofu-allergy", name: "Tofu", reason: "Soy-based product" },
+    { slug: "tempeh-allergy", name: "Tempeh", reason: "Soy-based product" },
+    { slug: "miso-allergy", name: "Miso", reason: "Soy-based product" },
+    { slug: "edamame-allergy", name: "Edamame", reason: "Soy-based product" },
+    { slug: "hydrolyzed-soy-allergy", name: "Hydrolyzed Soy Protein", reason: "Soy-derived" },
+  ];
+
+  for (const ing of soyAllergyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["soy-allergy"] },
+    });
+  }
+
+  // --- Gluten Intolerance ---
+  const glutenIntoleranceIngredients = [
+    { slug: "wheat-gluten", name: "Wheat", reason: "Contains gluten" },
+    { slug: "barley-gluten", name: "Barley", reason: "Contains gluten" },
+    { slug: "rye-gluten", name: "Rye", reason: "Contains gluten" },
+    { slug: "spelt-gluten", name: "Spelt", reason: "Contains gluten" },
+    { slug: "kamut-gluten", name: "Kamut", reason: "Contains gluten" },
+    { slug: "triticale-gluten", name: "Triticale", reason: "Contains gluten" },
+    { slug: "semolina-gluten", name: "Semolina", reason: "Wheat-derived, contains gluten" },
+    { slug: "durum-gluten", name: "Durum", reason: "Wheat-derived, contains gluten" },
+    { slug: "wheat-flour-gluten", name: "Wheat Flour", reason: "Contains gluten" },
+    { slug: "wheat-starch-gluten", name: "Wheat Starch", reason: "May contain gluten" },
+    { slug: "barley-malt-gluten", name: "Barley Malt Extract", reason: "Contains gluten" },
+    { slug: "gluten-gluten", name: "Gluten", reason: "Contains gluten" },
+    { slug: "seitan-gluten", name: "Seitan", reason: "Pure wheat gluten" },
+    { slug: "couscous-gluten", name: "Couscous", reason: "Wheat-based, contains gluten" },
+    { slug: "bulgur-gluten", name: "Bulgur", reason: "Wheat-based, contains gluten" },
+  ];
+
+  for (const ing of glutenIntoleranceIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["gluten-intolerance"] },
+    });
+  }
+
   // ==========================================
   // Preference Categories
   // ==========================================
@@ -279,7 +350,7 @@ async function main() {
       { slug: "no-soy", name: "Soy", description: "Avoid all soy-based ingredients", categoryId: prefCatMap["artificial-food"] },
       { slug: "no-dairy", name: "Dairy", description: "Avoid all dairy products", categoryId: prefCatMap["artificial-food"] },
       { slug: "no-nuts", name: "Nuts", description: "Avoid all tree nuts and peanuts", categoryId: prefCatMap["artificial-food"] },
-      { slug: "no-gluten", name: "Gluten-Free", description: "Avoid gluten-containing ingredients", categoryId: prefCatMap["artificial-food"] },
+      { slug: "no-gluten", name: "Gluten", description: "Avoid gluten-containing ingredients", categoryId: prefCatMap["artificial-food"] },
       { slug: "non-gmo", name: "Non-GMO", description: "Only non-genetically modified ingredients", categoryId: prefCatMap["artificial-food"] },
       { slug: "organic", name: "Organic Only", description: "Prefer organic certified products", categoryId: prefCatMap["artificial-food"] },
       { slug: "cruelty-free", name: "Cruelty-Free", description: "Only products not tested on animals", categoryId: prefCatMap["artificial-food"] },

@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 
 // The three Open Facts databases — same API, different domains
 const DATABASES = {
-  food: "https://us.openfoodfacts.org",
-  beauty: "https://us.openbeautyfacts.org",
-  products: "https://world.openproductsfacts.org",
-};
+    food: "https://us.openfoodfacts.org",
+    beauty: "https://us.openbeautyfacts.org",
+    products: "https://us.openproductsfacts.org",
+  };
 
 // GET /api/product-search?q=nutella&source=food&page=1&pageSize=20
 // GET /api/product-search?q=shampoo&source=beauty
@@ -28,12 +28,15 @@ export async function GET(request: Request) {
     let databasesToSearch: { name: string; url: string }[] = [];
 
     if (source === "all") {
-      databasesToSearch = [
-        { name: "food", url: DATABASES.food },
-        { name: "beauty", url: DATABASES.beauty },
-      ];
+        databasesToSearch = [
+          { name: "food", url: DATABASES.food },
+          { name: "beauty", url: DATABASES.beauty },
+          { name: "products", url: DATABASES.products },
+        ];
     } else if (source === "food") {
       databasesToSearch = [{ name: "food", url: DATABASES.food }];
+    } else if (source === "products") {
+        databasesToSearch = [{ name: "products", url: DATABASES.products }];
     } else if (source === "beauty") {
       databasesToSearch = [{ name: "beauty", url: DATABASES.beauty }];
     } else {
@@ -86,6 +89,51 @@ export async function GET(request: Request) {
         console.error(`Error fetching from ${db.name}:`, err);
       }
     }
+
+    // If no results, retry with just the first word (broader search)
+    if (allProducts.length === 0 && query.includes(" ")) {
+        const firstWord = query.split(" ")[0];
+        for (const db of databasesToSearch) {
+          const url = new URL(`${db.url}/cgi/search.pl`);
+          url.searchParams.set("search_terms", firstWord);
+          url.searchParams.set("json", "true");
+          url.searchParams.set(
+            "fields",
+            "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags"
+          );
+          url.searchParams.set("page", page);
+          url.searchParams.set("page_size", pageSize);
+  
+          try {
+            const response = await fetch(url.toString(), {
+              headers: { "User-Agent": "Enaj/1.0 (https://enaj.app)" },
+            });
+  
+            if (response.ok) {
+              const data = await response.json();
+              totalCount += data.count || 0;
+  
+              const products = (data.products || [])
+                .filter((p: any) => p.product_name)
+                .map((p: any) => ({
+                  barcode: p.code || null,
+                  name: p.product_name || "Unknown Product",
+                  brand: p.brands || "Unknown Brand",
+                  image: p.image_url || "",
+                  ingredients: parseIngredients(p.ingredients_text),
+                  packaging: parsePackaging(p.packaging_text_en),
+                  allergens: parseAllergens(p.allergens_tags),
+                  category: mapCategory(p.categories_tags_en, db.name),
+                  source: db.name,
+                }));
+  
+              allProducts.push(...products);
+            }
+          } catch (err) {
+            console.error(`Retry error from ${db.name}:`, err);
+          }
+        }
+      }
 
     return NextResponse.json({
       query,
@@ -200,27 +248,32 @@ function parsePackaging(text: string | undefined): string[] {
 }
 
 function mapCategory(
-  categories: string[] | undefined,
-  source: string
-): string {
-  if (source === "beauty") {
+    categories: string[] | undefined,
+    source: string
+  ): string {
+    if (source === "beauty") {
+      const joined = (categories || []).join(" ").toLowerCase();
+      if (joined.includes("hair") || joined.includes("shampoo") || joined.includes("conditioner")) return "haircare";
+      if (joined.includes("makeup") || joined.includes("mascara") || joined.includes("foundation") || joined.includes("lipstick") || joined.includes("eyeshadow")) return "makeup";
+      if (joined.includes("fragrance") || joined.includes("perfume") || joined.includes("cologne") || joined.includes("eau de")) return "fragrance";
+      if (joined.includes("body") || joined.includes("skin") || joined.includes("cream") || joined.includes("lotion") || joined.includes("sunscreen") || joined.includes("moistur") || joined.includes("soap") || joined.includes("face")) return "skin-body";
+      return "skin-body";
+    }
+  
     const joined = (categories || []).join(" ").toLowerCase();
-    if (joined.includes("hair") || joined.includes("shampoo") || joined.includes("conditioner")) return "haircare";
-    if (joined.includes("makeup") || joined.includes("mascara") || joined.includes("foundation") || joined.includes("lipstick")) return "makeup";
-    if (joined.includes("fragrance") || joined.includes("perfume") || joined.includes("cologne")) return "fragrance";
-    if (joined.includes("body") || joined.includes("skin") || joined.includes("cream") || joined.includes("lotion") || joined.includes("sunscreen")) return "skin-body";
-    return "skin-body"; // default for beauty products
-  }
-
-  if (source === "food") {
-    const joined = (categories || []).join(" ").toLowerCase();
-    if (joined.includes("cleaning") || joined.includes("detergent")) return "cleaning";
-    if (joined.includes("household")) return "household";
+    
+    // Cleaning & household detection
+    if (joined.includes("cleaning") || joined.includes("detergent") || joined.includes("laundry") || joined.includes("dish") || joined.includes("bleach") || joined.includes("disinfect") || joined.includes("cleaner")) return "cleaning";
+    if (joined.includes("household") || joined.includes("candle") || joined.includes("air freshener") || joined.includes("fabric softener") || joined.includes("trash bag")) return "household";
+    
+    // Personal care that comes through food database
+    if (joined.includes("shampoo") || joined.includes("conditioner") || joined.includes("hair")) return "haircare";
+    if (joined.includes("toothpaste") || joined.includes("deodorant") || joined.includes("soap") || joined.includes("body wash") || joined.includes("lotion") || joined.includes("skin") || joined.includes("sunscreen")) return "skin-body";
+    if (joined.includes("perfume") || joined.includes("fragrance") || joined.includes("cologne")) return "fragrance";
+    if (joined.includes("makeup") || joined.includes("cosmetic") || joined.includes("lipstick") || joined.includes("mascara")) return "makeup";
+  
     return "food";
   }
-
-  return "food";
-}
 
 function parseAllergens(tags: string[] | undefined): string[] {
     if (!tags) return [];

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import { PREFERENCE_INGREDIENT_MAP } from "@/app/lib/preference-ingredients";
+import { PREFERENCE_INGREDIENT_MAP, PREFERENCE_EXCLUSIONS } from "@/app/lib/preference-ingredients";
+
 
 export async function GET(
   request: Request,
@@ -78,18 +80,26 @@ export async function GET(
       const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
       const alreadyFlagged = new Set<string>();
       
+      const exclusions = (PREFERENCE_EXCLUSIONS[prefName] || []).map(e => e.toLowerCase());
+      
       for (const keyword of keywords) {
         const kw = keyword.toLowerCase();
         for (const item of allProductItems) {
-          if (item.name.toLowerCase().includes(kw) && !alreadyFlagged.has(item.name)) {
-            alreadyFlagged.add(item.name);
-            flaggedIngredients.push({
-              ingredient: item.name,
-              reason: up.preference.description,
-              source: "preference",
-              sourceName: up.preference.name,
-              flaggedFrom: item.from,
-            });
+          const itemLower = item.name.toLowerCase();
+          // Check if this item matches the keyword
+          if (itemLower.includes(kw) && !alreadyFlagged.has(item.name)) {
+            // Check it's not an excluded term (e.g. "shea butter" excluded from dairy "butter")
+            const isExcluded = exclusions.some(ex => itemLower.includes(ex));
+            if (!isExcluded) {
+              alreadyFlagged.add(item.name);
+              flaggedIngredients.push({
+                ingredient: item.name,
+                reason: up.preference.description,
+                source: "preference",
+                sourceName: up.preference.name,
+                flaggedFrom: item.from,
+              });
+            }
           }
         }
       }

@@ -275,3 +275,13 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "plastic",
     ],
   };
+
+  export const PREFERENCE_EXCLUSIONS: Record<string, string[]> = {
+    "Dairy": [
+      "shea butter", "cocoa butter", "mango butter", "almond butter",
+      "peanut butter", "cashew butter", "sunflower butter", "coconut butter",
+      "body butter", "cocoa butter", "murumuru butter", "cupuacu butter",
+      "avocado butter", "hemp butter", "seed butter", "nut butter",
+      "apple butter", "cookie butter",
+    ],
+  };
