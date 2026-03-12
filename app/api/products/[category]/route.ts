@@ -66,12 +66,13 @@ export async function GET(
         reason: string;
         source: "ailment" | "preference";
         sourceName: string;
-        flaggedFrom: "ingredients" | "packaging";
+        flaggedFrom: "ingredients" | "packaging" | "allergens";
       }[] = [];
 
       const allProductItems = [
         ...product.ingredients.map((i) => ({ name: i, from: "ingredients" as const })),
         ...(product.packaging || []).map((p) => ({ name: p, from: "packaging" as const })),
+        ...(product.allergens || []).map((a) => ({ name: a, from: "allergens" as const })),
       ];
 
       for (const ua of userAilments) {

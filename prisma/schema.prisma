@@ -443,6 +443,7 @@ model Product {
   ingredients String[]
   packaging   String[]
   category    ProductCategory
+  allergens   String[]
   isActive    Boolean         @default(true)
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt

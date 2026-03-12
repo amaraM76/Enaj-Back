@@ -80,6 +80,7 @@ export async function POST(request: Request) {
         url: barcode ? `https://world.openfoodfacts.org/product/${barcode}` : null,
         ingredients: ingredients || [],
         packaging: packaging || [],
+        allergens: allergens || [],
         category: categoryEnum as any,
         isActive: true,
       },

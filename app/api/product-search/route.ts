@@ -160,13 +160,33 @@ export async function POST(request: Request) {
     }
   }
 
-function parseIngredients(text: string | undefined): string[] {
-  if (!text) return [];
-  return text
-    .split(/,(?![^()]*\))/)
-    .map((s) => s.replace(/\([^)]*\)/g, "").trim())
-    .filter((s) => s.length > 0);
-}
+  function parseIngredients(text: string | undefined): string[] {
+    if (!text) return [];
+    
+    // Remove all parentheses but keep the content inside them
+    // "organic whole grains mix (oats, barley, rye)" becomes
+    // "organic whole grains mix, oats, barley, rye"
+    let cleaned = text;
+    
+    // Replace opening parentheses with commas
+    cleaned = cleaned.replace(/\s*\(/g, ", ");
+    // Remove closing parentheses
+    cleaned = cleaned.replace(/\)/g, "");
+    // Remove percentage info like "55%" or "< 2%"
+    cleaned = cleaned.replace(/\d+(\.\d+)?\s*%/g, "");
+    cleaned = cleaned.replace(/<\s*\d+/g, "");
+    // Remove brackets and their content style markers
+    cleaned = cleaned.replace(/\[([^\]]*)\]/g, ", $1");
+    
+    // Split on commas
+    return cleaned
+      .split(",")
+      .map((s) => s.replace(/^\s*[-–—]\s*/, "").trim()) // remove leading dashes
+      .map((s) => s.replace(/\s+/g, " ").trim()) // normalize whitespace
+      .filter((s) => s.length > 1) // filter out empty or single char
+      .filter((s) => !s.match(/^\d+$/)) // filter out standalone numbers
+      .filter((value, index, self) => self.indexOf(value) === index); // deduplicate
+  }
 
 function parsePackaging(text: string | undefined): string[] {
   if (!text) return [];
