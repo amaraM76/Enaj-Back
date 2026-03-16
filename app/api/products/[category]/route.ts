@@ -94,11 +94,16 @@ export async function GET(
         }
       }
 
-      for (const up of userPreferences) {
-        if (!up.preference) continue;
-        const prefName = up.preference.name;
-        const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
-        const alreadyFlagged = new Set<string>();
+      // Collect ingredient names already flagged by ailments so we don't double-flag
+    const ailmentFlaggedNames = new Set(
+      flaggedIngredients.map(f => f.ingredient.toLowerCase())
+    );
+
+    for (const up of userPreferences) {
+      if (!up.preference) continue;
+      const prefName = up.preference.name;
+      const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
+      const alreadyFlagged = new Set<string>();
         
         const exclusions = (PREFERENCE_EXCLUSIONS[prefName] || []).map(e => e.toLowerCase());
       
@@ -106,8 +111,7 @@ export async function GET(
           const kw = keyword.toLowerCase();
           for (const item of allProductItems) {
             const itemLower = item.name.toLowerCase();
-            if (itemLower.includes(kw) && !alreadyFlagged.has(item.name)) {
-              const isExcluded = exclusions.some(ex => itemLower.includes(ex));
+            if (itemLower.includes(kw) && !alreadyFlagged.has(item.name) && !ailmentFlaggedNames.has(item.name.toLowerCase())) {              const isExcluded = exclusions.some(ex => itemLower.includes(ex));
               if (!isExcluded) {
                 alreadyFlagged.add(item.name);
                 flaggedIngredients.push({

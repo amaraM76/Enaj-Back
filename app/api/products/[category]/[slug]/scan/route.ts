@@ -73,6 +73,11 @@ export async function GET(
       }
     }
 
+    // Collect ingredient names already flagged by ailments so we don't double-flag
+    const ailmentFlaggedNames = new Set(
+      flaggedIngredients.map(f => f.ingredient.toLowerCase())
+    );
+
     for (const up of userPreferences) {
       if (!up.preference) continue;
       const prefName = up.preference.name;
@@ -86,7 +91,7 @@ export async function GET(
         for (const item of allProductItems) {
           const itemLower = item.name.toLowerCase();
           // Check if this item matches the keyword
-          if (itemLower.includes(kw) && !alreadyFlagged.has(item.name)) {
+          if (itemLower.includes(kw) && !alreadyFlagged.has(item.name) && !ailmentFlaggedNames.has(item.name.toLowerCase())) {
             // Check it's not an excluded term (e.g. "shea butter" excluded from dairy "butter")
             const isExcluded = exclusions.some(ex => itemLower.includes(ex));
             if (!isExcluded) {
