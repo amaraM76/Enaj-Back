@@ -79,8 +79,7 @@ export async function GET(
         if (!ua.ailment) continue;
         for (const fi of ua.ailment.flaggedIngredients) {
           const match = allProductItems.find(
-            (item) => item.name.toLowerCase().includes(fi.name.toLowerCase()) ||
-                     fi.name.toLowerCase().includes(item.name.toLowerCase())
+            (item) => item.name.toLowerCase().includes(fi.name.toLowerCase())
           );
           if (match) {
             flaggedIngredients.push({
