@@ -302,6 +302,385 @@ async function main() {
     });
   }
 
+  // --- Sensitive Skin ---
+  const sensitiveSkinIngredients = [
+    { slug: "fragrance-sensitive", name: "Artificial Fragrance", reason: "Top irritant for sensitive skin" },
+    { slug: "alcohol-sensitive", name: "Alcohol", reason: "Dries and irritates sensitive skin" },
+    { slug: "retinol-sensitive", name: "Retinol", reason: "Can cause redness and peeling" },
+    { slug: "aha-sensitive", name: "Alpha Hydroxy Acids", reason: "Can over-exfoliate sensitive skin" },
+    { slug: "essential-oils-sensitive", name: "Essential Oils", reason: "Can cause allergic reactions" },
+    { slug: "formaldehyde-sensitive", name: "Formaldehyde", reason: "Known skin irritant" },
+    { slug: "sls-sensitive", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that strips natural oils" },
+  ];
+
+  for (const ing of sensitiveSkinIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["sensitive-skin"] },
+    });
+  }
+
+  // --- Psoriasis ---
+  const psoriasisIngredients = [
+    { slug: "alcohol-psoriasis", name: "Alcohol", reason: "Can dry out and irritate plaques" },
+    { slug: "fragrance-psoriasis", name: "Artificial Fragrance", reason: "Can trigger flare-ups" },
+    { slug: "dyes-psoriasis", name: "Synthetic Dyes", reason: "May irritate psoriatic skin" },
+    { slug: "sulfates-psoriasis", name: "Sodium Lauryl Sulfate", reason: "Can strip moisture and worsen patches" },
+    { slug: "retinoid-psoriasis", name: "Retinoids", reason: "Can thin already compromised skin" },
+    { slug: "salicylic-psoriasis", name: "Salicylic Acid", reason: "Can cause irritation when used on active plaques" },
+  ];
+
+  for (const ing of psoriasisIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["psoriasis"] },
+    });
+  }
+
+  // --- Perioral Dermatitis ---
+  const perioralIngredients = [
+    { slug: "sls-pd", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that can trigger perioral dermatitis flare-ups" },
+    { slug: "fluoride-pd", name: "Fluoride", reason: "Fluoride in toothpaste is a common trigger for perioral dermatitis" },
+    { slug: "fragrance-pd", name: "Artificial Fragrance", reason: "Synthetic fragrances can worsen perioral dermatitis" },
+    { slug: "steroids-pd", name: "Topical Steroids", reason: "Can cause rebound flare-ups and worsen the condition" },
+    { slug: "heavy-moisturizers-pd", name: "Petrolatum", reason: "Occlusive products can aggravate perioral dermatitis" },
+    { slug: "cinnamon-pd", name: "Cinnamon", reason: "Known skin irritant that can trigger flare-ups around the mouth" },
+    { slug: "paraben-pd", name: "Parabens", reason: "Preservatives that can irritate perioral dermatitis" },
+  ];
+
+  for (const ing of perioralIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["perioral-dermatitis"] },
+    });
+  }
+
+  // --- Acne ---
+  const acneIngredients = [
+    { slug: "coconut-oil-acne", name: "Coconut Oil", reason: "Highly comedogenic, clogs pores" },
+    { slug: "isopropyl-myristate-acne", name: "Isopropyl Myristate", reason: "Known pore-clogging ingredient" },
+    { slug: "lanolin-acne", name: "Lanolin", reason: "Can clog pores and cause breakouts" },
+    { slug: "mineral-oil-acne", name: "Mineral Oil", reason: "May trap bacteria in pores" },
+    { slug: "dimethicone-acne", name: "Dimethicone", reason: "Silicone that can trap debris in pores" },
+    { slug: "cocoa-butter-acne", name: "Cocoa Butter", reason: "Comedogenic, can clog pores" },
+    { slug: "algae-acne", name: "Algae Extract", reason: "Can be comedogenic for acne-prone skin" },
+  ];
+
+  for (const ing of acneIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["acne"] },
+    });
+  }
+
+  // --- Dandruff ---
+  const dandruffIngredients = [
+    { slug: "sls-dandruff", name: "Sodium Lauryl Sulfate", reason: "Strips natural scalp oils, worsening dryness and flaking" },
+    { slug: "alcohol-dandruff", name: "Alcohol Denat", reason: "Dries out the scalp and can increase flaking" },
+    { slug: "fragrance-dandruff", name: "Artificial Fragrance", reason: "Can irritate a sensitive scalp and trigger flaking" },
+    { slug: "coconut-oil-dandruff", name: "Coconut Oil", reason: "Can feed Malassezia yeast on the scalp, worsening dandruff" },
+    { slug: "dimethicone-dandruff", name: "Dimethicone", reason: "Silicone buildup on scalp can trap flakes and irritants" },
+    { slug: "parabens-dandruff", name: "Parabens", reason: "May irritate an already sensitive, flaky scalp" },
+  ];
+
+  for (const ing of dandruffIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["dandruff"] },
+    });
+  }
+
+  // --- Crohn's Disease ---
+  const crohnsIngredients = [
+    { slug: "carrageenan-crohns", name: "Carrageenan", reason: "Linked to gut inflammation and may trigger Crohn's flare-ups" },
+    { slug: "food-dyes-crohns", name: "Artificial Colors", reason: "May worsen intestinal inflammation" },
+    { slug: "emulsifiers-crohns", name: "Polysorbate 80", reason: "Emulsifier linked to gut barrier damage" },
+    { slug: "cmc-crohns", name: "Carboxymethylcellulose", reason: "Emulsifier that may promote gut inflammation" },
+    { slug: "maltodextrin-crohns", name: "Maltodextrin", reason: "May promote harmful gut bacteria growth" },
+    { slug: "artificial-sweeteners-crohns", name: "Artificial Sweeteners", reason: "Can disrupt gut microbiome balance" },
+    { slug: "sulfites-crohns", name: "Sulfites", reason: "Can trigger digestive symptoms in Crohn's patients" },
+  ];
+
+  for (const ing of crohnsIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["crohns"] },
+    });
+  }
+
+  // --- GERD / Acid Reflux ---
+  const gerdIngredients = [
+    { slug: "caffeine-gerd", name: "Caffeine", reason: "Relaxes the lower esophageal sphincter, worsening acid reflux" },
+    { slug: "citric-acid-gerd", name: "Citric Acid", reason: "Acidic ingredient that can trigger reflux" },
+    { slug: "peppermint-gerd", name: "Peppermint", reason: "Relaxes the esophageal sphincter and can worsen reflux" },
+    { slug: "chocolate-gerd", name: "Chocolate", reason: "Contains compounds that relax the esophageal sphincter" },
+    { slug: "tomato-gerd", name: "Tomato", reason: "Highly acidic, common reflux trigger" },
+    { slug: "vinegar-gerd", name: "Vinegar", reason: "Acidic ingredient that can trigger reflux symptoms" },
+  ];
+
+  for (const ing of gerdIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["gerd"] },
+    });
+  }
+
+  // --- Parkinson's Disease ---
+  const parkinsonsIngredients = [
+    { slug: "msg-parkinsons", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect neurological function" },
+    { slug: "artificial-sweeteners-parkinsons", name: "Artificial Sweeteners", reason: "May affect dopamine pathways" },
+    { slug: "pesticide-residue-parkinsons", name: "Pesticide Residue", reason: "Linked to increased Parkinson's risk" },
+    { slug: "trans-fats-parkinsons", name: "Trans Fats", reason: "Promotes neuroinflammation" },
+    { slug: "hfcs-parkinsons", name: "High Fructose Corn Syrup", reason: "May contribute to neuroinflammation" },
+  ];
+
+  for (const ing of parkinsonsIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["parkinsons"] },
+    });
+  }
+
+  // --- Dementia ---
+  const dementiaIngredients = [
+    { slug: "artificial-sweeteners-dementia", name: "Artificial Sweeteners", reason: "Associated with cognitive decline in some studies" },
+    { slug: "trans-fats-dementia", name: "Trans Fats", reason: "Linked to increased risk of cognitive decline" },
+    { slug: "msg-dementia", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect brain health" },
+    { slug: "aluminum-dementia", name: "Aluminum", reason: "Found in some additives, debated link to cognitive decline" },
+    { slug: "nitrates-dementia", name: "Sodium Nitrite", reason: "May contribute to oxidative stress in the brain" },
+  ];
+
+  for (const ing of dementiaIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["dementia"] },
+    });
+  }
+
+  // --- Alzheimer's Disease ---
+  const alzheimersIngredients = [
+    { slug: "trans-fats-alzheimers", name: "Trans Fats", reason: "Strongly linked to increased Alzheimer's risk" },
+    { slug: "nitrates-alzheimers", name: "Sodium Nitrite", reason: "Nitrosamines may contribute to neurodegeneration" },
+    { slug: "aluminum-alzheimers", name: "Aluminum", reason: "Debated link to Alzheimer's plaques" },
+    { slug: "hfcs-alzheimers", name: "High Fructose Corn Syrup", reason: "Excess sugar linked to cognitive decline" },
+    { slug: "artificial-colors-alzheimers", name: "Artificial Colors", reason: "Some dyes may cross the blood-brain barrier" },
+  ];
+
+  for (const ing of alzheimersIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["alzheimers"] },
+    });
+  }
+
+  // --- Epilepsy ---
+  const epilepsyIngredients = [
+    { slug: "msg-epilepsy", name: "Monosodium Glutamate", reason: "Excitotoxin that may lower seizure threshold" },
+    { slug: "aspartame-epilepsy", name: "Aspartame", reason: "May trigger seizures in sensitive individuals" },
+    { slug: "food-dyes-epilepsy", name: "Artificial Colors", reason: "Some dyes may affect neurological function" },
+    { slug: "caffeine-epilepsy", name: "Caffeine", reason: "Can lower seizure threshold in high amounts" },
+    { slug: "sucralose-epilepsy", name: "Sucralose", reason: "May affect neural activity" },
+  ];
+
+  for (const ing of epilepsyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["epilepsy"] },
+    });
+  }
+
+  // --- Multiple Sclerosis ---
+  const msIngredients = [
+    { slug: "gluten-ms", name: "Gluten", reason: "May exacerbate autoimmune response in MS" },
+    { slug: "dairy-ms", name: "Dairy", reason: "Butyrophilin in dairy may trigger immune response" },
+    { slug: "saturated-fat-ms", name: "Saturated Fat", reason: "May promote inflammation in MS" },
+    { slug: "sugar-ms", name: "Refined Sugar", reason: "Promotes systemic inflammation" },
+    { slug: "artificial-sweeteners-ms", name: "Artificial Sweeteners", reason: "May affect gut microbiome and immune function" },
+  ];
+
+  for (const ing of msIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["ms"] },
+    });
+  }
+
+  // --- Chronic Migraines ---
+  const migraineIngredients = [
+    { slug: "msg-migraines", name: "Monosodium Glutamate", reason: "Common migraine trigger" },
+    { slug: "nitrates-migraines", name: "Sodium Nitrite", reason: "Vasodilator that can trigger migraines" },
+    { slug: "artificial-sweeteners-migraines", name: "Aspartame", reason: "Frequently reported migraine trigger" },
+    { slug: "tyramine-migraines", name: "Tyramine", reason: "Found in aged foods, common migraine trigger" },
+    { slug: "sulfites-migraines", name: "Sulfites", reason: "Can trigger migraines in sensitive individuals" },
+    { slug: "caffeine-migraines", name: "Caffeine", reason: "Can trigger migraines, especially during withdrawal" },
+    { slug: "phenylethylamine-migraines", name: "Chocolate", reason: "Contains phenylethylamine, a known migraine trigger" },
+  ];
+
+  for (const ing of migraineIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["migraines"] },
+    });
+  }
+
+  // --- Peripheral Neuropathy ---
+  const neuropathyIngredients = [
+    { slug: "msg-neuropathy", name: "Monosodium Glutamate", reason: "Excitotoxin that may worsen nerve damage" },
+    { slug: "artificial-sweeteners-neuropathy", name: "Artificial Sweeteners", reason: "May affect peripheral nerve function" },
+    { slug: "gluten-neuropathy", name: "Gluten", reason: "Gluten sensitivity linked to peripheral neuropathy" },
+    { slug: "sugar-neuropathy", name: "Refined Sugar", reason: "High blood sugar damages peripheral nerves" },
+    { slug: "trans-fats-neuropathy", name: "Trans Fats", reason: "Promotes inflammation that can worsen nerve damage" },
+  ];
+
+  for (const ing of neuropathyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["neuropathy"] },
+    });
+  }
+
+  // --- ADHD ---
+  const adhdIngredients = [
+    { slug: "food-dyes-adhd", name: "Artificial Colors", reason: "Multiple studies link food dyes to hyperactivity" },
+    { slug: "hfcs-adhd", name: "High Fructose Corn Syrup", reason: "Excess sugar worsens ADHD symptoms" },
+    { slug: "artificial-flavors-adhd", name: "Artificial Flavors", reason: "Synthetic additives may worsen hyperactivity" },
+    { slug: "sodium-benzoate-adhd", name: "Sodium Benzoate", reason: "Preservative linked to increased hyperactivity" },
+    { slug: "msg-adhd", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect attention and focus" },
+    { slug: "caffeine-adhd", name: "Caffeine", reason: "Can disrupt sleep patterns and worsen ADHD symptoms" },
+  ];
+
+  for (const ing of adhdIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["adhd"] },
+    });
+  }
+
+  // --- Fibromyalgia ---
+  const fibromyalgiaIngredients = [
+    { slug: "msg-fibro", name: "Monosodium Glutamate", reason: "Excitotoxin that may worsen fibromyalgia pain" },
+    { slug: "aspartame-fibro", name: "Aspartame", reason: "May increase pain sensitivity in fibromyalgia" },
+    { slug: "gluten-fibro", name: "Gluten", reason: "Some fibromyalgia patients report improvement when avoiding gluten" },
+    { slug: "sugar-fibro", name: "Refined Sugar", reason: "Can worsen inflammation and pain" },
+    { slug: "caffeine-fibro", name: "Caffeine", reason: "Can disrupt sleep and worsen fatigue" },
+  ];
+
+  for (const ing of fibromyalgiaIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["fibromyalgia"] },
+    });
+  }
+
+  // --- Lupus ---
+  const lupusIngredients = [
+    { slug: "alfalfa-lupus", name: "Alfalfa Sprouts", reason: "Contains L-canavanine which can trigger lupus flares" },
+    { slug: "garlic-lupus", name: "Garlic", reason: "May stimulate immune system and worsen lupus" },
+    { slug: "echinacea-lupus", name: "Echinacea", reason: "Immune stimulant that can trigger lupus flares" },
+    { slug: "sulfites-lupus", name: "Sulfites", reason: "Can trigger sensitivity reactions in lupus patients" },
+    { slug: "saturated-fat-lupus", name: "Saturated Fat", reason: "Promotes inflammation in autoimmune conditions" },
+    { slug: "trans-fats-lupus", name: "Trans Fats", reason: "Increases systemic inflammation" },
+  ];
+
+  for (const ing of lupusIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["lupus"] },
+    });
+  }
+
+  // --- Hashimoto's Thyroiditis ---
+  const hashimotosIngredients = [
+    { slug: "gluten-hashimotos", name: "Gluten", reason: "Molecular mimicry with thyroid tissue can trigger flares" },
+    { slug: "soy-hashimotos", name: "Soy", reason: "May interfere with thyroid hormone absorption" },
+    { slug: "excess-iodine-hashimotos", name: "Iodine", reason: "Excess iodine can worsen Hashimoto's" },
+    { slug: "processed-sugar-hashimotos", name: "Refined Sugar", reason: "Promotes inflammation affecting thyroid" },
+    { slug: "seed-oils-hashimotos", name: "Seed Oils", reason: "Omega-6 fatty acids promote thyroid inflammation" },
+  ];
+
+  for (const ing of hashimotosIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["hashimotos"] },
+    });
+  }
+
+  // --- Rheumatoid Arthritis ---
+  const rheumatoidIngredients = [
+    { slug: "seed-oils-ra", name: "Seed Oils", reason: "High omega-6 promotes joint inflammation" },
+    { slug: "gluten-ra", name: "Gluten", reason: "May trigger autoimmune response in RA" },
+    { slug: "sugar-ra", name: "Refined Sugar", reason: "Increases inflammatory markers" },
+    { slug: "trans-fats-ra", name: "Trans Fats", reason: "Promotes systemic inflammation" },
+    { slug: "msg-ra", name: "Monosodium Glutamate", reason: "May worsen joint inflammation" },
+    { slug: "nightshades-ra", name: "Nightshade", reason: "Solanine in nightshades may trigger joint inflammation" },
+  ];
+
+  for (const ing of rheumatoidIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["rheumatoid"] },
+    });
+  }
+
+  // --- Anemia ---
+  const anemiaIngredients = [
+    { slug: "calcium-anemia", name: "Calcium Carbonate", reason: "High calcium can block iron absorption" },
+    { slug: "tannins-anemia", name: "Tannins", reason: "Found in tea and wine, inhibit iron absorption" },
+    { slug: "phytates-anemia", name: "Phytic Acid", reason: "Found in grains, binds to iron and reduces absorption" },
+    { slug: "oxalates-anemia", name: "Oxalic Acid", reason: "Can reduce iron absorption" },
+    { slug: "caffeine-anemia", name: "Caffeine", reason: "Can interfere with iron absorption" },
+  ];
+
+  for (const ing of anemiaIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["anemia"] },
+    });
+  }
+
+  // --- Menopause ---
+  const menopauseIngredients = [
+    { slug: "caffeine-menopause", name: "Caffeine", reason: "Can worsen hot flashes and sleep disruption" },
+    { slug: "sugar-menopause", name: "Refined Sugar", reason: "Can worsen mood swings and hormonal imbalance" },
+    { slug: "alcohol-menopause", name: "Alcohol", reason: "Can trigger hot flashes and disrupt sleep" },
+    { slug: "spicy-menopause", name: "Capsaicin", reason: "Spicy ingredients can trigger hot flashes" },
+    { slug: "msg-menopause", name: "Monosodium Glutamate", reason: "May worsen headaches during menopause" },
+    { slug: "artificial-sweeteners-menopause", name: "Artificial Sweeteners", reason: "May affect hormonal balance" },
+  ];
+
+  for (const ing of menopauseIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["menopause"] },
+    });
+  }
+
+  // --- Perimenopause ---
+  const perimenopauseIngredients = [
+    { slug: "caffeine-perimeno", name: "Caffeine", reason: "Can worsen hot flashes and anxiety" },
+    { slug: "sugar-perimeno", name: "Refined Sugar", reason: "Can worsen mood swings and hormonal fluctuations" },
+    { slug: "alcohol-perimeno", name: "Alcohol", reason: "Can trigger hot flashes and disrupt hormone balance" },
+    { slug: "soy-perimeno", name: "Soy", reason: "Phytoestrogens may affect fluctuating hormone levels" },
+    { slug: "artificial-sweeteners-perimeno", name: "Artificial Sweeteners", reason: "May affect mood and hormonal balance" },
+  ];
+
+  for (const ing of perimenopauseIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["perimenopause"] },
+    });
+  }
+
+  // --- Gastrectomy Surgery ---
+  const gastrectomyIngredients = [
+    { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "Can cause dumping syndrome after gastrectomy" },
+    { slug: "hfcs-gastrectomy", name: "High Fructose Corn Syrup", reason: "Can cause dumping syndrome" },
+    { slug: "artificial-sweeteners-gastrectomy", name: "Artificial Sweeteners", reason: "May cause digestive distress" },
+    { slug: "lactose-gastrectomy", name: "Lactose", reason: "Lactose intolerance common after gastrectomy" },
+    { slug: "carbonation-gastrectomy", name: "Carbonated Water", reason: "Can cause bloating and discomfort" },
+    { slug: "fat-gastrectomy", name: "High Fat Content", reason: "Difficult to digest after stomach surgery" },
+  ];
+
+  for (const ing of gastrectomyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["gastrectomy"] },
+    });
+  }
+
+  // --- Bariatric Surgery ---
+  const bariatricIngredients = [
+    { slug: "sugar-bariatric", name: "Refined Sugar", reason: "Can cause dumping syndrome after bariatric surgery" },
+    { slug: "hfcs-bariatric", name: "High Fructose Corn Syrup", reason: "Can cause dumping syndrome and weight regain" },
+    { slug: "artificial-sweeteners-bariatric", name: "Artificial Sweeteners", reason: "May cause digestive distress and cravings" },
+    { slug: "carbonation-bariatric", name: "Carbonated Water", reason: "Can cause painful gas and bloating" },
+    { slug: "alcohol-bariatric", name: "Alcohol", reason: "Absorbed much faster after bariatric surgery" },
+    { slug: "fat-bariatric", name: "High Fat Content", reason: "Can cause nausea and dumping syndrome" },
+  ];
+
+  for (const ing of bariatricIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["bariatric"] },
+    });
+  }
+
   // ==========================================
   // Preference Categories
   // ==========================================
