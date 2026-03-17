@@ -107,7 +107,7 @@ async function main() {
   // --- Rosacea ---
   const rosaceaIngredients = [
     { slug: "alcohol-denat", name: "Alcohol Denat", reason: "Can cause skin irritation and flare-ups", sources: [{ title: "National Rosacea Society - Skin Care Ingredients to Avoid", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }, { title: "American Academy of Dermatology - Rosacea Triggers", url: "https://www.aad.org/public/diseases/rosacea/triggers/find" }] },
-    { slug: "fragrance-rosacea", name: "Artificial Fragrance", reason: "Common trigger for rosacea flare-ups", sources: [{ title: "National Rosacea Society - Triggers Survey", url: "https://www.rosacea.org/patients/materials/triggersgraph.php" }, { title: "Journal of Clinical and Aesthetic Dermatology", url: "https://jcadonline.com/rosacea-triggers/" }] },
+    { slug: "fragrance-rosacea", name: "Synthetic Fragrance", reason: "Common trigger for rosacea flare-ups", sources: [{ title: "National Rosacea Society - Triggers Survey", url: "https://www.rosacea.org/patients/materials/triggersgraph.php" }, { title: "Journal of Clinical and Aesthetic Dermatology", url: "https://jcadonline.com/rosacea-triggers/" }] },
     { slug: "menthol", name: "Menthol", reason: "Can cause skin irritation and redness", sources: [{ title: "National Rosacea Society - Skin Care Ingredients", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }] },
     { slug: "witch-hazel", name: "Witch Hazel", reason: "May aggravate rosacea symptoms", sources: [{ title: "American Academy of Dermatology - Rosacea Treatment", url: "https://www.aad.org/public/diseases/rosacea/treatment" }] },
     { slug: "eucalyptus", name: "Eucalyptus Oil", reason: "Known irritant for rosacea-prone skin", sources: [{ title: "DermNet NZ - Rosacea", url: "https://dermnetnz.org/topics/rosacea" }] },
@@ -304,7 +304,7 @@ async function main() {
 
   // --- Sensitive Skin ---
   const sensitiveSkinIngredients = [
-    { slug: "fragrance-sensitive", name: "Artificial Fragrance", reason: "Top irritant for sensitive skin" },
+    { slug: "fragrance-sensitive", name: "Sythetic Fragrance", reason: "Top irritant for sensitive skin" },
     { slug: "alcohol-sensitive", name: "Alcohol", reason: "Dries and irritates sensitive skin" },
     { slug: "retinol-sensitive", name: "Retinol", reason: "Can cause redness and peeling" },
     { slug: "aha-sensitive", name: "Alpha Hydroxy Acids", reason: "Can over-exfoliate sensitive skin" },
@@ -322,7 +322,7 @@ async function main() {
   // --- Psoriasis ---
   const psoriasisIngredients = [
     { slug: "alcohol-psoriasis", name: "Alcohol", reason: "Can dry out and irritate plaques" },
-    { slug: "fragrance-psoriasis", name: "Artificial Fragrance", reason: "Can trigger flare-ups" },
+    { slug: "fragrance-psoriasis", name: "Synthetic Fragrance", reason: "Can trigger flare-ups" },
     { slug: "dyes-psoriasis", name: "Synthetic Dyes", reason: "May irritate psoriatic skin" },
     { slug: "sulfates-psoriasis", name: "Sodium Lauryl Sulfate", reason: "Can strip moisture and worsen patches" },
     { slug: "retinoid-psoriasis", name: "Retinoids", reason: "Can thin already compromised skin" },
@@ -339,7 +339,7 @@ async function main() {
   const perioralIngredients = [
     { slug: "sls-pd", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that can trigger perioral dermatitis flare-ups" },
     { slug: "fluoride-pd", name: "Fluoride", reason: "Fluoride in toothpaste is a common trigger for perioral dermatitis" },
-    { slug: "fragrance-pd", name: "Artificial Fragrance", reason: "Synthetic fragrances can worsen perioral dermatitis" },
+    { slug: "fragrance-pd", name: "Synthetic Fragrance", reason: "Synthetic fragrances can worsen perioral dermatitis" },
     { slug: "steroids-pd", name: "Topical Steroids", reason: "Can cause rebound flare-ups and worsen the condition" },
     { slug: "heavy-moisturizers-pd", name: "Petrolatum", reason: "Occlusive products can aggravate perioral dermatitis" },
     { slug: "cinnamon-pd", name: "Cinnamon", reason: "Known skin irritant that can trigger flare-ups around the mouth" },
@@ -373,7 +373,7 @@ async function main() {
   const dandruffIngredients = [
     { slug: "sls-dandruff", name: "Sodium Lauryl Sulfate", reason: "Strips natural scalp oils, worsening dryness and flaking" },
     { slug: "alcohol-dandruff", name: "Alcohol Denat", reason: "Dries out the scalp and can increase flaking" },
-    { slug: "fragrance-dandruff", name: "Artificial Fragrance", reason: "Can irritate a sensitive scalp and trigger flaking" },
+    { slug: "fragrance-dandruff", name: "Synthetic Fragrance", reason: "Can irritate a sensitive scalp and trigger flaking" },
     { slug: "coconut-oil-dandruff", name: "Coconut Oil", reason: "Can feed Malassezia yeast on the scalp, worsening dandruff" },
     { slug: "dimethicone-dandruff", name: "Dimethicone", reason: "Silicone buildup on scalp can trap flakes and irritants" },
     { slug: "parabens-dandruff", name: "Parabens", reason: "May irritate an already sensitive, flaky scalp" },
