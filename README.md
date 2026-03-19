@@ -227,3 +227,57 @@ When deploying separately:
 - **Backend:** Deploy to Vercel, Railway, Render, or any Node.js host. Set `DATABASE_URL` in environment variables.
 - **Frontend:** Deploy separately. Set `NEXT_PUBLIC_API_URL` to your backend's production URL.
 - **CORS:** Update `next.config.js` to allow only your frontend's production domain.
+
+
+## Database Setup
+
+### Local Database (PostgreSQL)
+Running on `localhost:5432` via PostgreSQL
+
+### Production Database (Railway)
+Running on `mainline.proxy.rlwy.net:16855`
+
+---
+
+## Database Commands
+
+### View Local Database
+```bash
+npm run prisma:studio
+```
+Opens Prisma Studio at http://localhost:5556 connected to your local database.
+
+### View Production Database
+```bash
+npm run prisma:studio:prod
+```
+Opens Prisma Studio at http://localhost:5556 connected to the Railway production database.
+
+### Push Schema Changes to Local
+```bash
+npm run prisma:push
+```
+
+### Push Schema Changes to Production
+```bash
+npm run prisma:push:prod
+```
+
+---
+
+## How It Works
+
+| Command | Database |
+|---|---|
+| `npm run dev` | Local (`localenajdb` on localhost:5432) |
+| `npm run prisma:studio` | Local (`localenajdb` on localhost:5432) |
+| `npm run prisma:push` | Local (`localenajdb` on localhost:5432) |
+| `npm run prisma:studio:prod` | Production (Railway) |
+| `npm run prisma:push:prod` | Production (Railway) |
+
+## Pushing Local Changes to Production
+When you are happy with your local schema changes and want to push them to production run:
+```bash
+npm run prisma:push:prod
+```
+⚠️ This will update the **live production database** — make sure you have tested your changes locally first!
