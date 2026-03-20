@@ -40,23 +40,33 @@ export async function GET(request: Request) {
 // Body: { userId, productSlug }
 export async function POST(request: Request) {
   try {
-    const { userId, productSlug, productUrl } = await request.json();
+    const body = await request.json();
+    console.log("Save product request body:", body);
+    
+    const { userId, productSlug, productUrl } = body;
 
     if (!userId || !productSlug) {
       return NextResponse.json({ error: "userId and productSlug are required" }, { status: 400 });
     }
 
+    console.log("Looking up product:", productSlug);
     const product = await prisma.product.findUnique({ where: { slug: productSlug } });
+    console.log("Found product:", product?.id);
+    
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    // Update product URL if we have it
     if (productUrl) {
-      await prisma.product.update({
-        where: { slug: productSlug },
-        data: { url: productUrl },
-      });
+      try {
+        await prisma.product.update({
+          where: { slug: productSlug },
+          data: { url: productUrl },
+        });
+        console.log("Updated product URL:", productUrl);
+      } catch (e) {
+        console.error("Could not update product URL:", e);
+      }
     }
 
     const saved = await prisma.savedProduct.create({
@@ -65,11 +75,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ saved }, { status: 201 });
   } catch (error: any) {
+    console.error("Full error:", error);
     if (error?.code === "P2002") {
       return NextResponse.json({ error: "Product already saved" }, { status: 409 });
     }
-    console.error("Error saving product:", error);
-    return NextResponse.json({ error: "Failed to save product" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to save product", details: error?.message }, { status: 500 });
   }
 }
 
