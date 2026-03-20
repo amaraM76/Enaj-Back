@@ -31,11 +31,10 @@
     "dev": "dotenv -e .env.local -- next dev",
     "build": "next build",
     "start": "next start",
-  
     "prisma:push:local": "dotenv -e .env.local -- npx prisma db push",
     "prisma:push:prod": "npx prisma db push",
-  
     "prisma:studio:local": "dotenv -e .env.local -- npx prisma studio",
-    "prisma:studio:prod": "npx prisma studio"
+    "prisma:studio:prod": "npx prisma studio",
+    "prisma:generate": "dotenv -e .env.local -- npx prisma generate"
   }
 }

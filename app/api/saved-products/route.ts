@@ -40,7 +40,7 @@ export async function GET(request: Request) {
 // Body: { userId, productSlug }
 export async function POST(request: Request) {
   try {
-    const { userId, productSlug } = await request.json();
+    const { userId, productSlug, productUrl } = await request.json();
 
     if (!userId || !productSlug) {
       return NextResponse.json({ error: "userId and productSlug are required" }, { status: 400 });
@@ -49,6 +49,14 @@ export async function POST(request: Request) {
     const product = await prisma.product.findUnique({ where: { slug: productSlug } });
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    }
+
+    // Update product URL if we have it
+    if (productUrl) {
+      await prisma.product.update({
+        where: { slug: productSlug },
+        data: { url: productUrl },
+      });
     }
 
     const saved = await prisma.savedProduct.create({
