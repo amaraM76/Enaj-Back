@@ -269,11 +269,11 @@ npm run prisma:push:prod
 
 | Command | Database |
 |---|---|
-| `npm run dev` | Local (`localenajdb` on localhost:5432) |
-| `npm run prisma:studio` | Local (`localenajdb` on localhost:5432) |
-| `npm run prisma:push` | Local (`localenajdb` on localhost:5432) |
-| `npm run prisma:studio:prod` | Production (Railway) |
-| `npm run prisma:push:prod` | Production (Railway) |
+| `npm run dev` | Run app locally |
+| `npm run prisma:studio:prod` | View production database on localhost:5556 |
+| `npm run prisma:studio:local` | View local database on localhost:5555 |
+| `npm run prisma:push:local` | Push schema to local |
+| `npm run prisma:push:prod` | Push schema to production |
 
 ## Pushing Local Changes to Production
 When you are happy with your local schema changes and want to push them to production run:
