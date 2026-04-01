@@ -35,42 +35,46 @@ export async function GET() {
   }
 }
 
-// POST /api/preferences
-// Save the user's confirmed preference selections from the Preferences page.
-// Replaces all existing preferences for this user.
-// Body: { userId, preferences: [{ preferenceSlug, source, customEntry? }] }
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { userId, preferences } = body;
-
     if (!userId || !preferences) {
       return NextResponse.json({ error: "userId and preferences are required" }, { status: 400 });
     }
 
-    // Delete existing and replace
-    await prisma.userPreference.deleteMany({ where: { userId } });
+    // Resolve Clerk ID to database UUID if needed
+    let dbUserId = userId
+    if (userId.startsWith('user_')) {
+      const authRecord = await prisma.userAuth.findUnique({
+        where: { clerkId: userId },
+        select: { userId: true }
+      })
+      if (!authRecord) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 })
+      }
+      dbUserId = authRecord.userId
+    }
 
+    // Delete existing and replace
+    await prisma.userPreference.deleteMany({ where: { userId: dbUserId } });
     let savedCount = 0;
     for (const pref of preferences) {
       if (pref.preferenceSlug) {
-        // Predefined preference
         const found = await prisma.preference.findUnique({ where: { slug: pref.preferenceSlug } });
         if (found) {
           await prisma.userPreference.create({
-            data: { userId, preferenceId: found.id, source: pref.source },
+            data: { userId: dbUserId, preferenceId: found.id, source: pref.source },
           });
           savedCount++;
         }
       } else if (pref.customEntry) {
-        // Custom preference typed in by user
         await prisma.userPreference.create({
-          data: { userId, customEntry: pref.customEntry, source: "CUSTOM" },
+          data: { userId: dbUserId, customEntry: pref.customEntry, source: "CUSTOM" },
         });
         savedCount++;
       }
     }
-
     return NextResponse.json({ saved: savedCount });
   } catch (error) {
     console.error("Error saving preferences:", error);
