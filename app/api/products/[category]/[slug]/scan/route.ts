@@ -2,6 +2,14 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import { PREFERENCE_INGREDIENT_MAP, PREFERENCE_EXCLUSIONS } from "@/app/lib/preference-ingredients";
 
+async function resolveUserId(userId: string): Promise<string | null> {
+  if (!userId.startsWith('user_')) return userId
+  const authRecord = await prisma.userAuth.findUnique({
+    where: { clerkId: userId },
+    select: { userId: true }
+  })
+  return authRecord?.userId ?? null
+}
 
 export async function GET(
   request: Request,
@@ -16,6 +24,11 @@ export async function GET(
       return NextResponse.json({ error: "userId query parameter is required" }, { status: 400 });
     }
 
+    const dbUserId = await resolveUserId(userId)
+    if (!dbUserId) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 })
+    }
+
     const product = await prisma.product.findUnique({
       where: { slug: slug },
     });
@@ -25,7 +38,7 @@ export async function GET(
     }
 
     const userAilments = await prisma.userAilment.findMany({
-      where: { userId, ailmentId: { not: null } },
+      where: { userId: dbUserId, ailmentId: { not: null } },
       include: {
         ailment: {
           include: { flaggedIngredients: { include: { sources: true } } },
@@ -34,7 +47,7 @@ export async function GET(
     });
 
     const userPreferences = await prisma.userPreference.findMany({
-      where: { userId },
+      where: { userId: dbUserId },
       include: { preference: true },
     });
 
@@ -72,7 +85,6 @@ export async function GET(
       }
     }
 
-    // Collect ingredient names already flagged by ailments so we don't double-flag
     const ailmentFlaggedNames = new Set(
       flaggedIngredients.map(f => f.ingredient.toLowerCase())
     );
@@ -82,16 +94,13 @@ export async function GET(
       const prefName = up.preference.name;
       const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
       const alreadyFlagged = new Set<string>();
-      
       const exclusions = (PREFERENCE_EXCLUSIONS[prefName] || []).map(e => e.toLowerCase());
       
       for (const keyword of keywords) {
         const kw = keyword.toLowerCase();
         for (const item of allProductItems) {
           const itemLower = item.name.toLowerCase();
-          // Check if this item matches the keyword
           if (itemLower.includes(kw) && !alreadyFlagged.has(item.name) && !ailmentFlaggedNames.has(item.name.toLowerCase())) {
-            // Check it's not an excluded term (e.g. "shea butter" excluded from dairy "butter")
             const isExcluded = exclusions.some(ex => itemLower.includes(ex));
             if (!isExcluded) {
               alreadyFlagged.add(item.name);
@@ -141,7 +150,6 @@ export async function GET(
       }
       return true;
     });
-
 
     return NextResponse.json({
       product,

@@ -17,6 +17,19 @@ export async function PUT(
     const body = await request.json();
     const { firstName, lastName, email, location, age, gender, shoppingStores } = body;
 
+    // Resolve Clerk ID to database UUID if needed
+    let dbUserId = userId
+    if (userId.startsWith('user_')) {
+      const authRecord = await prisma.userAuth.findUnique({
+        where: { clerkId: userId },
+        select: { userId: true }
+      })
+      if (!authRecord) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 })
+      }
+      dbUserId = authRecord.userId
+    }
+
     const updateData: any = {};
     if (firstName !== undefined) updateData.firstName = firstName;
     if (lastName !== undefined) updateData.lastName = lastName;
@@ -33,7 +46,7 @@ export async function PUT(
     }
 
     const user = await prisma.userProfile.update({
-      where: { id: userId },
+      where: { id: dbUserId },
       data: updateData,
     });
 

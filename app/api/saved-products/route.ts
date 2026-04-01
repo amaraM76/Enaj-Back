@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 
+// Helper to resolve Clerk ID to database UUID
+async function resolveUserId(userId: string): Promise<string | null> {
+  if (!userId.startsWith('user_')) return userId
+  const authRecord = await prisma.userAuth.findUnique({
+    where: { clerkId: userId },
+    select: { userId: true }
+  })
+  return authRecord?.userId ?? null
+}
+
 // GET /api/saved-products?userId=xxx
 export async function GET(request: Request) {
   try {
@@ -11,13 +21,17 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "userId query parameter is required" }, { status: 400 });
     }
 
+    const dbUserId = await resolveUserId(userId)
+    if (!dbUserId) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     const savedProducts = await prisma.savedProduct.findMany({
-      where: { userId },
+      where: { userId: dbUserId },
       include: { product: true },
       orderBy: { createdAt: "desc" },
     });
 
-    // Return in frontend Product shape
     const products = savedProducts.map((sp) => ({
       id: sp.product.slug,
       name: sp.product.name,
@@ -37,22 +51,21 @@ export async function GET(request: Request) {
 }
 
 // POST /api/saved-products
-// Body: { userId, productSlug }
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log("Save product request body:", body);
-    
     const { userId, productSlug, productUrl } = body;
 
     if (!userId || !productSlug) {
       return NextResponse.json({ error: "userId and productSlug are required" }, { status: 400 });
     }
 
-    console.log("Looking up product:", productSlug);
+    const dbUserId = await resolveUserId(userId)
+    if (!dbUserId) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     const product = await prisma.product.findUnique({ where: { slug: productSlug } });
-    console.log("Found product:", product?.id);
-    
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
@@ -63,28 +76,26 @@ export async function POST(request: Request) {
           where: { slug: productSlug },
           data: { url: productUrl },
         });
-        console.log("Updated product URL:", productUrl);
       } catch (e) {
         console.error("Could not update product URL:", e);
       }
     }
 
     const saved = await prisma.savedProduct.create({
-      data: { userId, productId: product.id },
+      data: { userId: dbUserId, productId: product.id },
     });
 
     return NextResponse.json({ saved }, { status: 201 });
   } catch (error: any) {
-    console.error("Full error:", error);
     if (error?.code === "P2002") {
       return NextResponse.json({ error: "Product already saved" }, { status: 409 });
     }
+    console.error("Full error:", error);
     return NextResponse.json({ error: "Failed to save product", details: error?.message }, { status: 500 });
   }
 }
 
 // DELETE /api/saved-products
-// Body: { userId, productSlug }
 export async function DELETE(request: Request) {
   try {
     const { userId, productSlug } = await request.json();
@@ -93,13 +104,18 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: "userId and productSlug are required" }, { status: 400 });
     }
 
+    const dbUserId = await resolveUserId(userId)
+    if (!dbUserId) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     const product = await prisma.product.findUnique({ where: { slug: productSlug } });
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
     await prisma.savedProduct.deleteMany({
-      where: { userId, productId: product.id },
+      where: { userId: dbUserId, productId: product.id },
     });
 
     return NextResponse.json({ removed: true });
