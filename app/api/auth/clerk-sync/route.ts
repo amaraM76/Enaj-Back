@@ -38,21 +38,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ user: existingAuth.user }, { headers })
     }
 
-    // Check if user exists by email
-    const existingProfile = await prisma.userProfile.findUnique({
-      where: { email },
-    })
-
-    if (existingProfile) {
-      await prisma.userAuth.upsert({
-        where: { userId: existingProfile.id },
-        update: { clerkId },
-        create: { userId: existingProfile.id, clerkId },
-      })
-      return NextResponse.json({ user: existingProfile }, { headers })
-    }
-
-    // Create new user
+    // Create new user directly
     const newProfile = await prisma.userProfile.create({
       data: {
         firstName: firstName || '',
