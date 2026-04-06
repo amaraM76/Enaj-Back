@@ -10,7 +10,7 @@ export async function GET(
 ) {
   try {
     const { userId } = await params;
-    const user = await prisma.userProfile.findUnique({
+    let user = await prisma.userProfile.findUnique({
       where: { id: userId },
       include: {
         ailments: {
@@ -34,7 +34,41 @@ export async function GET(
           include: { product: true },
         },
       },
-    });
+    })
+
+    // If not found, try by Clerk ID
+    if (!user) {
+      const authRecord = await prisma.userAuth.findUnique({
+        where: { clerkId: userId },
+        include: {
+          user: {
+            include: {
+              ailments: {
+                include: {
+                  ailment: {
+                    include: {
+                      category: true,
+                      flaggedIngredients: { include: { sources: true } },
+                    },
+                  },
+                },
+              },
+              preferences: {
+                include: {
+                  preference: {
+                    include: { category: true },
+                  },
+                },
+              },
+              savedProducts: {
+                include: { product: true },
+              },
+            },
+          },
+        },
+      })
+      user = authRecord?.user ?? null
+    }
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
