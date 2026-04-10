@@ -28,14 +28,19 @@ export async function POST(request: Request) {
       )
     }
 
-    // Check if user already exists by clerkId
-    const existingAuth = await prisma.userAuth.findUnique({
-      where: { clerkId },
-      include: { user: true },
+    const existingProfile = await prisma.userProfile.findUnique({
+      where: { email },
     })
-
-    if (existingAuth) {
-      return NextResponse.json({ user: existingAuth.user }, { headers })
+    
+    if (existingProfile) {
+      await prisma.userAuth.create({
+        data: {
+          clerkId,
+          userId: existingProfile.id,
+        },
+      })
+    
+      return NextResponse.json({ user: existingProfile }, { headers })
     }
 
     // Create new user directly
