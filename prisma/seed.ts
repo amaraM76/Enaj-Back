@@ -90,6 +90,10 @@ async function main() {
       // Hormonal
       { slug: "menopause", name: "Menopause", categoryId: ailCatMap["hormonal"] },
       { slug: "perimenopause", name: "Perimenopause", categoryId: ailCatMap["hormonal"] },
+      { slug: "pregnant", name: "Pregnant", categoryId: ailCatMap["hormonal"] },
+      { slug: "postpartum", name: "Postpartum", categoryId: ailCatMap["hormonal"] },
+      { slug: "breastfeeding", name: "Breastfeeding", categoryId: ailCatMap["hormonal"] },
+
 
       // Surgery
       { slug: "gastrectomy", name: "Gastrectomy Surgery", categoryId: ailCatMap["surgery"] },
@@ -649,6 +653,77 @@ async function main() {
     });
   }
 
+  // --- Pregnant ---
+const pregnantIngredients = [
+  { slug: "retinol-pregnant", name: "Retinol", reason: "High doses of vitamin A derivatives are linked to birth defects and should be avoided during pregnancy" },
+  { slug: "retinoids-pregnant", name: "Retinoids", reason: "Prescription retinoids (tretinoin, adapalene) are teratogenic and must be avoided during pregnancy" },
+  { slug: "salicylic-acid-pregnant", name: "Salicylic Acid", reason: "High-dose salicylic acid is not recommended during pregnancy; low concentrations in rinse-off products may be acceptable but should be discussed with a doctor" },
+  { slug: "benzoyl-peroxide-pregnant", name: "Benzoyl Peroxide", reason: "Typically avoided during pregnancy due to limited safety data" },
+  { slug: "oxybenzone-pregnant", name: "Oxybenzone", reason: "Chemical UV filter that is absorbed into the bloodstream and may disrupt hormones — mineral sunscreens are preferred during pregnancy" },
+  { slug: "formaldehyde-pregnant", name: "Formaldehyde", reason: "Known carcinogen and developmental toxin — avoid in hair treatments and nail products during pregnancy" },
+  { slug: "phthalates-pregnant", name: "Phthalates", reason: "Endocrine disruptors linked to developmental harm — commonly hidden under 'fragrance' on labels" },
+  { slug: "parabens-pregnant", name: "Parabens", reason: "Potential endocrine disruptors that can cross the placenta — many healthcare providers recommend avoiding during pregnancy" },
+  { slug: "artificial-sweeteners-pregnant", name: "Artificial Sweeteners", reason: "Some artificial sweeteners (e.g. saccharin) are not recommended during pregnancy due to potential fetal exposure" },
+  { slug: "caffeine-pregnant", name: "Caffeine", reason: "High caffeine intake is associated with low birth weight and pregnancy complications — limit to under 200mg/day" },
+  { slug: "alcohol-pregnant", name: "Alcohol", reason: "No safe level of alcohol has been established during pregnancy — linked to fetal alcohol spectrum disorders" },
+  { slug: "high-mercury-fish-pregnant", name: "Mercury", reason: "High-mercury fish (shark, swordfish, king mackerel) should be avoided during pregnancy due to neurodevelopmental risks" },
+  { slug: "nitrates-pregnant", name: "Sodium Nitrite", reason: "Found in processed meats — associated with adverse pregnancy outcomes when consumed in large amounts" },
+  { slug: "bpa-pregnant", name: "BPA", reason: "Endocrine disruptor found in plastics and can linings — linked to developmental issues and should be avoided during pregnancy" },
+  { slug: "listeria-pregnant", name: "Unpasteurized Ingredients", reason: "Raw/unpasteurized dairy and juices carry listeria risk which is especially dangerous during pregnancy" },
+];
+
+for (const ing of pregnantIngredients) {
+  await prisma.ailmentFlaggedIngredient.create({
+    data: { ...ing, ailmentId: ailMap["pregnant"] },
+  });
+}
+
+// --- Postpartum ---
+const postpartumIngredients = [
+  { slug: "caffeine-postpartum", name: "Caffeine", reason: "Passes into breast milk — excessive intake can cause infant irritability and sleep disruption" },
+  { slug: "alcohol-postpartum", name: "Alcohol", reason: "Passes into breast milk — should be avoided or timed carefully around feeding sessions" },
+  { slug: "artificial-sweeteners-postpartum", name: "Artificial Sweeteners", reason: "Some sweeteners pass into breast milk — safety data during breastfeeding is limited" },
+  { slug: "peppermint-postpartum", name: "Peppermint Oil", reason: "Large amounts of peppermint/menthol may reduce milk supply in breastfeeding mothers" },
+  { slug: "sage-postpartum", name: "Sage", reason: "Sage is traditionally known to reduce breast milk supply and should be avoided in large amounts while breastfeeding" },
+  { slug: "parsley-postpartum", name: "Parsley", reason: "Large amounts may reduce milk supply — occasional culinary use is fine but supplements should be avoided" },
+  { slug: "retinol-postpartum", name: "Retinol", reason: "Passes into breast milk — topical retinoids are generally avoided during breastfeeding" },
+  { slug: "salicylic-acid-postpartum", name: "Salicylic Acid", reason: "High-dose salicylates may pass into breast milk — limited use on small areas is typically considered safer" },
+  { slug: "parabens-postpartum", name: "Parabens", reason: "Endocrine disruptors that can pass into breast milk — many healthcare providers recommend avoiding during breastfeeding" },
+  { slug: "high-mercury-postpartum", name: "Mercury", reason: "High-mercury fish should be limited during breastfeeding as mercury passes into breast milk" },
+  { slug: "nitrates-postpartum", name: "Sodium Nitrite", reason: "Found in processed meats — best minimized while breastfeeding" },
+  { slug: "formaldehyde-postpartum", name: "Formaldehyde", reason: "Known carcinogen — avoid in hair treatments and nail products while breastfeeding" },
+  { slug: "bpa-postpartum", name: "BPA", reason: "Can pass into breast milk — use BPA-free bottles and food storage while breastfeeding" },
+];
+
+for (const ing of postpartumIngredients) {
+  await prisma.ailmentFlaggedIngredient.create({
+    data: { ...ing, ailmentId: ailMap["postpartum"] },
+  });
+}
+
+// --- BreastFeeding ---
+const breastfeedingIngredients = [
+  { slug: "caffeine-breastfeeding", name: "Caffeine", reason: "Passes into breast milk — excessive intake can cause infant irritability and sleep disruption" },
+  { slug: "alcohol-breastfeeding", name: "Alcohol", reason: "Passes into breast milk — should be avoided or timed carefully around feeding sessions" },
+  { slug: "artificial-sweeteners-breastfeeding", name: "Artificial Sweeteners", reason: "Some sweeteners pass into breast milk — safety data during breastfeeding is limited" },
+  { slug: "peppermint-breastfeeding", name: "Peppermint Oil", reason: "Large amounts of peppermint/menthol may reduce milk supply in breastfeeding mothers" },
+  { slug: "sage-breastfeeding", name: "Sage", reason: "Traditionally known to reduce breast milk supply — avoid in large amounts while breastfeeding" },
+  { slug: "parsley-breastfeeding", name: "Parsley", reason: "Large amounts may reduce milk supply — supplements should be avoided" },
+  { slug: "retinol-breastfeeding", name: "Retinol", reason: "Passes into breast milk — topical retinoids are generally avoided during breastfeeding" },
+  { slug: "salicylic-acid-breastfeeding", name: "Salicylic Acid", reason: "High-dose salicylates may pass into breast milk — high-concentration formulas should be avoided" },
+  { slug: "parabens-breastfeeding", name: "Parabens", reason: "Endocrine disruptors that can pass into breast milk — minimize exposure during breastfeeding" },
+  { slug: "high-mercury-breastfeeding", name: "Mercury", reason: "High-mercury fish should be limited during breastfeeding as mercury passes into breast milk" },
+  { slug: "nitrates-breastfeeding", name: "Sodium Nitrite", reason: "Found in processed meats — best minimized while breastfeeding" },
+  { slug: "formaldehyde-breastfeeding", name: "Formaldehyde", reason: "Known carcinogen — avoid in hair treatments and nail products while breastfeeding" },
+  { slug: "bpa-breastfeeding", name: "BPA", reason: "Can pass into breast milk — use BPA-free bottles and food storage while breastfeeding" },
+];
+
+for (const ing of breastfeedingIngredients) {
+  await prisma.ailmentFlaggedIngredient.create({
+    data: { ...ing, ailmentId: ailMap["breastfeeding"] },
+  });
+}
+
   // --- Gastrectomy Surgery ---
   const gastrectomyIngredients = [
     { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "Can cause dumping syndrome after gastrectomy" },
@@ -785,8 +860,12 @@ async function main() {
     { ailmentSlug: "asthma", prefSlugs: ["no-food-dyes"] },
     { ailmentSlug: "menopause", prefSlugs: ["no-artificial-sweeteners", "no-fragrance"] },
     { ailmentSlug: "perimenopause", prefSlugs: ["no-artificial-sweeteners", "no-fragrance"] },
+    { ailmentSlug: "breastfeeding", prefSlugs: ["no-parabens", "no-artificial-sweeteners", "no-fragrance"] },
+    { ailmentSlug: "pregnant", prefSlugs: ["no-parabens", "no-phthalates", "no-fragrance", "no-bpa-bps", "no-artificial-sweeteners", "no-formaldehyde"] },
+    { ailmentSlug: "postpartum", prefSlugs: ["no-parabens", "no-artificial-sweeteners", "no-fragrance"] },
     { ailmentSlug: "gastrectomy", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
     { ailmentSlug: "bariatric", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
+
   ];
 
   for (const { ailmentSlug, prefSlugs } of linkedPrefs) {
