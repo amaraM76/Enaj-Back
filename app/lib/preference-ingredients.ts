@@ -205,7 +205,7 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
   
     // ── Metabolic & Blood Sugar Disruptors ──
   
-    "Artificial Sugar": [
+    "Artificial Sweeteners": [
       "aspartame", "sucralose", "saccharin", "acesulfame",
       "acesulfame potassium", "acesulfame-K", "neotame",
       "advantame", "cyclamate", "sugar alcohol",
