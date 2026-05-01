@@ -767,6 +767,7 @@ for (const ing of breastfeedingIngredients) {
       { slug: "artificial-food", label: "Artificial Additives & Food", description: "Artificial additives are lab-made ingredients used to enhance flavor, color, texture, or shelf life in food products. Some, like certain food dyes (Red 40, Yellow 5), have been reviewed by the FDA and are subject to ongoing research. MSG is generally recognized as safe but some individuals report sensitivity. Carrageenan, a common thickener derived from seaweed, has been studied for its effects on digestive health. Many consumers prefer whole-food alternatives based on dietary goals or sensitivities.", sortOrder: 4 },
       { slug: "metabolic-blood-sugar", label: "Metabolic & Blood Sugar Disruptors", description: "These ingredients have been studied for their effects on blood sugar levels, insulin response, and metabolic function. Artificial sweeteners, while calorie-free, have been researched by the National Institutes of Health for their impact on gut bacteria and glucose metabolism. High fructose corn syrup is processed differently by the liver than regular sugar. Trans fats have been largely phased out due to their well-documented effects on cardiovascular health. Seed oils are a topic of active nutritional research and debate.", sortOrder: 5 },
       { slug: "environmental-forever", label: "Environmental & \"Forever\" Chemicals", description: "PFAS (per- and polyfluoroalkyl substances) are called \"forever chemicals\" because they do not break down naturally in the environment or the human body. The EPA has set health advisories for certain PFAS in drinking water. Microplastics are tiny plastic particles that have been detected in water, food, and human tissue, and are currently being studied for long-term health effects. Many consumers also consider the environmental footprint of product packaging and manufacturing practices when making purchasing decisions.", sortOrder: 6 },
+      { slug: "non-toxic-lifestyle", label: "Non-Toxic Lifestyle", description: "Not sure exactly what to avoid? The Enaj Non-Toxic Baseline monitors for the most commonly flagged toxic ingredients across food, skincare, and household products — synthetic chemicals, harmful additives, endocrine disruptors, heavy metals, and more. A great starting point for anyone looking to live cleaner without needing to know every ingredient.", sortOrder: 0 },
     ].map((cat) => prisma.preferenceCategory.create({ data: cat }))
   );
 
@@ -777,6 +778,9 @@ for (const ing of breastfeedingIngredients) {
   // ==========================================
   const preferences = await Promise.all(
     [
+      //Non-Toxic Lifestyle
+      { slug: "enaj-baseline", name: "Enaj Non-Toxic Baseline", description: "Monitor for the most commonly flagged toxic ingredients across food, skincare, and household products", categoryId: prefCatMap["non-toxic-lifestyle"] },
+
       // Hormone & Endocrine
       { slug: "no-parabens", name: "Parabens", description: "Avoid paraben preservatives that can mimic estrogen", categoryId: prefCatMap["hormone-endocrine"] },
       { slug: "no-phthalates", name: "Phthalates", description: "Avoid phthalate plasticizers linked to hormone disruption", categoryId: prefCatMap["hormone-endocrine"] },
