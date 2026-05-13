@@ -76,6 +76,7 @@ async function main() {
       { slug: "neuropathy", name: "Peripheral Neuropathy", categoryId: ailCatMap["neurological"] },
       { slug: "adhd", name: "ADHD", categoryId: ailCatMap["neurological"] },
       { slug: "fibromyalgia", name: "Fibromyalgia", categoryId: ailCatMap["neurological"] },
+      { slug: "als", name: "ALS (Amyotrophic Lateral Sclerosis)", categoryId: ailCatMap["neurological"] },
 
       // Autoimmune
       { slug: "lupus", name: "Lupus", categoryId: ailCatMap["autoimmune"] },
@@ -467,6 +468,20 @@ async function main() {
     });
   }
 
+  const alsIngredients = [
+    { slug: "msg-als", name: "Monosodium Glutamate", reason: "Excitotoxin that may accelerate motor neuron damage" },
+    { slug: "aspartame-als", name: "Aspartame", reason: "May contribute to excitotoxicity in ALS" },
+    { slug: "mercury-als", name: "Mercury", reason: "Heavy metal linked to motor neuron toxicity" },
+    { slug: "lead-als", name: "Lead", reason: "Heavy metal exposure associated with increased ALS risk" },
+    { slug: "pesticides-als", name: "Pesticide Residue", reason: "Environmental toxin linked to elevated ALS risk" },
+  ]
+  
+  for (const ing of alsIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({
+      data: { ...ing, ailmentId: ailMap["als"] },
+    })
+  }
+
   // --- Epilepsy ---
   const epilepsyIngredients = [
     { slug: "msg-epilepsy", name: "Monosodium Glutamate", reason: "Excitotoxin that may lower seizure threshold" },
@@ -856,6 +871,7 @@ for (const ing of breastfeedingIngredients) {
     { ailmentSlug: "ms", prefSlugs: ["no-gluten", "no-dairy"] },
     { ailmentSlug: "migraines", prefSlugs: ["no-msg", "no-nitrates", "no-artificial-sweeteners"] },
     { ailmentSlug: "neuropathy", prefSlugs: ["no-msg", "no-artificial-sweeteners", "no-gluten"] },
+    { ailmentSlug: "als", prefSlugs: ["no-msg", "no-artificial-sweeteners"] },
     { ailmentSlug: "adhd", prefSlugs: ["no-food-dyes", "no-high-fructose", "no-artificial-flavors"] },
     { ailmentSlug: "fibromyalgia", prefSlugs: ["no-msg", "no-artificial-sweeteners", "no-gluten"] },
     { ailmentSlug: "hashimotos", prefSlugs: ["no-gluten", "no-soy"] },
