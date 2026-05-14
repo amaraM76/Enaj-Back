@@ -274,6 +274,33 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       // Products with "plastic" in packaging would be flagged.
       "plastic",
     ],
+
+    "Enaj Non-Toxic Baseline": [
+      // Synthetic chemicals & preservatives
+      "fragrance", "parfum", "paraben", "methylparaben", "propylparaben", "butylparaben",
+      "formaldehyde", "DMDM hydantoin", "diazolidinyl urea", "imidazolidinyl urea",
+      "phthalate", "triclosan", "triclocarban",
+      "sodium lauryl sulfate", "SLS", "sodium laureth sulfate", "SLES",
+      "BPA", "bisphenol", "PFAS", "PFOA", "perfluoro",
+      "oxybenzone", "benzophenone-3",
+      // Food additives
+      "high fructose corn syrup", "HFCS", "corn syrup",
+      "artificial flavor", "artificial colour", "artificial color",
+      "Red 40", "Yellow 5", "Yellow 6", "Blue 1", "FD&C",
+      "monosodium glutamate", "MSG",
+      "aspartame", "sucralose", "saccharin", "acesulfame",
+      "sodium nitrite", "sodium nitrate",
+      "carrageenan",
+      "polysorbate 80", "carboxymethylcellulose",
+      "partially hydrogenated", "trans fat",
+      // Seed oils
+      "canola oil", "soybean oil", "sunflower oil", "corn oil", "cottonseed oil",
+      // Heavy metals & toxins
+      "lead", "mercury", "aluminum chlorohydrate", "aluminum zirconium",
+      "talc",
+      // Microplastics
+      "microplastic", "polyethylene beads", "polypropylene beads",
+    ],
   };
 
   export const PREFERENCE_EXCLUSIONS: Record<string, string[]> = {
