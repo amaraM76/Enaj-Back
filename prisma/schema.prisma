@@ -90,8 +90,6 @@ model UserProfile {
   shoppingStores   String?           
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
-  customHealthCondition String?
-  customPreference      String?
   auth             UserAuth?
   ailments         UserAilment[]
   preferences      UserPreference[]
