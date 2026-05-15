@@ -94,6 +94,8 @@ async function main() {
       { slug: "pregnant", name: "Pregnant", categoryId: ailCatMap["hormonal"] },
       { slug: "postpartum", name: "Postpartum", categoryId: ailCatMap["hormonal"] },
       { slug: "breastfeeding", name: "Breastfeeding", categoryId: ailCatMap["hormonal"] },
+      { slug: "pcos", name: "PCOS (Polycystic Ovary Syndrome)", categoryId: ailCatMap["hormonal"] },
+      { slug: "hormonal-acne", name: "Hormonal Acne", categoryId: ailCatMap["skin"] },
 
 
       // Surgery
@@ -739,6 +741,40 @@ for (const ing of breastfeedingIngredients) {
   });
 }
 
+// --- PCOS ---
+const pcosIngredients = [
+  { slug: "refined-sugar-pcos", name: "Refined Sugar", reason: "Worsens insulin resistance, a key driver of PCOS symptoms" },
+  { slug: "hfcs-pcos", name: "High Fructose Corn Syrup", reason: "Spikes blood sugar and promotes insulin resistance in PCOS" },
+  { slug: "artificial-sweeteners-pcos", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome in PCOS" },
+  { slug: "seed-oils-pcos", name: "Seed Oils", reason: "Promotes inflammation that worsens hormonal imbalance in PCOS" },
+  { slug: "dairy-pcos", name: "Dairy", reason: "May increase androgen levels and worsen PCOS symptoms in some women" },
+  { slug: "soy-pcos", name: "Soy", reason: "Phytoestrogens in soy may interfere with hormonal balance in PCOS" },
+]
+
+for (const ing of pcosIngredients) {
+  await prisma.ailmentFlaggedIngredient.create({
+    data: { ...ing, ailmentId: ailMap["pcos"] },
+  })
+}
+
+// --- Hormonal Acne ---
+const hormonalAcneIngredients = [
+  { slug: "dairy-hormonal-acne", name: "Dairy", reason: "Dairy contains hormones and growth factors that can trigger hormonal acne breakouts" },
+  { slug: "whey-hormonal-acne", name: "Whey Protein", reason: "Whey spikes IGF-1 and insulin, both linked to hormonal acne" },
+  { slug: "refined-sugar-hormonal-acne", name: "Refined Sugar", reason: "Causes insulin spikes that increase androgen production and sebum" },
+  { slug: "hfcs-hormonal-acne", name: "High Fructose Corn Syrup", reason: "Promotes inflammation and insulin spikes linked to acne" },
+  { slug: "seed-oils-hormonal-acne", name: "Seed Oils", reason: "High omega-6 content promotes skin inflammation and breakouts" },
+  { slug: "artificial-sweeteners-hormonal-acne", name: "Artificial Sweeteners", reason: "May disrupt gut microbiome and hormonal balance contributing to acne" },
+  { slug: "coconut-oil-hormonal-acne", name: "Coconut Oil", reason: "Highly comedogenic, clogs pores and worsens hormonal acne breakouts" },
+  { slug: "isopropyl-hormonal-acne", name: "Isopropyl Myristate", reason: "Known pore-clogging ingredient that worsens acne" },
+]
+
+for (const ing of hormonalAcneIngredients) {
+  await prisma.ailmentFlaggedIngredient.create({
+    data: { ...ing, ailmentId: ailMap["hormonal-acne"] },
+  })
+}
+
   // --- Gastrectomy Surgery ---
   const gastrectomyIngredients = [
     { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "Can cause dumping syndrome after gastrectomy" },
@@ -883,6 +919,8 @@ for (const ing of breastfeedingIngredients) {
     { ailmentSlug: "breastfeeding", prefSlugs: ["no-parabens", "no-artificial-sweeteners", "no-fragrance"] },
     { ailmentSlug: "pregnant", prefSlugs: ["no-parabens", "no-phthalates", "no-fragrance", "no-bpa-bps", "no-artificial-sweeteners", "no-formaldehyde"] },
     { ailmentSlug: "postpartum", prefSlugs: ["no-parabens", "no-artificial-sweeteners", "no-fragrance"] },
+    { ailmentSlug: "pcos", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose", "no-seed-oils", "no-dairy"] },
+    { ailmentSlug: "hormonal-acne", prefSlugs: ["no-dairy", "no-silicones"] },
     { ailmentSlug: "gastrectomy", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
     { ailmentSlug: "bariatric", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
 
