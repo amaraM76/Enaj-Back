@@ -76,6 +76,7 @@ export async function GET(
 
     // Transform to match frontend shape
     const profile = {
+      id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
