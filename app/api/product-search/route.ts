@@ -57,20 +57,13 @@ export async function GET(request: Request) {
     let totalCount = 0;
 
     for (const db of databasesToSearch) {
-      const categorySlug = query.replace(/\s+/g, '-')
       const url = new URL(`${db.url}/cgi/search.pl`);
       url.searchParams.set("search_terms", query);
-      url.searchParams.set("search_tag", "categories_tags");
-      url.searchParams.set("tagtype_0", "categories");
-      url.searchParams.set("tag_contains_0", "contains");
-      url.searchParams.set("tag_0", categorySlug);
       url.searchParams.set("json", "true");
-      url.searchParams.set(
-        "fields",
-        "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags"
-      );
+      url.searchParams.set("fields", "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags");
       url.searchParams.set("page", page);
-      url.searchParams.set("page_size", pageSize);
+      url.searchParams.set("page_size", "20");
+      url.searchParams.set("action", "process");
 
       try {
         const response = await fetch(url.toString(), {
@@ -106,21 +99,13 @@ export async function GET(request: Request) {
     if (allProducts.length === 0 && query.includes(" ")) {
         const firstWord = query.split(" ")[0];
         for (const db of databasesToSearch) {
-          const categorySlug = query.replace(/\s+/g, '-')
           const url = new URL(`${db.url}/cgi/search.pl`);
           url.searchParams.set("search_terms", query);
-          url.searchParams.set("search_tag", "categories_tags");
-          url.searchParams.set("tagtype_0", "categories");
-          url.searchParams.set("tag_contains_0", "contains");
-          url.searchParams.set("tag_0", categorySlug);
-          url.searchParams.set("search_terms", firstWord);
           url.searchParams.set("json", "true");
-          url.searchParams.set(
-            "fields",
-            "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags"
-          );
+          url.searchParams.set("fields", "code,product_name,brands,ingredients_text,image_url,packaging_text_en,categories_tags_en,allergens_tags");
           url.searchParams.set("page", page);
-          url.searchParams.set("page_size", pageSize);
+          url.searchParams.set("page_size", "20");
+          url.searchParams.set("action", "process");
   
           try {
             const response = await fetch(url.toString(), {
