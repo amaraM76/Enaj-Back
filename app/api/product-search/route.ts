@@ -13,7 +13,14 @@ const DATABASES = {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const query = searchParams.get("q");
+    const raw = searchParams.get("q") || ''
+    const query = raw
+      .toLowerCase()
+      .trim()
+      .replace(/[''`]/g, '')        // remove apostrophes
+      .replace(/s\b/g, '')          // remove trailing 's' (plurals)
+      .replace(/\s+/g, ' ')         // normalize spaces
+      .trim()
     const source = searchParams.get("source") || "all";
     const page = searchParams.get("page") || "1";
     const pageSize = searchParams.get("pageSize") || "20";
@@ -50,8 +57,13 @@ export async function GET(request: Request) {
     let totalCount = 0;
 
     for (const db of databasesToSearch) {
+      const categorySlug = query.replace(/\s+/g, '-')
       const url = new URL(`${db.url}/cgi/search.pl`);
       url.searchParams.set("search_terms", query);
+      url.searchParams.set("search_tag", "categories_tags");
+      url.searchParams.set("tagtype_0", "categories");
+      url.searchParams.set("tag_contains_0", "contains");
+      url.searchParams.set("tag_0", categorySlug);
       url.searchParams.set("json", "true");
       url.searchParams.set(
         "fields",
@@ -94,7 +106,13 @@ export async function GET(request: Request) {
     if (allProducts.length === 0 && query.includes(" ")) {
         const firstWord = query.split(" ")[0];
         for (const db of databasesToSearch) {
+          const categorySlug = query.replace(/\s+/g, '-')
           const url = new URL(`${db.url}/cgi/search.pl`);
+          url.searchParams.set("search_terms", query);
+          url.searchParams.set("search_tag", "categories_tags");
+          url.searchParams.set("tagtype_0", "categories");
+          url.searchParams.set("tag_contains_0", "contains");
+          url.searchParams.set("tag_0", categorySlug);
           url.searchParams.set("search_terms", firstWord);
           url.searchParams.set("json", "true");
           url.searchParams.set(
