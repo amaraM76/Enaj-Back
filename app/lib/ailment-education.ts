@@ -1564,27 +1564,6 @@ export interface AilmentIngredientEducation {
         },
       },
     },
-    'pcos': {
-      description: 'Polycystic Ovary Syndrome (PCOS) is a hormonal disorder affecting women of reproductive age. Diet plays a significant role in managing symptoms.',
-      generalSources: [
-        { title: 'ACOG - PCOS', url: 'https://www.acog.org/womens-health/faqs/polycystic-ovary-syndrome-pcos' },
-        { title: 'Mayo Clinic - PCOS', url: 'https://www.mayoclinic.org/diseases-conditions/pcos/symptoms-causes/syc-20353439' },
-      ],
-      ingredientInfo: {
-        'Refined Carbohydrates': {
-          reason: 'Refined carbs can spike blood sugar and worsen insulin resistance, a key factor in PCOS.',
-          sources: [
-            { title: 'PCOS Awareness Association', url: 'https://www.pcosaa.org/pcos-diet' },
-          ],
-        },
-        'Added Sugars': {
-          reason: 'High sugar intake worsens insulin resistance and inflammation associated with PCOS.',
-          sources: [
-            { title: 'Journal of the Academy of Nutrition and Dietetics', url: 'https://jandonline.org/article/S2212-2672(17)30013-X/fulltext' },
-          ],
-        },
-      },
-    },
     'endometriosis': {
       description: 'Endometriosis is a condition where tissue similar to the uterine lining grows outside the uterus, causing pain and other symptoms.',
       generalSources: [
