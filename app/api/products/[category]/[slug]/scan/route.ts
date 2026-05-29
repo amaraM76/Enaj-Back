@@ -56,6 +56,7 @@ export async function GET(
       reason: string;
       source: "ailment" | "preference";
       sourceName: string;
+      sourceSlug: string;
       flaggedFrom: "ingredients" | "packaging" | "allergens";
       sources?: { title: string; url: string }[];
     }[] = [];
@@ -78,6 +79,7 @@ export async function GET(
             reason: fi.reason,
             source: "ailment",
             sourceName: ua.ailment.name,
+            sourceSlug: ua.ailment.slug,
             flaggedFrom: match.from,
             sources: fi.sources.map((s) => ({ title: s.title, url: s.url })),
           });
@@ -109,6 +111,7 @@ export async function GET(
                 reason: up.preference.description,
                 source: "preference",
                 sourceName: up.preference.name,
+                sourceSlug: up.preference.slug,
                 flaggedFrom: item.from,
               });
             }

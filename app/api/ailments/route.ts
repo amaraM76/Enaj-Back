@@ -34,7 +34,7 @@ export async function GET() {
         name: a.name,
         description: a.education?.description ?? undefined,
         generalSources: (a.education?.generalSources as any) ?? [],
-        ingredientInfo: (a.ingredientInfo as any) ?? {},
+        ingredientInfo: (a.education?.ingredientInfo as any) ?? {},
         linkedPreferences: a.linkedPreferences.map((lp) => lp.preference.slug),
         flaggedIngredients: a.flaggedIngredients.map((fi) => ({
           id: fi.slug,

@@ -39,7 +39,7 @@ export async function GET(request: Request) {
     })
 
     // Build flat flagged ingredients list for easy matching
-    const flaggedIngredients: { name: string; reason: string; source: string; sourceName: string }[] = []
+    const flaggedIngredients: { name: string; reason: string; source: string; sourceName: string; sourceSlug: string }[] = []
 
     // From ailments
     for (const ua of userAilments) {
@@ -49,6 +49,7 @@ export async function GET(request: Request) {
           name: fi.name.toLowerCase(),
           reason: fi.reason,
           source: 'ailment',
+          sourceSlug: ua.ailment.slug,
           sourceName: ua.ailment.name,
         })
       }
@@ -63,6 +64,7 @@ export async function GET(request: Request) {
           name: keyword.toLowerCase(),
           reason: up.preference.description,
           source: 'preference',
+          sourceSlug: up.preference.slug,
           sourceName: up.preference.name,
         })
       }
