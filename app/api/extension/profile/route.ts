@@ -69,10 +69,23 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({
-      flaggedIngredients,
-      ailments: userAilments.filter(ua => ua.ailment).map(ua => ua.ailment!.name),
-      preferences: userPreferences.filter(up => up.preference).map(up => up.preference!.name),
-    })
+        flaggedIngredients,
+        ailments: userAilments
+          .filter((ua) => ua.ailment)
+          .map((ua) => ({
+            id: ua.ailment!.id,
+            name: ua.ailment!.name,
+            slug: ua.ailment!.slug,
+          })),
+      
+        preferences: userPreferences
+          .filter((up) => up.preference)
+          .map((up) => ({
+            id: up.preference!.id,
+            name: up.preference!.name,
+            slug: up.preference!.slug,
+          })),
+      })
   } catch (error) {
     console.error("Extension profile error:", error)
     return NextResponse.json({ error: "Failed to fetch profile" }, { status: 500 })
