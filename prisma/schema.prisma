@@ -156,8 +156,25 @@ model Ailment {
   flaggedIngredients  AilmentFlaggedIngredient[]
   linkedPreferences   AilmentLinkedPreference[]
   users               UserAilment[]
+  education           AilmentEducation?
 
   @@index([categoryId])
+}
+
+/// Stores educational content for each health condition/ailment.
+/// One-to-one with Ailment (ailmentId is unique).
+/// Contains a plain-text description, a JSON array of general sources
+/// ({ title, url }[]), and a JSON object of per-ingredient info
+/// ({ [ingredientName]: { reason, sources: { title, url }[] } }).
+model AilmentEducation {
+  id             String   @id @default(uuid())
+  ailmentId      String   @unique
+  ailment        Ailment  @relation(fields: [ailmentId], references: [id], onDelete: Cascade)
+  description    String?
+  generalSources Json?    // { title: string; url: string }[]
+  ingredientInfo Json?    // Record<string, { reason: string; sources: { title, url }[] }>
+
+  @@map("ailment_education")
 }
 
 // ==========================================
@@ -311,8 +328,27 @@ model Preference {
   category       PreferenceCategory        @relation(fields: [categoryId], references: [id])
   linkedAilments AilmentLinkedPreference[]
   users          UserPreference[]
+  education      PreferenceEducation?
 
   @@index([categoryId])
+}
+
+/// Stores educational content for each dietary/lifestyle preference.
+/// One-to-one with Preference (preferenceId is unique).
+/// Contains a plain-text explanation of what the ingredient is,
+/// a string array of places it is commonly found,
+/// a plain-text explanation of why people avoid it,
+/// and a JSON array of sources ({ title, url }[]).
+model PreferenceEducation {
+  id              String     @id @default(uuid())
+  preferenceId    String     @unique
+  preference      Preference @relation(fields: [preferenceId], references: [id], onDelete: Cascade)
+  whatItIs        String?
+  commonlyFoundIn String[]
+  whyPeopleAvoid  String?
+  sources         Json?      // { title: string; url: string }[]
+
+  @@map("preference_education")
 }
 
 // ==========================================

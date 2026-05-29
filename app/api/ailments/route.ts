@@ -19,6 +19,7 @@ export async function GET() {
             linkedPreferences: {
               include: { preference: true },
             },
+            education: true,
           },
         },
       },
@@ -31,6 +32,9 @@ export async function GET() {
       ailments: cat.ailments.map((a) => ({
         id: a.slug,
         name: a.name,
+        description: a.description ?? undefined,
+        generalSources: (a.generalSources as any) ?? [],
+        ingredientInfo: (a.ingredientInfo as any) ?? {},
         linkedPreferences: a.linkedPreferences.map((lp) => lp.preference.slug),
         flaggedIngredients: a.flaggedIngredients.map((fi) => ({
           id: fi.slug,
@@ -40,7 +44,7 @@ export async function GET() {
         })),
       })),
     }));
-
+    
     return NextResponse.json({ categories: result });
   } catch (error) {
     console.error("Error fetching ailments:", error);

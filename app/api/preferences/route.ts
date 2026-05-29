@@ -12,6 +12,7 @@ export async function GET() {
       include: {
         preferences: {
           orderBy: { name: "asc" },
+          include: { education: true },
         },
       },
     });
@@ -25,9 +26,13 @@ export async function GET() {
         id: p.slug,
         name: p.name,
         description: p.description,
+        whatItIs: p.education?.whatItIs ?? undefined,
+        commonlyFoundIn: p.education?.commonlyFoundIn ?? [],
+        whyPeopleAvoid: p.education?.whyPeopleAvoid ?? undefined,
+        educationSources: (p.education?.sources as any) ?? [],
       })),
     }));
-
+    
     return NextResponse.json({ categories: result });
   } catch (error) {
     console.error("Error fetching preferences:", error);

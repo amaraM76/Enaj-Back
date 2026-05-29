@@ -1,5 +1,7 @@
 import { PrismaClient, ProductCategory, ConditionSource, PreferenceSource } from "@prisma/client";
 import * as bcrypt from "bcrypt";
+import { ailmentEducationData } from '../app/lib/ailment-education'
+import { preferenceEducationData } from '../app/lib/preference-education'
 
 const prisma = new PrismaClient();
 
@@ -936,6 +938,37 @@ for (const ing of hormonalAcneIngredients) {
     }
   }
 
+
+  for (const ailment of ailments) {
+    const edu = ailmentEducationData[ailment.slug]
+    if (!edu) continue
+    await prisma.ailmentEducation.create({
+      data: {
+        ailmentId: ailment.id,
+        description: edu.description,
+        generalSources: edu.generalSources,
+        ingredientInfo: edu.ingredientInfo,
+      },
+    })
+  }
+  
+  for (const pref of preferences) {
+    const edu = preferenceEducationData[pref.slug]
+      || preferenceEducationData[pref.slug.replace(/^no-/, '')]
+      || preferenceEducationData[pref.slug.replace(/^no-/, '') + '-free']
+      || preferenceEducationData[pref.slug + '-free']
+    if (!edu) continue
+    await prisma.preferenceEducation.create({
+      data: {
+        preferenceId: pref.id,
+        whatItIs: edu.whatItIs,
+        commonlyFoundIn: edu.commonlyFoundIn,
+        whyPeopleAvoid: edu.whyPeopleAvoid,
+        sources: edu.sources,
+      },
+    })
+  }
+
   // ==========================================
   // Products (matching frontend DEMO_PRODUCTS)
   // ==========================================
@@ -1462,9 +1495,14 @@ for (const ing of hormonalAcneIngredients) {
   //   prisma.savedProduct.create({ data: { userId: priya.id, productId: productMap["organic-daily-moisturizer"] } }),
   // ]);
 
+
+
   // ==========================================
   // Summary
   // ==========================================
+
+  console.log("Seed data created successfully!");
+
   console.log("Seed data created successfully!");
   console.log(`Created ${ailmentCategories.length} ailment categories`);
   console.log(`Created ${ailments.length} ailments`);
