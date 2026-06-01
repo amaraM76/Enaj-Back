@@ -946,8 +946,8 @@ for (const ing of hormonalAcneIngredients) {
       data: {
         ailmentId: ailment.id,
         description: edu.description,
-        generalSources: edu.generalSources,
-        ingredientInfo: edu.ingredientInfo,
+        generalSources: edu.generalSources as any,
+        ingredientInfo: edu.ingredientInfo as any,
       },
     })
   }
@@ -964,7 +964,7 @@ for (const ing of hormonalAcneIngredients) {
         whatItIs: edu.whatItIs,
         commonlyFoundIn: edu.commonlyFoundIn,
         whyPeopleAvoid: edu.whyPeopleAvoid,
-        sources: edu.sources,
+        sources: edu.sources as any,
       },
     })
   }
