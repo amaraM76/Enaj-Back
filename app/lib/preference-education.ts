@@ -1136,24 +1136,6 @@ export interface PreferenceEducation {
         { title: 'WHO - Trans Fats', url: 'https://www.who.int/news-room/questions-and-answers/item/nutrition-trans-fat' },
       ],
     },
-    'msg': {
-      whatItIs: 'MSG (monosodium glutamate) is a flavor enhancer that adds umami taste to foods. It\'s the sodium salt of glutamic acid, an amino acid naturally present in foods like tomatoes and parmesan cheese.',
-      commonlyFoundIn: ['Chinese food', 'Chips and snacks', 'Canned soups', 'Processed meats', 'Instant noodles', 'Salad dressings', 'Fast food', 'Seasoning blends'],
-      whyPeopleAvoid: 'Some people report "MSG symptom complex" including headaches, sweating, and numbness, though scientific studies haven\'t consistently confirmed this link. People with migraine triggers or sensitivities may choose to avoid it.',
-      sources: [
-        { title: 'FDA - MSG', url: 'https://www.fda.gov/food/food-additives-petitions/questions-and-answers-monosodium-glutamate-msg' },
-        { title: 'Mayo Clinic - MSG', url: 'https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/monosodium-glutamate/faq-20058196' },
-      ],
-    },
-    'triclosan': {
-      whatItIs: 'Triclosan is an antibacterial and antifungal agent that was widely used in hand soaps, body washes, and toothpaste. The FDA banned it from consumer antiseptic wash products in 2016 but it\'s still found in some products.',
-      commonlyFoundIn: ['Some toothpastes', 'Certain cosmetics', 'Some cleaning products', 'Surgical soaps', 'Athletic clothing'],
-      whyPeopleAvoid: 'Triclosan is an endocrine disruptor that may affect thyroid function and contribute to antibiotic resistance. Studies link it to hormone disruption and potential liver effects. It accumulates in the environment and in human bodies.',
-      sources: [
-        { title: 'FDA - Triclosan', url: 'https://www.fda.gov/consumers/consumer-updates/5-things-know-about-triclosan' },
-        { title: 'NIH - Triclosan', url: 'https://www.niehs.nih.gov/health/topics/agents/endocrine' },
-      ],
-    },
     'talc': {
       whatItIs: 'Talc is a naturally occurring mineral used as an absorbent powder and to create a silky texture in cosmetics. It can sometimes be contaminated with asbestos, a known carcinogen, depending on where it\'s mined.',
       commonlyFoundIn: ['Baby powder', 'Face powder', 'Eye shadow', 'Blush', 'Foundation', 'Deodorant', 'Some medications'],
@@ -1172,15 +1154,6 @@ export interface PreferenceEducation {
         { title: 'Rainforest Foundation - Palm Oil', url: 'https://www.rainforestfoundation.org/our-work/areas-of-focus/deforestation-commodities-palm-oil/' },
       ],
     },
-    'sodium-benzoate': {
-      whatItIs: 'Sodium benzoate is a preservative used to prevent the growth of bacteria, yeast, and mold in acidic products. It\'s often used in combination with other preservatives and is particularly effective in foods with low pH levels.',
-      commonlyFoundIn: ['Soft drinks', 'Fruit juices', 'Pickles', 'Salad dressings', 'Condiments', 'Jams and jellies', 'Mouthwash', 'Some medications'],
-      whyPeopleAvoid: 'When combined with vitamin C (ascorbic acid), sodium benzoate can form benzene, a known carcinogen. Some studies suggest it may increase hyperactivity in children. People with sensitivities may experience allergic reactions.',
-      sources: [
-        { title: 'FDA - Benzene in Beverages', url: 'https://www.fda.gov/food/chemical-contaminants-food/questions-and-answers-occurrence-benzene-soft-drinks-and-other-beverages' },
-        { title: 'PubMed - Sodium Benzoate', url: 'https://pubmed.ncbi.nlm.nih.gov/17825880/' },
-      ],
-    },
     'propylene-glycol': {
       whatItIs: 'Propylene glycol is a synthetic liquid used as a solvent, humectant, and preservative. It\'s considered "generally recognized as safe" by the FDA but is also used in industrial applications like antifreeze.',
       commonlyFoundIn: ['Ice cream', 'Salad dressings', 'Soft drinks', 'Cosmetics', 'Medications', 'E-cigarettes', 'Deodorants', 'Lotions'],
@@ -1197,15 +1170,6 @@ export interface PreferenceEducation {
       sources: [
         { title: 'NIH - Polysorbate 80', url: 'https://pubmed.ncbi.nlm.nih.gov/25731162/' },
         { title: 'Healthline - Polysorbate 80', url: 'https://www.healthline.com/nutrition/polysorbate-80' },
-      ],
-    },
-    'seed-oils': {
-      whatItIs: 'Seed oils (also called vegetable oils) are extracted from seeds of plants like soybeans, corn, canola, sunflower, and safflower. They\'re high in omega-6 fatty acids and are heavily processed using high heat and chemical solvents.',
-      commonlyFoundIn: ['Fried foods', 'Packaged snacks', 'Salad dressings', 'Mayonnaise', 'Margarine', 'Baked goods', 'Restaurant food'],
-      whyPeopleAvoid: 'Seed oils are high in omega-6 fatty acids, which may promote inflammation when consumed in excess. The processing can create harmful compounds. Some people following ancestral or low-inflammation diets avoid them in favor of olive oil, coconut oil, or animal fats.',
-      sources: [
-        { title: 'Harvard Health - Omega-6', url: 'https://www.health.harvard.edu/newsletter_article/no-need-to-avoid-healthy-omega-6-fats' },
-        { title: 'NIH - Seed Oils Review', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7468872/' },
       ],
     },
     'enaj-baseline': {
