@@ -94,6 +94,7 @@ model UserProfile {
   ailments         UserAilment[]
   preferences      UserPreference[]
   savedProducts    SavedProduct[]
+  journalEntries   UserJournalEntry[] 
 }
 
 // ==========================================
@@ -378,6 +379,42 @@ model AilmentLinkedPreference {
   @@unique([ailmentId, preferenceId])
   @@index([ailmentId])
   @@index([preferenceId])
+}
+
+// ==========================================
+// User Journal Entries
+// Temporary health conditions a user is currently dealing with,
+// selected from the Weekly Health Journal step during onboarding
+// or added/removed anytime from the Journal tab on the dashboard.
+// Unlike UserAilment (permanent conditions), these are short-term
+// states like a cold, UTI, or hangover that affect which ingredients
+// enaJ monitors while the user recovers.
+//
+// The conditionSlug maps to condition IDs defined in
+// lib/journal-data.ts on the frontend (e.g. "common-cold", "uti",
+// "acid-reflux"). There is no separate database table for journal
+// conditions — the slug is the source of truth, keeping this table
+// lightweight and easy to update as new conditions are added.
+//
+// For example, Sarah is currently sick and selected Cold and Strep
+// Throat — two rows pointing to her profile. Once she recovers,
+// she removes them from the Journal tab and those rows are deleted
+// and replaced with her updated selection.
+//
+// Connected to:
+// - UserProfile (many-to-one): Many journal entries belong to one
+//   user. Sarah's two active conditions both point to her profile.
+// ==========================================
+
+model UserJournalEntry {
+  id            String      @id @default(uuid())
+  userId        String
+  user          UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conditionSlug String
+  createdAt     DateTime    @default(now())
+
+  @@unique([userId, conditionSlug])
+  @@index([userId])
 }
 
 // ==========================================
