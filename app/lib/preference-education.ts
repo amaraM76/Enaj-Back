@@ -1173,7 +1173,7 @@ export interface PreferenceEducation {
       ],
     },
     'enaj-baseline': {
-      whatItIs: 'The Enaj Non-Toxic Baseline is for people who want to live a healthier lifestyle but aren\'t sure exactly what to avoid yet. It\'s a curated list of the most commonly flagged toxic and harmful ingredients that health-conscious people typically avoid. Enable this one preference and Enaj will monitor for all of them across every product you scan.',
+      whatItIs: 'The enaJ Non-Toxic Baseline is for people who want to live a healthier lifestyle but aren\'t sure exactly what to avoid yet. It\'s a curated list of the most commonly flagged toxic and harmful ingredients that health-conscious people typically avoid. Enable this one preference and Enaj will monitor for all of them across every product you scan.',
       commonlyFoundIn: [
         'Processed and packaged foods',
         'Skincare and moisturizers',
@@ -1186,7 +1186,7 @@ export interface PreferenceEducation {
         'Fast food and restaurant meals',
         'Personal care products',
       ],
-      whyPeopleAvoid: `The Enaj Non-Toxic Baseline monitors for ingredients across five categories that health-conscious people most commonly avoid:
+      whyPeopleAvoid: `The enaJ Non-Toxic Baseline monitors for ingredients across five categories that health-conscious people most commonly avoid:
     
     Synthetic Chemicals & Preservatives: Fragrance and parfum (which can hide hundreds of undisclosed chemicals), parabens (methylparaben, propylparaben, butylparaben), formaldehyde and formaldehyde-releasing preservatives (DMDM hydantoin, diazolidinyl urea, imidazolidinyl urea), phthalates, triclosan and triclocarban, and sulfates (SLS and SLES). These are commonly found in personal care products and are linked to hormone disruption, skin irritation, and long-term health concerns.
     

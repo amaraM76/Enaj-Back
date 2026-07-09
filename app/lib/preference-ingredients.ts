@@ -275,7 +275,7 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "plastic",
     ],
 
-    "Enaj Non-Toxic Baseline": [
+    "enaJ Non-Toxic Baseline": [
       // Synthetic chemicals & preservatives
       "fragrance", "parfum", "paraben", "methylparaben", "propylparaben", "butylparaben",
       "formaldehyde", "DMDM hydantoin", "diazolidinyl urea", "imidazolidinyl urea",

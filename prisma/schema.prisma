@@ -94,7 +94,7 @@ model UserProfile {
   ailments         UserAilment[]
   preferences      UserPreference[]
   savedProducts    SavedProduct[]
-  journalEntries   JournalEntry[]
+  journalEntries   UserJournalEntry[]
 }
 
 // ==========================================
@@ -382,19 +382,72 @@ model AilmentLinkedPreference {
 }
 
 // ==========================================
+// Journal Categories
+// Groups temporary/short-term conditions into categories displayed
+// on the Weekly Health Journal tab (e.g. Common Illnesses, Women's
+// Health, Digestive Issues, Skin/Eye & External, Pain & Physical
+// Discomfort, Allergies & Sensitivities, Recovery/Treatment States).
+// The icon field names a lucide-react icon rendered on the frontend.
+//
+// Connected to:
+// - JournalCondition (one-to-many): One category contains many
+//   conditions.
+// ==========================================
+model JournalCategory {
+  id         String             @id @default(uuid())
+  slug       String             @unique
+  label      String
+  icon       String
+  sortOrder  Int                @default(0)
+  conditions JournalCondition[]
+
+  @@index([sortOrder])
+}
+
+// ==========================================
+// Journal Conditions
+// Master list of temporary/short-term conditions users can add to
+// their Weekly Health Journal (e.g. Common Cold, UTI, Hangover).
+// Unlike Ailment (permanent conditions), these carry their own
+// educational content directly — what ingredients enaJ monitors
+// while the user has this condition, fun facts, recovery tips, and
+// general sources — since that content is always shown together
+// on the Journal tab rather than split into a separate education
+// table.
+//
+// Connected to:
+// - JournalCategory (many-to-one): Many conditions belong to one
+//   category.
+// - UserJournalEntry (one-to-many): One condition can be selected
+//   by many users.
+// ==========================================
+model JournalCondition {
+  id             String             @id @default(uuid())
+  slug           String             @unique
+  name           String
+  categoryId     String
+  category       JournalCategory    @relation(fields: [categoryId], references: [id])
+  description    String
+  whatWeMonitor  Json               // { ingredient: string; reason: string; sources: { title, url }[] }[]
+  funFacts       String[]
+  tips           String[]
+  generalSources Json               // { title: string; url: string }[]
+  users          UserJournalEntry[]
+
+  @@index([categoryId])
+}
+
+// ==========================================
 // User Journal Entries
-// Temporary health conditions a user is currently dealing with,
-// selected from the Weekly Health Journal step during onboarding
+// Records which temporary conditions a specific user selected or
+// typed in on the Weekly Health Journal, selected during onboarding
 // or added/removed anytime from the Journal tab on the dashboard.
 // Unlike UserAilment (permanent conditions), these are short-term
 // states like a cold, UTI, or hangover that affect which ingredients
-// enaJ monitors while the user recovers.
-//
-// The conditionSlug maps to condition IDs defined in
-// lib/journal-data.ts on the frontend (e.g. "common-cold", "uti",
-// "acid-reflux"). There is no separate database table for journal
-// conditions — the slug is the source of truth, keeping this table
-// lightweight and easy to update as new conditions are added.
+// enaJ monitors while the user recovers. Mirrors UserAilment: if the
+// user picked from the predefined list, conditionId links to
+// JournalCondition; if they typed in a custom entry, customEntry
+// holds the text and conditionId is null.
 //
 // For example, Sarah is currently sick and selected Cold and Strep
 // Throat — two rows pointing to her profile. Once she recovers,
@@ -404,17 +457,22 @@ model AilmentLinkedPreference {
 // Connected to:
 // - UserProfile (many-to-one): Many journal entries belong to one
 //   user. Sarah's two active conditions both point to her profile.
+// - JournalCondition (many-to-one, optional): Many user selections
+//   can point to the same condition. Null for custom entries.
 // ==========================================
+model UserJournalEntry {
+  id          String            @id @default(uuid())
+  userId      String
+  user        UserProfile       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conditionId String?
+  condition   JournalCondition? @relation(fields: [conditionId], references: [id], onDelete: SetNull)
+  customEntry String?
+  source      ConditionSource
+  createdAt   DateTime          @default(now())
 
-model JournalEntry {
-  id            String   @id @default(uuid())
-  userId        String
-  user          UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
-  conditionSlug String
-  createdAt     DateTime @default(now())
-
-  @@unique([userId, conditionSlug])
+  @@unique([userId, conditionId])
   @@index([userId])
+  @@index([conditionId])
 }
 
 // ==========================================

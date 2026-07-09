@@ -2,13 +2,13 @@ import { PrismaClient, ProductCategory, ConditionSource, PreferenceSource } from
 import * as bcrypt from "bcrypt";
 import { ailmentEducationData } from '../app/lib/ailment-education'
 import { preferenceEducationData } from '../app/lib/preference-education'
+import { journalCategoriesSeedData } from '../app/lib/journal-data'
 
 const prisma = new PrismaClient();
-
 async function main() {
   // Clear existing data in correct order
   await prisma.userPreference.deleteMany();
-  // await prisma.savedProduct.deleteMany();
+  await prisma.userJournalEntry.deleteMany();
   await prisma.userAilment.deleteMany();
   await prisma.ailmentLinkedPreference.deleteMany();
   await prisma.ingredientSource.deleteMany();
@@ -17,6 +17,8 @@ async function main() {
   await prisma.preferenceCategory.deleteMany();
   await prisma.ailment.deleteMany();
   await prisma.ailmentCategory.deleteMany();
+  await prisma.journalCondition.deleteMany();
+  await prisma.journalCategory.deleteMany();
   // Only delete seeded products, not imported ones (imported slugs start with "off-")
   await prisma.product.deleteMany({
   where: { slug: { not: { startsWith: "off-" } } }
@@ -1107,7 +1109,7 @@ for (const ing of hormonalAcneIngredients) {
       { slug: "artificial-food", label: "Artificial Additives & Food", description: "Artificial additives are lab-made ingredients used to enhance flavor, color, texture, or shelf life in food products. Some, like certain food dyes (Red 40, Yellow 5), have been reviewed by the FDA and are subject to ongoing research. MSG is generally recognized as safe but some individuals report sensitivity. Carrageenan, a common thickener derived from seaweed, has been studied for its effects on digestive health. Many consumers prefer whole-food alternatives based on dietary goals or sensitivities.", sortOrder: 4 },
       { slug: "metabolic-blood-sugar", label: "Metabolic & Blood Sugar Disruptors", description: "These ingredients have been studied for their effects on blood sugar levels, insulin response, and metabolic function. Artificial sweeteners, while calorie-free, have been researched by the National Institutes of Health for their impact on gut bacteria and glucose metabolism. High fructose corn syrup is processed differently by the liver than regular sugar. Trans fats have been largely phased out due to their well-documented effects on cardiovascular health. Seed oils are a topic of active nutritional research and debate.", sortOrder: 5 },
       { slug: "environmental-forever", label: "Environmental & \"Forever\" Chemicals", description: "PFAS (per- and polyfluoroalkyl substances) are called \"forever chemicals\" because they do not break down naturally in the environment or the human body. The EPA has set health advisories for certain PFAS in drinking water. Microplastics are tiny plastic particles that have been detected in water, food, and human tissue, and are currently being studied for long-term health effects. Many consumers also consider the environmental footprint of product packaging and manufacturing practices when making purchasing decisions.", sortOrder: 6 },
-      { slug: "non-toxic-lifestyle", label: "Non-Toxic Lifestyle", description: "Not sure exactly what to avoid? The Enaj Non-Toxic Baseline monitors for the most commonly flagged toxic ingredients across food, skincare, and household products — synthetic chemicals, harmful additives, endocrine disruptors, heavy metals, and more. A great starting point for anyone looking to live cleaner without needing to know every ingredient.", sortOrder: 0 },
+      { slug: "non-toxic-lifestyle", label: "Non-Toxic Lifestyle", description: "Not sure exactly what to avoid? The enaJ Non-Toxic Baseline monitors for the most commonly flagged toxic ingredients across food, skincare, and household products — synthetic chemicals, harmful additives, endocrine disruptors, heavy metals, and more. A great starting point for anyone looking to live cleaner without needing to know every ingredient.", sortOrder: 0 },
     ].map((cat) => prisma.preferenceCategory.create({ data: cat }))
   );
 
@@ -1119,7 +1121,7 @@ for (const ing of hormonalAcneIngredients) {
   const preferences = await Promise.all(
     [
       //Non-Toxic Lifestyle
-      { slug: "enaj-baseline", name: "Enaj Non-Toxic Baseline", description: "Monitor for the most commonly flagged toxic ingredients across food, skincare, and household products", categoryId: prefCatMap["non-toxic-lifestyle"] },
+      { slug: "enaj-baseline", name: "enaJ Non-Toxic Baseline", description: "Monitor for the most commonly flagged toxic ingredients across food, skincare, and household products", categoryId: prefCatMap["non-toxic-lifestyle"] },
 
       // Hormone & Endocrine
       { slug: "no-parabens", name: "Parabens", description: "Avoid paraben preservatives that can mimic estrogen", categoryId: prefCatMap["hormone-endocrine"] },
@@ -1276,6 +1278,38 @@ for (const ing of hormonalAcneIngredients) {
       },
     })
   }
+
+  // ==========================================
+  // Journal Categories & Conditions
+  // ==========================================
+  const journalCategories = await Promise.all(
+    journalCategoriesSeedData.map((cat) =>
+      prisma.journalCategory.create({
+        data: { slug: cat.slug, label: cat.label, icon: cat.icon, sortOrder: cat.sortOrder },
+      })
+    )
+  );
+  const journalCatMap = Object.fromEntries(journalCategories.map((c) => [c.slug, c.id]));
+  const journalConditions = await Promise.all(
+    journalCategoriesSeedData.flatMap((cat) =>
+      cat.conditions.map((cond) =>
+        prisma.journalCondition.create({
+          data: {
+            slug: cond.slug,
+            name: cond.name,
+            categoryId: journalCatMap[cat.slug],
+            description: cond.description,
+            whatWeMonitor: cond.whatWeMonitor as any,
+            funFacts: cond.funFacts,
+            tips: cond.tips,
+            generalSources: cond.generalSources as any,
+          },
+        })
+      )
+    )
+  );
+  const journalCondMap = Object.fromEntries(journalConditions.map((c) => [c.slug, c.id]));
+
 
   // ==========================================
   // Products (matching frontend DEMO_PRODUCTS)
@@ -1759,6 +1793,8 @@ for (const ing of hormonalAcneIngredients) {
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["no-parabens"], source: PreferenceSource.SELECTED } }),
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["cruelty-free"], source: PreferenceSource.SELECTED } }),
   ]);
+  await prisma.userJournalEntry.create({ data: { userId: sarah.id, conditionId: journalCondMap["common-cold"], source: ConditionSource.SELECTED } });
+
   // await Promise.all([
   //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["pure-mineral-sunscreen"] } }),
   //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["clean-coverage-bb-cream"] } }),
@@ -1817,10 +1853,14 @@ for (const ing of hormonalAcneIngredients) {
   console.log(`Created ${prefCategories.length} preference categories`);
   console.log(`Created ${preferences.length} preferences`);
   console.log(`Created ${products.length} products`);
+  console.log(`Created ${journalCategories.length} journal categories`);
+  console.log(`Created ${journalConditions.length} journal conditions`);
+
   console.log("Created 3 users with auth, ailments, preferences, and saved products:");
   console.log("  Sarah (sarahj) — Rosacea → No Fragrance/Alcohol/Sulfates preselected + No Parabens/Cruelty-Free selected");
   console.log("  Marcus (marcusc) — Asthma → No Food Dyes preselected + No PFAS/Microplastics/Eco Packaging selected");
   console.log("  Priya (priyap) — Celiac + Dairy Allergy + custom 'Histamine Intolerance' → Gluten-Free/Dairy preselected + No Soy/Organic/Food Dyes selected");
+
 }
 
 main()
