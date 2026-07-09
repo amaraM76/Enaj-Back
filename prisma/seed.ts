@@ -2,6 +2,7 @@ import { PrismaClient, ProductCategory, ConditionSource, PreferenceSource } from
 import * as bcrypt from "bcrypt";
 import { ailmentEducationData } from '../app/lib/ailment-education'
 import { preferenceEducationData } from '../app/lib/preference-education'
+import { journalCategoriesSeedData } from '../app/lib/journal-data'
 
 const prisma = new PrismaClient();
 
@@ -10,6 +11,7 @@ async function main() {
   await prisma.userPreference.deleteMany();
   // await prisma.savedProduct.deleteMany();
   await prisma.userAilment.deleteMany();
+  await prisma.userJournalEntry.deleteMany();
   await prisma.ailmentLinkedPreference.deleteMany();
   await prisma.ingredientSource.deleteMany();
   await prisma.ailmentFlaggedIngredient.deleteMany();
@@ -17,6 +19,8 @@ async function main() {
   await prisma.preferenceCategory.deleteMany();
   await prisma.ailment.deleteMany();
   await prisma.ailmentCategory.deleteMany();
+  await prisma.journalCondition.deleteMany();
+  await prisma.journalCategory.deleteMany();
   // Only delete seeded products, not imported ones (imported slugs start with "off-")
   await prisma.product.deleteMany({
   where: { slug: { not: { startsWith: "off-" } } }
@@ -1278,6 +1282,38 @@ for (const ing of hormonalAcneIngredients) {
   }
 
   // ==========================================
+  // Journal Categories & Conditions
+  // ==========================================
+  const journalCategories = await Promise.all(
+    journalCategoriesSeedData.map((cat) =>
+      prisma.journalCategory.create({
+        data: { slug: cat.slug, label: cat.label, icon: cat.icon, sortOrder: cat.sortOrder },
+      })
+    )
+  );
+  const journalCatMap = Object.fromEntries(journalCategories.map((c) => [c.slug, c.id]));
+
+  const journalConditions = await Promise.all(
+    journalCategoriesSeedData.flatMap((cat) =>
+      cat.conditions.map((cond) =>
+        prisma.journalCondition.create({
+          data: {
+            slug: cond.slug,
+            name: cond.name,
+            categoryId: journalCatMap[cat.slug],
+            description: cond.description,
+            whatWeMonitor: cond.whatWeMonitor as any,
+            funFacts: cond.funFacts,
+            tips: cond.tips,
+            generalSources: cond.generalSources as any,
+          },
+        })
+      )
+    )
+  );
+  const journalCondMap = Object.fromEntries(journalConditions.map((c) => [c.slug, c.id]));
+
+  // ==========================================
   // Products (matching frontend DEMO_PRODUCTS)
   // ==========================================
   const products = await Promise.all(
@@ -1759,6 +1795,7 @@ for (const ing of hormonalAcneIngredients) {
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["no-parabens"], source: PreferenceSource.SELECTED } }),
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["cruelty-free"], source: PreferenceSource.SELECTED } }),
   ]);
+  await prisma.userJournalEntry.create({ data: { userId: sarah.id, conditionId: journalCondMap["common-cold"], source: ConditionSource.SELECTED } });
   // await Promise.all([
   //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["pure-mineral-sunscreen"] } }),
   //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["clean-coverage-bb-cream"] } }),
@@ -1817,8 +1854,10 @@ for (const ing of hormonalAcneIngredients) {
   console.log(`Created ${prefCategories.length} preference categories`);
   console.log(`Created ${preferences.length} preferences`);
   console.log(`Created ${products.length} products`);
+  console.log(`Created ${journalCategories.length} journal categories`);
+  console.log(`Created ${journalConditions.length} journal conditions`);
   console.log("Created 3 users with auth, ailments, preferences, and saved products:");
-  console.log("  Sarah (sarahj) — Rosacea → No Fragrance/Alcohol/Sulfates preselected + No Parabens/Cruelty-Free selected");
+  console.log("  Sarah (sarahj) — Rosacea → No Fragrance/Alcohol/Sulfates preselected + No Parabens/Cruelty-Free selected; journal: Common Cold");
   console.log("  Marcus (marcusc) — Asthma → No Food Dyes preselected + No PFAS/Microplastics/Eco Packaging selected");
   console.log("  Priya (priyap) — Celiac + Dairy Allergy + custom 'Histamine Intolerance' → Gluten-Free/Dairy preselected + No Soy/Organic/Food Dyes selected");
 }

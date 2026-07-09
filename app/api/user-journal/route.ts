@@ -2,42 +2,48 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 
 // POST /api/user-journal
-// Replaces all journal entries for a user with the provided slugs.
-// Body: { userId: string, journalSlugs: string[] }
+// Replaces all journal entries for a user with the provided condition
+// slugs (plus an optional custom entry).
+// Body: { userId: string, journalSlugs: string[], customEntry?: string }
 export async function POST(request: Request) {
   try {
-    const { userId, journalSlugs } = await request.json();
-
+    const { userId, journalSlugs, customEntry } = await request.json();
     if (!userId || !Array.isArray(journalSlugs)) {
       return NextResponse.json({ error: "Invalid request" }, { status: 400 });
     }
 
-    // Resolve clerkId to internal userId if needed
-    let internalUserId = userId;
-    const directUser = await prisma.userProfile.findUnique({ where: { id: userId } });
-    if (!directUser) {
-      const authRecord = await prisma.userAuth.findUnique({ where: { clerkId: userId } });
+    // Resolve Clerk ID to database UUID if needed
+    let dbUserId = userId
+    if (userId.startsWith('user_')) {
+      const authRecord = await prisma.userAuth.findUnique({
+        where: { clerkId: userId },
+        select: { userId: true }
+      })
       if (!authRecord) {
-        return NextResponse.json({ error: "User not found" }, { status: 404 });
+        return NextResponse.json({ error: "User not found" }, { status: 404 })
       }
-      internalUserId = authRecord.userId;
+      dbUserId = authRecord.userId
     }
 
-    // Delete all existing journal entries for this user
-    await prisma.journalEntry.deleteMany({ where: { userId: internalUserId } });
-
-    // Insert new ones
-    if (journalSlugs.length > 0) {
-      await prisma.journalEntry.createMany({
-        data: journalSlugs.map((conditionSlug: string) => ({
-          userId: internalUserId,
-          conditionSlug,
-        })),
-        skipDuplicates: true,
+    // Delete existing and replace
+    await prisma.userJournalEntry.deleteMany({ where: { userId: dbUserId } });
+    let savedCount = 0;
+    for (const slug of journalSlugs) {
+      const condition = await prisma.journalCondition.findUnique({ where: { slug } });
+      if (condition) {
+        await prisma.userJournalEntry.create({
+          data: { userId: dbUserId, conditionId: condition.id, source: "SELECTED" },
+        });
+        savedCount++;
+      }
+    }
+    if (customEntry) {
+      await prisma.userJournalEntry.create({
+        data: { userId: dbUserId, customEntry, source: "CUSTOM" },
       });
+      savedCount++;
     }
-
-    return NextResponse.json({ saved: true });
+    return NextResponse.json({ saved: true, count: savedCount });
   } catch (error) {
     console.error("journal save error:", error);
     return NextResponse.json({ error: "Failed to save journal" }, { status: 500 });
