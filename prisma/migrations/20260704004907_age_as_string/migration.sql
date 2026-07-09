@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "UserProfile" ALTER COLUMN "age" SET DATA TYPE TEXT;

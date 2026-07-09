@@ -55,37 +55,61 @@ async function main() {
       { slug: "perioral-dermatitis", name: "Perioral Dermatitis", categoryId: ailCatMap["skin"] },
       { slug: "acne", name: "Acne", categoryId: ailCatMap["skin"] },
       { slug: "dandruff", name: "Dandruff", categoryId: ailCatMap["skin"] },
+      { slug: "contact-dermatitis", name: "Contact Dermatitis", categoryId: ailCatMap["skin"] },
+      { slug: "keratosis-pilaris", name: "KP (Keratosis Pilaris)", categoryId: ailCatMap["skin"] },
+      { slug: "sulfite-sensitivity", name: "Sulfite Sensitivity", categoryId: ailCatMap["skin"] },
+
 
       // Digestive
       { slug: "celiac", name: "Celiac Disease", categoryId: ailCatMap["digestive"] },
       { slug: "ibs", name: "IBS (Irritable Bowel Syndrome)", categoryId: ailCatMap["digestive"] },
       { slug: "crohns", name: "Crohn's Disease", categoryId: ailCatMap["digestive"] },
       { slug: "gerd", name: "GERD / Acid Reflux", categoryId: ailCatMap["digestive"] },
+      { slug: "sibo", name: "SIBO (Small Intestinal Bacterial Overgrowth)", categoryId: ailCatMap["digestive"] },
+      { slug: "gastritis", name: "Gastritis", categoryId: ailCatMap["digestive"] },
+      { slug: "diverticulosis", name: "Diverticulosis", categoryId: ailCatMap["digestive"] },
+
 
       // Allergies
       { slug: "dairy-allergy", name: "Dairy Allergy / Lactose Intolerance", categoryId: ailCatMap["allergies"] },
       { slug: "nut-allergy", name: "Nut Allergy", categoryId: ailCatMap["allergies"] },
       { slug: "gluten-intolerance", name: "Gluten Intolerance", categoryId: ailCatMap["allergies"] },
       { slug: "soy-allergy", name: "Soy Allergy", categoryId: ailCatMap["allergies"] },
+      { slug: "egg-allergy", name: "Egg Allergy", categoryId: ailCatMap["allergies"] },
+      { slug: "histamine-intolerance", name: "Histamine Intolerance", categoryId: ailCatMap["allergies"] },
+
 
       // Neurological
       { slug: "parkinsons", name: "Parkinson's Disease", categoryId: ailCatMap["neurological"] },
       { slug: "dementia", name: "Dementia", categoryId: ailCatMap["neurological"] },
       { slug: "alzheimers", name: "Alzheimer's Disease", categoryId: ailCatMap["neurological"] },
       { slug: "epilepsy", name: "Epilepsy", categoryId: ailCatMap["neurological"] },
-      { slug: "ms", name: "Multiple Sclerosis", categoryId: ailCatMap["neurological"] },
+      { slug: "ms", name: "MS (Multiple Sclerosis)", categoryId: ailCatMap["neurological"] },
       { slug: "migraines", name: "Chronic Migraines", categoryId: ailCatMap["neurological"] },
       { slug: "neuropathy", name: "Peripheral Neuropathy", categoryId: ailCatMap["neurological"] },
       { slug: "adhd", name: "ADHD", categoryId: ailCatMap["neurological"] },
       { slug: "fibromyalgia", name: "Fibromyalgia", categoryId: ailCatMap["neurological"] },
       { slug: "als", name: "ALS (Amyotrophic Lateral Sclerosis)", categoryId: ailCatMap["neurological"] },
+      { slug: "thalassemia-minor", name: "Thalassemia Minor", categoryId: ailCatMap["neurological"] },
+      { slug: "thalassemia-major", name: "Thalassemia Major", categoryId: ailCatMap["neurological"] },
+
 
       // Autoimmune
       { slug: "lupus", name: "Lupus", categoryId: ailCatMap["autoimmune"] },
       { slug: "hashimotos", name: "Hashimoto's Thyroiditis", categoryId: ailCatMap["autoimmune"] },
       { slug: "rheumatoid", name: "Rheumatoid Arthritis", categoryId: ailCatMap["autoimmune"] },
-      { slug: "diabetes", name: "Diabetes", categoryId: ailCatMap["autoimmune"] },
       { slug: "anemia", name: "Anemia", categoryId: ailCatMap["autoimmune"] },
+      { slug: "mcas", name: "MCAS (Mast Cell Activation Syndrome)", categoryId: ailCatMap["autoimmune"] },
+      { slug: "pots", name: "POTS (Postural Orthostatic Tachycardia Syndrome)", categoryId: ailCatMap["autoimmune"] },
+      { slug: "ibd", name: "IBD (Inflammatory Bowel Disease)", categoryId: ailCatMap["autoimmune"] },
+      { slug: "sjogrens", name: "Sjögren's Syndrome", categoryId: ailCatMap["autoimmune"] },
+      { slug: "graves-disease", name: "Graves' Disease", categoryId: ailCatMap["autoimmune"] },
+      { slug: "ankylosing-spondylitis", name: "Ankylosing Spondylitis", categoryId: ailCatMap["autoimmune"] },
+      { slug: "psoriatic-arthritis", name: "Psoriatic Arthritis", categoryId: ailCatMap["autoimmune"] },
+      { slug: "interstitial-cystitis", name: "Interstitial Cystitis", categoryId: ailCatMap["autoimmune"] },
+      { slug: "diabetes-type-1", name: "Diabetes Type 1", categoryId: ailCatMap["neurological"] },
+      { slug: "diabetes-type-2", name: "Diabetes Type 2", categoryId: ailCatMap["neurological"] },
+
 
       // Respiratory
       { slug: "asthma", name: "Asthma", categoryId: ailCatMap["respiratory"] },
@@ -98,6 +122,8 @@ async function main() {
       { slug: "breastfeeding", name: "Breastfeeding", categoryId: ailCatMap["hormonal"] },
       { slug: "pcos", name: "PCOS (Polycystic Ovary Syndrome)", categoryId: ailCatMap["hormonal"] },
       { slug: "hormonal-acne", name: "Hormonal Acne", categoryId: ailCatMap["skin"] },
+      { slug: "endometriosis", name: "Endometriosis", categoryId: ailCatMap["hormonal"] },
+      { slug: "pmdd", name: "PMDD (Premenstrual Dysphoric Disorder)", categoryId: ailCatMap["hormonal"] },
 
 
       // Surgery
@@ -113,6 +139,282 @@ async function main() {
   // Only seeding a representative subset — Rosacea, Eczema, Celiac, Asthma
   // ==========================================
 
+
+  // --- Contact Dermatitis ---
+  const contactDermatitisIngredients = [
+    { slug: "fragrance-cd", name: "Synthetic Fragrance", reason: "The most common allergen causing contact dermatitis" },
+    { slug: "nickel-cd", name: "Nickel", reason: "Common metal allergen that triggers contact dermatitis" },
+    { slug: "parabens-cd", name: "Parabens", reason: "Preservatives that commonly cause allergic contact dermatitis" },
+    { slug: "formaldehyde-cd", name: "Formaldehyde", reason: "Known sensitizer and irritant that triggers contact dermatitis" },
+    { slug: "sls-cd", name: "Sodium Lauryl Sulfate", reason: "Irritant that strips skin barrier and causes contact dermatitis" },
+    { slug: "rubber-cd", name: "Thiuram Mix", reason: "Rubber accelerator found in gloves, a common contact allergen" },
+  ]
+  for (const ing of contactDermatitisIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["contact-dermatitis"] } })
+  }
+
+  // --- Keratosis Pilaris ---
+  const kpIngredients = [
+    { slug: "sls-kp", name: "Sodium Lauryl Sulfate", reason: "Strips moisture from already dry KP-prone skin" },
+    { slug: "fragrance-kp", name: "Synthetic Fragrance", reason: "Can irritate sensitive bumpy skin" },
+    { slug: "mineral-oil-kp", name: "Mineral Oil", reason: "Can clog follicles already blocked in KP" },
+    { slug: "alcohol-kp", name: "Alcohol Denat", reason: "Dries out skin, worsening KP texture and redness" },
+  ]
+  for (const ing of kpIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["keratosis-pilaris"] } })
+  }
+
+  // --- Sulfite Sensitivity ---
+  const sulfiteSensitivityIngredients = [
+    { slug: "sodium-sulfite", name: "Sodium Sulfite", reason: "Direct sulfite that triggers sensitivity reactions" },
+    { slug: "sodium-bisulfite", name: "Sodium Bisulfite", reason: "Sulfite preservative that causes reactions in sensitive individuals" },
+    { slug: "potassium-metabisulfite", name: "Potassium Metabisulfite", reason: "Common sulfite used in wine and dried fruits" },
+    { slug: "sulfur-dioxide", name: "Sulfur Dioxide", reason: "Gas form of sulfite used as food preservative" },
+    { slug: "sodium-metabisulfite", name: "Sodium Metabisulfite", reason: "Sulfite preservative linked to asthma and allergic reactions" },
+  ]
+  for (const ing of sulfiteSensitivityIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sulfite-sensitivity"] } })
+  }
+
+  // --- SIBO ---
+  const siboIngredients = [
+    { slug: "fructose-sibo", name: "Fructose", reason: "Feeds bacterial overgrowth in the small intestine" },
+    { slug: "lactose-sibo", name: "Lactose", reason: "Poorly absorbed sugar that feeds SIBO bacteria" },
+    { slug: "inulin-sibo", name: "Inulin", reason: "Prebiotic fiber that can worsen SIBO symptoms" },
+    { slug: "sorbitol-sibo", name: "Sorbitol", reason: "Sugar alcohol that ferments and feeds bacterial overgrowth" },
+    { slug: "guar-gum-sibo", name: "Guar Gum", reason: "Fermentable fiber that can worsen SIBO" },
+    { slug: "xylitol-sibo", name: "Xylitol", reason: "Sugar alcohol that feeds bacterial overgrowth" },
+  ]
+  for (const ing of siboIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sibo"] } })
+  }
+
+  // --- Gastritis ---
+  const gastritisIngredients = [
+    { slug: "alcohol-gastritis", name: "Alcohol", reason: "Directly irritates the stomach lining and worsens gastritis" },
+    { slug: "caffeine-gastritis", name: "Caffeine", reason: "Stimulates acid production, irritating an inflamed stomach" },
+    { slug: "citric-acid-gastritis", name: "Citric Acid", reason: "Acidic ingredient that can aggravate gastritis symptoms" },
+    { slug: "capsaicin-gastritis", name: "Capsaicin", reason: "Spicy compounds irritate the stomach lining in gastritis" },
+    { slug: "artificial-sweeteners-gastritis", name: "Artificial Sweeteners", reason: "May disrupt gut bacteria and irritate the stomach" },
+    { slug: "vinegar-gastritis", name: "Vinegar", reason: "High acidity irritates an already inflamed stomach lining" },
+  ]
+  for (const ing of gastritisIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["gastritis"] } })
+  }
+
+  // --- Diverticulosis ---
+  const diverticulosisIngredients = [
+    { slug: "red-meat-diver", name: "Red Meat", reason: "High red meat consumption is associated with increased diverticulosis risk" },
+    { slug: "refined-grains-diver", name: "Refined Grains", reason: "Low-fiber refined grains slow digestion and increase diverticulosis risk" },
+    { slug: "seed-oils-diver", name: "Seed Oils", reason: "Excess omega-6 from seed oils may promote gut inflammation in diverticulosis" },
+    { slug: "artificial-sweeteners-diver", name: "Artificial Sweeteners", reason: "May disrupt gut microbiome contributing to diverticulosis flares" },
+  ]
+  for (const ing of diverticulosisIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diverticulosis"] } })
+  }
+
+  // --- Egg Allergy ---
+  const eggAllergyIngredients = [
+    { slug: "egg-whole", name: "Egg", reason: "Primary allergen for egg allergy" },
+    { slug: "egg-white", name: "Egg White", reason: "Contains main allergenic proteins including ovalbumin" },
+    { slug: "egg-yolk", name: "Egg Yolk", reason: "Contains allergenic proteins, though less than whites" },
+    { slug: "albumin-egg", name: "Albumin", reason: "Egg-derived protein found in many processed foods" },
+    { slug: "lysozyme-egg", name: "Lysozyme", reason: "Egg-derived enzyme used as a preservative" },
+    { slug: "mayonnaise-egg", name: "Mayonnaise", reason: "Egg-based condiment that triggers egg allergy" },
+    { slug: "lecithin-egg", name: "Egg Lecithin", reason: "Egg-derived emulsifier found in some products" },
+  ]
+  for (const ing of eggAllergyIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["egg-allergy"] } })
+  }
+
+  // --- Histamine Intolerance ---
+  const histamineIngredients = [
+    { slug: "vinegar-histamine", name: "Vinegar", reason: "Fermented food high in histamine that triggers intolerance reactions" },
+    { slug: "alcohol-histamine", name: "Alcohol", reason: "Contains and triggers histamine release" },
+    { slug: "aged-cheese-histamine", name: "Aged Cheese", reason: "Very high in histamine due to fermentation" },
+    { slug: "fermented-foods-histamine", name: "Fermented Foods", reason: "Sauerkraut, kimchi, kefir are high in histamine" },
+    { slug: "artificial-dyes-histamine", name: "Artificial Colors", reason: "Food dyes can trigger histamine release in sensitive individuals" },
+    { slug: "msg-histamine", name: "Monosodium Glutamate", reason: "Can trigger histamine-like reactions in sensitive individuals" },
+    { slug: "tomatoes-histamine", name: "Tomatoes", reason: "Tomatoes are naturally high in histamine" },
+    { slug: "spinach-histamine", name: "Spinach", reason: "Histamine-rich vegetable that triggers intolerance reactions" },
+  ]
+  for (const ing of histamineIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["histamine-intolerance"] } })
+  }
+
+  // --- MCAS ---
+  const mcasIngredients = [
+    { slug: "alcohol-mcas", name: "Alcohol", reason: "Triggers mast cell degranulation in MCAS patients" },
+    { slug: "artificial-dyes-mcas", name: "Artificial Colors", reason: "Common MCAS trigger causing mast cell activation" },
+    { slug: "msg-mcas", name: "Monosodium Glutamate", reason: "Excitotoxin that can trigger mast cell reactions" },
+    { slug: "artificial-sweeteners-mcas", name: "Artificial Sweeteners", reason: "May trigger mast cell reactions in MCAS" },
+    { slug: "fragrance-mcas", name: "Synthetic Fragrance", reason: "Fragrances are a major environmental MCAS trigger" },
+    { slug: "sulfites-mcas", name: "Sulfites", reason: "Sulfite preservatives frequently trigger MCAS reactions" },
+    { slug: "benzoates-mcas", name: "Sodium Benzoate", reason: "Preservative that triggers mast cell activation" },
+    { slug: "histamine-mcas", name: "High-Histamine Foods", reason: "Histamine directly triggers mast cells in MCAS" },
+  ]
+  for (const ing of mcasIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["mcas"] } })
+  }
+
+  // --- POTS ---
+  const potsIngredients = [
+    { slug: "alcohol-pots", name: "Alcohol", reason: "Causes vasodilation and worsens POTS symptoms including dizziness and tachycardia" },
+    { slug: "caffeine-pots", name: "Caffeine", reason: "Can worsen heart rate irregularities and dehydration in POTS" },
+    { slug: "artificial-sweeteners-pots", name: "Artificial Sweeteners", reason: "May affect autonomic nervous system function in POTS" },
+    { slug: "high-sugar-pots", name: "Refined Sugar", reason: "Blood sugar spikes worsen POTS symptoms and energy crashes" },
+  ]
+  for (const ing of potsIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["pots"] } })
+  }
+
+  // --- IBD ---
+  const ibdIngredients = [
+    { slug: "emulsifiers-ibd", name: "Polysorbate 80", reason: "Emulsifier linked to gut barrier disruption in IBD" },
+    { slug: "carrageenan-ibd", name: "Carrageenan", reason: "Thickener that promotes gut inflammation in IBD" },
+    { slug: "artificial-sweeteners-ibd", name: "Artificial Sweeteners", reason: "Disrupt gut microbiome and worsen IBD symptoms" },
+    { slug: "gluten-ibd", name: "Gluten", reason: "May worsen inflammation and symptoms in IBD patients" },
+    { slug: "seed-oils-ibd", name: "Seed Oils", reason: "High omega-6 oils promote inflammation in IBD" },
+    { slug: "alcohol-ibd", name: "Alcohol", reason: "Irritates the gut lining and worsens IBD flares" },
+  ]
+  for (const ing of ibdIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["ibd"] } })
+  }
+
+  // --- Sjögren's Syndrome ---
+  const sjogrensIngredients = [
+    { slug: "alcohol-sjogrens", name: "Alcohol", reason: "Worsens dryness symptoms and dehydration in Sjögren's" },
+    { slug: "caffeine-sjogrens", name: "Caffeine", reason: "Diuretic effect worsens dry mouth and dry eye symptoms" },
+    { slug: "gluten-sjogrens", name: "Gluten", reason: "May exacerbate autoimmune activity in Sjögren's" },
+    { slug: "sugar-sjogrens", name: "Refined Sugar", reason: "Promotes inflammation and dental decay risk from dry mouth" },
+    { slug: "fragrance-sjogrens", name: "Synthetic Fragrance", reason: "Can irritate dry, sensitive skin and eyes in Sjögren's" },
+    { slug: "sls-sjogrens", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that worsens oral dryness and irritation" },
+  ]
+  for (const ing of sjogrensIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sjogrens"] } })
+  }
+
+  // --- Graves' Disease ---
+  const gravesDiseaseIngredients = [
+    { slug: "iodine-graves", name: "Iodine", reason: "Excess iodine can worsen hyperthyroidism in Graves' disease" },
+    { slug: "caffeine-graves", name: "Caffeine", reason: "Worsens heart palpitations and anxiety from hyperthyroidism" },
+    { slug: "soy-graves", name: "Soy", reason: "May interfere with thyroid medication absorption" },
+    { slug: "gluten-graves", name: "Gluten", reason: "Some evidence links gluten sensitivity to autoimmune thyroid disease" },
+    { slug: "sugar-graves", name: "Refined Sugar", reason: "Promotes inflammation and worsens metabolic effects of Graves'" },
+  ]
+  for (const ing of gravesDiseaseIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["graves-disease"] } })
+  }
+
+  // --- Ankylosing Spondylitis ---
+  const ankylSpondIngredients = [
+    { slug: "starch-as", name: "Refined Starch", reason: "Feeds Klebsiella bacteria thought to trigger AS flares" },
+    { slug: "sugar-as", name: "Refined Sugar", reason: "Promotes inflammation that worsens joint pain in AS" },
+    { slug: "gluten-as", name: "Gluten", reason: "Some AS patients report improvement on a low-starch/gluten-free diet" },
+    { slug: "seed-oils-as", name: "Seed Oils", reason: "High omega-6 promotes the systemic inflammation driving AS" },
+    { slug: "alcohol-as", name: "Alcohol", reason: "May worsen inflammation and interact with AS medications" },
+  ]
+  for (const ing of ankylSpondIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["ankylosing-spondylitis"] } })
+  }
+
+  // --- Psoriatic Arthritis ---
+  const psoriaticArthritisIngredients = [
+    { slug: "sugar-pa", name: "Refined Sugar", reason: "Increases inflammation and worsens joint pain in psoriatic arthritis" },
+    { slug: "gluten-pa", name: "Gluten", reason: "Some psoriatic arthritis patients show improvement avoiding gluten" },
+    { slug: "seed-oils-pa", name: "Seed Oils", reason: "High omega-6 oils promote joint and skin inflammation" },
+    { slug: "alcohol-pa", name: "Alcohol", reason: "Worsens psoriatic arthritis symptoms and reduces medication efficacy" },
+    { slug: "dairy-pa", name: "Dairy", reason: "May promote inflammation in some psoriatic arthritis patients" },
+    { slug: "fragrance-pa", name: "Synthetic Fragrance", reason: "Can irritate psoriatic skin plaques and trigger flares" },
+  ]
+  for (const ing of psoriaticArthritisIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["psoriatic-arthritis"] } })
+  }
+
+  // --- Interstitial Cystitis ---
+  const icIngredients = [
+    { slug: "caffeine-ic", name: "Caffeine", reason: "Bladder irritant that triggers IC flares" },
+    { slug: "alcohol-ic", name: "Alcohol", reason: "Highly acidic and irritates the bladder lining in IC" },
+    { slug: "citric-acid-ic", name: "Citric Acid", reason: "Common bladder irritant found in citrus and many beverages" },
+    { slug: "artificial-sweeteners-ic", name: "Artificial Sweeteners", reason: "Bladder irritants that worsen IC symptoms" },
+    { slug: "vinegar-ic", name: "Vinegar", reason: "Acidic ingredient that irritates the bladder in IC" },
+    { slug: "msg-ic", name: "Monosodium Glutamate", reason: "Reported bladder irritant for many IC patients" },
+    { slug: "carbonation-ic", name: "Carbonated Water", reason: "Sparkling beverages can aggravate IC bladder symptoms" },
+  ]
+  for (const ing of icIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["interstitial-cystitis"] } })
+  }
+
+  // --- Diabetes Type 1 ---
+  const diabetes1Ingredients = [
+    { slug: "refined-sugar-d1", name: "Refined Sugar", reason: "Causes rapid blood sugar spikes requiring careful insulin management in Type 1" },
+    { slug: "hfcs-d1", name: "High Fructose Corn Syrup", reason: "Rapidly raises blood glucose in Type 1 diabetes" },
+    { slug: "artificial-sweeteners-d1", name: "Artificial Sweeteners", reason: "May affect gut microbiome and complicate blood sugar management" },
+    { slug: "trans-fats-d1", name: "Trans Fats", reason: "Increases insulin resistance and cardiovascular risk in Type 1" },
+  ]
+  for (const ing of diabetes1Ingredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diabetes-type-1"] } })
+  }
+
+  // --- Diabetes Type 2 ---
+  const diabetes2Ingredients = [
+    { slug: "refined-sugar-d2", name: "Refined Sugar", reason: "Directly raises blood sugar and worsens insulin resistance in Type 2" },
+    { slug: "hfcs-d2", name: "High Fructose Corn Syrup", reason: "Strongly linked to insulin resistance and Type 2 diabetes progression" },
+    { slug: "trans-fats-d2", name: "Trans Fats", reason: "Increases insulin resistance and cardiovascular risk" },
+    { slug: "artificial-sweeteners-d2", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome" },
+    { slug: "seed-oils-d2", name: "Seed Oils", reason: "Promotes chronic inflammation linked to insulin resistance" },
+    { slug: "refined-carbs-d2", name: "Refined Grains", reason: "Quickly converted to glucose, spiking blood sugar in Type 2 diabetes" },
+  ]
+  for (const ing of diabetes2Ingredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diabetes-type-2"] } })
+  }
+
+  // --- Thalassemia Minor ---
+  const thalMinorIngredients = [
+    { slug: "iron-supplements-thal-minor", name: "Iron Supplements", reason: "Iron can accumulate in thalassemia minor; supplementation without testing can cause iron overload" },
+    { slug: "alcohol-thal-minor", name: "Alcohol", reason: "Worsens anemia and liver stress associated with thalassemia" },
+    { slug: "caffeine-thal-minor", name: "Caffeine", reason: "Inhibits iron absorption, which can worsen mild anemia in thalassemia minor" },
+  ]
+  for (const ing of thalMinorIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["thalassemia-minor"] } })
+  }
+
+  // --- Thalassemia Major ---
+  const thalMajorIngredients = [
+    { slug: "iron-rich-thal-major", name: "Iron Supplements", reason: "Thalassemia major already causes iron overload from transfusions; additional iron is dangerous" },
+    { slug: "alcohol-thal-major", name: "Alcohol", reason: "Further stresses the liver already affected by iron overload in thalassemia major" },
+    { slug: "vitamin-c-supplements-thal", name: "Vitamin C Supplements", reason: "High dose vitamin C increases iron absorption, worsening iron overload in thalassemia major" },
+  ]
+  for (const ing of thalMajorIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["thalassemia-major"] } })
+  }
+
+  // --- Endometriosis ---
+  const endometriosisIngredients = [
+    { slug: "trans-fats-endo", name: "Trans Fats", reason: "Associated with higher endometriosis risk and promotes pelvic inflammation" },
+    { slug: "red-meat-endo", name: "Red Meat", reason: "High red meat intake linked to increased endometriosis risk in studies" },
+    { slug: "alcohol-endo", name: "Alcohol", reason: "Raises estrogen levels, which can worsen endometriosis symptoms" },
+    { slug: "caffeine-endo", name: "Caffeine", reason: "May increase estrogen levels and worsen endometriosis pain" },
+    { slug: "seed-oils-endo", name: "Seed Oils", reason: "High omega-6 promotes the inflammatory processes driving endometriosis" },
+    { slug: "gluten-endo", name: "Gluten", reason: "Some endometriosis patients report reduced pain on a gluten-free diet" },
+    { slug: "dairy-endo", name: "Dairy", reason: "May promote inflammation in endometriosis in some individuals" },
+  ]
+  for (const ing of endometriosisIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["endometriosis"] } })
+  }
+
+  // --- PMDD ---
+  const pmddIngredients = [
+    { slug: "caffeine-pmdd", name: "Caffeine", reason: "Worsens anxiety, breast tenderness, and sleep disruption in PMDD" },
+    { slug: "alcohol-pmdd", name: "Alcohol", reason: "Depressant that worsens mood symptoms and hormonal fluctuations in PMDD" },
+    { slug: "refined-sugar-pmdd", name: "Refined Sugar", reason: "Blood sugar instability worsens mood swings and fatigue in PMDD" },
+    { slug: "salt-pmdd", name: "Excess Salt", reason: "Worsens bloating and water retention during the luteal phase" },
+    { slug: "artificial-sweeteners-pmdd", name: "Artificial Sweeteners", reason: "May affect serotonin pathways and worsen PMDD mood symptoms" },
+    { slug: "seed-oils-pmdd", name: "Seed Oils", reason: "Excess omega-6 promotes inflammation that amplifies PMDD symptoms" },
+  ]
+  for (const ing of pmddIngredients) {
+    await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["pmdd"] } })
+  }
   // --- Rosacea ---
   const rosaceaIngredients = [
     { slug: "alcohol-denat", name: "Alcohol Denat", reason: "Can cause skin irritation and flare-ups", sources: [{ title: "National Rosacea Society - Skin Care Ingredients to Avoid", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }, { title: "American Academy of Dermatology - Rosacea Triggers", url: "https://www.aad.org/public/diseases/rosacea/triggers/find" }] },
@@ -202,21 +504,6 @@ async function main() {
   for (const ing of ibsIngredients) {
     await prisma.ailmentFlaggedIngredient.create({
       data: { ...ing, ailmentId: ailMap["ibs"] },
-    });
-  }
-
-  // --- Diabetes ---
-  const diabetesIngredients = [
-    { slug: "hfcs-diabetes", name: "High Fructose Corn Syrup", reason: "Spikes blood sugar and contributes to insulin resistance" },
-    { slug: "refined-sugar-diabetes", name: "Refined Sugar", reason: "Causes rapid blood sugar spikes" },
-    { slug: "trans-fats-diabetes", name: "Trans Fats / Hydrogenated Oils", reason: "Increases insulin resistance and inflammation" },
-    { slug: "artificial-sweeteners-diabetes", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome" },
-    { slug: "seed-oils-diabetes", name: "Seed Oils", reason: "Promotes chronic inflammation linked to insulin resistance" },
-  ];
-
-  for (const ing of diabetesIngredients) {
-    await prisma.ailmentFlaggedIngredient.create({
-      data: { ...ing, ailmentId: ailMap["diabetes"] },
     });
   }
 
@@ -914,7 +1201,6 @@ for (const ing of hormonalAcneIngredients) {
     { ailmentSlug: "fibromyalgia", prefSlugs: ["no-msg", "no-artificial-sweeteners", "no-gluten"] },
     { ailmentSlug: "hashimotos", prefSlugs: ["no-gluten", "no-soy"] },
     { ailmentSlug: "rheumatoid", prefSlugs: ["no-seed-oils", "no-gluten"] },
-    { ailmentSlug: "diabetes", prefSlugs: ["no-high-fructose", "no-artificial-sweeteners", "no-trans-fats", "no-seed-oils"] },
     { ailmentSlug: "asthma", prefSlugs: ["no-food-dyes"] },
     { ailmentSlug: "menopause", prefSlugs: ["no-artificial-sweeteners", "no-fragrance"] },
     { ailmentSlug: "perimenopause", prefSlugs: ["no-artificial-sweeteners", "no-fragrance"] },
@@ -925,6 +1211,28 @@ for (const ing of hormonalAcneIngredients) {
     { ailmentSlug: "hormonal-acne", prefSlugs: ["no-dairy", "no-silicones"] },
     { ailmentSlug: "gastrectomy", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
     { ailmentSlug: "bariatric", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
+    { ailmentSlug: "contact-dermatitis", prefSlugs: ["no-fragrance", "no-parabens", "no-sulfates"] },
+    { ailmentSlug: "keratosis-pilaris", prefSlugs: ["no-sulfates", "no-fragrance"] },
+    { ailmentSlug: "sulfite-sensitivity", prefSlugs: ["no-nitrates"] },
+    { ailmentSlug: "sibo", prefSlugs: ["no-artificial-sweeteners", "no-high-fructose"] },
+    { ailmentSlug: "gastritis", prefSlugs: ["no-artificial-sweeteners"] },
+    { ailmentSlug: "diverticulosis", prefSlugs: ["no-seed-oils"] },
+    { ailmentSlug: "egg-allergy", prefSlugs: [] },
+    { ailmentSlug: "histamine-intolerance", prefSlugs: ["no-artificial-sweeteners", "no-food-dyes"] },
+    { ailmentSlug: "mcas", prefSlugs: ["no-fragrance", "no-food-dyes", "no-artificial-sweeteners"] },
+    { ailmentSlug: "pots", prefSlugs: ["no-artificial-sweeteners"] },
+    { ailmentSlug: "ibd", prefSlugs: ["no-carrageenan", "no-artificial-sweeteners", "no-seed-oils"] },
+    { ailmentSlug: "sjogrens", prefSlugs: ["no-fragrance", "no-sulfates", "no-alcohol-skin"] },
+    { ailmentSlug: "graves-disease", prefSlugs: ["no-soy"] },
+    { ailmentSlug: "ankylosing-spondylitis", prefSlugs: ["no-gluten", "no-seed-oils"] },
+    { ailmentSlug: "psoriatic-arthritis", prefSlugs: ["no-fragrance", "no-sulfates", "no-seed-oils"] },
+    { ailmentSlug: "interstitial-cystitis", prefSlugs: ["no-artificial-sweeteners", "no-msg"] },
+    { ailmentSlug: "diabetes-type-1", prefSlugs: ["no-high-fructose", "no-artificial-sweeteners", "no-trans-fats"] },
+    { ailmentSlug: "diabetes-type-2", prefSlugs: ["no-high-fructose", "no-artificial-sweeteners", "no-trans-fats", "no-seed-oils"] },
+    { ailmentSlug: "thalassemia-minor", prefSlugs: [] },
+    { ailmentSlug: "thalassemia-major", prefSlugs: [] },
+    { ailmentSlug: "endometriosis", prefSlugs: ["no-trans-fats", "no-seed-oils", "no-fragrance"] },
+    { ailmentSlug: "pmdd", prefSlugs: ["no-artificial-sweeteners", "no-seed-oils"] },
 
   ];
 
@@ -1440,7 +1748,7 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Sarah: Rosacea, also manually selects Parabens & Cruelty-Free ---
   const sarah = await prisma.userProfile.create({
-    data: { firstName: "Sarah", lastName: "Johnson", email: "sarah@example.com", location: "New York, NY", age: 29, gender: "FEMALE", shoppingStores: "Sephora" },
+    data: { firstName: "Sarah", lastName: "Johnson", email: "sarah@example.com", location: "New York, NY", age: "25-34", gender: "FEMALE", shoppingStores: "Sephora" },
   });
   await prisma.userAuth.create({ data: { userId: sarah.id, username: "sarahj", passwordHash: await bcrypt.hash("password123", SALT_ROUNDS) } });
   await prisma.userAilment.create({ data: { userId: sarah.id, ailmentId: ailMap["rosacea"], source: ConditionSource.SELECTED } });
@@ -1459,7 +1767,7 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Marcus: Asthma + eco-conscious ---
   const marcus = await prisma.userProfile.create({
-    data: { firstName: "Marcus", lastName: "Chen", email: "marcus@example.com", location: "San Francisco, CA", age: 34, gender: "MALE", shoppingStores: "Whole Foods" },
+    data: { firstName: "Marcus", lastName: "Chen", email: "marcus@example.com", location: "San Francisco, CA", age: "25-34", gender: "MALE", shoppingStores: "Whole Foods" },
   });
   await prisma.userAuth.create({ data: { userId: marcus.id, username: "marcusc", passwordHash: await bcrypt.hash("password456", SALT_ROUNDS) } });
   await prisma.userAilment.create({ data: { userId: marcus.id, ailmentId: ailMap["asthma"], source: ConditionSource.SELECTED } });
@@ -1476,7 +1784,7 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Priya: Celiac + Dairy Allergy + custom condition ---
   const priya = await prisma.userProfile.create({
-    data: { firstName: "Priya", lastName: "Patel", email: "priya@example.com", location: "Austin, TX", age: 31, gender: "FEMALE", shoppingStores: "Target" },
+    data: { firstName: "Priya", lastName: "Patel", email: "priya@example.com", location: "Austin, TX", age: "25-34", gender: "FEMALE", shoppingStores: "Target" },
   });
   await prisma.userAuth.create({ data: { userId: priya.id, username: "priyap", passwordHash: await bcrypt.hash("password789", SALT_ROUNDS) } });
   await prisma.userAilment.create({ data: { userId: priya.id, ailmentId: ailMap["celiac"], source: ConditionSource.SELECTED } });

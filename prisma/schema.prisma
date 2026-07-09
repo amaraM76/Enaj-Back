@@ -85,7 +85,7 @@ model UserProfile {
   lastName         String
   email            String            @unique
   location         String?            
-  age              Int?              
+  age              String?              
   gender           Gender?           
   shoppingStores   String?           
   createdAt        DateTime          @default(now())
@@ -94,7 +94,7 @@ model UserProfile {
   ailments         UserAilment[]
   preferences      UserPreference[]
   savedProducts    SavedProduct[]
-  journalEntries   UserJournalEntry[] 
+  journalEntries   JournalEntry[]
 }
 
 // ==========================================
@@ -406,12 +406,12 @@ model AilmentLinkedPreference {
 //   user. Sarah's two active conditions both point to her profile.
 // ==========================================
 
-model UserJournalEntry {
-  id            String      @id @default(uuid())
+model JournalEntry {
+  id            String   @id @default(uuid())
   userId        String
   user          UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
   conditionSlug String
-  createdAt     DateTime    @default(now())
+  createdAt     DateTime @default(now())
 
   @@unique([userId, conditionSlug])
   @@index([userId])

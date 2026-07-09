@@ -33,6 +33,7 @@ export async function GET(
         savedProducts: {
           include: { product: true },
         },
+        journalEntries: true,
       },
     })
 
@@ -63,6 +64,7 @@ export async function GET(
               savedProducts: {
                 include: { product: true },
               },
+              journalEntries: true,
             },
           },
         },

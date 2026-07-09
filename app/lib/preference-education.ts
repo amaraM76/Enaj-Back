@@ -1192,7 +1192,7 @@ export interface PreferenceEducation {
     
     Plastics & Forever Chemicals: BPA, bisphenol compounds, PFAS, PFOA, and perfluoro chemicals — known as "forever chemicals" because they don't break down in the body or environment. They are linked to cancer, thyroid disease, immune system effects, and reproductive issues.
     
-    Harmful Food Additives: High fructose corn syrup, artificial flavors and colors (Red 40, Yellow 5, Yellow 6, Blue 1, FD&C dyes), MSG, artificial sweeteners (aspartame, sucralose, saccharin, acesulfame), sodium nitrite and nitrate, carrageenan, polysorbate 80, carboxymethylcellulose, and trans fats and partially hydrogenated oils. These additives are associated with inflammation, metabolic issues, digestive problems, and increased disease risk.
+    Harmful Food Additives: High fructose corn syrup, artificial flavors and colors (Red 40, Yellow 5, Yellow 6, Blue 1, FD&C dyes), MSG, artificial sweeteners (aspartame, sucralose, saccharin, acesulfame), sodium nitrite and nitrate, carrageenan, polysorbate 80, carboxymethylcellulose, gums and fillers (xanthan gum, guar gum, cellulose gum, locust bean gum), and trans fats and partially hydrogenated oils.    
     
     Inflammatory Seed Oils: Canola oil, soybean oil, sunflower oil, corn oil, and cottonseed oil. These heavily processed oils are high in omega-6 fatty acids and are avoided by many following anti-inflammatory or ancestral diets.
     

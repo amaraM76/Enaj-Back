@@ -350,58 +350,482 @@ export interface AilmentIngredientEducation {
       },
     },
   
-    // Metabolic Conditions
-    'diabetes': {
-      description: 'Diabetes is a chronic condition affecting how your body processes blood sugar (glucose). Managing carbohydrate intake and avoiding blood sugar spikes is essential.',
+    'contact-dermatitis': {
+      description: 'Contact dermatitis is a skin reaction caused by direct contact with a substance that irritates the skin or triggers an allergic reaction. It causes redness, itching, and sometimes blistering. Identifying and avoiding triggers is the primary treatment.',
       generalSources: [
-        { title: 'American Diabetes Association', url: 'https://diabetes.org/about-diabetes' },
-        { title: 'CDC - Diabetes', url: 'https://www.cdc.gov/diabetes/' },
+        { title: 'AAD - Contact Dermatitis', url: 'https://www.aad.org/public/diseases/a-z/contact-dermatitis-overview' },
+        { title: 'Mayo Clinic - Contact Dermatitis', url: 'https://www.mayoclinic.org/diseases-conditions/contact-dermatitis/symptoms-causes/syc-20352742' },
       ],
       ingredientInfo: {
-        'Added Sugars': {
-          reason: 'Added sugars can cause rapid blood sugar spikes and contribute to insulin resistance over time.',
-          sources: [
-            { title: 'ADA - Sugar and Diabetes', url: 'https://diabetes.org/food-nutrition/understanding-carbs/get-to-know-carbs' },
-          ],
+        'Synthetic Fragrance': {
+          reason: 'Fragrance is the most common cause of allergic contact dermatitis, triggering immune reactions in sensitized individuals.',
+          sources: [{ title: 'ACAAI - Fragrance Allergy', url: 'https://acaai.org/allergies/allergic-conditions/skin-allergy/fragrance-allergy/' }],
         },
-        'Refined Carbohydrates': {
-          reason: 'Refined carbs are quickly converted to glucose, causing blood sugar spikes that are challenging to manage.',
-          sources: [
-            { title: 'Harvard Health - Carbs and Diabetes', url: 'https://www.health.harvard.edu/diseases-and-conditions/glycemic-index-and-glycemic-load-for-100-foods' },
-          ],
+        'Parabens': {
+          reason: 'Parabens are a well-documented cause of allergic contact dermatitis, especially in leave-on skincare products.',
+          sources: [{ title: 'Contact Dermatitis Journal', url: 'https://pubmed.ncbi.nlm.nih.gov/25041497/' }],
         },
-        'Trans Fats': {
-          reason: 'Trans fats may increase insulin resistance and inflammation, worsening diabetes control.',
-          sources: [
-            { title: 'ADA - Fats and Diabetes', url: 'https://diabetes.org/food-nutrition/eating-healthy/fats' },
-          ],
+        'Formaldehyde': {
+          reason: 'Formaldehyde and formaldehyde-releasing preservatives are common contact allergens.',
+          sources: [{ title: 'AAD - Formaldehyde Allergy', url: 'https://www.aad.org/public/diseases/a-z/contact-dermatitis-causes' }],
         },
       },
     },
-    'obesity': {
-      description: 'Obesity is a complex disease involving an excessive amount of body fat. It increases risk for many health conditions and requires attention to caloric intake and food quality.',
+    
+    'keratosis-pilaris': {
+      description: 'Keratosis pilaris (KP) is a common, harmless skin condition that causes rough, bumpy patches — often called "chicken skin" — typically on the upper arms, thighs, cheeks, and buttocks. It occurs when keratin builds up and plugs hair follicles.',
       generalSources: [
-        { title: 'CDC - Obesity', url: 'https://www.cdc.gov/obesity/' },
-        { title: 'Mayo Clinic - Obesity', url: 'https://www.mayoclinic.org/diseases-conditions/obesity/symptoms-causes/syc-20375742' },
+        { title: 'AAD - Keratosis Pilaris', url: 'https://www.aad.org/public/diseases/a-z/keratosis-pilaris-overview' },
+        { title: 'Mayo Clinic - Keratosis Pilaris', url: 'https://www.mayoclinic.org/diseases-conditions/keratosis-pilaris/symptoms-causes/syc-20351149' },
       ],
       ingredientInfo: {
-        'High-Fructose Corn Syrup': {
-          reason: 'HFCS is linked to increased caloric intake, weight gain, and metabolic dysfunction.',
-          sources: [
-            { title: 'Princeton Study', url: 'https://www.princeton.edu/news/2010/03/22/sweet-problem-princeton-researchers-find-high-fructose-corn-syrup-prompts' },
-          ],
+        'Sodium Lauryl Sulfate': {
+          reason: 'Harsh sulfates strip the skin of its natural oils, worsening dryness and the rough texture characteristic of KP.',
+          sources: [{ title: 'AAD - Dry Skin Care', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/dry/dermatologists-tips-relieve-dry-skin' }],
+        },
+        'Alcohol Denat': {
+          reason: 'Drying alcohols further dehydrate already dry KP-prone skin, worsening texture and redness.',
+          sources: [{ title: 'Cleveland Clinic - KP', url: 'https://my.clevelandclinic.org/health/diseases/17734-keratosis-pilaris' }],
+        },
+      },
+    },
+    
+    'sulfite-sensitivity': {
+      description: 'Sulfite sensitivity is an adverse reaction to sulfite compounds used as preservatives in food, wine, and some medications. Reactions can range from mild (hives, runny nose) to severe (asthma attacks, anaphylaxis). It is distinct from a true allergy but can be equally serious.',
+      generalSources: [
+        { title: 'AAAAI - Sulfite Sensitivity', url: 'https://www.aaaai.org/conditions-treatments/related-conditions/sulfite-sensitivity' },
+        { title: 'FDA - Sulfites', url: 'https://www.fda.gov/food/food-additives-petitions/sulfites-food' },
+      ],
+      ingredientInfo: {
+        'Sodium Bisulfite': {
+          reason: 'A common food preservative that directly triggers sulfite sensitivity reactions including asthma and hives.',
+          sources: [{ title: 'AAAAI - Sulfites', url: 'https://www.aaaai.org/conditions-treatments/related-conditions/sulfite-sensitivity' }],
+        },
+        'Sulfur Dioxide': {
+          reason: 'Used in dried fruits, wine, and some beverages — a primary trigger for sulfite-sensitive individuals.',
+          sources: [{ title: 'FDA - Sulfites in Food', url: 'https://www.fda.gov/food/food-additives-petitions/sulfites-food' }],
+        },
+      },
+    },
+    
+    'sibo': {
+      description: 'Small Intestinal Bacterial Overgrowth (SIBO) occurs when bacteria that normally live in the large intestine overgrow in the small intestine, causing bloating, gas, diarrhea, and malabsorption. Diet plays a critical role in managing symptoms.',
+      generalSources: [
+        { title: 'Mayo Clinic - SIBO', url: 'https://www.mayoclinic.org/diseases-conditions/small-intestinal-bacterial-overgrowth/symptoms-causes/syc-20370168' },
+        { title: 'NIH - SIBO', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3099351/' },
+      ],
+      ingredientInfo: {
+        'Fructose': {
+          reason: 'Fructose is a fermentable sugar that feeds bacterial overgrowth in the small intestine, worsening SIBO symptoms.',
+          sources: [{ title: 'Monash University - FODMAPs', url: 'https://www.monashfodmap.com/' }],
+        },
+        'Inulin': {
+          reason: 'Inulin is a prebiotic fiber that feeds both good and bad bacteria — problematic in SIBO where overgrowth already exists.',
+          sources: [{ title: 'NIH - SIBO and Diet', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3099351/' }],
+        },
+      },
+    },
+    
+    'gastritis': {
+      description: 'Gastritis is inflammation of the stomach lining, which can cause nausea, stomach pain, and sometimes ulcers. It can be caused by H. pylori infection, NSAIDs, or irritating foods and substances.',
+      generalSources: [
+        { title: 'Mayo Clinic - Gastritis', url: 'https://www.mayoclinic.org/diseases-conditions/gastritis/symptoms-causes/syc-20355807' },
+        { title: 'NIDDK - Gastritis', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis' },
+      ],
+      ingredientInfo: {
+        'Alcohol': {
+          reason: 'Alcohol directly irritates and erodes the stomach lining, worsening gastritis and increasing ulcer risk.',
+          sources: [{ title: 'Mayo Clinic - Gastritis', url: 'https://www.mayoclinic.org/diseases-conditions/gastritis/symptoms-causes/syc-20355807' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine stimulates excess acid production, aggravating the already inflamed stomach lining.',
+          sources: [{ title: 'NIDDK - Gastritis', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis' }],
+        },
+        'Capsaicin': {
+          reason: 'Spicy compounds can irritate the stomach lining, worsening pain and nausea in gastritis.',
+          sources: [{ title: 'Cleveland Clinic - Gastritis', url: 'https://my.clevelandclinic.org/health/diseases/10349-gastritis' }],
+        },
+      },
+    },
+    
+    'diverticulosis': {
+      description: 'Diverticulosis is the presence of small pouches (diverticula) in the walls of the colon. While often symptom-free, these pouches can become inflamed (diverticulitis) causing pain and complications. A high-fiber diet is generally protective.',
+      generalSources: [
+        { title: 'NIDDK - Diverticular Disease', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/diverticulosis-diverticulitis' },
+        { title: 'Mayo Clinic - Diverticulosis', url: 'https://www.mayoclinic.org/diseases-conditions/diverticulosis/symptoms-causes/syc-20352752' },
+      ],
+      ingredientInfo: {
+        'Red Meat': {
+          reason: 'High red meat consumption is associated with increased risk of diverticulosis in several large studies.',
+          sources: [{ title: 'Gut Journal - Red Meat and Diverticular Disease', url: 'https://gut.bmj.com/content/67/7/1325' }],
+        },
+        'Refined Grains': {
+          reason: 'Low-fiber refined grains slow digestion and increase pressure in the colon, contributing to diverticula formation.',
+          sources: [{ title: 'NIDDK - Diverticular Disease Diet', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/diverticulosis-diverticulitis/eating-diet-nutrition' }],
+        },
+      },
+    },
+    
+    'egg-allergy': {
+      description: 'Egg allergy is one of the most common food allergies, especially in children. It is an immune reaction to proteins found primarily in egg whites (ovalbumin, ovomucoid) but also in yolks. Eggs and egg derivatives appear in many food and personal care products.',
+      generalSources: [
+        { title: 'FARE - Egg Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg' },
+        { title: 'ACAAI - Egg Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/egg/' },
+      ],
+      ingredientInfo: {
+        'Albumin': {
+          reason: 'Albumin is an egg-derived protein found in many baked goods, processed foods, and some cosmetics.',
+          sources: [{ title: 'FARE - Egg Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg' }],
+        },
+        'Lysozyme': {
+          reason: 'Lysozyme is an egg-white enzyme used as a natural preservative in some cheeses and processed foods.',
+          sources: [{ title: 'ACAAI - Egg Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/egg/' }],
+        },
+        'Egg Lecithin': {
+          reason: 'Egg-derived lecithin is used as an emulsifier in some products and may trigger reactions in egg-allergic individuals.',
+          sources: [{ title: 'FARE - Hidden Egg Ingredients', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg' }],
+        },
+      },
+    },
+    
+    'histamine-intolerance': {
+      description: 'Histamine intolerance occurs when the body cannot efficiently break down histamine from food, leading to symptoms like headaches, hives, digestive issues, and flushing. It is caused by a deficiency of the enzyme diamine oxidase (DAO).',
+      generalSources: [
+        { title: 'NIH - Histamine Intolerance', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7463562/' },
+        { title: 'Allergy Journal - Histamine Intolerance', url: 'https://pubmed.ncbi.nlm.nih.gov/11359937/' },
+      ],
+      ingredientInfo: {
+        'Vinegar': {
+          reason: 'Fermented vinegar is naturally high in histamine and commonly triggers intolerance reactions.',
+          sources: [{ title: 'NIH - Histamine in Foods', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7463562/' }],
+        },
+        'Aged Cheese': {
+          reason: 'Aged cheeses are among the highest dietary sources of histamine due to the fermentation process.',
+          sources: [{ title: 'NIH - Histamine Intolerance', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7463562/' }],
+        },
+        'Artificial Colors': {
+          reason: 'Certain food dyes can trigger histamine release even in individuals without a true allergy.',
+          sources: [{ title: 'Allergy Journal - Pseudoallergic Reactions', url: 'https://pubmed.ncbi.nlm.nih.gov/11359937/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol both contains histamine and inhibits the DAO enzyme that breaks it down, doubling the effect.',
+          sources: [{ title: 'NIH - Alcohol and Histamine', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7463562/' }],
+        },
+      },
+    },
+    
+    'mcas': {
+      description: 'Mast Cell Activation Syndrome (MCAS) is a condition where mast cells inappropriately release chemical mediators, causing symptoms affecting multiple organ systems including the skin, GI tract, heart, and nervous system. Triggers vary widely between individuals.',
+      generalSources: [
+        { title: 'The Mastocytosis Society - MCAS', url: 'https://www.tmsforacure.org/mast-cell-disorders/mast-cell-activation-syndrome-mcas/' },
+        { title: 'NIH - MCAS', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4701915/' },
+      ],
+      ingredientInfo: {
+        'Synthetic Fragrance': {
+          reason: 'Fragrances are one of the most common environmental triggers of mast cell activation in MCAS patients.',
+          sources: [{ title: 'The Mastocytosis Society - Triggers', url: 'https://www.tmsforacure.org/mast-cell-disorders/mast-cell-activation-syndrome-mcas/' }],
+        },
+        'Artificial Colors': {
+          reason: 'Artificial food dyes are common MCAS triggers that cause mast cell degranulation in sensitive individuals.',
+          sources: [{ title: 'NIH - MCAS', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4701915/' }],
+        },
+        'Sulfites': {
+          reason: 'Sulfite preservatives are a well-documented MCAS trigger causing widespread mediator release.',
+          sources: [{ title: 'The Mastocytosis Society', url: 'https://www.tmsforacure.org/mast-cell-disorders/mast-cell-activation-syndrome-mcas/' }],
+        },
+      },
+    },
+    
+    'pots': {
+      description: 'Postural Orthostatic Tachycardia Syndrome (POTS) is a form of dysautonomia where the autonomic nervous system fails to regulate heart rate and blood pressure properly upon standing. Symptoms include dizziness, heart palpitations, and fainting. Diet and hydration are key management tools.',
+      generalSources: [
+        { title: 'Dysautonomia International - POTS', url: 'https://www.dysautonomiainternational.org/page.php?ID=30' },
+        { title: 'Mayo Clinic - POTS', url: 'https://www.mayoclinic.org/diseases-conditions/postural-tachycardia-syndrome/symptoms-causes/syc-20376042' },
+      ],
+      ingredientInfo: {
+        'Alcohol': {
+          reason: 'Alcohol causes vasodilation and dehydration, significantly worsening POTS symptoms like dizziness and racing heart.',
+          sources: [{ title: 'Dysautonomia International - Diet', url: 'https://www.dysautonomiainternational.org/page.php?ID=30' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine can worsen heart rate irregularities and contribute to dehydration in POTS patients.',
+          sources: [{ title: 'Mayo Clinic - POTS', url: 'https://www.mayoclinic.org/diseases-conditions/postural-tachycardia-syndrome/diagnosis-treatment/drc-20376046' }],
+        },
+        'Refined Sugar': {
+          reason: 'Blood sugar spikes and crashes from sugary foods can worsen POTS symptoms including fatigue and brain fog.',
+          sources: [{ title: 'Dysautonomia International - POTS Management', url: 'https://www.dysautonomiainternational.org/page.php?ID=30' }],
+        },
+      },
+    },
+    
+    'ibd': {
+      description: 'Inflammatory Bowel Disease (IBD) is an umbrella term for chronic inflammation of the GI tract, including Crohn\'s disease and ulcerative colitis. Diet does not cause IBD but can significantly influence symptoms and flare-ups.',
+      generalSources: [
+        { title: 'Crohn\'s & Colitis Foundation', url: 'https://www.crohnscolitisfoundation.org/what-is-ibd' },
+        { title: 'Mayo Clinic - IBD', url: 'https://www.mayoclinic.org/diseases-conditions/inflammatory-bowel-disease/symptoms-causes/syc-20353315' },
+      ],
+      ingredientInfo: {
+        'Polysorbate 80': {
+          reason: 'Research suggests this emulsifier may disrupt the gut mucous layer and promote inflammation in IBD.',
+          sources: [{ title: 'Nature - Emulsifiers and Gut Inflammation', url: 'https://www.nature.com/articles/nature14232' }],
+        },
+        'Carrageenan': {
+          reason: 'Carrageenan has been linked to gut inflammation and may worsen IBD symptoms in some patients.',
+          sources: [{ title: 'NIH - Carrageenan and IBD', url: 'https://pubmed.ncbi.nlm.nih.gov/28028998/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol directly irritates the gut lining and can trigger IBD flares.',
+          sources: [{ title: 'CCF - Diet and IBD', url: 'https://www.crohnscolitisfoundation.org/diet-and-nutrition' }],
+        },
+      },
+    },
+    
+    'sjogrens': {
+      description: 'Sjögren\'s syndrome is a chronic autoimmune disease where the immune system attacks moisture-producing glands, causing severe dry eyes and dry mouth. It often occurs alongside other autoimmune conditions.',
+      generalSources: [
+        { title: 'Sjögren\'s Foundation', url: 'https://www.sjogrens.org/understanding-sjogrens/what-is-sjogrens' },
+        { title: 'Mayo Clinic - Sjögren\'s Syndrome', url: 'https://www.mayoclinic.org/diseases-conditions/sjogrens-syndrome/symptoms-causes/syc-20353216' },
+      ],
+      ingredientInfo: {
+        'Caffeine': {
+          reason: 'Caffeine is a diuretic that worsens the dry mouth and dry eyes that define Sjögren\'s syndrome.',
+          sources: [{ title: 'Sjögren\'s Foundation - Diet', url: 'https://www.sjogrens.org/living-with-sjogrens/treatments-and-therapies/other-therapies/nutrition' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol further dehydrates and irritates already dry mucous membranes in Sjögren\'s patients.',
+          sources: [{ title: 'Mayo Clinic - Sjögren\'s', url: 'https://www.mayoclinic.org/diseases-conditions/sjogrens-syndrome/symptoms-causes/syc-20353216' }],
+        },
+        'Sodium Lauryl Sulfate': {
+          reason: 'SLS in toothpaste and cleansers is particularly harsh on the oral tissues already compromised by Sjögren\'s dry mouth.',
+          sources: [{ title: 'Sjögren\'s Foundation - Oral Care', url: 'https://www.sjogrens.org/living-with-sjogrens/managing-symptoms/mouth' }],
+        },
+      },
+    },
+    
+    'graves-disease': {
+      description: 'Graves\' disease is an autoimmune disorder that causes hyperthyroidism (overactive thyroid). The immune system produces antibodies that stimulate the thyroid to produce too much hormone, causing symptoms like rapid heartbeat, weight loss, and anxiety.',
+      generalSources: [
+        { title: 'American Thyroid Association - Graves\' Disease', url: 'https://www.thyroid.org/graves-disease/' },
+        { title: 'Mayo Clinic - Graves\' Disease', url: 'https://www.mayoclinic.org/diseases-conditions/graves-disease/symptoms-causes/syc-20356240' },
+      ],
+      ingredientInfo: {
+        'Iodine': {
+          reason: 'Excess dietary iodine can worsen hyperthyroidism in Graves\' disease by providing more substrate for excessive thyroid hormone production.',
+          sources: [{ title: 'ATA - Iodine and Thyroid', url: 'https://www.thyroid.org/iodine-deficiency/' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine worsens the heart palpitations, anxiety, and tremors already caused by excess thyroid hormone in Graves\' disease.',
+          sources: [{ title: 'Mayo Clinic - Graves\' Treatment', url: 'https://www.mayoclinic.org/diseases-conditions/graves-disease/diagnosis-treatment/drc-20356245' }],
+        },
+        'Soy': {
+          reason: 'Soy may interfere with thyroid medication absorption and affect thyroid hormone levels.',
+          sources: [{ title: 'ATA - Soy and Thyroid', url: 'https://www.thyroid.org/thyroid-and-diet/' }],
+        },
+      },
+    },
+    
+    'ankylosing-spondylitis': {
+      description: 'Ankylosing spondylitis (AS) is a chronic inflammatory arthritis primarily affecting the spine and sacroiliac joints, causing pain, stiffness, and in severe cases, fusion of vertebrae. Diet, particularly a low-starch approach, may help manage inflammation.',
+      generalSources: [
+        { title: 'Spondylitis Association of America', url: 'https://www.spondylitis.org/about-spondylitis' },
+        { title: 'Mayo Clinic - Ankylosing Spondylitis', url: 'https://www.mayoclinic.org/diseases-conditions/ankylosing-spondylitis/symptoms-causes/syc-20354808' },
+      ],
+      ingredientInfo: {
+        'Refined Starch': {
+          reason: 'The London AS Diet suggests that Klebsiella bacteria fed by starch may trigger the autoimmune response in AS. Many patients report improvement on a low-starch diet.',
+          sources: [{ title: 'SAA - Diet and AS', url: 'https://www.spondylitis.org/as-information/diet' }],
+        },
+        'Refined Sugar': {
+          reason: 'Sugar promotes systemic inflammation that can worsen AS joint pain and stiffness.',
+          sources: [{ title: 'Arthritis Foundation - Inflammatory Diet', url: 'https://www.arthritis.org/health-wellness/healthy-living/nutrition/anti-inflammatory/the-ultimate-arthritis-diet' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol may worsen inflammation and interact with medications commonly used for AS.',
+          sources: [{ title: 'Mayo Clinic - AS Treatment', url: 'https://www.mayoclinic.org/diseases-conditions/ankylosing-spondylitis/diagnosis-treatment/drc-20354813' }],
+        },
+      },
+    },
+    
+    'psoriatic-arthritis': {
+      description: 'Psoriatic arthritis is an inflammatory arthritis associated with psoriasis, causing joint pain, stiffness, and swelling alongside skin plaques. An anti-inflammatory diet may help manage both skin and joint symptoms.',
+      generalSources: [
+        { title: 'National Psoriasis Foundation - PsA', url: 'https://www.psoriasis.org/psoriatic-arthritis/' },
+        { title: 'Arthritis Foundation - PsA', url: 'https://www.arthritis.org/diseases/psoriatic-arthritis' },
+      ],
+      ingredientInfo: {
+        'Refined Sugar': {
+          reason: 'Sugar increases inflammatory markers and may worsen both joint pain and skin flares in psoriatic arthritis.',
+          sources: [{ title: 'NPF - Diet and Psoriasis', url: 'https://www.psoriasis.org/diet/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol is linked to worsened psoriasis and psoriatic arthritis symptoms and may reduce effectiveness of medications.',
+          sources: [{ title: 'NPF - Alcohol and Psoriasis', url: 'https://www.psoriasis.org/alcohol/' }],
+        },
+        'Seed Oils': {
+          reason: 'High omega-6 from seed oils promotes the inflammation that drives both skin and joint symptoms in psoriatic arthritis.',
+          sources: [{ title: 'Arthritis Foundation - Omega-6', url: 'https://www.arthritis.org/health-wellness/healthy-living/nutrition/anti-inflammatory/the-ultimate-arthritis-diet' }],
+        },
+      },
+    },
+    
+    'interstitial-cystitis': {
+      description: 'Interstitial cystitis (IC), also known as painful bladder syndrome, is a chronic condition causing bladder pressure, pain, and urinary urgency. Many foods and drinks act as bladder irritants and trigger flares.',
+      generalSources: [
+        { title: 'Interstitial Cystitis Association', url: 'https://www.ichelp.org/about-ic/what-is-interstitial-cystitis/' },
+        { title: 'Mayo Clinic - Interstitial Cystitis', url: 'https://www.mayoclinic.org/diseases-conditions/interstitial-cystitis/symptoms-causes/syc-20354357' },
+      ],
+      ingredientInfo: {
+        'Caffeine': {
+          reason: 'Caffeine is a well-known bladder irritant that worsens urgency and pain in interstitial cystitis.',
+          sources: [{ title: 'ICA - IC Diet', url: 'https://www.ichelp.org/living-with-ic/interstitial-cystitis-and-diet/' }],
+        },
+        'Citric Acid': {
+          reason: 'Citric acid in citrus fruits and many beverages is one of the most common IC food triggers.',
+          sources: [{ title: 'ICA - IC and Diet', url: 'https://www.ichelp.org/living-with-ic/interstitial-cystitis-and-diet/' }],
+        },
+        'Artificial Sweeteners': {
+          reason: 'Artificial sweeteners are frequently reported as bladder irritants by IC patients.',
+          sources: [{ title: 'ICA - Elimination Diet', url: 'https://www.ichelp.org/living-with-ic/interstitial-cystitis-and-diet/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol is highly acidic and irritates the bladder lining, making it one of the top IC triggers.',
+          sources: [{ title: 'Mayo Clinic - IC Management', url: 'https://www.mayoclinic.org/diseases-conditions/interstitial-cystitis/diagnosis-treatment/drc-20354361' }],
+        },
+      },
+    },
+    
+    'diabetes-type-1': {
+      description: 'Type 1 diabetes is an autoimmune condition where the immune system destroys insulin-producing cells in the pancreas. People with Type 1 require insulin therapy and must carefully manage blood sugar through diet and lifestyle.',
+      generalSources: [
+        { title: 'ADA - Type 1 Diabetes', url: 'https://diabetes.org/about-diabetes/type-1' },
+        { title: 'JDRF - Type 1 Diabetes', url: 'https://www.jdrf.org/t1d-resources/about/' },
+      ],
+      ingredientInfo: {
+        'Refined Sugar': {
+          reason: 'Refined sugar causes rapid blood glucose spikes that require precise insulin dosing in Type 1 diabetes.',
+          sources: [{ title: 'ADA - Carbohydrate Counting', url: 'https://diabetes.org/food-nutrition/understanding-carbs' }],
+        },
+        'High Fructose Corn Syrup': {
+          reason: 'HFCS rapidly elevates blood glucose and complicates blood sugar management in Type 1 diabetes.',
+          sources: [{ title: 'ADA - Sweeteners', url: 'https://diabetes.org/food-nutrition/understanding-carbs/sweeteners' }],
         },
         'Trans Fats': {
-          reason: 'Trans fats promote abdominal fat gain and are linked to weight gain even at the same caloric intake.',
-          sources: [
-            { title: 'Wake Forest Study', url: 'https://news.wakehealth.edu/2006/06/16/trans-fat-leads-to-weight-gain-even-on-same-total-calories' },
-          ],
+          reason: 'Trans fats increase cardiovascular risk, which is already elevated in people with Type 1 diabetes.',
+          sources: [{ title: 'ADA - Fats and Diabetes', url: 'https://diabetes.org/food-nutrition/eating-healthy/fats' }],
         },
-        'Ultra-Processed Foods': {
-          reason: 'Ultra-processed foods are engineered to be hyperpalatable, leading to overconsumption and weight gain.',
-          sources: [
-            { title: 'NIH - Ultra-Processed Foods', url: 'https://www.nih.gov/news-events/nih-research-matters/eating-highly-processed-foods-linked-weight-gain' },
-          ],
+      },
+    },
+    
+    'diabetes-type-2': {
+      description: 'Type 2 diabetes is a metabolic condition where the body becomes resistant to insulin or does not produce enough of it. It is strongly influenced by diet, and managing carbohydrate and sugar intake is central to treatment.',
+      generalSources: [
+        { title: 'ADA - Type 2 Diabetes', url: 'https://diabetes.org/about-diabetes/type-2' },
+        { title: 'CDC - Type 2 Diabetes', url: 'https://www.cdc.gov/diabetes/basics/type2.html' },
+      ],
+      ingredientInfo: {
+        'High Fructose Corn Syrup': {
+          reason: 'HFCS strongly promotes insulin resistance and is linked to Type 2 diabetes development and progression.',
+          sources: [{ title: 'Princeton Study - HFCS', url: 'https://www.princeton.edu/news/2010/03/22/sweet-problem-princeton-researchers-find-high-fructose-corn-syrup-prompts' }],
+        },
+        'Trans Fats': {
+          reason: 'Trans fats worsen insulin resistance and cardiovascular risk in Type 2 diabetes.',
+          sources: [{ title: 'ADA - Fats and Diabetes', url: 'https://diabetes.org/food-nutrition/eating-healthy/fats' }],
+        },
+        'Refined Grains': {
+          reason: 'Refined grains are quickly converted to glucose, spiking blood sugar and worsening insulin resistance.',
+          sources: [{ title: 'Harvard - Whole Grains vs Refined', url: 'https://www.hsph.harvard.edu/nutritionsource/what-should-you-eat/whole-grains/' }],
+        },
+      },
+    },
+    
+    'thalassemia-minor': {
+      description: 'Thalassemia minor (also called thalassemia trait) is a mild inherited blood disorder where the body produces slightly less hemoglobin than normal. Most carriers have mild or no anemia and live normal lives, but should be mindful of iron intake.',
+      generalSources: [
+        { title: 'CDC - Thalassemia', url: 'https://www.cdc.gov/ncbddd/thalassemia/' },
+        { title: 'Mayo Clinic - Thalassemia', url: 'https://www.mayoclinic.org/diseases-conditions/thalassemia/symptoms-causes/syc-20354995' },
+      ],
+      ingredientInfo: {
+        'Iron Supplements': {
+          reason: 'Unlike iron-deficiency anemia, thalassemia minor does not typically require iron supplementation. Unsupervised iron supplementation can lead to iron overload.',
+          sources: [{ title: 'CDC - Thalassemia Management', url: 'https://www.cdc.gov/ncbddd/thalassemia/' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine inhibits iron absorption, which can worsen mild anemia associated with thalassemia minor.',
+          sources: [{ title: 'NIH - Iron Absorption', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2959994/' }],
+        },
+      },
+    },
+    
+    'thalassemia-major': {
+      description: 'Thalassemia major (Cooley\'s anemia) is a severe inherited blood disorder requiring regular blood transfusions. These transfusions lead to iron overload, making careful management of iron intake critical.',
+      generalSources: [
+        { title: 'CDC - Thalassemia', url: 'https://www.cdc.gov/ncbddd/thalassemia/' },
+        { title: 'Cooley\'s Anemia Foundation', url: 'https://www.thalassemia.org/learn-about-thalassemia/' },
+      ],
+      ingredientInfo: {
+        'Iron Supplements': {
+          reason: 'Thalassemia major causes significant iron overload from regular transfusions. Additional iron from supplements is dangerous and must be avoided without medical supervision.',
+          sources: [{ title: 'Cooley\'s Anemia Foundation - Iron Overload', url: 'https://www.thalassemia.org/learn-about-thalassemia/complications/iron-overload/' }],
+        },
+        'Vitamin C Supplements': {
+          reason: 'High-dose vitamin C significantly increases iron absorption, worsening the already dangerous iron overload in thalassemia major.',
+          sources: [{ title: 'NIH - Iron Overload', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2959994/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol places additional stress on the liver, which is already strained by iron overload in thalassemia major.',
+          sources: [{ title: 'Cooley\'s Anemia Foundation', url: 'https://www.thalassemia.org/learn-about-thalassemia/complications/' }],
+        },
+      },
+    },
+    
+    'endometriosis': {
+      description: 'Endometriosis is a chronic condition where tissue similar to the uterine lining grows outside the uterus, causing significant pain, inflammation, and in some cases, fertility issues. An anti-inflammatory diet may help manage symptoms.',
+      generalSources: [
+        { title: 'Endometriosis Foundation of America', url: 'https://www.endofound.org/' },
+        { title: 'Mayo Clinic - Endometriosis', url: 'https://www.mayoclinic.org/diseases-conditions/endometriosis/symptoms-causes/syc-20354656' },
+      ],
+      ingredientInfo: {
+        'Trans Fats': {
+          reason: 'Trans fats are associated with higher risk of endometriosis and promote pelvic inflammation.',
+          sources: [{ title: 'Human Reproduction Study', url: 'https://academic.oup.com/humrep/article/25/6/1528/590935' }],
+        },
+        'Red Meat': {
+          reason: 'High red meat consumption has been linked to increased endometriosis risk and worsened symptoms in some studies.',
+          sources: [{ title: 'American Journal of Obstetrics & Gynecology', url: 'https://pubmed.ncbi.nlm.nih.gov/29627352/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol raises estrogen levels, which can stimulate endometrial tissue growth and worsen symptoms.',
+          sources: [{ title: 'Endometriosis Foundation - Diet', url: 'https://www.endofound.org/endometriosis-diet' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine may increase estrogen levels and has been associated with higher endometriosis risk in some studies.',
+          sources: [{ title: 'NIH - Caffeine and Endometriosis', url: 'https://pubmed.ncbi.nlm.nih.gov/11739677/' }],
+        },
+      },
+    },
+    
+    'pmdd': {
+      description: 'Premenstrual Dysphoric Disorder (PMDD) is a severe form of PMS causing debilitating mood changes, depression, anxiety, and physical symptoms in the week before menstruation. Diet and lifestyle have a significant impact on symptom severity.',
+      generalSources: [
+        { title: 'ACOG - PMDD', url: 'https://www.acog.org/womens-health/faqs/premenstrual-syndrome' },
+        { title: 'Mayo Clinic - PMDD', url: 'https://www.mayoclinic.org/diseases-conditions/premenstrual-syndrome/symptoms-causes/syc-20376780' },
+      ],
+      ingredientInfo: {
+        'Caffeine': {
+          reason: 'Caffeine worsens anxiety, breast tenderness, and sleep disruption that are particularly severe in PMDD.',
+          sources: [{ title: 'ACOG - PMS and PMDD', url: 'https://www.acog.org/womens-health/faqs/premenstrual-syndrome' }],
+        },
+        'Refined Sugar': {
+          reason: 'Blood sugar instability from refined sugar worsens mood swings, fatigue, and irritability in PMDD.',
+          sources: [{ title: 'NIH - Nutrition and PMS', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3737202/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol is a depressant that significantly worsens the mood symptoms central to PMDD.',
+          sources: [{ title: 'Mayo Clinic - PMDD', url: 'https://www.mayoclinic.org/diseases-conditions/premenstrual-syndrome/diagnosis-treatment/drc-20376787' }],
+        },
+        'Excess Salt': {
+          reason: 'High sodium intake worsens bloating and water retention that are already pronounced during the luteal phase in PMDD.',
+          sources: [{ title: 'ACOG - Lifestyle Changes for PMDD', url: 'https://www.acog.org/womens-health/faqs/premenstrual-syndrome' }],
         },
       },
     },
@@ -462,33 +886,7 @@ export interface AilmentIngredientEducation {
         },
       },
     },
-    'celiac-disease': {
-      description: 'Celiac disease is an autoimmune disorder where gluten triggers an immune response damaging the small intestine. Strict gluten avoidance is essential.',
-      generalSources: [
-        { title: 'Celiac Disease Foundation', url: 'https://celiac.org/about-celiac-disease/what-is-celiac-disease/' },
-        { title: 'Mayo Clinic - Celiac', url: 'https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220' },
-      ],
-      ingredientInfo: {
-        'Gluten': {
-          reason: 'Gluten (found in wheat, barley, and rye) triggers an autoimmune response that damages the intestinal lining.',
-          sources: [
-            { title: 'CDF - What is Gluten', url: 'https://celiac.org/gluten-free-living/what-is-gluten/' },
-          ],
-        },
-        'Hidden Gluten': {
-          reason: 'Gluten can hide in sauces, seasonings, medications, and processed foods under various names.',
-          sources: [
-            { title: 'CDF - Sources of Gluten', url: 'https://celiac.org/gluten-free-living/what-is-gluten/sources-of-gluten/' },
-          ],
-        },
-        'Cross-Contamination': {
-          reason: 'Even small amounts of gluten from cross-contamination can cause damage in people with celiac disease.',
-          sources: [
-            { title: 'Beyond Celiac - Cross Contact', url: 'https://www.beyondceliac.org/gluten-free-diet/cross-contact/' },
-          ],
-        },
-      },
-    },
+
     'multiple-sclerosis': {
       description: 'Multiple sclerosis (MS) is an autoimmune disease where the immune system attacks the protective covering of nerves. Diet may play a role in managing symptoms.',
       generalSources: [
@@ -1540,6 +1938,304 @@ export interface AilmentIngredientEducation {
           sources: [
             { title: 'Cleveland Clinic - Menopause Diet', url: 'https://my.clevelandclinic.org/health/articles/15224-menopause--diet' },
           ],
+        },
+      },
+    },
+    'bariatric': {
+      description: 'Bariatric surgery includes procedures like gastric bypass and sleeve gastrectomy that help with weight loss by restricting food intake or nutrient absorption. Post-surgery, dietary management is critical to prevent complications like dumping syndrome and nutritional deficiencies.',
+      generalSources: [
+        { title: 'American Society for Metabolic and Bariatric Surgery', url: 'https://asmbs.org/patients/bariatric-surgery-procedures' },
+        { title: 'Mayo Clinic - Bariatric Surgery', url: 'https://www.mayoclinic.org/tests-procedures/bariatric-surgery/about/pac-20394258' },
+      ],
+      ingredientInfo: {
+        'Refined Sugar': {
+          reason: 'Sugar causes dumping syndrome after bariatric surgery — rapid emptying of stomach contents causing nausea, dizziness, and diarrhea.',
+          sources: [{ title: 'ASMBS - Post-Op Diet', url: 'https://asmbs.org/patients/life-after-bariatric-surgery' }],
+        },
+        'High Fructose Corn Syrup': {
+          reason: 'HFCS triggers dumping syndrome and promotes weight regain after bariatric surgery.',
+          sources: [{ title: 'Mayo Clinic - Bariatric Diet', url: 'https://www.mayoclinic.org/tests-procedures/gastric-bypass-surgery/in-depth/bariatric-surgery/art-20048440' }],
+        },
+        'Carbonated Water': {
+          reason: 'Carbonation causes painful gas and bloating in the reduced stomach pouch after bariatric surgery.',
+          sources: [{ title: 'ASMBS - Post-Op Guidelines', url: 'https://asmbs.org/patients/life-after-bariatric-surgery' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol is absorbed much faster after bariatric surgery, leading to rapid intoxication and increased risk of alcohol dependency.',
+          sources: [{ title: 'NIH - Alcohol After Bariatric Surgery', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3771431/' }],
+        },
+      },
+    },
+    
+    'gastrectomy': {
+      description: 'Gastrectomy is the surgical removal of all or part of the stomach, typically performed for stomach cancer or severe ulcers. It significantly changes how food is digested and absorbed, requiring careful dietary management.',
+      generalSources: [
+        { title: 'Mayo Clinic - Gastrectomy', url: 'https://www.mayoclinic.org/tests-procedures/gastrectomy/about/pac-20384556' },
+        { title: 'Cancer Research UK - Life After Gastrectomy', url: 'https://www.cancerresearchuk.org/about-cancer/stomach-cancer/treatment/surgery/total-gastrectomy' },
+      ],
+      ingredientInfo: {
+        'Refined Sugar': {
+          reason: 'Sugar causes dumping syndrome after gastrectomy, leading to rapid gastric emptying, nausea, and diarrhea.',
+          sources: [{ title: 'Mayo Clinic - Dumping Syndrome', url: 'https://www.mayoclinic.org/diseases-conditions/dumping-syndrome/symptoms-causes/syc-20371915' }],
+        },
+        'High Fructose Corn Syrup': {
+          reason: 'HFCS can trigger dumping syndrome in patients who have had stomach surgery.',
+          sources: [{ title: 'Mayo Clinic - Gastrectomy Diet', url: 'https://www.mayoclinic.org/tests-procedures/gastrectomy/about/pac-20384556' }],
+        },
+        'Lactose': {
+          reason: 'Lactose intolerance is common after gastrectomy due to reduced digestive capacity.',
+          sources: [{ title: 'Cancer Research UK - Gastrectomy', url: 'https://www.cancerresearchuk.org/about-cancer/stomach-cancer/treatment/surgery/total-gastrectomy' }],
+        },
+        'Carbonated Water': {
+          reason: 'Carbonation causes bloating and discomfort in the reduced stomach after gastrectomy.',
+          sources: [{ title: 'Mayo Clinic - Dumping Syndrome Diet', url: 'https://www.mayoclinic.org/diseases-conditions/dumping-syndrome/diagnosis-treatment/drc-20371919' }],
+        },
+      },
+    },
+    
+    'rheumatoid': {
+      description: 'Rheumatoid arthritis (RA) is a chronic autoimmune disease where the immune system attacks the joints, causing painful swelling, stiffness, and eventual joint damage. An anti-inflammatory diet may help reduce symptom severity.',
+      generalSources: [
+        { title: 'Arthritis Foundation - RA', url: 'https://www.arthritis.org/diseases/rheumatoid-arthritis' },
+        { title: 'Mayo Clinic - Rheumatoid Arthritis', url: 'https://www.mayoclinic.org/diseases-conditions/rheumatoid-arthritis/symptoms-causes/syc-20353648' },
+        { title: 'NIH - RA', url: 'https://www.niams.nih.gov/health-topics/rheumatoid-arthritis' },
+      ],
+      ingredientInfo: {
+        'Seed Oils': {
+          reason: 'Seed oils are high in omega-6 fatty acids which promote the inflammatory processes that drive RA joint pain and swelling.',
+          sources: [{ title: 'Arthritis Foundation - Diet', url: 'https://www.arthritis.org/health-wellness/healthy-living/nutrition/anti-inflammatory/the-ultimate-arthritis-diet' }],
+        },
+        'Refined Sugar': {
+          reason: 'Excess sugar increases inflammatory markers and may worsen RA symptoms and flares.',
+          sources: [{ title: 'Arthritis Foundation - Sugar', url: 'https://www.arthritis.org/health-wellness/healthy-living/nutrition/foods-to-limit/8-foods-to-avoid-with-arthritis' }],
+        },
+        'Trans Fats': {
+          reason: 'Trans fats promote systemic inflammation, worsening joint damage in RA.',
+          sources: [{ title: 'Cleveland Clinic - RA Diet', url: 'https://my.clevelandclinic.org/health/articles/22729-rheumatoid-arthritis-diet' }],
+        },
+        'Gluten': {
+          reason: 'Some RA patients have gluten sensitivity that may exacerbate autoimmune activity and joint inflammation.',
+          sources: [{ title: 'NIH - Gluten and Autoimmune Arthritis', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6566844/' }],
+        },
+      },
+    },
+    
+    'anemia': {
+      description: 'Anemia is a condition where the blood lacks enough healthy red blood cells to carry adequate oxygen to the body\'s tissues. Iron-deficiency anemia is the most common type. Certain ingredients can interfere with iron absorption.',
+      generalSources: [
+        { title: 'Mayo Clinic - Anemia', url: 'https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360' },
+        { title: 'NIH - Anemia', url: 'https://www.nhlbi.nih.gov/health/anemia' },
+        { title: 'American Society of Hematology - Anemia', url: 'https://www.hematology.org/education/patients/anemia' },
+      ],
+      ingredientInfo: {
+        'Calcium Carbonate': {
+          reason: 'High calcium intake from supplements or fortified foods can block iron absorption when taken at the same time.',
+          sources: [{ title: 'NIH - Iron Absorption', url: 'https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/' }],
+        },
+        'Tannins': {
+          reason: 'Tannins found in tea, coffee, and red wine bind to iron in the digestive tract and significantly reduce its absorption.',
+          sources: [{ title: 'NIH - Tannins and Iron', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2959994/' }],
+        },
+        'Phytic Acid': {
+          reason: 'Phytates found in whole grains, legumes, and nuts bind to iron and reduce how much is absorbed.',
+          sources: [{ title: 'NIH - Phytates and Iron', url: 'https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine inhibits iron absorption when consumed with iron-rich meals or supplements.',
+          sources: [{ title: 'American Journal of Clinical Nutrition', url: 'https://academic.oup.com/ajcn/article/37/3/416/4691750' }],
+        },
+      },
+    },
+    
+    'neuropathy': {
+      description: 'Peripheral neuropathy is damage to the peripheral nerves, causing weakness, numbness, and pain — usually in the hands and feet. It can be caused by diabetes, nutritional deficiencies, toxins, or autoimmune conditions. Diet and avoiding certain substances may help slow progression.',
+      generalSources: [
+        { title: 'Mayo Clinic - Peripheral Neuropathy', url: 'https://www.mayoclinic.org/diseases-conditions/peripheral-neuropathy/symptoms-causes/syc-20352061' },
+        { title: 'NIH - Peripheral Neuropathy', url: 'https://www.ninds.nih.gov/health-information/disorders/peripheral-neuropathy' },
+        { title: 'Foundation for Peripheral Neuropathy', url: 'https://www.foundationforpn.org/what-is-peripheral-neuropathy/' },
+      ],
+      ingredientInfo: {
+        'Monosodium Glutamate': {
+          reason: 'MSG is an excitotoxin that may worsen nerve sensitivity and pain in peripheral neuropathy.',
+          sources: [{ title: 'NIH - Excitotoxicity', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4117557/' }],
+        },
+        'Refined Sugar': {
+          reason: 'High blood sugar from excess sugar directly damages peripheral nerves over time.',
+          sources: [{ title: 'Foundation for Peripheral Neuropathy - Diet', url: 'https://www.foundationforpn.org/living-well/self-management/diet/' }],
+        },
+        'Trans Fats': {
+          reason: 'Trans fats promote inflammation that can worsen nerve damage and pain in neuropathy.',
+          sources: [{ title: 'Mayo Clinic - Neuropathy', url: 'https://www.mayoclinic.org/diseases-conditions/peripheral-neuropathy/symptoms-causes/syc-20352061' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol is directly toxic to peripheral nerves and is a leading cause of alcoholic neuropathy.',
+          sources: [{ title: 'NIH - Alcoholic Neuropathy', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3839912/' }],
+        },
+        'Gluten': {
+          reason: 'Gluten sensitivity has been linked to peripheral neuropathy in some individuals, even without celiac disease.',
+          sources: [{ title: 'Journal of Neurology - Gluten Neuropathy', url: 'https://pubmed.ncbi.nlm.nih.gov/12486246/' }],
+        },
+      },
+    },
+    
+    'sensitive-skin': {
+      description: 'Sensitive skin is a common condition where the skin is easily irritated by products, environmental factors, or lifestyle choices. It often presents as redness, itching, burning, or dryness in response to triggers that do not affect most people.',
+      generalSources: [
+        { title: 'AAD - Sensitive Skin', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/sensitive/sensitive-skin-care' },
+        { title: 'Cleveland Clinic - Sensitive Skin', url: 'https://my.clevelandclinic.org/health/diseases/21987-sensitive-skin' },
+      ],
+      ingredientInfo: {
+        'Synthetic Fragrance': {
+          reason: 'Fragrance is the leading cause of irritation and allergic reactions in sensitive skin — both synthetic and some natural fragrances.',
+          sources: [{ title: 'AAD - Fragrance and Sensitive Skin', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/sensitive/sensitive-skin-care' }],
+        },
+        'Alcohol Denat': {
+          reason: 'Drying alcohols disrupt the skin barrier in sensitive skin, causing redness, stinging, and dehydration.',
+          sources: [{ title: 'AAD - Dry Skin Tips', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/dry/dermatologists-tips-relieve-dry-skin' }],
+        },
+        'Sodium Lauryl Sulfate': {
+          reason: 'SLS is a harsh surfactant that strips the natural moisture barrier, worsening sensitivity and causing irritation.',
+          sources: [{ title: 'Cleveland Clinic - Skin Irritants', url: 'https://my.clevelandclinic.org/health/diseases/21987-sensitive-skin' }],
+        },
+        'Retinol': {
+          reason: 'Retinol can cause peeling, redness, and burning in sensitive skin, especially when starting use.',
+          sources: [{ title: 'AAD - Retinol and Sensitive Skin', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/anti-aging/is-it-safe-to-use-retinol-while-pregnant' }],
+        },
+        'Essential Oils': {
+          reason: 'Many essential oils, even natural ones, can trigger allergic contact dermatitis in sensitive skin.',
+          sources: [{ title: 'NEA - Natural Ingredients and Skin', url: 'https://nationaleczema.org/blog/natural-doesnt-mean-safe/' }],
+        },
+        'Formaldehyde': {
+          reason: 'Formaldehyde and formaldehyde-releasing preservatives are common sensitizers that trigger reactions in sensitive skin.',
+          sources: [{ title: 'AAD - Formaldehyde Allergy', url: 'https://www.aad.org/public/diseases/a-z/contact-dermatitis-causes' }],
+        },
+      },
+    },
+    
+    'celiac': {
+      description: 'Celiac disease is a serious autoimmune disorder where the ingestion of gluten leads to damage in the small intestine. It affects about 1 in 100 people worldwide and requires strict lifelong adherence to a gluten-free diet.',
+      generalSources: [
+        { title: 'Celiac Disease Foundation', url: 'https://celiac.org/about-celiac-disease/what-is-celiac-disease/' },
+        { title: 'Mayo Clinic - Celiac Disease', url: 'https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220' },
+        { title: 'NIDDK - Celiac Disease', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease' },
+      ],
+      ingredientInfo: {
+        'Gluten': {
+          reason: 'Gluten triggers an autoimmune response that damages the villi lining the small intestine, leading to malabsorption of nutrients.',
+          sources: [{ title: 'CDF - What is Gluten', url: 'https://celiac.org/gluten-free-living/what-is-gluten/' }],
+        },
+        'Wheat': {
+          reason: 'Wheat contains gluten and must be strictly avoided in all forms including flour, starch, and wheat derivatives.',
+          sources: [{ title: 'CDF - Sources of Gluten', url: 'https://celiac.org/gluten-free-living/what-is-gluten/sources-of-gluten/' }],
+        },
+        'Barley': {
+          reason: 'Barley and its derivatives (malt, barley extract) contain gluten and must be avoided in celiac disease.',
+          sources: [{ title: 'NIDDK - Celiac Diet', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease/eating-diet-nutrition' }],
+        },
+        'Rye': {
+          reason: 'Rye is a gluten-containing grain that triggers the autoimmune response in celiac disease.',
+          sources: [{ title: 'Celiac Disease Foundation - Grains', url: 'https://celiac.org/gluten-free-living/what-is-gluten/sources-of-gluten/' }],
+        },
+        'Malt': {
+          reason: 'Malt is derived from barley and contains gluten — commonly found in beer, cereals, and flavoring syrups.',
+          sources: [{ title: 'Beyond Celiac - Hidden Gluten', url: 'https://www.beyondceliac.org/gluten-free-diet/hidden-gluten/' }],
+        },
+      },
+    },
+    
+    'nut-allergy': {
+      description: 'Nut allergy is one of the most common and potentially severe food allergies, involving an immune reaction to proteins in tree nuts or peanuts. Reactions can range from mild (hives, itching) to life-threatening anaphylaxis.',
+      generalSources: [
+        { title: 'FARE - Tree Nut Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut' },
+        { title: 'ACAAI - Nut Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/tree-nut/' },
+        { title: 'Mayo Clinic - Nut Allergy', url: 'https://www.mayoclinic.org/diseases-conditions/nut-allergy/symptoms-causes/syc-20377733' },
+      ],
+      ingredientInfo: {
+        'Almonds': {
+          reason: 'Almonds are a common tree nut allergen and must be avoided including almond flour, almond milk, and almond oil.',
+          sources: [{ title: 'FARE - Tree Nut Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut' }],
+        },
+        'Cashews': {
+          reason: 'Cashews are among the most allergenic tree nuts, often causing severe reactions.',
+          sources: [{ title: 'ACAAI - Tree Nut Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/tree-nut/' }],
+        },
+        'Walnuts': {
+          reason: 'Walnuts are a top tree nut allergen frequently hidden in baked goods and sauces.',
+          sources: [{ title: 'FARE - Hidden Nut Allergens', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut' }],
+        },
+        'Peanuts': {
+          reason: 'Peanuts are technically legumes but are one of the most common and severe food allergens. Cross-reactivity with tree nuts is common.',
+          sources: [{ title: 'FARE - Peanut Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/peanut' }],
+        },
+        'Natural Flavors': {
+          reason: 'Natural flavors can sometimes be derived from nuts without being explicitly labeled, posing a hidden risk.',
+          sources: [{ title: 'FARE - Hidden Allergens', url: 'https://www.foodallergy.org/resources/hidden-allergens' }],
+        },
+      },
+    },
+    
+    'migraines': {
+      description: 'Chronic migraines are recurring headaches occurring 15 or more days per month, often accompanied by nausea, light sensitivity, and visual disturbances. Identifying and avoiding dietary triggers is a key part of migraine management.',
+      generalSources: [
+        { title: 'American Migraine Foundation', url: 'https://americanmigrainefoundation.org/resource-library/what-is-migraine/' },
+        { title: 'Mayo Clinic - Chronic Migraine', url: 'https://www.mayoclinic.org/diseases-conditions/chronic-daily-headaches/symptoms-causes/syc-20370891' },
+        { title: 'NIH - Migraine', url: 'https://www.ninds.nih.gov/health-information/disorders/migraine' },
+      ],
+      ingredientInfo: {
+        'Monosodium Glutamate': {
+          reason: 'MSG is one of the most frequently reported migraine triggers, potentially affecting neurotransmitter activity.',
+          sources: [{ title: 'American Migraine Foundation - MSG', url: 'https://americanmigrainefoundation.org/resource-library/msg-and-migraine/' }],
+        },
+        'Sodium Nitrite': {
+          reason: 'Nitrates in processed meats cause blood vessel dilation that can trigger migraines.',
+          sources: [{ title: 'Headache Journal - Nitrates', url: 'https://headachejournal.onlinelibrary.wiley.com/doi/10.1111/head.12878' }],
+        },
+        'Aspartame': {
+          reason: 'Aspartame is a frequently reported migraine trigger in sensitive individuals.',
+          sources: [{ title: 'AMF - Diet and Migraine', url: 'https://americanmigrainefoundation.org/resource-library/diet/' }],
+        },
+        'Tyramine': {
+          reason: 'Tyramine found in aged cheeses and fermented foods is a well-documented migraine trigger that affects blood vessel tone.',
+          sources: [{ title: 'Cleveland Clinic - Tyramine', url: 'https://my.clevelandclinic.org/health/articles/22530-tyramine' }],
+        },
+        'Caffeine': {
+          reason: 'Caffeine can both trigger migraines and cause rebound headaches during withdrawal.',
+          sources: [{ title: 'AMF - Caffeine and Migraine', url: 'https://americanmigrainefoundation.org/resource-library/caffeine-and-migraine/' }],
+        },
+        'Alcohol': {
+          reason: 'Alcohol, particularly red wine, is one of the most common migraine triggers due to compounds like tyramine and histamine.',
+          sources: [{ title: 'American Migraine Foundation - Alcohol', url: 'https://americanmigrainefoundation.org/resource-library/alcohol-and-migraine/' }],
+        },
+      },
+    },
+    
+    'fibromyalgia': {
+      description: 'Fibromyalgia is a chronic condition causing widespread musculoskeletal pain, fatigue, sleep issues, and cognitive difficulties. While its exact cause is unknown, certain dietary factors may influence symptom severity.',
+      generalSources: [
+        { title: 'Mayo Clinic - Fibromyalgia', url: 'https://www.mayoclinic.org/diseases-conditions/fibromyalgia/symptoms-causes/syc-20354780' },
+        { title: 'NIH - Fibromyalgia', url: 'https://www.niams.nih.gov/health-topics/fibromyalgia' },
+        { title: 'American Fibromyalgia Syndrome Association', url: 'https://www.afsafund.org/' },
+      ],
+      ingredientInfo: {
+        'Monosodium Glutamate': {
+          reason: 'MSG is an excitotoxin that may increase pain sensitivity in fibromyalgia by overstimulating pain receptors.',
+          sources: [{ title: 'NIH - MSG and Fibromyalgia', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2969045/' }],
+        },
+        'Aspartame': {
+          reason: 'Some fibromyalgia patients report worsened pain and symptoms when consuming aspartame.',
+          sources: [{ title: 'Annals of Pharmacotherapy - Aspartame and Fibromyalgia', url: 'https://pubmed.ncbi.nlm.nih.gov/11847945/' }],
+        },
+        'Refined Sugar': {
+          reason: 'Excess sugar can worsen inflammation and energy crashes associated with fibromyalgia.',
+          sources: [{ title: 'Mayo Clinic - Fibromyalgia', url: 'https://www.mayoclinic.org/diseases-conditions/fibromyalgia/symptoms-causes/syc-20354780' }],
+        },
+        'Caffeine': {
+          reason: 'While caffeine may temporarily help with fatigue, it can disrupt sleep quality which is already compromised in fibromyalgia.',
+          sources: [{ title: 'NIH - Sleep and Fibromyalgia', url: 'https://www.niams.nih.gov/health-topics/fibromyalgia' }],
+        },
+        'Gluten': {
+          reason: 'Some fibromyalgia patients report symptom improvement on a gluten-free diet, particularly those with undiagnosed gluten sensitivity.',
+          sources: [{ title: 'Arthritis Research & Therapy - Gluten and Fibromyalgia', url: 'https://pubmed.ncbi.nlm.nih.gov/24507677/' }],
         },
       },
     },

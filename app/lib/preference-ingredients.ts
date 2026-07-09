@@ -292,7 +292,7 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "sodium nitrite", "sodium nitrate",
       "carrageenan",
       "polysorbate 80", "carboxymethylcellulose",
-      "partially hydrogenated", "trans fat",
+      "partially hydrogenated", "trans fat", "gums & fillers",
       // Seed oils
       "canola oil", "soybean oil", "sunflower oil", "corn oil", "cottonseed oil",
       // Heavy metals & toxins
