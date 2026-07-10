@@ -2260,27 +2260,6 @@ export interface AilmentIngredientEducation {
         },
       },
     },
-    'endometriosis': {
-      description: 'Endometriosis is a condition where tissue similar to the uterine lining grows outside the uterus, causing pain and other symptoms.',
-      generalSources: [
-        { title: 'Endometriosis Foundation of America', url: 'https://www.endofound.org/' },
-        { title: 'Mayo Clinic - Endometriosis', url: 'https://www.mayoclinic.org/diseases-conditions/endometriosis/symptoms-causes/syc-20354656' },
-      ],
-      ingredientInfo: {
-        'Trans Fats': {
-          reason: 'Trans fats may increase inflammation and have been associated with higher endometriosis risk.',
-          sources: [
-            { title: 'Human Reproduction Study', url: 'https://academic.oup.com/humrep/article/25/6/1528/590935' },
-          ],
-        },
-        'Red Meat': {
-          reason: 'High red meat consumption has been linked to increased endometriosis risk in some studies.',
-          sources: [
-            { title: 'American Journal of Obstetrics & Gynecology', url: 'https://pubmed.ncbi.nlm.nih.gov/29627352/' },
-          ],
-        },
-      },
-    },
   
     // Bone & Joint Conditions
     'osteoporosis': {
