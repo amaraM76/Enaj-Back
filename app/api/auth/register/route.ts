@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         lastName,
         email,
         location,
-        age: parseInt(age, 10),
+        age: age || undefined,
         gender: mappedGender as any,
         shoppingStores,
       },
