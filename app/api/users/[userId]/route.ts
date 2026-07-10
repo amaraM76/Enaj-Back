@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 
-// GET /api/users/:userId
-// Returns the full user profile including ailments, preferences,
-// and saved products — shaped to match the frontend UserProfile interface.
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ userId: string }> }
@@ -33,13 +30,10 @@ export async function GET(
         savedProducts: {
           include: { product: true },
         },
-        journalEntries: {
-          include: { condition: true },
-        },
+        journalEntries: true,
       },
     })
 
-    // If not found, try by Clerk ID
     if (!user) {
       const authRecord = await prisma.userAuth.findUnique({
         where: { clerkId: userId },
@@ -66,9 +60,7 @@ export async function GET(
               savedProducts: {
                 include: { product: true },
               },
-              journalEntries: {
-                include: { condition: true },
-              },
+              journalEntries: true,
             },
           },
         },
@@ -80,7 +72,6 @@ export async function GET(
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Transform to match frontend shape
     const profile = {
       id: user.id,
       firstName: user.firstName,
@@ -123,17 +114,54 @@ export async function GET(
         ingredients: sp.product.ingredients,
         category: sp.product.category.toLowerCase().replace("_", "-"),
       })),
-      journalEntries: user.journalEntries
-        .filter((je) => je.condition)
-        .map((je) => je.condition!.slug),
+      journalEntries: user.journalEntries.map((je) => je.conditionId ?? '').filter(Boolean),
       customHealthCondition: user.ailments.find((ua) => ua.customEntry)?.customEntry || undefined,
       customPreference: user.preferences.find((up) => up.customEntry)?.customEntry || undefined,
-      customJournalEntry: user.journalEntries.find((je) => je.customEntry)?.customEntry || undefined,
     };
 
     return NextResponse.json({ user: profile });
   } catch (error) {
     console.error("Error fetching user:", error);
     return NextResponse.json({ error: "Failed to fetch user" }, { status: 500 });
+  }
+}
+
+export async function PUT(
+  request: Request,
+  { params }: { params: Promise<{ userId: string }> }
+) {
+  try {
+    const { userId } = await params;
+    const body = await request.json();
+    const { firstName, lastName, email, location, age, gender, shoppingStores } = body;
+
+    // Resolve to internal user ID
+    let internalUserId = userId
+    const directUser = await prisma.userProfile.findUnique({ where: { id: userId } })
+    if (!directUser) {
+      const authRecord = await prisma.userAuth.findUnique({ where: { clerkId: userId } })
+      if (!authRecord) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 })
+      }
+      internalUserId = authRecord.userId
+    }
+
+    const updated = await prisma.userProfile.update({
+      where: { id: internalUserId },
+      data: {
+        ...(firstName && { firstName }),
+        ...(lastName && { lastName }),
+        ...(email && { email }),
+        ...(location && { location }),
+        ...(age !== undefined && { age }),
+        ...(gender && { gender }),
+        ...(shoppingStores && { shoppingStores }),
+      },
+    })
+
+    return NextResponse.json({ user: updated })
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
   }
 }
