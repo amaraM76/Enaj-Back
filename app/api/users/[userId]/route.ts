@@ -133,42 +133,110 @@ export async function PUT(
   try {
     const { userId } = await params;
     const body = await request.json();
-    const { firstName, lastName, email, location, age, gender, shoppingStores } = body;
 
-    const GENDER_MAP: Record<string, string> = {
-      'male': 'MALE',
-      'female': 'FEMALE',
-      'prefer-not-to-say': 'PREFER_NOT_TO_SAY',
+    const {
+      firstName,
+      lastName,
+      email,
+      location,
+      age,
+      gender,
+      shoppingStores,
+    } = body;
+
+    if (!email) {
+      return NextResponse.json(
+        { error: "Email is required to create or update a user" },
+        { status: 400 }
+      );
     }
-    const mappedGender = gender ? (GENDER_MAP[gender.toLowerCase()] ?? gender) : undefined
 
-    // Resolve to internal user ID
-    let internalUserId = userId
-    const directUser = await prisma.userProfile.findUnique({ where: { id: userId } })
-    if (!directUser) {
-      const authRecord = await prisma.userAuth.findUnique({ where: { clerkId: userId } })
-      if (!authRecord) {
-        return NextResponse.json({ error: "User not found" }, { status: 404 })
+    const GENDER_MAP: Record<string, "MALE" | "FEMALE" | "PREFER_NOT_TO_SAY"> = {
+      male: "MALE",
+      female: "FEMALE",
+      "prefer-not-to-say": "PREFER_NOT_TO_SAY",
+      PREFER_NOT_TO_SAY: "PREFER_NOT_TO_SAY",
+      MALE: "MALE",
+      FEMALE: "FEMALE",
+    };
+
+    const mappedGender = gender
+      ? GENDER_MAP[String(gender).toLowerCase()] ?? undefined
+      : undefined;
+
+    const existingAuth = await prisma.userAuth.findUnique({
+      where: { clerkId: userId },
+      include: { user: true },
+    });
+
+    let user;
+
+    if (existingAuth?.user) {
+      user = await prisma.userProfile.update({
+        where: { id: existingAuth.user.id },
+        data: {
+          firstName,
+          lastName,
+          email,
+          location,
+          age,
+          gender: mappedGender,
+          shoppingStores,
+        },
+      });
+    } else {
+      const existingProfileByEmail = await prisma.userProfile.findUnique({
+        where: { email },
+      });
+
+      if (existingProfileByEmail) {
+        user = await prisma.userProfile.update({
+          where: { id: existingProfileByEmail.id },
+          data: {
+            firstName,
+            lastName,
+            location,
+            age,
+            gender: mappedGender,
+            shoppingStores,
+            auth: {
+              upsert: {
+                create: {
+                  clerkId: userId,
+                },
+                update: {
+                  clerkId: userId,
+                },
+              },
+            },
+          },
+        });
+      } else {
+        user = await prisma.userProfile.create({
+          data: {
+            firstName,
+            lastName,
+            email,
+            location,
+            age,
+            gender: mappedGender,
+            shoppingStores,
+            auth: {
+              create: {
+                clerkId: userId,
+              },
+            },
+          },
+        });
       }
-      internalUserId = authRecord.userId
     }
 
-    const updated = await prisma.userProfile.update({
-      where: { id: internalUserId },
-      data: {
-        ...(firstName && { firstName }),
-        ...(lastName && { lastName }),
-        ...(email && { email }),
-        ...(location && { location }),
-        ...(age !== undefined && { age }),
-        ...(mappedGender && { gender: mappedGender as any }),
-        ...(shoppingStores && { shoppingStores }),
-      },
-    })
-
-    return NextResponse.json({ user: updated })
+    return NextResponse.json({ user });
   } catch (error) {
-    console.error("Error updating user:", error);
-    return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
+    console.error("Error saving user:", error);
+    return NextResponse.json(
+      { error: "Failed to save user" },
+      { status: 500 }
+    );
   }
 }
