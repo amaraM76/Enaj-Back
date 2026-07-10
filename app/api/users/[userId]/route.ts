@@ -135,6 +135,13 @@ export async function PUT(
     const body = await request.json();
     const { firstName, lastName, email, location, age, gender, shoppingStores } = body;
 
+    const GENDER_MAP: Record<string, string> = {
+      'male': 'MALE',
+      'female': 'FEMALE',
+      'prefer-not-to-say': 'PREFER_NOT_TO_SAY',
+    }
+    const mappedGender = gender ? (GENDER_MAP[gender.toLowerCase()] ?? gender) : undefined
+
     // Resolve to internal user ID
     let internalUserId = userId
     const directUser = await prisma.userProfile.findUnique({ where: { id: userId } })
@@ -154,7 +161,7 @@ export async function PUT(
         ...(email && { email }),
         ...(location && { location }),
         ...(age !== undefined && { age }),
-        ...(gender && { gender }),
+        ...(mappedGender && { gender: mappedGender as any }),
         ...(shoppingStores && { shoppingStores }),
       },
     })
