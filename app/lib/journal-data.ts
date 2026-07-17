@@ -396,7 +396,7 @@ export interface JournalConditionSeed {
     {
       slug: 'womens-health',
       label: "Women's Health",
-      icon: 'Heart',
+      icon: 'Venus',
       sortOrder: 2,
       conditions: [
         {
@@ -601,7 +601,7 @@ export interface JournalConditionSeed {
     {
       slug: 'digestive',
       label: 'Digestive Issues',
-      icon: 'Activity',
+      icon: 'Apple',
       sortOrder: 3,
       conditions: [
         {
@@ -674,7 +674,7 @@ export interface JournalConditionSeed {
     {
       slug: 'skin-eye',
       label: 'Skin, Eye & External',
-      icon: 'Eye',
+      icon: 'ScanEye',
       sortOrder: 4,
       conditions: [
         {
@@ -1078,7 +1078,7 @@ export interface JournalConditionSeed {
     {
       slug: 'recovery',
       label: 'Recovery / Treatment States',
-      icon: 'Pill',
+      icon: 'Stethoscope',
       sortOrder: 7,
       conditions: [
         {
