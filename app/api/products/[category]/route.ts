@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
-import { PREFERENCE_INGREDIENT_MAP, PREFERENCE_EXCLUSIONS } from "@/app/lib/preference-ingredients";
+import {
+  scanProduct,
+  ailmentsToFlagInputs,
+  preferencesToFlagInputs,
+  journalEntriesToFlagInputs,
+} from "@/app/lib/scan-product";
 
 const VALID_CATEGORIES: Record<string, string> = {
   "skin-body": "SKIN_BODY",
@@ -60,72 +65,19 @@ export async function GET(
       include: { preference: true },
     });
 
+    const userJournalEntries = await prisma.userJournalEntry.findMany({
+      where: { userId, conditionId: { not: null } },
+      include: { condition: true },
+    });
+
+    const flagSources = {
+      ailments: ailmentsToFlagInputs(userAilments),
+      preferences: preferencesToFlagInputs(userPreferences),
+      journalEntries: journalEntriesToFlagInputs(userJournalEntries),
+    };
+
     const productsWithScan = products.map((product) => {
-      const flaggedIngredients: {
-        ingredient: string;
-        reason: string;
-        source: "ailment" | "preference";
-        sourceName: string;
-        flaggedFrom: "ingredients" | "packaging" | "allergens";
-      }[] = [];
-
-      const allProductItems = [
-        ...product.ingredients.map((i) => ({ name: i, from: "ingredients" as const })),
-        ...(product.packaging || []).map((p) => ({ name: p, from: "packaging" as const })),
-        ...(product.allergens || []).map((a) => ({ name: a, from: "allergens" as const })),
-      ];
-
-      for (const ua of userAilments) {
-        if (!ua.ailment) continue;
-        for (const fi of ua.ailment.flaggedIngredients) {
-          const match = allProductItems.find(
-            (item) => item.name.toLowerCase().includes(fi.name.toLowerCase())
-          );
-          if (match) {
-            flaggedIngredients.push({
-              ingredient: fi.name,
-              reason: fi.reason,
-              source: "ailment",
-              sourceName: ua.ailment.name,
-              flaggedFrom: match.from,
-            });
-          }
-        }
-      }
-
-      // Collect ingredient names already flagged by ailments so we don't double-flag
-    const ailmentFlaggedNames = new Set(
-      flaggedIngredients.map(f => f.ingredient.toLowerCase())
-    );
-
-    for (const up of userPreferences) {
-      if (!up.preference) continue;
-      const prefName = up.preference.name;
-      const keywords = PREFERENCE_INGREDIENT_MAP[prefName] || [prefName.toLowerCase()];
-      const alreadyFlagged = new Set<string>();
-        
-        const exclusions = (PREFERENCE_EXCLUSIONS[prefName] || []).map(e => e.toLowerCase());
-      
-        for (const keyword of keywords) {
-          const kw = keyword.toLowerCase();
-          for (const item of allProductItems) {
-            const itemLower = item.name.toLowerCase();
-            if (itemLower.includes(kw) && !alreadyFlagged.has(item.name) && !ailmentFlaggedNames.has(item.name.toLowerCase())) {              const isExcluded = exclusions.some(ex => itemLower.includes(ex));
-              if (!isExcluded) {
-                alreadyFlagged.add(item.name);
-                flaggedIngredients.push({
-                  ingredient: item.name,
-                  reason: up.preference.description,
-                  source: "preference",
-                  sourceName: up.preference.name,
-                  flaggedFrom: item.from,
-                });
-              }
-            }
-          }
-        }
-      } // <-- this closes the for (const up of userPreferences) loop
-
+      const flaggedIngredients = scanProduct(product, flagSources);
       return {
         ...product,
         isRecommended: flaggedIngredients.length === 0,
