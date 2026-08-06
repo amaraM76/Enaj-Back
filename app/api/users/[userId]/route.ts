@@ -30,7 +30,7 @@ export async function GET(
         savedProducts: {
           include: { product: true },
         },
-        journalEntries: true,
+        journalEntries: { include: { condition: true } },
       },
     })
 
@@ -60,7 +60,7 @@ export async function GET(
               savedProducts: {
                 include: { product: true },
               },
-              journalEntries: true,
+              journalEntries: { include: { condition: true } },
             },
           },
         },
@@ -114,7 +114,9 @@ export async function GET(
         ingredients: sp.product.ingredients,
         category: sp.product.category.toLowerCase().replace("_", "-"),
       })),
-      journalEntries: user.journalEntries.map((je) => je.conditionId ?? '').filter(Boolean),
+      journalEntries: user.journalEntries
+        .filter((je) => je.condition)
+        .map((je) => je.condition!.slug),
       customHealthCondition: user.ailments.find((ua) => ua.customEntry)?.customEntry || undefined,
       customPreference: user.preferences.find((up) => up.customEntry)?.customEntry || undefined,
     };
