@@ -718,11 +718,11 @@ async function main() {
 
   // --- Parkinson's Disease ---
   const parkinsonsIngredients = [
-    { slug: "msg-parkinsons", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect neurological function" },
-    { slug: "artificial-sweeteners-parkinsons", name: "Artificial Sweeteners", reason: "May affect dopamine pathways" },
-    { slug: "pesticide-residue-parkinsons", name: "Pesticide Residue", reason: "Linked to increased Parkinson's risk" },
-    { slug: "trans-fats-parkinsons", name: "Trans Fats", reason: "Promotes neuroinflammation" },
-    { slug: "hfcs-parkinsons", name: "High Fructose Corn Syrup", reason: "May contribute to neuroinflammation" },
+    { slug: "msg-parkinsons", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate overstimulation is one of several mechanisms researchers have studied in the neurodegeneration that characterizes Parkinson's." },
+    { slug: "artificial-sweeteners-parkinsons", name: "Artificial Sweeteners", reason: "Some research has looked at whether non-nutritive sweeteners affect dopamine signaling, the neurotransmitter pathway most directly affected in Parkinson's, though evidence remains preliminary." },
+    { slug: "pesticide-residue-parkinsons", name: "Pesticide Residue", reason: "Among the most consistently replicated environmental risk factors for Parkinson's - large epidemiological studies have linked chronic pesticide exposure to a significantly elevated risk of developing the disease." },
+    { slug: "trans-fats-parkinsons", name: "Trans Fats", reason: "Promotes the neuroinflammation researchers increasingly believe plays a role in the progressive neuron loss underlying Parkinson's." },
+    { slug: "hfcs-parkinsons", name: "High Fructose Corn Syrup", reason: "Chronic high sugar intake promotes systemic and neural inflammation, a pathway of ongoing interest in Parkinson's disease progression." },
   ];
 
   for (const ing of parkinsonsIngredients) {
@@ -733,11 +733,11 @@ async function main() {
 
   // --- Dementia ---
   const dementiaIngredients = [
-    { slug: "artificial-sweeteners-dementia", name: "Artificial Sweeteners", reason: "Associated with cognitive decline in some studies" },
-    { slug: "trans-fats-dementia", name: "Trans Fats", reason: "Linked to increased risk of cognitive decline" },
-    { slug: "msg-dementia", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect brain health" },
-    { slug: "aluminum-dementia", name: "Aluminum", reason: "Found in some additives, debated link to cognitive decline" },
-    { slug: "nitrates-dementia", name: "Sodium Nitrite", reason: "May contribute to oxidative stress in the brain" },
+    { slug: "artificial-sweeteners-dementia", name: "Artificial Sweeteners", reason: "Large cohort studies have found an association between daily consumption of artificially sweetened beverages and a higher risk of dementia and stroke, though a causal mechanism hasn't been confirmed." },
+    { slug: "trans-fats-dementia", name: "Trans Fats", reason: "Longitudinal studies link higher trans fat intake to smaller brain volume and a greater risk of cognitive decline, likely through their effects on vascular health and inflammation." },
+    { slug: "msg-dementia", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate is theorized by some researchers to contribute to the neuronal damage seen in progressive cognitive decline, though this remains an active area of research." },
+    { slug: "aluminum-dementia", name: "Aluminum", reason: "Detected in the brain plaques associated with some forms of dementia, but major health bodies consider the evidence for aluminum as a direct cause inconclusive rather than settled." },
+    { slug: "nitrates-dementia", name: "Sodium Nitrite", reason: "Converts to nitrosamines in the body, compounds studied for their role in the oxidative stress implicated in the neuronal damage underlying dementia." },
   ];
 
   for (const ing of dementiaIngredients) {
@@ -748,11 +748,11 @@ async function main() {
 
   // --- Alzheimer's Disease ---
   const alzheimersIngredients = [
-    { slug: "trans-fats-alzheimers", name: "Trans Fats", reason: "Strongly linked to increased Alzheimer's risk" },
-    { slug: "nitrates-alzheimers", name: "Sodium Nitrite", reason: "Nitrosamines may contribute to neurodegeneration" },
-    { slug: "aluminum-alzheimers", name: "Aluminum", reason: "Debated link to Alzheimer's plaques" },
-    { slug: "hfcs-alzheimers", name: "High Fructose Corn Syrup", reason: "Excess sugar linked to cognitive decline" },
-    { slug: "artificial-colors-alzheimers", name: "Artificial Colors", reason: "Some dyes may cross the blood-brain barrier" },
+    { slug: "trans-fats-alzheimers", name: "Trans Fats", reason: "Multiple longitudinal studies have linked higher trans fat intake to increased Alzheimer's risk and worse cognitive test performance, likely via effects on vascular and brain health." },
+    { slug: "nitrates-alzheimers", name: "Sodium Nitrite", reason: "Nitrosamines formed from nitrites have been studied for a possible role in the brain insulin resistance some researchers describe as a contributor to Alzheimer's-related decline." },
+    { slug: "aluminum-alzheimers", name: "Aluminum", reason: "Found concentrated in Alzheimer's brain plaques, though the Alzheimer's Association and most researchers now consider it a bystander rather than a proven cause." },
+    { slug: "hfcs-alzheimers", name: "High Fructose Corn Syrup", reason: "Chronic high sugar intake is linked to insulin resistance in the brain, a mechanism increasingly studied as a contributor to Alzheimer's-related cognitive decline." },
+    { slug: "artificial-colors-alzheimers", name: "Artificial Colors", reason: "Research into whether some synthetic dyes can cross the blood-brain barrier and affect neural tissue is ongoing, though evidence specific to Alzheimer's risk is limited." },
   ];
 
   for (const ing of alzheimersIngredients) {
@@ -777,11 +777,11 @@ async function main() {
 
   // --- Epilepsy ---
   const epilepsyIngredients = [
-    { slug: "msg-epilepsy", name: "Monosodium Glutamate", reason: "Excitotoxin that may lower seizure threshold" },
-    { slug: "aspartame-epilepsy", name: "Aspartame", reason: "May trigger seizures in sensitive individuals" },
-    { slug: "food-dyes-epilepsy", name: "Artificial Colors", reason: "Some dyes may affect neurological function" },
-    { slug: "caffeine-epilepsy", name: "Caffeine", reason: "Can lower seizure threshold in high amounts" },
-    { slug: "sucralose-epilepsy", name: "Sucralose", reason: "May affect neural activity" },
+    { slug: "msg-epilepsy", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate can overexcite neurons, and some people with epilepsy report it lowers their seizure threshold, though rigorous controlled evidence in humans is limited." },
+    { slug: "aspartame-epilepsy", name: "Aspartame", reason: "Breaks down partly into aspartic acid, another excitatory amino acid; some individuals with epilepsy report increased seizure activity after consuming aspartame-sweetened products." },
+    { slug: "food-dyes-epilepsy", name: "Artificial Colors", reason: "Some synthetic dyes have been studied for effects on neuronal excitability, and a subset of people with epilepsy self-report certain dyes as a personal trigger." },
+    { slug: "caffeine-epilepsy", name: "Caffeine", reason: "High doses can overstimulate the central nervous system and have been documented to lower the seizure threshold in susceptible individuals." },
+    { slug: "sucralose-epilepsy", name: "Sucralose", reason: "Emerging research suggests non-nutritive sweeteners can affect neural signaling and gut-brain communication, an area of ongoing study for people with seizure disorders." },
   ];
 
   for (const ing of epilepsyIngredients) {
@@ -792,11 +792,11 @@ async function main() {
 
   // --- Multiple Sclerosis ---
   const msIngredients = [
-    { slug: "gluten-ms", name: "Gluten", reason: "May exacerbate autoimmune response in MS" },
-    { slug: "dairy-ms", name: "Dairy", reason: "Butyrophilin in dairy may trigger immune response" },
-    { slug: "saturated-fat-ms", name: "Saturated Fat", reason: "May promote inflammation in MS" },
-    { slug: "sugar-ms", name: "Refined Sugar", reason: "Promotes systemic inflammation" },
-    { slug: "artificial-sweeteners-ms", name: "Artificial Sweeteners", reason: "May affect gut microbiome and immune function" },
+    { slug: "gluten-ms", name: "Gluten", reason: "Some MS patients report symptom improvement on a gluten-free diet, and researchers have explored whether gluten-triggered intestinal permeability could influence the autoimmune activity driving MS." },
+    { slug: "dairy-ms", name: "Dairy", reason: "Dairy proteins share a structural similarity with myelin oligodendrocyte glycoprotein, a component of the myelin sheath MS attacks - a resemblance researchers have studied as a possible immune trigger, dubbed butyrophilin cross-reactivity." },
+    { slug: "saturated-fat-ms", name: "Saturated Fat", reason: "Cohort studies have associated diets high in saturated fat with more active MS lesions and faster disability progression, part of the reasoning behind low-saturated-fat approaches like the Swank diet." },
+    { slug: "sugar-ms", name: "Refined Sugar", reason: "Promotes the systemic inflammation that some studies have linked to more frequent MS relapses." },
+    { slug: "artificial-sweeteners-ms", name: "Artificial Sweeteners", reason: "Gut bacteria play a role in regulating immune function, and some non-nutritive sweeteners have been shown to alter that bacterial balance in ways researchers are still studying for MS relevance." },
   ];
 
   for (const ing of msIngredients) {
@@ -824,11 +824,11 @@ async function main() {
 
   // --- Peripheral Neuropathy ---
   const neuropathyIngredients = [
-    { slug: "msg-neuropathy", name: "Monosodium Glutamate", reason: "Excitotoxin that may worsen nerve damage" },
-    { slug: "artificial-sweeteners-neuropathy", name: "Artificial Sweeteners", reason: "May affect peripheral nerve function" },
-    { slug: "gluten-neuropathy", name: "Gluten", reason: "Gluten sensitivity linked to peripheral neuropathy" },
-    { slug: "sugar-neuropathy", name: "Refined Sugar", reason: "High blood sugar damages peripheral nerves" },
-    { slug: "trans-fats-neuropathy", name: "Trans Fats", reason: "Promotes inflammation that can worsen nerve damage" },
+    { slug: "msg-neuropathy", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate can overstimulate nerve receptors, a mechanism some researchers believe may aggravate the nerve pain and hypersensitivity of peripheral neuropathy." },
+    { slug: "artificial-sweeteners-neuropathy", name: "Artificial Sweeteners", reason: "Some non-nutritive sweeteners have been studied for effects on peripheral nerve signaling and gut-nerve interactions, though evidence specific to neuropathy remains preliminary." },
+    { slug: "gluten-neuropathy", name: "Gluten", reason: "Gluten sensitivity, including in people without confirmed celiac disease, has been linked in case studies to peripheral nerve damage that can improve on a gluten-free diet." },
+    { slug: "sugar-neuropathy", name: "Refined Sugar", reason: "Chronically high blood sugar is the leading cause of diabetic peripheral neuropathy, damaging small nerve fibers over time through a well-documented mechanism." },
+    { slug: "trans-fats-neuropathy", name: "Trans Fats", reason: "Promotes vascular inflammation that can impair blood flow to peripheral nerves, worsening the nerve damage underlying neuropathy." },
   ];
 
   for (const ing of neuropathyIngredients) {
@@ -870,12 +870,12 @@ async function main() {
 
   // --- Lupus ---
   const lupusIngredients = [
-    { slug: "alfalfa-lupus", name: "Alfalfa Sprouts", reason: "Contains L-canavanine which can trigger lupus flares" },
-    { slug: "garlic-lupus", name: "Garlic", reason: "May stimulate immune system and worsen lupus" },
-    { slug: "echinacea-lupus", name: "Echinacea", reason: "Immune stimulant that can trigger lupus flares" },
-    { slug: "sulfites-lupus", name: "Sulfites", reason: "Can trigger sensitivity reactions in lupus patients" },
-    { slug: "saturated-fat-lupus", name: "Saturated Fat", reason: "Promotes inflammation in autoimmune conditions" },
-    { slug: "trans-fats-lupus", name: "Trans Fats", reason: "Increases systemic inflammation" },
+    { slug: "alfalfa-lupus", name: "Alfalfa Sprouts", reason: "Contains L-canavanine, an amino acid documented in case reports to reactivate or worsen lupus symptoms by stimulating an already overactive immune system." },
+    { slug: "garlic-lupus", name: "Garlic", reason: "Contains compounds like allicin that stimulate immune activity, which some lupus patients find worsens flares of a condition already driven by excess immune response." },
+    { slug: "echinacea-lupus", name: "Echinacea", reason: "Marketed to 'boost' the immune system - exactly the mechanism that makes it risky in lupus, an autoimmune condition where excess immune activation drives disease flares." },
+    { slug: "sulfites-lupus", name: "Sulfites", reason: "Sulfite preservatives have been reported to trigger sensitivity reactions in some lupus patients, potentially compounding the photosensitivity and skin flares many already experience." },
+    { slug: "saturated-fat-lupus", name: "Saturated Fat", reason: "Diets high in saturated fat are linked to higher inflammatory markers, which can aggravate the systemic inflammation that defines a lupus flare." },
+    { slug: "trans-fats-lupus", name: "Trans Fats", reason: "Raises inflammatory markers and impairs blood vessel function, both especially relevant in lupus, which already carries an elevated risk of cardiovascular complications." },
   ];
 
   for (const ing of lupusIngredients) {
@@ -917,11 +917,11 @@ async function main() {
 
   // --- Anemia ---
   const anemiaIngredients = [
-    { slug: "calcium-anemia", name: "Calcium Carbonate", reason: "High calcium can block iron absorption" },
-    { slug: "tannins-anemia", name: "Tannins", reason: "Found in tea and wine, inhibit iron absorption" },
-    { slug: "phytates-anemia", name: "Phytic Acid", reason: "Found in grains, binds to iron and reduces absorption" },
-    { slug: "oxalates-anemia", name: "Oxalic Acid", reason: "Can reduce iron absorption" },
-    { slug: "caffeine-anemia", name: "Caffeine", reason: "Can interfere with iron absorption" },
+    { slug: "calcium-anemia", name: "Calcium Carbonate", reason: "Calcium competes with iron for the same absorption pathway in the small intestine, so a high-calcium supplement or meal taken alongside iron-rich food can significantly reduce how much iron the body actually absorbs." },
+    { slug: "tannins-anemia", name: "Tannins", reason: "Tannins in tea and wine bind to dietary iron in the gut, forming a compound the body can't absorb - drinking tea with an iron-rich meal can blunt iron uptake substantially." },
+    { slug: "phytates-anemia", name: "Phytic Acid", reason: "Found in whole grains, legumes, and nuts, phytic acid binds to non-heme iron in the gut and is one of the most well-documented dietary inhibitors of iron absorption." },
+    { slug: "oxalates-anemia", name: "Oxalic Acid", reason: "Found in foods like spinach and rhubarb, oxalic acid can bind iron in the digestive tract and reduce the amount that's actually absorbed into the bloodstream." },
+    { slug: "caffeine-anemia", name: "Caffeine", reason: "Compounds in coffee and tea, including caffeine and polyphenols, can reduce iron absorption by as much as half when consumed alongside an iron-rich meal." },
   ];
 
   for (const ing of anemiaIngredients) {
