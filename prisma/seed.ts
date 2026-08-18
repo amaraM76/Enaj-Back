@@ -144,12 +144,12 @@ async function main() {
 
   // --- Contact Dermatitis ---
   const contactDermatitisIngredients = [
-    { slug: "fragrance-cd", name: "Synthetic Fragrance", reason: "The most common allergen causing contact dermatitis" },
-    { slug: "nickel-cd", name: "Nickel", reason: "Common metal allergen that triggers contact dermatitis" },
-    { slug: "parabens-cd", name: "Parabens", reason: "Preservatives that commonly cause allergic contact dermatitis" },
-    { slug: "formaldehyde-cd", name: "Formaldehyde", reason: "Known sensitizer and irritant that triggers contact dermatitis" },
-    { slug: "sls-cd", name: "Sodium Lauryl Sulfate", reason: "Irritant that strips skin barrier and causes contact dermatitis" },
-    { slug: "rubber-cd", name: "Thiuram Mix", reason: "Rubber accelerator found in gloves, a common contact allergen" },
+    { slug: "fragrance-cd", name: "Synthetic Fragrance", reason: "Patch testing studies consistently identify fragrance mixes as the single most common cause of allergic contact dermatitis, since fragrance blends often contain dozens of individual sensitizing compounds under one label term." },
+    { slug: "nickel-cd", name: "Nickel", reason: "The most common metal allergen worldwide; once the immune system is sensitized to nickel, even brief skin contact can trigger a delayed, itchy rash 24-48 hours later." },
+    { slug: "parabens-cd", name: "Parabens", reason: "Well-documented preservative allergens, especially on skin that's already broken or irritated, where they're more likely to penetrate and trigger a sensitized immune reaction." },
+    { slug: "formaldehyde-cd", name: "Formaldehyde", reason: "A potent sensitizer and irritant on its own, and formaldehyde-releasing preservatives (which slowly release small amounts of it) are among the top allergens identified through dermatology patch testing." },
+    { slug: "sls-cd", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips protective oils from the skin's outer layer, making it easier for other allergens to penetrate and increasing the likelihood of an irritant reaction on its own." },
+    { slug: "rubber-cd", name: "Thiuram Mix", reason: "A rubber accelerator chemical used in latex gloves and elastic bands; it's one of the most frequently positive allergens on standard contact dermatitis patch test panels." },
   ]
   for (const ing of contactDermatitisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["contact-dermatitis"] } })
@@ -193,12 +193,12 @@ async function main() {
 
   // --- Gastritis ---
   const gastritisIngredients = [
-    { slug: "alcohol-gastritis", name: "Alcohol", reason: "Directly irritates the stomach lining and worsens gastritis" },
-    { slug: "caffeine-gastritis", name: "Caffeine", reason: "Stimulates acid production, irritating an inflamed stomach" },
-    { slug: "citric-acid-gastritis", name: "Citric Acid", reason: "Acidic ingredient that can aggravate gastritis symptoms" },
-    { slug: "capsaicin-gastritis", name: "Capsaicin", reason: "Spicy compounds irritate the stomach lining in gastritis" },
-    { slug: "artificial-sweeteners-gastritis", name: "Artificial Sweeteners", reason: "May disrupt gut bacteria and irritate the stomach" },
-    { slug: "vinegar-gastritis", name: "Vinegar", reason: "High acidity irritates an already inflamed stomach lining" },
+    { slug: "alcohol-gastritis", name: "Alcohol", reason: "Directly damages the protective mucus layer of the stomach and increases acid secretion, a combination that can erode an already inflamed lining and raise ulcer risk." },
+    { slug: "caffeine-gastritis", name: "Caffeine", reason: "Stimulates the stomach to secrete more acid, which can further irritate a lining that's already inflamed and slower to heal in gastritis." },
+    { slug: "citric-acid-gastritis", name: "Citric Acid", reason: "Its high acidity can directly irritate an inflamed stomach lining and lower the overall pH of stomach contents, worsening discomfort during a gastritis flare." },
+    { slug: "capsaicin-gastritis", name: "Capsaicin", reason: "The compound responsible for chili heat directly stimulates pain receptors in the stomach lining, which can intensify the burning and discomfort of gastritis even though it doesn't damage tissue in most people." },
+    { slug: "artificial-sweeteners-gastritis", name: "Artificial Sweeteners", reason: "Some non-nutritive sweeteners have been shown to shift gut bacteria balance, a change that may compound the digestive irritation already present in gastritis." },
+    { slug: "vinegar-gastritis", name: "Vinegar", reason: "Highly acidic and capable of directly irritating a stomach lining that's already inflamed, often worsening the burning sensation associated with gastritis." },
   ]
   for (const ing of gastritisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["gastritis"] } })
@@ -206,10 +206,10 @@ async function main() {
 
   // --- Diverticulosis ---
   const diverticulosisIngredients = [
-    { slug: "red-meat-diver", name: "Red Meat", reason: "High red meat consumption is associated with increased diverticulosis risk" },
-    { slug: "refined-grains-diver", name: "Refined Grains", reason: "Low-fiber refined grains slow digestion and increase diverticulosis risk" },
-    { slug: "seed-oils-diver", name: "Seed Oils", reason: "Excess omega-6 from seed oils may promote gut inflammation in diverticulosis" },
-    { slug: "artificial-sweeteners-diver", name: "Artificial Sweeteners", reason: "May disrupt gut microbiome contributing to diverticulosis flares" },
+    { slug: "red-meat-diver", name: "Red Meat", reason: "Large prospective studies, including one published in the journal Gut, have linked high red meat consumption to increased diverticulosis risk, possibly through its effects on gut bacteria and inflammation." },
+    { slug: "refined-grains-diver", name: "Refined Grains", reason: "Low in fiber compared to whole grains, refined grains produce smaller, harder stools that require more pressure to pass - the same colon pressure thought to drive pouch formation in diverticulosis." },
+    { slug: "seed-oils-diver", name: "Seed Oils", reason: "Diets high in omega-6 fats from seed oils skew the body toward producing more pro-inflammatory compounds, which may contribute to the gut inflammation associated with diverticular flares." },
+    { slug: "artificial-sweeteners-diver", name: "Artificial Sweeteners", reason: "Some non-nutritive sweeteners have been shown to alter the gut microbiome, a shift some researchers believe could influence diverticular disease activity." },
   ]
   for (const ing of diverticulosisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diverticulosis"] } })
