@@ -467,12 +467,12 @@ async function main() {
 
   // --- Celiac ---
   const celiacIngredients = [
-    { slug: "gluten", name: "Gluten", reason: "Triggers autoimmune response in celiac disease" },
-    { slug: "wheat", name: "Wheat", reason: "Contains gluten" },
-    { slug: "barley", name: "Barley", reason: "Contains gluten" },
-    { slug: "rye", name: "Rye", reason: "Contains gluten" },
-    { slug: "malt", name: "Malt", reason: "Derived from barley, contains gluten" },
-    { slug: "brewers-yeast", name: "Brewer's Yeast", reason: "Often contains gluten" },
+    { slug: "gluten", name: "Gluten", reason: "Directly triggers the autoimmune response that damages the small intestine's lining in celiac disease, even in trace amounts." },
+    { slug: "wheat", name: "Wheat", reason: "The most common dietary source of gluten; wheat's gliadin protein is what the immune system reacts to in celiac disease." },
+    { slug: "barley", name: "Barley", reason: "Contains hordein, a gluten protein that triggers the same autoimmune intestinal damage as wheat gluten in celiac disease." },
+    { slug: "rye", name: "Rye", reason: "Contains secalin, a gluten protein structurally similar to wheat gluten that can trigger celiac's autoimmune response." },
+    { slug: "malt", name: "Malt", reason: "Usually derived from barley, so malt and malt extract carry gluten proteins unless specifically labeled gluten-free." },
+    { slug: "brewers-yeast", name: "Brewer's Yeast", reason: "Often cultured on a barley or wheat substrate, so it can carry gluten residue even though yeast itself is gluten-free." },
   ];
 
   for (const ing of celiacIngredients) {
@@ -511,16 +511,16 @@ async function main() {
 
   // --- Nut Allergy ---
   const nutAllergyIngredients = [
-    { slug: "peanuts", name: "Peanuts", reason: "Common nut allergen" },
-    { slug: "almonds", name: "Almonds", reason: "Tree nut allergen" },
-    { slug: "cashews", name: "Cashews", reason: "Tree nut allergen" },
-    { slug: "walnuts", name: "Walnuts", reason: "Tree nut allergen" },
-    { slug: "pecans", name: "Pecans", reason: "Tree nut allergen" },
-    { slug: "pistachios", name: "Pistachios", reason: "Tree nut allergen" },
-    { slug: "macadamia", name: "Macadamia Nuts", reason: "Tree nut allergen" },
-    { slug: "hazelnuts", name: "Hazelnuts", reason: "Tree nut allergen" },
-    { slug: "brazil-nuts", name: "Brazil Nuts", reason: "Tree nut allergen" },
-    { slug: "pine-nuts", name: "Pine Nuts", reason: "Tree nut allergen" },
+    { slug: "peanuts", name: "Peanuts", reason: "A legume rather than a true tree nut, but one of the most common food allergens and a frequent cause of severe, potentially life-threatening reactions." },
+    { slug: "almonds", name: "Almonds", reason: "A tree nut allergen; proteins in almonds can trigger reactions ranging from hives and swelling to anaphylaxis." },
+    { slug: "cashews", name: "Cashews", reason: "A tree nut allergen closely related to pistachios, and among the tree nuts most associated with severe allergic reactions." },
+    { slug: "walnuts", name: "Walnuts", reason: "A tree nut allergen that frequently cross-reacts with pecans due to their close botanical relation." },
+    { slug: "pecans", name: "Pecans", reason: "A tree nut allergen closely related to walnuts; people allergic to one often react to the other." },
+    { slug: "pistachios", name: "Pistachios", reason: "A tree nut allergen closely related to cashews; cross-reactivity between the two is common." },
+    { slug: "macadamia", name: "Macadamia Nuts", reason: "A tree nut allergen; less common than other tree nut allergies, but reactions can still be severe." },
+    { slug: "hazelnuts", name: "Hazelnuts", reason: "A tree nut allergen widely used in chocolate and baked goods, which makes accidental exposure especially common." },
+    { slug: "brazil-nuts", name: "Brazil Nuts", reason: "A tree nut allergen containing potent seed storage proteins that can trigger reactions even in small amounts." },
+    { slug: "pine-nuts", name: "Pine Nuts", reason: "Technically a seed rather than a true tree nut, but commonly grouped with tree nut allergens and capable of triggering similar reactions." },
   ];
 
   for (const ing of nutAllergyIngredients) {
@@ -531,21 +531,21 @@ async function main() {
 
   // --- Dairy Allergy ---
   const dairyAllergyIngredients = [
-    { slug: "milk-dairy", name: "Milk", reason: "Contains dairy" },
-    { slug: "cream-dairy", name: "Cream", reason: "Contains dairy" },
-    { slug: "butter-dairy", name: "Butter", reason: "Contains dairy" },
-    { slug: "butterfat-dairy", name: "Butterfat", reason: "Contains dairy" },
-    { slug: "cheese-dairy", name: "Cheese", reason: "Contains dairy" },
-    { slug: "casein-dairy", name: "Casein", reason: "Dairy-derived protein" },
-    { slug: "caseinate-dairy", name: "Caseinate", reason: "Dairy-derived protein" },
-    { slug: "whey-dairy", name: "Whey", reason: "Dairy-derived protein" },
-    { slug: "lactose-dairy", name: "Lactose", reason: "Milk sugar" },
-    { slug: "lactalbumin-dairy", name: "Lactalbumin", reason: "Dairy-derived protein" },
-    { slug: "lactoglobulin-dairy", name: "Lactoglobulin", reason: "Dairy-derived protein" },
-    { slug: "milk-solids-dairy", name: "Milk Solids", reason: "Contains dairy" },
-    { slug: "milk-powder-dairy", name: "Milk Powder", reason: "Contains dairy" },
-    { slug: "yogurt-dairy", name: "Yogurt", reason: "Contains dairy" },
-    { slug: "ghee-dairy", name: "Ghee", reason: "Clarified butter, contains dairy" },
+    { slug: "milk-dairy", name: "Milk", reason: "Contains the casein and whey proteins responsible for milk allergy reactions, plus lactose for those with lactose intolerance." },
+    { slug: "cream-dairy", name: "Cream", reason: "A milk-derived product that carries the same casein and whey proteins that trigger milk allergy reactions." },
+    { slug: "butter-dairy", name: "Butter", reason: "Made from milk fat, but can retain trace casein and whey - enough to trigger a reaction in highly milk-allergic individuals." },
+    { slug: "butterfat-dairy", name: "Butterfat", reason: "The fat portion of milk, which can carry residual milk proteins capable of triggering a reaction in those with milk allergy." },
+    { slug: "cheese-dairy", name: "Cheese", reason: "Made by concentrating milk proteins, so it carries a high concentration of the casein responsible for most milk allergy reactions." },
+    { slug: "casein-dairy", name: "Casein", reason: "The primary milk protein and one of the two main triggers, along with whey, of true milk allergy reactions." },
+    { slug: "caseinate-dairy", name: "Caseinate", reason: "A processed form of casein, such as sodium or calcium caseinate, used as an additive that still carries the allergenic milk protein." },
+    { slug: "whey-dairy", name: "Whey", reason: "One of the two primary milk proteins, along with casein, responsible for milk allergy reactions; common in protein powders and baked goods." },
+    { slug: "lactose-dairy", name: "Lactose", reason: "Milk sugar rather than a protein, so it doesn't trigger a true allergic reaction, but it is what causes symptoms in lactose intolerance." },
+    { slug: "lactalbumin-dairy", name: "Lactalbumin", reason: "A whey protein fraction of milk that can trigger a reaction in people allergic to milk proteins." },
+    { slug: "lactoglobulin-dairy", name: "Lactoglobulin", reason: "The major whey protein in cow's milk and a common trigger of milk allergy reactions." },
+    { slug: "milk-solids-dairy", name: "Milk Solids", reason: "Concentrated milk proteins and sugars, including casein and lactose, that can trigger both milk allergy and lactose intolerance." },
+    { slug: "milk-powder-dairy", name: "Milk Powder", reason: "Dehydrated milk that retains its full protein and lactose content, carrying the same allergy and intolerance risk as liquid milk." },
+    { slug: "yogurt-dairy", name: "Yogurt", reason: "A fermented milk product; fermentation reduces lactose somewhat, but the casein and whey proteins remain and can still trigger milk allergy." },
+    { slug: "ghee-dairy", name: "Ghee", reason: "Clarified butter with most milk solids removed, but trace casein can remain - potentially enough to trigger a reaction in highly sensitive individuals." },
   ];
 
   for (const ing of dairyAllergyIngredients) {
@@ -556,17 +556,17 @@ async function main() {
 
   // --- Soy Allergy ---
   const soyAllergyIngredients = [
-    { slug: "soy-allergy", name: "Soy", reason: "Contains soy" },
-    { slug: "soybean-allergy", name: "Soybean", reason: "Contains soy" },
-    { slug: "soy-lecithin-allergy", name: "Soy Lecithin", reason: "Soy-derived emulsifier" },
-    { slug: "soy-protein-allergy", name: "Soy Protein", reason: "Contains soy" },
-    { slug: "soy-flour-allergy", name: "Soy Flour", reason: "Contains soy" },
-    { slug: "soybean-oil-allergy", name: "Soybean Oil", reason: "Soy-derived oil" },
-    { slug: "tofu-allergy", name: "Tofu", reason: "Soy-based product" },
-    { slug: "tempeh-allergy", name: "Tempeh", reason: "Soy-based product" },
-    { slug: "miso-allergy", name: "Miso", reason: "Soy-based product" },
-    { slug: "edamame-allergy", name: "Edamame", reason: "Soy-based product" },
-    { slug: "hydrolyzed-soy-allergy", name: "Hydrolyzed Soy Protein", reason: "Soy-derived" },
+    { slug: "soy-allergy", name: "Soy", reason: "Soy protein is one of the most common food allergens and can trigger reactions ranging from mild hives to anaphylaxis." },
+    { slug: "soybean-allergy", name: "Soybean", reason: "The whole legume that soy allergens derive from, containing the storage proteins responsible for most soy allergy reactions." },
+    { slug: "soy-lecithin-allergy", name: "Soy Lecithin", reason: "A soy-derived emulsifier; manufacturing removes most of the protein, but trace amounts can still trigger a reaction in highly sensitive individuals." },
+    { slug: "soy-protein-allergy", name: "Soy Protein", reason: "A concentrated or isolated soy protein additive that carries the same allergenic proteins responsible for soy allergy." },
+    { slug: "soy-flour-allergy", name: "Soy Flour", reason: "Ground whole soybeans, retaining the full protein content responsible for soy allergy reactions." },
+    { slug: "soybean-oil-allergy", name: "Soybean Oil", reason: "Highly refined soybean oil typically contains only trace protein, but cold-pressed or unrefined versions can carry more." },
+    { slug: "tofu-allergy", name: "Tofu", reason: "Made from soy protein curds, so it carries the full allergenic protein load of soybeans." },
+    { slug: "tempeh-allergy", name: "Tempeh", reason: "A fermented whole-soybean product; fermentation doesn't eliminate the proteins responsible for soy allergic reactions." },
+    { slug: "miso-allergy", name: "Miso", reason: "A fermented soybean paste that retains soy allergens even after the fermentation process." },
+    { slug: "edamame-allergy", name: "Edamame", reason: "Whole immature soybeans, carrying the same allergenic proteins as mature soybeans." },
+    { slug: "hydrolyzed-soy-allergy", name: "Hydrolyzed Soy Protein", reason: "Soy protein broken down into smaller peptides for use as a flavor enhancer or filler; can still trigger a reaction in soy-allergic individuals." },
   ];
 
   for (const ing of soyAllergyIngredients) {
@@ -577,21 +577,21 @@ async function main() {
 
   // --- Gluten Intolerance ---
   const glutenIntoleranceIngredients = [
-    { slug: "wheat-gluten", name: "Wheat", reason: "Contains gluten" },
-    { slug: "barley-gluten", name: "Barley", reason: "Contains gluten" },
-    { slug: "rye-gluten", name: "Rye", reason: "Contains gluten" },
-    { slug: "spelt-gluten", name: "Spelt", reason: "Contains gluten" },
-    { slug: "kamut-gluten", name: "Kamut", reason: "Contains gluten" },
-    { slug: "triticale-gluten", name: "Triticale", reason: "Contains gluten" },
-    { slug: "semolina-gluten", name: "Semolina", reason: "Wheat-derived, contains gluten" },
-    { slug: "durum-gluten", name: "Durum", reason: "Wheat-derived, contains gluten" },
-    { slug: "wheat-flour-gluten", name: "Wheat Flour", reason: "Contains gluten" },
-    { slug: "wheat-starch-gluten", name: "Wheat Starch", reason: "May contain gluten" },
-    { slug: "barley-malt-gluten", name: "Barley Malt Extract", reason: "Contains gluten" },
-    { slug: "gluten-gluten", name: "Gluten", reason: "Contains gluten" },
-    { slug: "seitan-gluten", name: "Seitan", reason: "Pure wheat gluten" },
-    { slug: "couscous-gluten", name: "Couscous", reason: "Wheat-based, contains gluten" },
-    { slug: "bulgur-gluten", name: "Bulgur", reason: "Wheat-based, contains gluten" },
+    { slug: "wheat-gluten", name: "Wheat", reason: "The most common source of dietary gluten; its gliadin protein is what triggers digestive and systemic symptoms in gluten sensitivity." },
+    { slug: "barley-gluten", name: "Barley", reason: "Contains hordein, a gluten protein that can trigger the same digestive and inflammatory symptoms as wheat gluten." },
+    { slug: "rye-gluten", name: "Rye", reason: "Contains secalin, a gluten protein similar to wheat gluten, commonly found in rye bread and crackers." },
+    { slug: "spelt-gluten", name: "Spelt", reason: "An ancient wheat variety that still contains gluten, despite sometimes being marketed as easier to digest." },
+    { slug: "kamut-gluten", name: "Kamut", reason: "An ancient wheat relative that contains gluten and can trigger the same symptoms as modern wheat." },
+    { slug: "triticale-gluten", name: "Triticale", reason: "A wheat-rye hybrid grain that carries gluten from both parent grains." },
+    { slug: "semolina-gluten", name: "Semolina", reason: "Milled from durum wheat, so it carries the full gluten content of wheat; common in pasta." },
+    { slug: "durum-gluten", name: "Durum", reason: "A high-gluten wheat variety used mainly in pasta, and one of the more concentrated dietary gluten sources." },
+    { slug: "wheat-flour-gluten", name: "Wheat Flour", reason: "Ground wheat retains its full gluten content, making it one of the most common hidden sources of gluten in processed foods." },
+    { slug: "wheat-starch-gluten", name: "Wheat Starch", reason: "Most gluten protein is removed during processing, but residual amounts can remain unless the product is specifically labeled gluten-free." },
+    { slug: "barley-malt-gluten", name: "Barley Malt Extract", reason: "Derived from barley, so it carries gluten and is a common hidden source in cereals, candy, and flavored snacks." },
+    { slug: "gluten-gluten", name: "Gluten", reason: "The general term for the wheat, barley, and rye proteins responsible for digestive and systemic symptoms in gluten sensitivity." },
+    { slug: "seitan-gluten", name: "Seitan", reason: "Made almost entirely of concentrated wheat gluten, making it one of the highest-gluten foods commonly eaten." },
+    { slug: "couscous-gluten", name: "Couscous", reason: "Made from semolina wheat, so it carries a significant gluten content despite its small, grain-like appearance." },
+    { slug: "bulgur-gluten", name: "Bulgur", reason: "A cracked wheat product that retains the full gluten content of the wheat kernel." },
   ];
 
   for (const ing of glutenIntoleranceIngredients) {
