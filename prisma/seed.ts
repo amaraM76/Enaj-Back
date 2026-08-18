@@ -443,12 +443,12 @@ async function main() {
 
   // --- Eczema ---
   const eczemaIngredients = [
-    { slug: "fragrance-eczema", name: "Artificial Fragrance", reason: "Common irritant for eczema", sources: [{ title: "National Eczema Association - Ingredients to Avoid", url: "https://nationaleczema.org/eczema-products/" }] },
-    { slug: "parabens-eczema", name: "Parabens", reason: "Can trigger eczema flare-ups", sources: [{ title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
-    { slug: "sls-eczema", name: "Sodium Lauryl Sulfate", reason: "Strips natural oils from skin", sources: [{ title: "National Eczema Association - SLS and Eczema", url: "https://nationaleczema.org/eczema-products/" }] },
-    { slug: "coconut-oil-eczema", name: "Coconut Oil", reason: "Can clog pores and worsen eczema for some", sources: [] },
-    { slug: "lanolin", name: "Lanolin", reason: "Common allergen for eczema sufferers", sources: [{ title: "DermNet NZ - Lanolin Allergy", url: "https://dermnetnz.org/topics/lanolin-allergy" }] },
-    { slug: "propylene-glycol", name: "Propylene Glycol", reason: "Can cause contact dermatitis", sources: [] },
+    { slug: "fragrance-eczema", name: "Artificial Fragrance", reason: "One of the most frequently reported eczema triggers - fragrance chemicals can penetrate an already-compromised skin barrier and set off an inflammatory flare.", sources: [{ title: "National Eczema Association - Ingredients to Avoid", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "parabens-eczema", name: "Parabens", reason: "Preservatives that some people with eczema find irritating to already-sensitized skin, though the reaction is less common than with fragrance.", sources: [{ title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "sls-eczema", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the skin's natural oils and disrupts the already-weakened eczema skin barrier, worsening dryness and itching.", sources: [{ title: "National Eczema Association - SLS and Eczema", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "coconut-oil-eczema", name: "Coconut Oil", reason: "Moisturizing for some, but its comedogenic (pore-clogging) properties and lauric acid content can worsen eczema in others - individual tolerance varies widely.", sources: [{ title: "National Eczema Association - Natural Oils", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "lanolin", name: "Lanolin", reason: "Derived from sheep's wool wax and one of the more common contact allergens in people with eczema, despite being marketed as a gentle moisturizer.", sources: [{ title: "DermNet NZ - Lanolin Allergy", url: "https://dermnetnz.org/topics/lanolin-allergy" }] },
+    { slug: "propylene-glycol", name: "Propylene Glycol", reason: "A common humectant and solvent that is one of the more frequently identified contact allergens in patch testing for eczema and contact dermatitis.", sources: [{ title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
   ];
 
   for (const ing of eczemaIngredients) {
@@ -483,9 +483,9 @@ async function main() {
 
   // --- Asthma ---
   const asthmaIngredients = [
-    { slug: "sulfites-asthma", name: "Sulfites", reason: "Common asthma trigger" },
-    { slug: "artificial-colors-asthma", name: "Artificial Colors", reason: "May trigger asthma symptoms" },
-    { slug: "benzoates", name: "Benzoates", reason: "Can worsen asthma symptoms" },
+    { slug: "sulfites-asthma", name: "Sulfites", reason: "A well-documented asthma trigger - sulfite preservatives release sulfur dioxide gas that can irritate the airways and provoke bronchospasm in sulfite-sensitive asthmatics." },
+    { slug: "artificial-colors-asthma", name: "Artificial Colors", reason: "Some synthetic dyes, particularly tartrazine (Yellow 5), have been reported to trigger asthma symptoms in a subset of sensitive individuals." },
+    { slug: "benzoates", name: "Benzoates", reason: "Preservatives like sodium benzoate can trigger bronchospasm in aspirin-sensitive asthmatics and are sometimes grouped with sulfites as a food-additive respiratory trigger." },
   ];
 
   for (const ing of asthmaIngredients) {
@@ -496,11 +496,11 @@ async function main() {
 
   // --- IBS ---
   const ibsIngredients = [
-    { slug: "artificial-sweeteners-ibs", name: "Artificial Sweeteners", reason: "Can trigger IBS symptoms" },
-    { slug: "high-fructose", name: "High Fructose Corn Syrup", reason: "FODMAPs trigger for IBS" },
-    { slug: "sorbitol", name: "Sorbitol", reason: "Sugar alcohol that can cause digestive distress" },
-    { slug: "inulin", name: "Inulin", reason: "High FODMAP ingredient" },
-    { slug: "lactose", name: "Lactose", reason: "Common trigger for IBS symptoms" },
+    { slug: "artificial-sweeteners-ibs", name: "Artificial Sweeteners", reason: "Sugar alcohols and some non-nutritive sweeteners are poorly absorbed in the small intestine and can ferment in the gut, drawing in water and gas that trigger IBS bloating and cramping." },
+    { slug: "high-fructose", name: "High Fructose Corn Syrup", reason: "A high-FODMAP sweetener - excess fructose that isn't fully absorbed reaches the colon, where gut bacteria ferment it and produce the gas and bloating typical of an IBS flare." },
+    { slug: "sorbitol", name: "Sorbitol", reason: "A sugar alcohol that the gut absorbs slowly and incompletely; the unabsorbed portion ferments in the colon and has a laxative effect, commonly triggering IBS diarrhea and cramping." },
+    { slug: "inulin", name: "Inulin", reason: "A high-FODMAP prebiotic fiber that resists digestion and is rapidly fermented by colon bacteria, a common source of the gas and bloating that trigger IBS symptoms." },
+    { slug: "lactose", name: "Lactose", reason: "Many people with IBS also have some degree of lactose malabsorption, so undigested lactose ferments in the colon and can trigger classic IBS symptoms like bloating and diarrhea." },
   ];
 
   for (const ing of ibsIngredients) {
@@ -807,13 +807,13 @@ async function main() {
 
   // --- Chronic Migraines ---
   const migraineIngredients = [
-    { slug: "msg-migraines", name: "Monosodium Glutamate", reason: "Common migraine trigger" },
-    { slug: "nitrates-migraines", name: "Sodium Nitrite", reason: "Vasodilator that can trigger migraines" },
-    { slug: "artificial-sweeteners-migraines", name: "Aspartame", reason: "Frequently reported migraine trigger" },
-    { slug: "tyramine-migraines", name: "Tyramine", reason: "Found in aged foods, common migraine trigger" },
-    { slug: "sulfites-migraines", name: "Sulfites", reason: "Can trigger migraines in sensitive individuals" },
-    { slug: "caffeine-migraines", name: "Caffeine", reason: "Can trigger migraines, especially during withdrawal" },
-    { slug: "phenylethylamine-migraines", name: "Chocolate", reason: "Contains phenylethylamine, a known migraine trigger" },
+    { slug: "msg-migraines", name: "Monosodium Glutamate", reason: "One of the most frequently self-reported migraine triggers - some researchers believe MSG can affect blood vessels and nerve signaling in susceptible people, though evidence is mixed." },
+    { slug: "nitrates-migraines", name: "Sodium Nitrite", reason: "A vasodilator (widens blood vessels) used in cured and processed meats; the resulting change in blood flow is a well-documented migraine trigger sometimes called 'hot dog headache.'" },
+    { slug: "artificial-sweeteners-migraines", name: "Aspartame", reason: "One of the most frequently reported dietary migraine triggers in patient surveys, though controlled studies on the mechanism have produced mixed results." },
+    { slug: "tyramine-migraines", name: "Tyramine", reason: "A compound that builds up in aged, fermented, and cured foods; it can affect blood vessel tone and is a well-established migraine trigger, especially for those on certain medications." },
+    { slug: "sulfites-migraines", name: "Sulfites", reason: "Preservatives common in wine and dried fruit that can trigger migraines in sensitive individuals, likely through a vascular or histamine-related mechanism." },
+    { slug: "caffeine-migraines", name: "Caffeine", reason: "Can trigger a migraine directly in some people, but is more often a problem in withdrawal - a missed dose causes blood vessels to dilate rebound-style, setting off a headache." },
+    { slug: "phenylethylamine-migraines", name: "Chocolate", reason: "Contains phenylethylamine and some caffeine-like compounds that can affect blood vessels and neurotransmitter levels, making chocolate a commonly reported migraine trigger." },
   ];
 
   for (const ing of migraineIngredients) {
