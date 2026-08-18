@@ -1186,6 +1186,66 @@ export interface PreferenceEducation {
         { title: 'Healthline - Polysorbate 80', url: 'https://www.healthline.com/nutrition/polysorbate-80' },
       ],
     },
+    'no-alcohol-skin': {
+      whatItIs: 'Alcohol in skin products generally refers to short-chain "drying" alcohols like SD alcohol, denatured alcohol, alcohol denat, isopropyl alcohol, and ethanol, added to help formulas feel lightweight, dissolve other ingredients, and evaporate quickly. This is different from fatty alcohols (cetyl, stearyl, cetearyl alcohol), which are moisturizing and generally well tolerated even by people avoiding drying alcohol.',
+      commonlyFoundIn: ['Toners and astringents', 'Acne spot treatments', 'Hand sanitizers', 'Setting sprays', 'Some serums and lightweight moisturizers', 'Aftershaves', 'Hair sprays and styling products', 'Perfume and cologne bases'],
+      whyPeopleAvoid: 'Drying alcohols evaporate quickly and can strip the skin\'s natural lipid barrier with repeated use, leading to dryness, flaking, and increased sensitivity over time. Some people with eczema, rosacea, or perioral dermatitis choose to avoid alcohol in skin products because it can worsen redness and irritation, and dermatologists note that compromising the skin barrier can make other irritants penetrate more easily. Occasional or low-concentration use in a well-formulated product isn\'t necessarily a problem for everyone, but those with reactive or already-dry skin often prefer to avoid it altogether.',
+      sources: [
+        { title: 'AAD - Rosacea Triggers', url: 'https://www.aad.org/public/diseases/rosacea/triggers/find' },
+        { title: 'Paula\'s Choice - Alcohol in Skincare', url: 'https://www.paulaschoice.com/expert-advice/skincare-advice/basic-skin-care-tips/alcohol-in-skincare-the-facts.html' },
+        { title: 'Cleveland Clinic - Skin Barrier', url: 'https://health.clevelandclinic.org/skin-barrier' },
+      ],
+    },
+    'no-gums-fillers': {
+      whatItIs: 'Gums and fillers are additives used to thicken, stabilize, or bulk up a product without changing its core function. In food, common gums include xanthan gum, guar gum, carrageenan, locust bean gum, and cellulose gum; in supplements, fillers like maltodextrin, magnesium stearate, and rice flour are used to bind capsules or tablets and add volume.',
+      commonlyFoundIn: ['Ice cream and frozen desserts', 'Non-dairy milks', 'Gluten-free baked goods', 'Salad dressings and sauces', 'Yogurt', 'Protein powders and shakes', 'Capsule and tablet supplements', 'Processed and packaged foods'],
+      whyPeopleAvoid: 'Some people experience bloating, gas, or digestive discomfort from gums, particularly carrageenan, which animal studies have linked to gut inflammation, and people with IBS or other sensitive digestive systems often notice these effects most. Fillers in supplements can dilute the active ingredient per dose and occasionally introduce allergens (like wheat-derived fillers) that aren\'t obvious from the product name. Many people who prefer simpler, less-processed ingredient lists choose to avoid gums and fillers as a general rule rather than reacting to one specific compound.',
+      sources: [
+        { title: 'NIH - Carrageenan and Gut Health', url: 'https://pubmed.ncbi.nlm.nih.gov/28028998/' },
+        { title: 'Healthline - Common Food Gums', url: 'https://www.healthline.com/nutrition/xanthan-gum' },
+        { title: 'ConsumerLab - Supplement Fillers and Additives', url: 'https://www.consumerlab.com/answers/what-are-common-fillers-additives-in-supplements/supplement-additives/' },
+      ],
+    },
+    'vegan-beauty': {
+      whatItIs: 'Vegan beauty products are formulated without any animal-derived ingredients — not just the obvious ones like collagen or carmine (a red dye from crushed insects), but also less obvious ones like lanolin (from sheep wool), beeswax, honey, keratin, and squalene when sourced from shark liver rather than plants. Vegan is a claim about ingredients, which is distinct from "cruelty-free," a claim about animal testing — a product can be one without being the other.',
+      commonlyFoundIn: ['Lipsticks and lip balms (carmine, lanolin, beeswax)', 'Moisturizers and creams (collagen, squalene, honey)', 'Shampoos and conditioners (keratin, silk protein)', 'Nail polish (guanine, a pearlescent ingredient from fish scales)', 'Mascara (beeswax, carmine)', 'Soaps (tallow, goat milk)'],
+      whyPeopleAvoid: 'People choose vegan beauty products primarily for ethical reasons around animal welfare, since many animal-derived cosmetic ingredients are byproducts of farming practices they\'d rather not support, and secondarily for environmental reasons, as animal agriculture has a larger land and water footprint than plant-based ingredient sourcing. Some also choose vegan formulas expecting they\'ll be gentler or less likely to trigger allergic reactions, though that isn\'t guaranteed — plant-derived ingredients can be irritating too, so it\'s worth checking a full ingredient list rather than relying on the vegan label alone.',
+      sources: [
+        { title: 'The Vegan Society - Definition of Veganism', url: 'https://www.vegansociety.com/go-vegan/definition-veganism' },
+        { title: 'PETA - Animal Ingredients Resource', url: 'https://www.peta.org/living/food/animal-ingredients-list/' },
+        { title: 'FDA - Cosmetic Labeling Claims', url: 'https://www.fda.gov/cosmetics/cosmetics-labeling/cosmetics-labeling-claims' },
+      ],
+    },
+    'no-high-fructose': {
+      whatItIs: 'High-fructose corn syrup (HFCS) is a liquid sweetener made from corn starch that has been enzymatically processed to convert much of its glucose into fructose, typically to a 55% fructose / 45% glucose blend for beverages. It became the dominant sweetener in American processed foods and drinks starting in the 1970s and 1980s because it\'s cheaper and easier to transport and blend into liquids than table sugar.',
+      commonlyFoundIn: ['Soft drinks and sodas', 'Fruit juices and juice drinks', 'Candy', 'Bread and baked goods', 'Ketchup and condiments', 'Breakfast cereals', 'Flavored yogurt', 'Salad dressings'],
+      whyPeopleAvoid: 'Because HFCS is nearly always found in ultra-processed foods and sweetened beverages, higher intake is associated with weight gain, higher triglycerides, and increased risk of type 2 diabetes and metabolic syndrome in observational studies. Fructose is metabolized differently than glucose — mostly in the liver — and consuming large amounts in liquid form (as in soda) doesn\'t trigger the same fullness signals as solid food, which researchers believe makes it easy to overconsume. Whether HFCS itself is meaningfully worse than an equivalent amount of table sugar is still debated, but many people avoid it as a simple marker of a highly processed product and as part of reducing total added sugar.',
+      sources: [
+        { title: 'Harvard Health - The Sweet Danger of Sugar', url: 'https://www.health.harvard.edu/heart-health/the-sweet-danger-of-sugar' },
+        { title: 'Mayo Clinic - High-Fructose Corn Syrup FAQ', url: 'https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/high-fructose-corn-syrup/faq-20058201' },
+        { title: 'CDC - Get the Facts on Added Sugars', url: 'https://www.cdc.gov/nutrition/php/data-research/added-sugars.html' },
+      ],
+    },
+    'animal-cruelty-free': {
+      whatItIs: 'This preference combines two related but distinct ideas: "cruelty-free," meaning the finished product and its individual ingredients were not tested on animals at any stage, and being free of animal-derived ingredients entirely (the vegan standard). A product needs to meet both to satisfy this preference — a brand can be cruelty-free but still use ingredients like beeswax or carmine, or be fully vegan but still test on animals where required by certain regulators, such as in mainland China for some product categories.',
+      commonlyFoundIn: ['Cosmetics and makeup', 'Skincare and moisturizers', 'Haircare products', 'Household cleaners', 'Personal care items (soap, deodorant)', 'Candles and fragrance products'],
+      whyPeopleAvoid: 'People seek products that are both animal-testing-free and free of animal-derived ingredients primarily out of concern for animal welfare, since standard toxicology testing on animals (skin and eye irritation tests, for example) can cause significant animal suffering and modern in-vitro and computer-modeling alternatives now exist for most of it. Many countries and the EU have banned cosmetic animal testing outright, and consumer demand has pushed a growing number of brands toward third-party certifications like Leaping Bunny that verify both the product and its ingredient suppliers avoid animal testing.',
+      sources: [
+        { title: 'Leaping Bunny - Certification Standard', url: 'https://www.leapingbunny.org/about/the-standard' },
+        { title: 'Humane Society International - Animal Testing FAQ', url: 'https://www.hsi.org/news-media/cosmetics-animal-testing-faq/' },
+        { title: 'PETA - Animal Ingredients Resource', url: 'https://www.peta.org/living/food/animal-ingredients-list/' },
+      ],
+    },
+    'eco-packaging': {
+      whatItIs: 'Eco-friendly packaging refers to materials and designs chosen to reduce environmental impact — recyclable or compostable materials (paper, glass, aluminum, certain bioplastics), reduced or minimal packaging overall, refillable containers, and packaging free of materials like PVC or non-recyclable multi-layer plastics that most municipal recycling programs can\'t actually process.',
+      commonlyFoundIn: ['Skincare and cosmetics (glass jars, refill pouches)', 'Food packaging (compostable wraps, paper-based cartons)', 'Household cleaning products (concentrate refills, aluminum bottles)', 'Shipping and mailer materials', 'Personal care products (bar soaps and shampoos with minimal packaging)'],
+      whyPeopleAvoid: 'Conventional plastic packaging is a major contributor to landfill waste and ocean pollution, and most plastic that is technically "recyclable" is never actually recycled due to contamination, mixed materials, or a lack of local processing capacity — a large share ends up in landfills or the environment regardless of the label on it. People who prioritize eco-friendly packaging are typically trying to reduce their contribution to plastic waste and microplastic pollution, support a shift toward genuinely reusable or compostable systems, and avoid packaging materials (like certain colored or multi-layer plastics) that can leach chemicals into food or personal care products they\'re in contact with.',
+      sources: [
+        { title: 'EPA - Facts and Figures about Materials, Waste and Recycling', url: 'https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling' },
+        { title: 'UNEP - Our Planet is Choking on Plastic', url: 'https://www.unep.org/interactives/beat-plastic-pollution/' },
+        { title: 'How2Recycle - Understanding Recyclability', url: 'https://how2recycle.info/' },
+      ],
+    },
     'enaj-baseline': {
       whatItIs: 'The enaJ Non-Toxic Baseline is for people who want to live a healthier lifestyle but aren\'t sure exactly what to avoid yet. It\'s a curated list of the most commonly flagged toxic and harmful ingredients that health-conscious people typically avoid. Enable this one preference and Enaj will monitor for all of them across every product you scan.',
       commonlyFoundIn: [
