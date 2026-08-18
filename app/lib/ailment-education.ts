@@ -373,7 +373,7 @@ export interface AilmentIngredientEducation {
     },
     
     'keratosis-pilaris': {
-      description: 'Keratosis pilaris (KP) is a common, harmless skin condition that causes rough, bumpy patches — often called "chicken skin" — typically on the upper arms, thighs, cheeks, and buttocks. It occurs when keratin builds up and plugs hair follicles.',
+      description: 'Keratosis pilaris (KP) is a common, harmless skin condition that causes small, rough, bumpy patches - often nicknamed "chicken skin" - typically on the upper arms, thighs, cheeks, and buttocks. It happens when keratin, a protein that normally sheds from the skin\'s surface, instead builds up and plugs individual hair follicles, creating the condition\'s signature texture. KP tends to run in families and often improves with age, and typically responds best to gentle exfoliation and consistent moisturizing rather than harsh cleansing, since ingredients that strip the skin\'s natural oils - like sulfates and drying alcohols - can dehydrate the area further and make the bumps and redness more noticeable.',
       generalSources: [
         { title: 'AAD - Keratosis Pilaris', url: 'https://www.aad.org/public/diseases/a-z/keratosis-pilaris-overview' },
         { title: 'Mayo Clinic - Keratosis Pilaris', url: 'https://www.mayoclinic.org/diseases-conditions/keratosis-pilaris/symptoms-causes/syc-20351149' },
@@ -391,7 +391,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sulfite-sensitivity': {
-      description: 'Sulfite sensitivity is an adverse reaction to sulfite compounds used as preservatives in food, wine, and some medications. Reactions can range from mild (hives, runny nose) to severe (asthma attacks, anaphylaxis). It is distinct from a true allergy but can be equally serious.',
+      description: 'Sulfite sensitivity is an adverse reaction to sulfite compounds widely used as preservatives to prevent browning and spoilage in food, wine, and some medications. Reactions occur when the body doesn\'t fully break down sulfites, and can range from mild - hives, flushing, a runny nose - to severe, including asthma-like bronchospasm or, rarely, anaphylaxis, particularly in people who also have asthma. The FDA has required sulfite disclosure on food labels since 1986 specifically because of these reactions, and unlike a true food allergy, sulfite sensitivity doesn\'t involve IgE antibodies, though the reactions it causes can be just as serious.',
       generalSources: [
         { title: 'AAAAI - Sulfite Sensitivity', url: 'https://www.aaaai.org/conditions-treatments/related-conditions/sulfite-sensitivity' },
         { title: 'FDA - Sulfites', url: 'https://www.fda.gov/food/food-additives-petitions/sulfites-food' },
@@ -409,7 +409,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sibo': {
-      description: 'Small Intestinal Bacterial Overgrowth (SIBO) occurs when bacteria that normally live in the large intestine overgrow in the small intestine, causing bloating, gas, diarrhea, and malabsorption. Diet plays a critical role in managing symptoms.',
+      description: 'Small Intestinal Bacterial Overgrowth (SIBO) occurs when bacteria that should mostly reside in the large intestine migrate into and overgrow within the small intestine, where they ferment food before the body has a chance to digest and absorb it - producing excess gas, bloating, diarrhea or constipation, and over time, nutrient malabsorption. Because the small intestine isn\'t built to host large bacterial populations, fermentable carbohydrates that would be harmless in a healthy gut - like certain fibers and sugar alcohols - can trigger significant symptoms in SIBO by feeding the overgrown bacteria directly. Many people manage SIBO with a low-FODMAP diet during a flare, worked out with a doctor or dietitian, alongside treatment aimed at the underlying overgrowth itself.',
       generalSources: [
         { title: 'Mayo Clinic - SIBO', url: 'https://www.mayoclinic.org/diseases-conditions/small-intestinal-bacterial-overgrowth/symptoms-causes/syc-20370168' },
         { title: 'NIH - SIBO', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3099351/' },
@@ -467,7 +467,7 @@ export interface AilmentIngredientEducation {
     },
     
     'egg-allergy': {
-      description: 'Egg allergy is one of the most common food allergies, especially in children. It is an immune reaction to proteins found primarily in egg whites (ovalbumin, ovomucoid) but also in yolks. Eggs and egg derivatives appear in many food and personal care products.',
+      description: 'Egg allergy is one of the most common food allergies in children, though many children outgrow it by their teenage years. It\'s an IgE-mediated immune reaction to proteins found primarily in egg whites - ovalbumin and ovomucoid chief among them - though yolk proteins can trigger reactions too, and symptoms can range from hives and digestive upset to severe anaphylaxis. Because eggs and egg derivatives like albumin, lysozyme, and egg lecithin appear in a wide range of processed foods, baked goods, and some personal care products, careful label reading is essential for people managing an egg allergy.',
       generalSources: [
         { title: 'FARE - Egg Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg' },
         { title: 'ACAAI - Egg Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/egg/' },
@@ -489,7 +489,7 @@ export interface AilmentIngredientEducation {
     },
     
     'histamine-intolerance': {
-      description: 'Histamine intolerance occurs when the body cannot efficiently break down histamine from food, leading to symptoms like headaches, hives, digestive issues, and flushing. It is caused by a deficiency of the enzyme diamine oxidase (DAO).',
+      description: 'Histamine intolerance occurs when the body can\'t efficiently break down the histamine naturally present in many foods, most often due to reduced activity of diamine oxidase (DAO), the enzyme responsible for metabolizing dietary histamine in the gut. When histamine builds up faster than the body can clear it, it can produce a wide range of symptoms - headaches, hives, flushing, digestive upset, and nasal congestion - that can look similar to a true food allergy but involve a different mechanism entirely. Histamine levels rise the longer a food ferments or ages, which is why aged cheese, cured meats, fermented foods, and alcohol are among the most commonly flagged triggers, and some foods and additives can also directly trigger the body\'s own mast cells to release additional histamine.',
       generalSources: [
         { title: 'NIH - Histamine Intolerance', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7463562/' },
         { title: 'Allergy Journal - Histamine Intolerance', url: 'https://pubmed.ncbi.nlm.nih.gov/11359937/' },
@@ -515,7 +515,7 @@ export interface AilmentIngredientEducation {
     },
     
     'mcas': {
-      description: 'Mast Cell Activation Syndrome (MCAS) is a condition where mast cells inappropriately release chemical mediators, causing symptoms affecting multiple organ systems including the skin, GI tract, heart, and nervous system. Triggers vary widely between individuals.',
+      description: 'Mast Cell Activation Syndrome (MCAS) is a condition in which mast cells - immune cells normally involved in allergic and defensive responses - release histamine and other chemical mediators inappropriately or excessively, without a clear allergic trigger. Because mast cells are distributed throughout the body, MCAS symptoms can affect multiple systems at once: skin flushing and hives, GI cramping and diarrhea, rapid heart rate, and headaches or brain fog, often in unpredictable combinations. Triggers vary widely between individuals and can include foods, fragrances, temperature changes, and stress, which is why many people with MCAS keep a detailed symptom and trigger log and work with an allergist or immunologist to identify their own pattern rather than relying on a generic list.',
       generalSources: [
         { title: 'The Mastocytosis Society - MCAS', url: 'https://www.tmsforacure.org/mast-cell-disorders/mast-cell-activation-syndrome-mcas/' },
         { title: 'NIH - MCAS', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4701915/' },
@@ -669,7 +669,7 @@ export interface AilmentIngredientEducation {
     },
     
     'interstitial-cystitis': {
-      description: 'Interstitial cystitis (IC), also known as painful bladder syndrome, is a chronic condition causing bladder pressure, pain, and urinary urgency. Many foods and drinks act as bladder irritants and trigger flares.',
+      description: 'Interstitial cystitis (IC), also known as painful bladder syndrome, is a chronic condition causing recurring bladder pressure, pelvic pain, and urinary urgency or frequency, without the bacterial infection found in a typical UTI. Its exact cause isn\'t fully understood, but it\'s thought to involve a compromised bladder lining that allows irritating substances in urine to reach and inflame the nerve-rich tissue underneath. Because of this, many foods and drinks that would be harmless for most people - anything highly acidic, carbonated, caffeinated, or high in artificial sweeteners - are well-documented bladder irritants for IC, and identifying and eliminating personal trigger foods is considered a first-line, non-medical part of symptom management.',
       generalSources: [
         { title: 'Interstitial Cystitis Association', url: 'https://www.ichelp.org/about-ic/what-is-interstitial-cystitis/' },
         { title: 'Mayo Clinic - Interstitial Cystitis', url: 'https://www.mayoclinic.org/diseases-conditions/interstitial-cystitis/symptoms-causes/syc-20354357' },
@@ -1032,7 +1032,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'rosacea': {
-      description: 'Rosacea is a chronic skin condition causing redness, visible blood vessels, and sometimes small bumps on the face. Managing rosacea requires avoiding known triggers that can cause flare-ups.',
+      description: 'Rosacea is a chronic inflammatory skin condition that causes persistent facial redness, visible blood vessels, and sometimes small, acne-like bumps, most commonly across the cheeks, nose, forehead, and chin. Its exact cause isn\'t fully understood, but it\'s thought to involve a combination of blood vessel reactivity, immune system overactivity, and a lower tolerance for irritation than typical skin. The National Rosacea Society\'s own patient surveys consistently identify certain skincare ingredients - fragrance, alcohol, and harsh surfactants like SLS chief among them - as common triggers, since they either irritate an already-reactive skin barrier directly or provoke the flushing response central to a flare, which is why gentle, fragrance-free skincare is a cornerstone of rosacea management alongside any prescribed treatment.',
       generalSources: [
         { title: 'National Rosacea Society', url: 'https://www.rosacea.org/' },
         { title: 'AAD - Rosacea', url: 'https://www.aad.org/public/diseases/rosacea' },
@@ -1348,7 +1348,7 @@ export interface AilmentIngredientEducation {
   
     // Skin Conditions (additional)
     'dandruff': {
-      description: 'Dandruff is a common scalp condition causing flaking and itching. It may be caused by a yeast-like fungus, dry skin, or sensitivity to hair products.',
+      description: 'Dandruff is a common scalp condition causing visible flaking and itching, most often linked to an overgrowth of Malassezia, a yeast that naturally lives on the scalp and feeds on the oils it produces, though dry skin and sensitivity to hair product ingredients can cause or worsen it too. Because dandruff can stem from genuinely different mechanisms - an oily, yeast-driven scalp versus a dry, irritated one - the ingredients that help or hurt can differ from person to person: harsh sulfates and drying alcohols tend to worsen the dry type, while heavy oils like coconut oil can feed Malassezia and worsen the yeast-driven type. Persistent or severe flaking is also worth discussing with a dermatologist, since it can overlap with seborrheic dermatitis.',
       generalSources: [
         { title: 'AAD - Dandruff', url: 'https://www.aad.org/public/diseases/a-z/dandruff-how-to-treat' },
         { title: 'Mayo Clinic - Dandruff', url: 'https://www.mayoclinic.org/diseases-conditions/dandruff/symptoms-causes/syc-20353850' },
