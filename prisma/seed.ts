@@ -349,10 +349,10 @@ async function main() {
 
   // --- Diabetes Type 1 ---
   const diabetes1Ingredients = [
-    { slug: "refined-sugar-d1", name: "Refined Sugar", reason: "Causes rapid blood sugar spikes requiring careful insulin management in Type 1" },
-    { slug: "hfcs-d1", name: "High Fructose Corn Syrup", reason: "Rapidly raises blood glucose in Type 1 diabetes" },
-    { slug: "artificial-sweeteners-d1", name: "Artificial Sweeteners", reason: "May affect gut microbiome and complicate blood sugar management" },
-    { slug: "trans-fats-d1", name: "Trans Fats", reason: "Increases insulin resistance and cardiovascular risk in Type 1" },
+    { slug: "refined-sugar-d1", name: "Refined Sugar", reason: "Because Type 1 diabetes leaves the body unable to produce its own insulin, refined sugar's rapid glucose spike has to be precisely matched with an insulin dose, making it one of the harder carbohydrates to manage safely." },
+    { slug: "hfcs-d1", name: "High Fructose Corn Syrup", reason: "Raises blood glucose quickly and unpredictably, complicating the insulin dosing that people with Type 1 diabetes rely on to keep blood sugar in range." },
+    { slug: "artificial-sweeteners-d1", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners can alter gut bacteria in ways that affect blood glucose response, adding an extra layer of unpredictability to insulin dosing." },
+    { slug: "trans-fats-d1", name: "Trans Fats", reason: "Raise LDL cholesterol and promote insulin resistance, compounding the elevated cardiovascular risk that already accompanies Type 1 diabetes over time." },
   ]
   for (const ing of diabetes1Ingredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diabetes-type-1"] } })
@@ -360,12 +360,12 @@ async function main() {
 
   // --- Diabetes Type 2 ---
   const diabetes2Ingredients = [
-    { slug: "refined-sugar-d2", name: "Refined Sugar", reason: "Directly raises blood sugar and worsens insulin resistance in Type 2" },
-    { slug: "hfcs-d2", name: "High Fructose Corn Syrup", reason: "Strongly linked to insulin resistance and Type 2 diabetes progression" },
-    { slug: "trans-fats-d2", name: "Trans Fats", reason: "Increases insulin resistance and cardiovascular risk" },
-    { slug: "artificial-sweeteners-d2", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome" },
-    { slug: "seed-oils-d2", name: "Seed Oils", reason: "Promotes chronic inflammation linked to insulin resistance" },
-    { slug: "refined-carbs-d2", name: "Refined Grains", reason: "Quickly converted to glucose, spiking blood sugar in Type 2 diabetes" },
+    { slug: "refined-sugar-d2", name: "Refined Sugar", reason: "Repeated blood sugar spikes from refined sugar force the pancreas to release more and more insulin over time, a pattern that drives the worsening insulin resistance at the core of Type 2 diabetes." },
+    { slug: "hfcs-d2", name: "High Fructose Corn Syrup", reason: "Metabolized differently than regular sugar in ways researchers, including a widely cited Princeton study, have linked to promoting the insulin resistance central to Type 2 diabetes development and progression." },
+    { slug: "trans-fats-d2", name: "Trans Fats", reason: "Interferes with normal insulin signaling at the cellular level while also raising LDL cholesterol, compounding both the insulin resistance and cardiovascular risk that define Type 2 diabetes." },
+    { slug: "artificial-sweeteners-d2", name: "Artificial Sweeteners", reason: "Some studies suggest non-nutritive sweeteners can alter gut bacteria and blunt normal insulin signaling, potentially working against the blood sugar control Type 2 diabetes management depends on." },
+    { slug: "seed-oils-d2", name: "Seed Oils", reason: "High omega-6 fat intake promotes the chronic, low-grade inflammation that research increasingly links to worsening insulin resistance in Type 2 diabetes." },
+    { slug: "refined-carbs-d2", name: "Refined Grains", reason: "Stripped of the fiber that slows digestion, refined grains convert to glucose quickly, producing the kind of blood sugar spike that's hardest to manage with existing insulin resistance." },
   ]
   for (const ing of diabetes2Ingredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diabetes-type-2"] } })
@@ -373,9 +373,9 @@ async function main() {
 
   // --- Thalassemia Minor ---
   const thalMinorIngredients = [
-    { slug: "iron-supplements-thal-minor", name: "Iron Supplements", reason: "Iron can accumulate in thalassemia minor; supplementation without testing can cause iron overload" },
-    { slug: "alcohol-thal-minor", name: "Alcohol", reason: "Worsens anemia and liver stress associated with thalassemia" },
-    { slug: "caffeine-thal-minor", name: "Caffeine", reason: "Inhibits iron absorption, which can worsen mild anemia in thalassemia minor" },
+    { slug: "iron-supplements-thal-minor", name: "Iron Supplements", reason: "Unlike iron-deficiency anemia, thalassemia minor isn't caused by low iron, so supplementing without first confirming an actual deficiency can build up excess iron in the body over time." },
+    { slug: "alcohol-thal-minor", name: "Alcohol", reason: "Places extra strain on the liver, which already plays a role in processing and storing iron, and can worsen the mild anemia some people with thalassemia minor experience." },
+    { slug: "caffeine-thal-minor", name: "Caffeine", reason: "Inhibits the body's absorption of dietary iron, which can push already-mild anemia in thalassemia minor slightly lower." },
   ]
   for (const ing of thalMinorIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["thalassemia-minor"] } })
@@ -383,9 +383,9 @@ async function main() {
 
   // --- Thalassemia Major ---
   const thalMajorIngredients = [
-    { slug: "iron-rich-thal-major", name: "Iron Supplements", reason: "Thalassemia major already causes iron overload from transfusions; additional iron is dangerous" },
-    { slug: "alcohol-thal-major", name: "Alcohol", reason: "Further stresses the liver already affected by iron overload in thalassemia major" },
-    { slug: "vitamin-c-supplements-thal", name: "Vitamin C Supplements", reason: "High dose vitamin C increases iron absorption, worsening iron overload in thalassemia major" },
+    { slug: "iron-rich-thal-major", name: "Iron Supplements", reason: "Regular blood transfusions already deliver more iron than the body can naturally excrete in thalassemia major, so additional iron from supplements can accelerate the organ damage chelation therapy is meant to prevent." },
+    { slug: "alcohol-thal-major", name: "Alcohol", reason: "The liver is already one of the organs most burdened by transfusion-related iron overload in thalassemia major, and alcohol adds further stress that can accelerate liver damage." },
+    { slug: "vitamin-c-supplements-thal", name: "Vitamin C Supplements", reason: "Vitamin C significantly boosts how much iron the body absorbs from food, which is the opposite of what's needed when transfusion-related iron overload is already a central risk in thalassemia major." },
   ]
   for (const ing of thalMajorIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["thalassemia-major"] } })
@@ -393,13 +393,13 @@ async function main() {
 
   // --- Endometriosis ---
   const endometriosisIngredients = [
-    { slug: "trans-fats-endo", name: "Trans Fats", reason: "Associated with higher endometriosis risk and promotes pelvic inflammation" },
-    { slug: "red-meat-endo", name: "Red Meat", reason: "High red meat intake linked to increased endometriosis risk in studies" },
-    { slug: "alcohol-endo", name: "Alcohol", reason: "Raises estrogen levels, which can worsen endometriosis symptoms" },
-    { slug: "caffeine-endo", name: "Caffeine", reason: "May increase estrogen levels and worsen endometriosis pain" },
-    { slug: "seed-oils-endo", name: "Seed Oils", reason: "High omega-6 promotes the inflammatory processes driving endometriosis" },
-    { slug: "gluten-endo", name: "Gluten", reason: "Some endometriosis patients report reduced pain on a gluten-free diet" },
-    { slug: "dairy-endo", name: "Dairy", reason: "May promote inflammation in endometriosis in some individuals" },
+    { slug: "trans-fats-endo", name: "Trans Fats", reason: "A 2010 study in Human Reproduction associated higher trans fat intake with increased endometriosis risk, likely through its role in promoting the pelvic inflammation that drives the condition." },
+    { slug: "red-meat-endo", name: "Red Meat", reason: "Research published in the American Journal of Obstetrics & Gynecology has linked high red meat consumption to increased endometriosis risk, possibly through its influence on estrogen metabolism and inflammation." },
+    { slug: "alcohol-endo", name: "Alcohol", reason: "Can raise circulating estrogen levels, and since endometrial-like tissue growth in endometriosis is estrogen-sensitive, this may fuel further tissue growth and worsen symptoms." },
+    { slug: "caffeine-endo", name: "Caffeine", reason: "Some research has associated higher caffeine intake with elevated estrogen levels, a hormonal shift that could theoretically stimulate the estrogen-sensitive tissue growth central to endometriosis." },
+    { slug: "seed-oils-endo", name: "Seed Oils", reason: "High omega-6 fat intake promotes pro-inflammatory compounds that can compound the chronic pelvic inflammation already driving endometriosis pain." },
+    { slug: "gluten-endo", name: "Gluten", reason: "Some endometriosis patients report meaningful pain reduction on a gluten-free diet, though the mechanism isn't fully understood and evidence is still preliminary." },
+    { slug: "dairy-endo", name: "Dairy", reason: "Contains hormones and growth factors that some endometriosis patients find worsen inflammation and pelvic pain, though individual response varies." },
   ]
   for (const ing of endometriosisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["endometriosis"] } })
@@ -407,12 +407,12 @@ async function main() {
 
   // --- PMDD ---
   const pmddIngredients = [
-    { slug: "caffeine-pmdd", name: "Caffeine", reason: "Worsens anxiety, breast tenderness, and sleep disruption in PMDD" },
-    { slug: "alcohol-pmdd", name: "Alcohol", reason: "Depressant that worsens mood symptoms and hormonal fluctuations in PMDD" },
-    { slug: "refined-sugar-pmdd", name: "Refined Sugar", reason: "Blood sugar instability worsens mood swings and fatigue in PMDD" },
-    { slug: "salt-pmdd", name: "Excess Salt", reason: "Worsens bloating and water retention during the luteal phase" },
-    { slug: "artificial-sweeteners-pmdd", name: "Artificial Sweeteners", reason: "May affect serotonin pathways and worsen PMDD mood symptoms" },
-    { slug: "seed-oils-pmdd", name: "Seed Oils", reason: "Excess omega-6 promotes inflammation that amplifies PMDD symptoms" },
+    { slug: "caffeine-pmdd", name: "Caffeine", reason: "A stimulant that can heighten anxiety and disrupt sleep, both of which compound the mood symptoms already amplified during PMDD's luteal-phase sensitivity." },
+    { slug: "alcohol-pmdd", name: "Alcohol", reason: "A depressant that can directly worsen the depression and mood instability that define PMDD, particularly during the luteal phase when the brain's serotonin sensitivity is already disrupted." },
+    { slug: "refined-sugar-pmdd", name: "Refined Sugar", reason: "The blood sugar swings that follow refined sugar intake can compound the mood instability and fatigue PMDD already produces during the luteal phase." },
+    { slug: "salt-pmdd", name: "Excess Salt", reason: "Promotes water retention that adds to the bloating and physical discomfort many people with PMDD already experience in the days before their period." },
+    { slug: "artificial-sweeteners-pmdd", name: "Artificial Sweeteners", reason: "Some research has explored whether certain sweeteners affect serotonin pathways, the same neurotransmitter system implicated in PMDD's heightened sensitivity to hormonal shifts." },
+    { slug: "seed-oils-pmdd", name: "Seed Oils", reason: "High omega-6 fat intake promotes systemic inflammation that may compound the physical and mood symptoms that intensify during PMDD's luteal phase." },
   ]
   for (const ing of pmddIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["pmdd"] } })
