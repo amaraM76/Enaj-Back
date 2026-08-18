@@ -647,7 +647,7 @@ export interface AilmentIngredientEducation {
     },
     
     'psoriatic-arthritis': {
-      description: 'Psoriatic arthritis is an inflammatory arthritis associated with psoriasis, causing joint pain, stiffness, and swelling alongside skin plaques. An anti-inflammatory diet may help manage both skin and joint symptoms.',
+      description: 'Psoriatic arthritis (PsA) is an inflammatory autoimmune arthritis that develops in a meaningful share of people with psoriasis, driven by the same underlying immune dysfunction that causes psoriasis\'s skin plaques but extending to attack the joints as well, causing pain, stiffness, and swelling that can lead to joint damage if untreated. Because skin and joint inflammation in PsA share overlapping inflammatory pathways - including elevated levels of signaling proteins like TNF-alpha - factors that worsen one often worsen the other, which is part of why the National Psoriasis Foundation and Arthritis Foundation both recommend an anti-inflammatory approach to diet for managing PsA. Added sugar, alcohol, and diets high in omega-6 fats from certain seed oils are commonly flagged for promoting the kind of systemic inflammation that can aggravate both joint pain and skin flares, while alcohol in particular can also reduce the effectiveness of some PsA medications. PsA is a progressive condition best managed with medical treatment, though diet is frequently used as a complementary strategy to help control day-to-day symptom severity.',
       generalSources: [
         { title: 'National Psoriasis Foundation - PsA', url: 'https://www.psoriasis.org/psoriatic-arthritis/' },
         { title: 'Arthritis Foundation - PsA', url: 'https://www.arthritis.org/diseases/psoriatic-arthritis' },
@@ -695,7 +695,7 @@ export interface AilmentIngredientEducation {
     },
     
     'diabetes-type-1': {
-      description: 'Type 1 diabetes is an autoimmune condition where the immune system destroys insulin-producing cells in the pancreas. People with Type 1 require insulin therapy and must carefully manage blood sugar through diet and lifestyle.',
+      description: 'Type 1 diabetes is an autoimmune condition in which the immune system destroys the insulin-producing beta cells in the pancreas, eventually leaving the body unable to produce the insulin it needs to move glucose from the bloodstream into cells for energy. Unlike Type 2 diabetes, Type 1 isn\'t caused by lifestyle factors and can\'t be managed through diet alone - it requires lifelong insulin therapy, typically through injections or a pump, with dosing calculated around food intake. Because insulin dosing has to be matched to how quickly and how much a food raises blood glucose, the ADA emphasizes that ingredients causing rapid, unpredictable glucose spikes - refined sugar and high fructose corn syrup among the most significant - make blood sugar management meaningfully harder even though they don\'t cause the disease itself. People with Type 1 diabetes also face an elevated cardiovascular risk over time, which is why minimizing trans fats and other cardiovascular risk factors is commonly recommended alongside glucose management.',
       generalSources: [
         { title: 'ADA - Type 1 Diabetes', url: 'https://diabetes.org/about-diabetes/type-1' },
         { title: 'JDRF - Type 1 Diabetes', url: 'https://www.jdrf.org/t1d-resources/about/' },
@@ -717,7 +717,7 @@ export interface AilmentIngredientEducation {
     },
     
     'diabetes-type-2': {
-      description: 'Type 2 diabetes is a metabolic condition where the body becomes resistant to insulin or does not produce enough of it. It is strongly influenced by diet, and managing carbohydrate and sugar intake is central to treatment.',
+      description: 'Type 2 diabetes develops when the body\'s cells become progressively resistant to insulin\'s effects, forcing the pancreas to produce more and more insulin to keep blood sugar in a normal range until, over time, it can no longer keep up and blood glucose levels rise. Unlike Type 1, Type 2 diabetes is strongly influenced by diet, weight, and activity level, though genetics and other factors also play a meaningful role, and it typically develops gradually over years rather than appearing suddenly. Because insulin resistance is central to the disease, the CDC and ADA point to diets high in refined carbohydrates, added sugar, and particularly high fructose corn syrup as accelerants - foods that repeatedly spike blood glucose and insulin demand tend to worsen resistance over time, while trans fats compound the cardiovascular risk that already accompanies diabetes. For many people with prediabetes or early Type 2 diabetes, dietary and lifestyle changes are considered a primary, evidence-based treatment approach, not just a complement to medication.',
       generalSources: [
         { title: 'ADA - Type 2 Diabetes', url: 'https://diabetes.org/about-diabetes/type-2' },
         { title: 'CDC - Type 2 Diabetes', url: 'https://www.cdc.gov/diabetes/basics/type2.html' },
@@ -739,7 +739,7 @@ export interface AilmentIngredientEducation {
     },
     
     'thalassemia-minor': {
-      description: 'Thalassemia minor (also called thalassemia trait) is a mild inherited blood disorder where the body produces slightly less hemoglobin than normal. Most carriers have mild or no anemia and live normal lives, but should be mindful of iron intake.',
+      description: 'Thalassemia minor, also called thalassemia trait, is a mild, inherited blood disorder in which a genetic mutation causes the body to produce a somewhat reduced amount of hemoglobin, the protein in red blood cells that carries oxygen. Most people with thalassemia minor are simply carriers - they have one affected gene rather than two - and live entirely normal lives with mild or no anemia, often discovered incidentally through routine bloodwork rather than because of symptoms. The critical distinction the CDC highlights is that thalassemia minor is frequently mistaken for iron-deficiency anemia because both cause small red blood cells, but unlike iron-deficiency anemia, thalassemia minor doesn\'t stem from a lack of iron - so taking iron supplements doesn\'t correct it and can instead cause a harmful buildup of iron in the body over time. Because of this, anyone with thalassemia minor considering iron supplementation should first confirm their iron levels are actually low rather than assuming supplementation is appropriate.',
       generalSources: [
         { title: 'CDC - Thalassemia', url: 'https://www.cdc.gov/ncbddd/thalassemia/' },
         { title: 'Mayo Clinic - Thalassemia', url: 'https://www.mayoclinic.org/diseases-conditions/thalassemia/symptoms-causes/syc-20354995' },
@@ -757,7 +757,7 @@ export interface AilmentIngredientEducation {
     },
     
     'thalassemia-major': {
-      description: 'Thalassemia major (Cooley\'s anemia) is a severe inherited blood disorder requiring regular blood transfusions. These transfusions lead to iron overload, making careful management of iron intake critical.',
+      description: 'Thalassemia major (also known as Cooley\'s anemia) is a severe, inherited blood disorder in which both copies of the relevant hemoglobin gene are affected, leaving the body unable to produce enough healthy hemoglobin or red blood cells on its own. Without treatment, this leads to severe anemia beginning in early childhood, which is why thalassemia major is managed with regular blood transfusions, often every two to four weeks, for life. Those repeated transfusions solve the anemia but create a second major problem: the body has no natural way to excrete the extra iron delivered with each transfusion, so iron gradually accumulates in the heart, liver, and endocrine organs and becomes a leading cause of complications in thalassemia major if not actively managed with chelation therapy. Because of this iron overload, the Cooley\'s Anemia Foundation and CDC both stress that additional iron from supplements or high-dose vitamin C - which increases iron absorption - should be avoided without direct medical supervision, since either can accelerate organ damage that\'s already a central risk of the condition.',
       generalSources: [
         { title: 'CDC - Thalassemia', url: 'https://www.cdc.gov/ncbddd/thalassemia/' },
         { title: 'Cooley\'s Anemia Foundation', url: 'https://www.thalassemia.org/learn-about-thalassemia/' },
@@ -779,7 +779,7 @@ export interface AilmentIngredientEducation {
     },
     
     'endometriosis': {
-      description: 'Endometriosis is a chronic condition where tissue similar to the uterine lining grows outside the uterus, causing significant pain, inflammation, and in some cases, fertility issues. An anti-inflammatory diet may help manage symptoms.',
+      description: 'Endometriosis occurs when tissue similar to the uterine lining grows outside the uterus - often on the ovaries, fallopian tubes, or pelvic lining - where it continues to thicken, break down, and bleed in response to the menstrual cycle, but without any way to leave the body. That trapped tissue triggers chronic inflammation, scarring, and adhesions that cause the condition\'s hallmark pelvic pain, painful periods, and, in many cases, difficulty conceiving. Because endometriosis growth is estrogen-sensitive, some research reviewed by the Endometriosis Foundation of America and published in journals like Human Reproduction has looked at whether diet can influence disease activity - trans fats and high red meat intake have been associated with increased risk in observational studies, while alcohol and caffeine may raise estrogen levels in ways that could worsen symptoms. No diet cures or reliably treats endometriosis, but many patients use dietary changes as a complement to medical or surgical treatment in trying to manage inflammation and pain.',
       generalSources: [
         { title: 'Endometriosis Foundation of America', url: 'https://www.endofound.org/' },
         { title: 'Mayo Clinic - Endometriosis', url: 'https://www.mayoclinic.org/diseases-conditions/endometriosis/symptoms-causes/syc-20354656' },
@@ -805,7 +805,7 @@ export interface AilmentIngredientEducation {
     },
     
     'pmdd': {
-      description: 'Premenstrual Dysphoric Disorder (PMDD) is a severe form of PMS causing debilitating mood changes, depression, anxiety, and physical symptoms in the week before menstruation. Diet and lifestyle have a significant impact on symptom severity.',
+      description: 'Premenstrual Dysphoric Disorder (PMDD) is a severe, cyclical mood disorder that emerges in the luteal phase (the one to two weeks before menstruation) and causes debilitating depression, anxiety, irritability, and physical symptoms that resolve once a period begins. Unlike typical PMS, PMDD isn\'t caused by abnormal hormone levels themselves but by an abnormal sensitivity in the brain - particularly in serotonin regulation - to the normal rise and fall of estrogen and progesterone each cycle, which is why it\'s classified as a mood disorder rather than a purely hormonal one. Because blood sugar swings, sleep disruption, and substances that affect mood or fluid balance can compound PMDD\'s underlying sensitivity, ACOG and other sources note that caffeine, alcohol, excess sodium, and refined sugar are commonly reported to worsen symptoms during the luteal phase specifically. PMDD is a recognized psychiatric diagnosis that often requires treatment beyond diet, including therapy or medication, but many patients use dietary adjustments alongside clinical treatment to help manage the physical symptoms that accompany a flare.',
       generalSources: [
         { title: 'ACOG - PMDD', url: 'https://www.acog.org/womens-health/faqs/premenstrual-syndrome' },
         { title: 'Mayo Clinic - PMDD', url: 'https://www.mayoclinic.org/diseases-conditions/premenstrual-syndrome/symptoms-causes/syc-20376780' },
