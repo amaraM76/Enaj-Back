@@ -964,9 +964,9 @@ export interface PreferenceEducation {
       ],
     },
     'non-gmo': {
-      whatItIs: 'Non-GMO products are made without genetically modified organisms. GMOs are plants or animals whose genetic material has been altered using genetic engineering techniques that do not occur naturally.',
+      whatItIs: 'Non-GMO products are made without genetically modified organisms - plants or animals whose DNA has been altered in a lab using genetic engineering techniques that wouldn\'t occur through conventional breeding, most often to make a crop resistant to pests, herbicides, or drought.',
       commonlyFoundIn: ['Corn', 'Soy', 'Cotton (cottonseed oil)', 'Canola', 'Sugar beets', 'Papaya', 'Zucchini', 'Some dairy products'],
-      whyPeopleAvoid: 'People avoid GMOs due to environmental concerns (impact on biodiversity, pesticide use), potential unknown health effects, preference for traditional agriculture methods, or desire for more "natural" foods.',
+      whyPeopleAvoid: 'Major health bodies including the FDA and WHO consider currently approved GMO foods safe to eat, so avoidance is driven less by an established health risk than by other concerns: many GMO crops are engineered to tolerate heavy herbicide use, which raises questions about pesticide residue and environmental impact, and some people simply prefer foods bred through traditional methods or want to support non-GMO and organic farming practices. Because GMO crops are so concentrated in a handful of commodity ingredients - corn, soy, and canola chief among them - they show up widely in processed foods even when it isn\'t obvious from a product\'s name.',
       sources: [
         { title: 'Non-GMO Project', url: 'https://www.nongmoproject.org/gmo-facts/' },
         { title: 'FDA - GMOs', url: 'https://www.fda.gov/food/agricultural-biotechnology/how-gmos-are-regulated-united-states' },
