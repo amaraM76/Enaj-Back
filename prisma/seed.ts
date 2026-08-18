@@ -635,13 +635,13 @@ async function main() {
 
   // --- Perioral Dermatitis ---
   const perioralIngredients = [
-    { slug: "sls-pd", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that can trigger perioral dermatitis flare-ups" },
-    { slug: "fluoride-pd", name: "Fluoride", reason: "Fluoride in toothpaste is a common trigger for perioral dermatitis" },
-    { slug: "fragrance-pd", name: "Synthetic Fragrance", reason: "Synthetic fragrances can worsen perioral dermatitis" },
-    { slug: "steroids-pd", name: "Topical Steroids", reason: "Can cause rebound flare-ups and worsen the condition" },
-    { slug: "heavy-moisturizers-pd", name: "Petrolatum", reason: "Occlusive products can aggravate perioral dermatitis" },
-    { slug: "cinnamon-pd", name: "Cinnamon", reason: "Known skin irritant that can trigger flare-ups around the mouth" },
-    { slug: "paraben-pd", name: "Parabens", reason: "Preservatives that can irritate perioral dermatitis" },
+    { slug: "sls-pd", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the skin's natural oils and can irritate the already-compromised barrier around the mouth in perioral dermatitis, worsening redness and bumps." },
+    { slug: "fluoride-pd", name: "Fluoride", reason: "Fluoride toothpaste is one of the most frequently reported triggers for perioral dermatitis, possibly because residual toothpaste around the mouth acts as a mild, repeated irritant to sensitive skin there." },
+    { slug: "fragrance-pd", name: "Synthetic Fragrance", reason: "A common irritant for the sensitive, already-inflamed skin around the mouth affected by perioral dermatitis, capable of triggering or worsening a flare." },
+    { slug: "steroids-pd", name: "Topical Steroids", reason: "Often used to calm the rash short-term, but corticosteroids can feed an underlying rebound cycle in perioral dermatitis, where symptoms return worse than before once the steroid is stopped." },
+    { slug: "heavy-moisturizers-pd", name: "Petrolatum", reason: "Thick, occlusive products can trap moisture, bacteria, and irritants against skin already inflamed by perioral dermatitis, potentially prolonging a flare rather than helping it heal." },
+    { slug: "cinnamon-pd", name: "Cinnamon", reason: "A well-documented skin irritant and allergen, often found in flavored lip products and toothpaste, that can directly trigger flare-ups on the sensitive skin around the mouth." },
+    { slug: "paraben-pd", name: "Parabens", reason: "Preservatives that some people find irritating on skin that's already inflamed and barrier-compromised, as is typical in an active perioral dermatitis flare." },
   ];
 
   for (const ing of perioralIngredients) {
@@ -1034,12 +1034,12 @@ for (const ing of breastfeedingIngredients) {
 
 // --- PCOS ---
 const pcosIngredients = [
-  { slug: "refined-sugar-pcos", name: "Refined Sugar", reason: "Worsens insulin resistance, a key driver of PCOS symptoms" },
-  { slug: "hfcs-pcos", name: "High Fructose Corn Syrup", reason: "Spikes blood sugar and promotes insulin resistance in PCOS" },
-  { slug: "artificial-sweeteners-pcos", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome in PCOS" },
-  { slug: "seed-oils-pcos", name: "Seed Oils", reason: "Promotes inflammation that worsens hormonal imbalance in PCOS" },
-  { slug: "dairy-pcos", name: "Dairy", reason: "May increase androgen levels and worsen PCOS symptoms in some women" },
-  { slug: "soy-pcos", name: "Soy", reason: "Phytoestrogens in soy may interfere with hormonal balance in PCOS" },
+  { slug: "refined-sugar-pcos", name: "Refined Sugar", reason: "Drives the insulin spikes that, in PCOS, feed back into higher androgen production - the same cycle that underlies irregular periods, acne, and excess hair growth." },
+  { slug: "hfcs-pcos", name: "High Fructose Corn Syrup", reason: "Rapidly raises blood sugar and insulin levels, reinforcing the insulin resistance that sits at the center of PCOS for many patients." },
+  { slug: "artificial-sweeteners-pcos", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners can alter gut bacteria and blunt normal insulin response, potentially working against the insulin sensitivity that's central to managing PCOS." },
+  { slug: "seed-oils-pcos", name: "Seed Oils", reason: "High omega-6 fat intake promotes the kind of chronic inflammation that research has linked to worsened insulin resistance and hormonal imbalance in PCOS." },
+  { slug: "dairy-pcos", name: "Dairy", reason: "Contains hormones and growth factors like IGF-1 that some studies suggest can raise androgen activity, potentially worsening the excess androgen levels that define PCOS." },
+  { slug: "soy-pcos", name: "Soy", reason: "Its plant-based phytoestrogens can interact with the body's hormone receptors, and while research is mixed, some PCOS patients report symptom changes tied to soy intake." },
 ]
 
 for (const ing of pcosIngredients) {
@@ -1050,14 +1050,14 @@ for (const ing of pcosIngredients) {
 
 // --- Hormonal Acne ---
 const hormonalAcneIngredients = [
-  { slug: "dairy-hormonal-acne", name: "Dairy", reason: "Dairy contains hormones and growth factors that can trigger hormonal acne breakouts" },
-  { slug: "whey-hormonal-acne", name: "Whey Protein", reason: "Whey spikes IGF-1 and insulin, both linked to hormonal acne" },
-  { slug: "refined-sugar-hormonal-acne", name: "Refined Sugar", reason: "Causes insulin spikes that increase androgen production and sebum" },
-  { slug: "hfcs-hormonal-acne", name: "High Fructose Corn Syrup", reason: "Promotes inflammation and insulin spikes linked to acne" },
-  { slug: "seed-oils-hormonal-acne", name: "Seed Oils", reason: "High omega-6 content promotes skin inflammation and breakouts" },
-  { slug: "artificial-sweeteners-hormonal-acne", name: "Artificial Sweeteners", reason: "May disrupt gut microbiome and hormonal balance contributing to acne" },
-  { slug: "coconut-oil-hormonal-acne", name: "Coconut Oil", reason: "Highly comedogenic, clogs pores and worsens hormonal acne breakouts" },
-  { slug: "isopropyl-hormonal-acne", name: "Isopropyl Myristate", reason: "Known pore-clogging ingredient that worsens acne" },
+  { slug: "dairy-hormonal-acne", name: "Dairy", reason: "Contains naturally occurring hormones and growth factors like IGF-1 that stimulate oil glands and increase androgen activity, directly feeding the mechanism behind hormonal acne breakouts." },
+  { slug: "whey-hormonal-acne", name: "Whey Protein", reason: "Spikes both insulin and IGF-1 more sharply than most other proteins, a hormonal combination that increases sebum production and androgen activity linked to hormonal acne." },
+  { slug: "refined-sugar-hormonal-acne", name: "Refined Sugar", reason: "High-glycemic foods cause rapid insulin spikes that in turn trigger androgen production and increased sebum output, worsening hormonal acne." },
+  { slug: "hfcs-hormonal-acne", name: "High Fructose Corn Syrup", reason: "Produces a sharp insulin spike similar to refined sugar, driving the same androgen and sebum response that worsens hormonal acne." },
+  { slug: "seed-oils-hormonal-acne", name: "Seed Oils", reason: "High omega-6 fat content promotes skin inflammation that can compound the hormonally driven breakouts characteristic of this acne type." },
+  { slug: "artificial-sweeteners-hormonal-acne", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners can alter gut bacteria in ways that may influence hormonal balance and, in turn, acne activity." },
+  { slug: "coconut-oil-hormonal-acne", name: "Coconut Oil", reason: "Rated highly comedogenic on standard scales, meaning its fatty acid profile is especially likely to clog pores already prone to breakouts from hormonal fluctuations." },
+  { slug: "isopropyl-hormonal-acne", name: "Isopropyl Myristate", reason: "A synthetic emollient frequently flagged in dermatology comedogenicity studies for clogging pores, adding another breakout risk on top of hormonally driven oil production." },
 ]
 
 for (const ing of hormonalAcneIngredients) {
