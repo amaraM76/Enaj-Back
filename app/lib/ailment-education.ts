@@ -1236,7 +1236,7 @@ export interface AilmentIngredientEducation {
   
     // Digestive Conditions
     'ibs': {
-      description: 'Irritable Bowel Syndrome (IBS) is a chronic digestive disorder affecting the large intestine. Managing IBS often involves identifying and avoiding trigger foods and additives.',
+      description: 'Irritable Bowel Syndrome (IBS) is a chronic disorder of the gut-brain interaction that causes recurring abdominal pain along with diarrhea, constipation, or both, without any visible damage or disease in the digestive tract itself. Researchers believe IBS involves visceral hypersensitivity - nerves in the gut sending pain signals more readily than they should - along with disrupted gut motility and, in some people, an altered balance of gut bacteria. Because there\'s no single structural cause to treat, management is largely built around identifying individual trigger foods, and a low-FODMAP diet (developed by Monash University and validated in multiple clinical trials) is one of the most evidence-backed approaches for reducing the fermentable carbohydrates that provoke gas, bloating, and pain in IBS. Certain other additives, like caffeine and highly processed gums and thickeners, are also commonly reported triggers, though sensitivity varies significantly from person to person.',
       generalSources: [
         { title: 'IFFGD - IBS', url: 'https://aboutibs.org/' },
         { title: 'Mayo Clinic - IBS', url: 'https://www.mayoclinic.org/diseases-conditions/irritable-bowel-syndrome/symptoms-causes/syc-20360016' },
@@ -1567,7 +1567,7 @@ export interface AilmentIngredientEducation {
   
     // Women\'s Health
     'pcos': {
-    description: 'Polycystic Ovary Syndrome (PCOS) is a hormonal disorder affecting women of reproductive age, causing irregular periods, excess androgen levels, and sometimes small cysts on the ovaries. Diet plays a significant role in managing insulin resistance, inflammation, and hormonal balance.',
+    description: 'Polycystic Ovary Syndrome (PCOS) is a common hormonal disorder in which the ovaries produce excess androgens (male hormones) and often develop small, fluid-filled follicles, leading to irregular or absent periods, acne, excess hair growth, and difficulty with fertility. At the root of PCOS for many patients is insulin resistance - cells respond less effectively to insulin, so the body produces more of it, and elevated insulin in turn drives the ovaries to produce even more androgen, creating a self-reinforcing cycle. Because of this link, diet is one of the most evidence-backed tools for managing PCOS: the Journal of the Academy of Nutrition and Dietetics and other research bodies note that added sugar, refined carbohydrates, and certain inflammatory fats can worsen insulin resistance, while some patients also report symptom changes tied to dairy and soy intake, though evidence there is more mixed. ACOG emphasizes that PCOS management is highly individualized, and dietary changes are typically used alongside medical treatment rather than as a replacement for it.',
     generalSources: [
       { title: 'ACOG - PCOS', url: 'https://www.acog.org/womens-health/faqs/polycystic-ovary-syndrome-pcos' },
       { title: 'Mayo Clinic - PCOS', url: 'https://www.mayoclinic.org/diseases-conditions/pcos/symptoms-causes/syc-20353439' },
@@ -1592,7 +1592,7 @@ export interface AilmentIngredientEducation {
     },
   },
   'hormonal-acne': {
-    description: 'Hormonal acne is triggered by fluctuations in hormones — particularly androgens like testosterone — that increase oil production and clog pores. It typically appears along the jawline, chin, and neck and is influenced by diet, stress, and skincare products.',
+    description: 'Hormonal acne is a form of acne driven primarily by fluctuations in androgens - hormones that stimulate the skin\'s oil glands to produce more sebum, which in turn increases the likelihood of clogged, inflamed pores. It\'s why breakouts often cluster along the jawline, chin, and neck, and why flares commonly track with the menstrual cycle, puberty, PCOS, or other periods of hormonal change rather than appearing randomly across the face. Diet has a documented, if still-debated, connection to hormonal acne: the AAD points to research linking high-glycemic foods and dairy - which contains hormones and growth factors like IGF-1 - to increased insulin and androgen activity that can worsen breakouts in susceptible people. Because hormonal acne often responds differently to standard topical treatments than other acne types, dermatologists frequently recommend addressing it through a combination of skincare, diet, and, when appropriate, hormonal treatment discussed with a provider.',
     generalSources: [
       { title: 'AAD - Hormonal Acne', url: 'https://www.aad.org/public/diseases/acne/causes/hormonal' },
       { title: 'Mayo Clinic - Acne', url: 'https://www.mayoclinic.org/diseases-conditions/acne/symptoms-causes/syc-20368047' },
@@ -1620,7 +1620,7 @@ export interface AilmentIngredientEducation {
     },
   },
     'breastfeeding': {
-      description: 'While breastfeeding, certain ingredients in food, drink, and personal care products can pass through breast milk to your baby. Being mindful of what you consume and apply helps protect your newborn\'s health and development.',
+      description: 'While breastfeeding, substances consumed in food and drink, as well as some ingredients applied to the skin, can pass into breast milk and reach a nursing infant, whose liver and kidneys are far less equipped than an adult\'s to process and clear them. The degree of transfer varies enormously by substance - caffeine and alcohol pass into milk readily and in amounts roughly proportional to what\'s in the mother\'s bloodstream, while other compounds accumulate more gradually or barely transfer at all - which is why blanket avoidance isn\'t necessary for everything but targeted caution is warranted for specific ingredients. The CDC, AAP, and La Leche League all publish guidance on which substances warrant real caution during breastfeeding, from mercury in certain fish to specific herbs long used to reduce milk supply, and from topical retinoids to endocrine-disrupting chemicals like parabens and BPA that have been detected in breast milk. Because an infant\'s exposure is entirely dependent on what a nursing parent eats, drinks, or applies, many breastfeeding parents choose to extend some of the same precautions used during pregnancy through the nursing period.',
       generalSources: [
         { title: 'La Leche League - Foods and Breastfeeding', url: 'https://www.llli.org/breastfeeding-info/food/' },
         { title: 'CDC - Breastfeeding Nutrition', url: 'https://www.cdc.gov/breastfeeding/breastfeeding-special-circumstances/diet-and-micronutrients/maternal-diet.html' },
@@ -1715,7 +1715,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'pregnant': {
-      description: 'Pregnancy is a time when what you eat, drink, and apply to your skin can affect both your health and your baby\'s development. Certain ingredients in food, skincare, and household products should be avoided or minimized during pregnancy.',
+      description: 'Pregnancy involves major physiological changes - increased blood volume, hormonal shifts, and a developing placenta that exchanges nutrients, oxygen, and unfortunately many other substances between mother and fetus. Because the placenta doesn\'t block everything, certain compounds that are harmless for most adults - some medications, high-dose vitamin A derivatives, specific chemicals, and heavy metals like mercury - can cross into fetal circulation during critical windows of development and are classified as teratogens capable of causing birth defects or developmental harm. ACOG and the CDC note that risk isn\'t limited to what\'s eaten or taken by mouth either: some topically applied ingredients, like certain UV filters and retinoids, are absorbed through the skin in meaningful enough amounts to warrant caution. Because the fetus is most vulnerable during specific developmental windows and there\'s often no way to know exposure risk after the fact, providers generally recommend a precautionary approach - avoiding known or suspected risks - rather than waiting for definitive proof of harm in every individual ingredient.',
       generalSources: [
         { title: 'ACOG - Nutrition During Pregnancy', url: 'https://www.acog.org/womens-health/faqs/nutrition-during-pregnancy' },
         { title: 'CDC - Pregnancy Health', url: 'https://www.cdc.gov/pregnancy/index.html' },
@@ -1814,7 +1814,8 @@ export interface AilmentIngredientEducation {
       },
     },
     'postpartum': {
-      description: 'The postpartum period is a time of physical recovery and hormonal shifts after childbirth. Whether or not you are breastfeeding, certain ingredients in food, personal care products, and household items may affect your recovery, hormone balance, and overall wellbeing during this sensitive time.',    generalSources: [
+      description: 'The postpartum period covers the weeks and months after childbirth when the body is recovering from delivery, hormone levels are resetting after months of pregnancy, and - for those breastfeeding - milk production adds another channel through which consumed or applied substances can reach a newborn. Even for mothers who aren\'t breastfeeding, this is a time of significant physical healing, sleep disruption, and hormonal fluctuation that can make skin, digestion, and mood more reactive to certain ingredients than usual. For breastfeeding mothers specifically, the CDC and La Leche League note that caffeine, alcohol, and some medications and topical treatments pass into breast milk in varying amounts and can affect a nursing infant, so many of the same precautions used during pregnancy are commonly extended through this period. Because recovery needs and breastfeeding status vary so much between individuals, providers generally recommend discussing supplements, medications, and skincare actives with a doctor before resuming them postpartum.',
+      generalSources: [
         { title: 'La Leche League - Foods and Breastfeeding', url: 'https://www.llli.org/breastfeeding-info/food/' },
         { title: 'CDC - Breastfeeding Nutrition', url: 'https://www.cdc.gov/breastfeeding/breastfeeding-special-circumstances/diet-and-micronutrients/maternal-diet.html' },
         { title: 'Mayo Clinic - Breastfeeding Nutrition', url: 'https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/breastfeeding-nutrition/art-20046912' },
