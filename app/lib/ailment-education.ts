@@ -59,7 +59,7 @@ export interface AilmentIngredientEducation {
   export const ailmentEducationData: Record<string, AilmentEducation> = {
     // Neurological Conditions
     'alzheimers': {
-      description: 'Alzheimer\'s disease is a progressive neurological disorder that causes brain cells to degenerate and die, leading to memory loss and cognitive decline. Research suggests certain environmental factors and dietary choices may influence risk.',
+      description: 'Alzheimer\'s disease is a progressive neurodegenerative disorder in which brain cells gradually degenerate and die, driven in part by the buildup of amyloid plaques and tau tangles, leading to worsening memory loss, confusion, and cognitive decline over years. It\'s the most common cause of dementia, and while age and genetics are the strongest risk factors, the Alzheimer\'s Association and NIH point to a growing body of research linking modifiable factors - including diets high in trans fats and added sugar, associated with vascular damage and brain insulin resistance - to elevated risk. No diet has been shown to prevent or cure Alzheimer\'s, but many researchers consider heart-healthy eating patterns like the Mediterranean or MIND diet a reasonable part of a broader risk-reduction strategy.',
       generalSources: [
         { title: 'Alzheimer\'s Association', url: 'https://www.alz.org/alzheimers-dementia/what-is-alzheimers' },
         { title: 'NIH - Alzheimer\'s Disease', url: 'https://www.nia.nih.gov/health/alzheimers-and-dementia/alzheimers-disease-fact-sheet' },
@@ -94,7 +94,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'dementia': {
-      description: 'Dementia is a general term for loss of memory, language, problem-solving and other thinking abilities severe enough to interfere with daily life. Alzheimer\'s is the most common cause.',
+      description: 'Dementia is a general term - not a single disease - for a decline in memory, language, problem-solving, and other cognitive abilities severe enough to interfere with daily life. Alzheimer\'s disease is the most common underlying cause, but vascular dementia, Lewy body dementia, and other conditions can also produce dementia symptoms, often with overlapping risk factors related to cardiovascular and metabolic health. The World Health Organization and Alzheimer\'s Association note that several modifiable lifestyle factors - including diets high in added sugar, trans fats, and processed meats - are associated with higher dementia risk in long-term studies, likely through their effects on blood vessels, blood sugar regulation, and chronic inflammation in the brain, which is why heart-healthy eating patterns are commonly recommended as part of dementia risk reduction.',
       generalSources: [
         { title: 'Alzheimer\'s Association - What Is Dementia', url: 'https://www.alz.org/alzheimers-dementia/what-is-dementia' },
         { title: 'WHO - Dementia', url: 'https://www.who.int/news-room/fact-sheets/detail/dementia' },
@@ -154,7 +154,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'ms': {
-      description: 'Multiple Sclerosis (MS) is a chronic autoimmune disease where the immune system attacks the myelin sheath protecting nerve fibers, disrupting communication between the brain and body. Diet and lifestyle factors may help manage inflammation and symptoms.',
+      description: 'Multiple Sclerosis (MS) is a chronic autoimmune disease in which the immune system attacks myelin, the protective sheath insulating nerve fibers in the brain and spinal cord, disrupting communication between the brain and the rest of the body and producing symptoms from fatigue and numbness to vision problems and mobility issues. While no diet treats MS directly, the National MS Society highlights research into dietary patterns like the Swank diet - which limits saturated fat - and notes that some patients report fewer symptoms avoiding dairy and gluten, theorized to relate to structural similarities between certain food proteins and myelin itself. Evidence for specific foods remains preliminary, so dietary changes are generally recommended as a complement to, not a replacement for, disease-modifying medication.',
       generalSources: [
         { title: 'National MS Society', url: 'https://www.nationalmssociety.org/What-is-MS' },
         { title: 'Mayo Clinic - MS', url: 'https://www.mayoclinic.org/diseases-conditions/multiple-sclerosis/symptoms-causes/syc-20350269' },
@@ -196,7 +196,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'als': {
-      description: 'Amyotrophic Lateral Sclerosis (ALS), also known as Lou Gehrig\'s disease, is a progressive neurodegenerative disease that affects nerve cells in the brain and spinal cord controlling voluntary muscle movement. Research is ongoing into environmental and dietary factors that may influence disease progression.',
+      description: 'Amyotrophic Lateral Sclerosis (ALS), also known as Lou Gehrig\'s disease, is a progressive neurodegenerative disease in which motor neurons - the nerve cells in the brain and spinal cord that control voluntary muscle movement - gradually break down and die, leading to worsening muscle weakness, loss of motor control, and eventually the ability to move, speak, swallow, and breathe. Most cases have no identifiable cause, though a small percentage are inherited, and researchers continue to study environmental and dietary exposures that might influence who develops ALS or how quickly it progresses once diagnosed. One area of ongoing research involves excitotoxicity, a process where excess glutamate signaling overstimulates and eventually damages motor neurons, which has led some researchers to examine excitotoxin-type food additives like MSG and aspartame, alongside heavy metal and pesticide exposure, as potential contributing factors - though none of this is established as a cause of ALS. Because ALS has no cure, the ALS Association notes that most research into diet and environmental exposure focuses on risk reduction and symptom management rather than treatment, and any dietary changes should be discussed with a neurologist as part of a broader care plan.',
       generalSources: [
         { title: 'ALS Association', url: 'https://www.als.org/understanding-als/what-is-als' },
         { title: 'Mayo Clinic - ALS', url: 'https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis/symptoms-causes/syc-20354022' },
@@ -240,7 +240,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'epilepsy': {
-      description: 'Epilepsy is a neurological disorder characterized by recurrent seizures. Certain substances and dietary factors may influence seizure activity.',
+      description: 'Epilepsy is a neurological disorder characterized by a tendency toward recurrent, unprovoked seizures, caused by abnormal, excessive electrical activity in the brain. It has many possible underlying causes, from genetics to brain injury, and treatment usually centers on anti-seizure medication, though therapeutic diets like the ketogenic diet are also an established treatment option for some forms of drug-resistant epilepsy. Outside of formal dietary therapy, some people with epilepsy identify specific personal triggers - excitotoxin-type additives like MSG and aspartame, or high caffeine intake, both of which can overstimulate neural activity - though the evidence for these as triggers is largely from self-report rather than controlled trials, so any changes to diet or medication should go through a neurologist.',
       generalSources: [
         { title: 'Epilepsy Foundation', url: 'https://www.epilepsy.com/what-is-epilepsy' },
         { title: 'Mayo Clinic - Epilepsy', url: 'https://www.mayoclinic.org/diseases-conditions/epilepsy/symptoms-causes/syc-20350093' },
@@ -351,7 +351,7 @@ export interface AilmentIngredientEducation {
     },
   
     'contact-dermatitis': {
-      description: 'Contact dermatitis is a skin reaction caused by direct contact with a substance that irritates the skin or triggers an allergic reaction. It causes redness, itching, and sometimes blistering. Identifying and avoiding triggers is the primary treatment.',
+      description: 'Contact dermatitis is a localized skin reaction that occurs in one of two ways: irritant contact dermatitis, where a substance directly damages the skin\'s outer barrier (harsh soaps or solvents, for example), and allergic contact dermatitis, where the immune system becomes sensitized to a specific substance and mounts a delayed reaction - often 24 to 48 hours later - on repeated exposure. Because allergic contact dermatitis requires prior sensitization, someone can use a product containing a particular allergen for years without issue before suddenly developing a reaction once the immune system "learns" to recognize it. Fragrance, nickel, and preservatives like parabens and formaldehyde-releasers are among the most common culprits identified through patch testing, according to the American Academy of Dermatology, and identifying and eliminating the specific trigger - rather than treating symptoms alone - is the only way to prevent recurrence. Because the same ingredient can be tolerated by most people and still cause a significant reaction in someone sensitized to it, contact dermatitis triggers are highly individual and often require a dermatologist\'s patch test to pin down definitively.',
       generalSources: [
         { title: 'AAD - Contact Dermatitis', url: 'https://www.aad.org/public/diseases/a-z/contact-dermatitis-overview' },
         { title: 'Mayo Clinic - Contact Dermatitis', url: 'https://www.mayoclinic.org/diseases-conditions/contact-dermatitis/symptoms-causes/syc-20352742' },
@@ -373,7 +373,7 @@ export interface AilmentIngredientEducation {
     },
     
     'keratosis-pilaris': {
-      description: 'Keratosis pilaris (KP) is a common, harmless skin condition that causes rough, bumpy patches — often called "chicken skin" — typically on the upper arms, thighs, cheeks, and buttocks. It occurs when keratin builds up and plugs hair follicles.',
+      description: 'Keratosis pilaris (KP) is a common, harmless skin condition that causes small, rough, bumpy patches - often nicknamed "chicken skin" - typically on the upper arms, thighs, cheeks, and buttocks. It happens when keratin, a protein that normally sheds from the skin\'s surface, instead builds up and plugs individual hair follicles, creating the condition\'s signature texture. KP tends to run in families and often improves with age, and typically responds best to gentle exfoliation and consistent moisturizing rather than harsh cleansing, since ingredients that strip the skin\'s natural oils - like sulfates and drying alcohols - can dehydrate the area further and make the bumps and redness more noticeable.',
       generalSources: [
         { title: 'AAD - Keratosis Pilaris', url: 'https://www.aad.org/public/diseases/a-z/keratosis-pilaris-overview' },
         { title: 'Mayo Clinic - Keratosis Pilaris', url: 'https://www.mayoclinic.org/diseases-conditions/keratosis-pilaris/symptoms-causes/syc-20351149' },
@@ -391,7 +391,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sulfite-sensitivity': {
-      description: 'Sulfite sensitivity is an adverse reaction to sulfite compounds used as preservatives in food, wine, and some medications. Reactions can range from mild (hives, runny nose) to severe (asthma attacks, anaphylaxis). It is distinct from a true allergy but can be equally serious.',
+      description: 'Sulfite sensitivity is an adverse reaction to sulfite compounds widely used as preservatives to prevent browning and spoilage in food, wine, and some medications. Reactions occur when the body doesn\'t fully break down sulfites, and can range from mild - hives, flushing, a runny nose - to severe, including asthma-like bronchospasm or, rarely, anaphylaxis, particularly in people who also have asthma. The FDA has required sulfite disclosure on food labels since 1986 specifically because of these reactions, and unlike a true food allergy, sulfite sensitivity doesn\'t involve IgE antibodies, though the reactions it causes can be just as serious.',
       generalSources: [
         { title: 'AAAAI - Sulfite Sensitivity', url: 'https://www.aaaai.org/conditions-treatments/related-conditions/sulfite-sensitivity' },
         { title: 'FDA - Sulfites', url: 'https://www.fda.gov/food/food-additives-petitions/sulfites-food' },
@@ -409,7 +409,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sibo': {
-      description: 'Small Intestinal Bacterial Overgrowth (SIBO) occurs when bacteria that normally live in the large intestine overgrow in the small intestine, causing bloating, gas, diarrhea, and malabsorption. Diet plays a critical role in managing symptoms.',
+      description: 'Small Intestinal Bacterial Overgrowth (SIBO) occurs when bacteria that should mostly reside in the large intestine migrate into and overgrow within the small intestine, where they ferment food before the body has a chance to digest and absorb it - producing excess gas, bloating, diarrhea or constipation, and over time, nutrient malabsorption. Because the small intestine isn\'t built to host large bacterial populations, fermentable carbohydrates that would be harmless in a healthy gut - like certain fibers and sugar alcohols - can trigger significant symptoms in SIBO by feeding the overgrown bacteria directly. Many people manage SIBO with a low-FODMAP diet during a flare, worked out with a doctor or dietitian, alongside treatment aimed at the underlying overgrowth itself.',
       generalSources: [
         { title: 'Mayo Clinic - SIBO', url: 'https://www.mayoclinic.org/diseases-conditions/small-intestinal-bacterial-overgrowth/symptoms-causes/syc-20370168' },
         { title: 'NIH - SIBO', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3099351/' },
@@ -427,7 +427,7 @@ export interface AilmentIngredientEducation {
     },
     
     'gastritis': {
-      description: 'Gastritis is inflammation of the stomach lining, which can cause nausea, stomach pain, and sometimes ulcers. It can be caused by H. pylori infection, NSAIDs, or irritating foods and substances.',
+      description: 'Gastritis is inflammation of the stomach lining that can be acute (a short-term flare, often from alcohol, NSAIDs, or a stomach bug) or chronic, most commonly caused by long-term infection with H. pylori bacteria, which burrow into the stomach\'s protective mucus layer and provoke ongoing immune activity. Left untreated, chronic gastritis can thin the stomach lining over time and, in some cases, raise the risk of ulcers or stomach cancer, which is why the NIDDK recommends identifying and addressing the underlying cause rather than only managing symptoms like pain and nausea. Regardless of the underlying trigger, certain foods and substances can further irritate an already-inflamed stomach lining by increasing acid production or directly damaging the mucosa - alcohol, caffeine, and highly acidic or spicy ingredients are among the most consistently reported aggravators. Because gastritis symptoms can overlap with more serious conditions, the Mayo Clinic recommends medical evaluation - often including H. pylori testing - rather than relying on diet changes alone.',
       generalSources: [
         { title: 'Mayo Clinic - Gastritis', url: 'https://www.mayoclinic.org/diseases-conditions/gastritis/symptoms-causes/syc-20355807' },
         { title: 'NIDDK - Gastritis', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis' },
@@ -449,7 +449,7 @@ export interface AilmentIngredientEducation {
     },
     
     'diverticulosis': {
-      description: 'Diverticulosis is the presence of small pouches (diverticula) in the walls of the colon. While often symptom-free, these pouches can become inflamed (diverticulitis) causing pain and complications. A high-fiber diet is generally protective.',
+      description: 'Diverticulosis develops when small, bulging pouches (diverticula) form in weak spots of the colon wall, most often where blood vessels penetrate the muscle layer, typically as a result of increased pressure inside the colon over many years. A low-fiber diet is considered a major contributing factor because it produces smaller, harder stools that require more pressure to pass, and diverticulosis becomes markedly more common with age in populations that eat a typically low-fiber Western diet. Most people with diverticulosis have no symptoms and never know they have it, but the pouches can become inflamed or infected - a related but distinct condition called diverticulitis - causing pain, fever, and sometimes serious complications. Because of the role low fiber intake plays in formation, the NIDDK recommends a high-fiber diet as a protective measure, while red meat and refined grains have been associated with higher risk in large prospective studies like those published in the journal Gut.',
       generalSources: [
         { title: 'NIDDK - Diverticular Disease', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/diverticulosis-diverticulitis' },
         { title: 'Mayo Clinic - Diverticulosis', url: 'https://www.mayoclinic.org/diseases-conditions/diverticulosis/symptoms-causes/syc-20352752' },
@@ -467,7 +467,7 @@ export interface AilmentIngredientEducation {
     },
     
     'egg-allergy': {
-      description: 'Egg allergy is one of the most common food allergies, especially in children. It is an immune reaction to proteins found primarily in egg whites (ovalbumin, ovomucoid) but also in yolks. Eggs and egg derivatives appear in many food and personal care products.',
+      description: 'Egg allergy is one of the most common food allergies in children, though many children outgrow it by their teenage years. It\'s an IgE-mediated immune reaction to proteins found primarily in egg whites - ovalbumin and ovomucoid chief among them - though yolk proteins can trigger reactions too, and symptoms can range from hives and digestive upset to severe anaphylaxis. Because eggs and egg derivatives like albumin, lysozyme, and egg lecithin appear in a wide range of processed foods, baked goods, and some personal care products, careful label reading is essential for people managing an egg allergy.',
       generalSources: [
         { title: 'FARE - Egg Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/egg' },
         { title: 'ACAAI - Egg Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/egg/' },
@@ -489,7 +489,7 @@ export interface AilmentIngredientEducation {
     },
     
     'histamine-intolerance': {
-      description: 'Histamine intolerance occurs when the body cannot efficiently break down histamine from food, leading to symptoms like headaches, hives, digestive issues, and flushing. It is caused by a deficiency of the enzyme diamine oxidase (DAO).',
+      description: 'Histamine intolerance occurs when the body can\'t efficiently break down the histamine naturally present in many foods, most often due to reduced activity of diamine oxidase (DAO), the enzyme responsible for metabolizing dietary histamine in the gut. When histamine builds up faster than the body can clear it, it can produce a wide range of symptoms - headaches, hives, flushing, digestive upset, and nasal congestion - that can look similar to a true food allergy but involve a different mechanism entirely. Histamine levels rise the longer a food ferments or ages, which is why aged cheese, cured meats, fermented foods, and alcohol are among the most commonly flagged triggers, and some foods and additives can also directly trigger the body\'s own mast cells to release additional histamine.',
       generalSources: [
         { title: 'NIH - Histamine Intolerance', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7463562/' },
         { title: 'Allergy Journal - Histamine Intolerance', url: 'https://pubmed.ncbi.nlm.nih.gov/11359937/' },
@@ -515,7 +515,7 @@ export interface AilmentIngredientEducation {
     },
     
     'mcas': {
-      description: 'Mast Cell Activation Syndrome (MCAS) is a condition where mast cells inappropriately release chemical mediators, causing symptoms affecting multiple organ systems including the skin, GI tract, heart, and nervous system. Triggers vary widely between individuals.',
+      description: 'Mast Cell Activation Syndrome (MCAS) is a condition in which mast cells - immune cells normally involved in allergic and defensive responses - release histamine and other chemical mediators inappropriately or excessively, without a clear allergic trigger. Because mast cells are distributed throughout the body, MCAS symptoms can affect multiple systems at once: skin flushing and hives, GI cramping and diarrhea, rapid heart rate, and headaches or brain fog, often in unpredictable combinations. Triggers vary widely between individuals and can include foods, fragrances, temperature changes, and stress, which is why many people with MCAS keep a detailed symptom and trigger log and work with an allergist or immunologist to identify their own pattern rather than relying on a generic list.',
       generalSources: [
         { title: 'The Mastocytosis Society - MCAS', url: 'https://www.tmsforacure.org/mast-cell-disorders/mast-cell-activation-syndrome-mcas/' },
         { title: 'NIH - MCAS', url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4701915/' },
@@ -537,7 +537,7 @@ export interface AilmentIngredientEducation {
     },
     
     'pots': {
-      description: 'Postural Orthostatic Tachycardia Syndrome (POTS) is a form of dysautonomia where the autonomic nervous system fails to regulate heart rate and blood pressure properly upon standing. Symptoms include dizziness, heart palpitations, and fainting. Diet and hydration are key management tools.',
+      description: 'Postural Orthostatic Tachycardia Syndrome (POTS) is a form of dysautonomia in which the autonomic nervous system fails to properly constrict blood vessels when a person stands up, causing blood to pool in the lower body and the heart to compensate with a dramatic increase in heart rate - often 30 or more beats per minute within ten minutes of standing - to maintain blood flow to the brain. This can produce dizziness, palpitations, fatigue, brain fog, and fainting, and POTS is frequently seen alongside connective tissue disorders like Ehlers-Danlos syndrome and autoimmune or post-viral conditions. Because blood volume and vascular tone are central to the condition, increased fluid and sodium intake is a first-line, non-medication management strategy recommended by Dysautonomia International, which is part of why substances that promote fluid loss or vessel dilation - alcohol and excess caffeine among them - are commonly flagged as symptom aggravators. Managing POTS typically combines these dietary and lifestyle strategies with compression garments, exercise, and medication tailored to an individual\'s specific triggers.',
       generalSources: [
         { title: 'Dysautonomia International - POTS', url: 'https://www.dysautonomiainternational.org/page.php?ID=30' },
         { title: 'Mayo Clinic - POTS', url: 'https://www.mayoclinic.org/diseases-conditions/postural-tachycardia-syndrome/symptoms-causes/syc-20376042' },
@@ -559,7 +559,7 @@ export interface AilmentIngredientEducation {
     },
     
     'ibd': {
-      description: 'Inflammatory Bowel Disease (IBD) is an umbrella term for chronic inflammation of the GI tract, including Crohn\'s disease and ulcerative colitis. Diet does not cause IBD but can significantly influence symptoms and flare-ups.',
+      description: 'Inflammatory Bowel Disease (IBD) is an umbrella term for a group of conditions - primarily Crohn\'s disease and ulcerative colitis - that cause chronic, relapsing inflammation of the digestive tract, driven by an immune system that overreacts to the gut\'s own bacteria and tissue. Diet does not cause IBD, but the Crohn\'s & Colitis Foundation and a growing body of research point to specific food additives - emulsifiers like polysorbate 80, thickeners like carrageenan, and certain artificial sweeteners - that can erode the gut\'s protective mucus layer or shift bacterial balance in ways that promote the inflammation central to flares. Because individual trigger foods vary widely between patients, many people with IBD work with a gastroenterologist or dietitian to identify their own pattern rather than following one fixed diet.',
       generalSources: [
         { title: 'Crohn\'s & Colitis Foundation', url: 'https://www.crohnscolitisfoundation.org/what-is-ibd' },
         { title: 'Mayo Clinic - IBD', url: 'https://www.mayoclinic.org/diseases-conditions/inflammatory-bowel-disease/symptoms-causes/syc-20353315' },
@@ -581,7 +581,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sjogrens': {
-      description: 'Sjögren\'s syndrome is a chronic autoimmune disease where the immune system attacks moisture-producing glands, causing severe dry eyes and dry mouth. It often occurs alongside other autoimmune conditions.',
+      description: 'Sjögren\'s syndrome is a chronic autoimmune disease in which the immune system attacks the body\'s moisture-producing exocrine glands - primarily the salivary and tear glands - causing persistent dry mouth and dry eyes, though the disease can also affect the skin, joints, and other organs. It occurs both on its own (primary Sjögren\'s) and alongside other autoimmune conditions like rheumatoid arthritis or lupus (secondary Sjögren\'s), and it\'s thought to involve immune cells infiltrating and damaging glandular tissue over time. Because the mouth and eyes are already deprived of their normal protective moisture, the Sjögren\'s Foundation notes that substances which further dry or irritate these tissues - caffeine, alcohol, and harsh surfactants like SLS in toothpaste - tend to be especially poorly tolerated compared to their effect on unaffected people. Dry mouth from Sjögren\'s also raises the risk of dental decay, so limiting sugar and maintaining rigorous oral care are commonly recommended alongside medical treatment.',
       generalSources: [
         { title: 'Sjögren\'s Foundation', url: 'https://www.sjogrens.org/understanding-sjogrens/what-is-sjogrens' },
         { title: 'Mayo Clinic - Sjögren\'s Syndrome', url: 'https://www.mayoclinic.org/diseases-conditions/sjogrens-syndrome/symptoms-causes/syc-20353216' },
@@ -603,7 +603,7 @@ export interface AilmentIngredientEducation {
     },
     
     'graves-disease': {
-      description: 'Graves\' disease is an autoimmune disorder that causes hyperthyroidism (overactive thyroid). The immune system produces antibodies that stimulate the thyroid to produce too much hormone, causing symptoms like rapid heartbeat, weight loss, and anxiety.',
+      description: 'Graves\' disease is an autoimmune disorder in which the immune system produces antibodies that mimic thyroid-stimulating hormone (TSH), binding to and continuously activating the thyroid gland so that it produces far more thyroid hormone than the body needs. The resulting hyperthyroidism speeds up metabolism throughout the body, causing rapid heartbeat, anxiety, weight loss, heat intolerance, and, in some patients, a distinctive bulging of the eyes caused by inflammation behind the eye sockets. Because thyroid hormone production depends on iodine as a raw material, the American Thyroid Association notes that excess dietary iodine can further fuel an already overactive thyroid in Graves\' disease, while soy has been studied for its potential to interfere with thyroid hormone absorption when taken close to thyroid medication. Graves\' disease is typically treated with anti-thyroid medication, radioactive iodine, or surgery, and dietary choices are generally used to avoid aggravating symptoms alongside - not instead of - medical treatment.',
       generalSources: [
         { title: 'American Thyroid Association - Graves\' Disease', url: 'https://www.thyroid.org/graves-disease/' },
         { title: 'Mayo Clinic - Graves\' Disease', url: 'https://www.mayoclinic.org/diseases-conditions/graves-disease/symptoms-causes/syc-20356240' },
@@ -625,7 +625,7 @@ export interface AilmentIngredientEducation {
     },
     
     'ankylosing-spondylitis': {
-      description: 'Ankylosing spondylitis (AS) is a chronic inflammatory arthritis primarily affecting the spine and sacroiliac joints, causing pain, stiffness, and in severe cases, fusion of vertebrae. Diet, particularly a low-starch approach, may help manage inflammation.',
+      description: 'Ankylosing spondylitis (AS) is a chronic inflammatory form of arthritis that primarily targets the spine and sacroiliac joints (where the spine meets the pelvis), causing pain and stiffness that in severe, longstanding cases can lead to new bone formation and fusion of the vertebrae. It\'s strongly associated with the HLA-B27 gene, though not everyone who carries the gene develops AS, suggesting other immune or environmental factors are also involved. One less mainstream but persistently studied theory, sometimes called the London AS Diet, proposes that Klebsiella bacteria - fed by starchy foods - may trigger or sustain the autoimmune response behind AS in genetically susceptible people, and some patients report symptom improvement on a low-starch diet, though this hasn\'t been established through large controlled trials. More broadly, the Spondylitis Association of America notes that an anti-inflammatory eating pattern - limiting added sugar, alcohol, and pro-inflammatory fats - is commonly used by AS patients alongside medication to help manage joint pain and stiffness.',
       generalSources: [
         { title: 'Spondylitis Association of America', url: 'https://www.spondylitis.org/about-spondylitis' },
         { title: 'Mayo Clinic - Ankylosing Spondylitis', url: 'https://www.mayoclinic.org/diseases-conditions/ankylosing-spondylitis/symptoms-causes/syc-20354808' },
@@ -647,7 +647,7 @@ export interface AilmentIngredientEducation {
     },
     
     'psoriatic-arthritis': {
-      description: 'Psoriatic arthritis is an inflammatory arthritis associated with psoriasis, causing joint pain, stiffness, and swelling alongside skin plaques. An anti-inflammatory diet may help manage both skin and joint symptoms.',
+      description: 'Psoriatic arthritis (PsA) is an inflammatory autoimmune arthritis that develops in a meaningful share of people with psoriasis, driven by the same underlying immune dysfunction that causes psoriasis\'s skin plaques but extending to attack the joints as well, causing pain, stiffness, and swelling that can lead to joint damage if untreated. Because skin and joint inflammation in PsA share overlapping inflammatory pathways - including elevated levels of signaling proteins like TNF-alpha - factors that worsen one often worsen the other, which is part of why the National Psoriasis Foundation and Arthritis Foundation both recommend an anti-inflammatory approach to diet for managing PsA. Added sugar, alcohol, and diets high in omega-6 fats from certain seed oils are commonly flagged for promoting the kind of systemic inflammation that can aggravate both joint pain and skin flares, while alcohol in particular can also reduce the effectiveness of some PsA medications. PsA is a progressive condition best managed with medical treatment, though diet is frequently used as a complementary strategy to help control day-to-day symptom severity.',
       generalSources: [
         { title: 'National Psoriasis Foundation - PsA', url: 'https://www.psoriasis.org/psoriatic-arthritis/' },
         { title: 'Arthritis Foundation - PsA', url: 'https://www.arthritis.org/diseases/psoriatic-arthritis' },
@@ -669,7 +669,7 @@ export interface AilmentIngredientEducation {
     },
     
     'interstitial-cystitis': {
-      description: 'Interstitial cystitis (IC), also known as painful bladder syndrome, is a chronic condition causing bladder pressure, pain, and urinary urgency. Many foods and drinks act as bladder irritants and trigger flares.',
+      description: 'Interstitial cystitis (IC), also known as painful bladder syndrome, is a chronic condition causing recurring bladder pressure, pelvic pain, and urinary urgency or frequency, without the bacterial infection found in a typical UTI. Its exact cause isn\'t fully understood, but it\'s thought to involve a compromised bladder lining that allows irritating substances in urine to reach and inflame the nerve-rich tissue underneath. Because of this, many foods and drinks that would be harmless for most people - anything highly acidic, carbonated, caffeinated, or high in artificial sweeteners - are well-documented bladder irritants for IC, and identifying and eliminating personal trigger foods is considered a first-line, non-medical part of symptom management.',
       generalSources: [
         { title: 'Interstitial Cystitis Association', url: 'https://www.ichelp.org/about-ic/what-is-interstitial-cystitis/' },
         { title: 'Mayo Clinic - Interstitial Cystitis', url: 'https://www.mayoclinic.org/diseases-conditions/interstitial-cystitis/symptoms-causes/syc-20354357' },
@@ -695,7 +695,7 @@ export interface AilmentIngredientEducation {
     },
     
     'diabetes-type-1': {
-      description: 'Type 1 diabetes is an autoimmune condition where the immune system destroys insulin-producing cells in the pancreas. People with Type 1 require insulin therapy and must carefully manage blood sugar through diet and lifestyle.',
+      description: 'Type 1 diabetes is an autoimmune condition in which the immune system destroys the insulin-producing beta cells in the pancreas, eventually leaving the body unable to produce the insulin it needs to move glucose from the bloodstream into cells for energy. Unlike Type 2 diabetes, Type 1 isn\'t caused by lifestyle factors and can\'t be managed through diet alone - it requires lifelong insulin therapy, typically through injections or a pump, with dosing calculated around food intake. Because insulin dosing has to be matched to how quickly and how much a food raises blood glucose, the ADA emphasizes that ingredients causing rapid, unpredictable glucose spikes - refined sugar and high fructose corn syrup among the most significant - make blood sugar management meaningfully harder even though they don\'t cause the disease itself. People with Type 1 diabetes also face an elevated cardiovascular risk over time, which is why minimizing trans fats and other cardiovascular risk factors is commonly recommended alongside glucose management.',
       generalSources: [
         { title: 'ADA - Type 1 Diabetes', url: 'https://diabetes.org/about-diabetes/type-1' },
         { title: 'JDRF - Type 1 Diabetes', url: 'https://www.jdrf.org/t1d-resources/about/' },
@@ -717,7 +717,7 @@ export interface AilmentIngredientEducation {
     },
     
     'diabetes-type-2': {
-      description: 'Type 2 diabetes is a metabolic condition where the body becomes resistant to insulin or does not produce enough of it. It is strongly influenced by diet, and managing carbohydrate and sugar intake is central to treatment.',
+      description: 'Type 2 diabetes develops when the body\'s cells become progressively resistant to insulin\'s effects, forcing the pancreas to produce more and more insulin to keep blood sugar in a normal range until, over time, it can no longer keep up and blood glucose levels rise. Unlike Type 1, Type 2 diabetes is strongly influenced by diet, weight, and activity level, though genetics and other factors also play a meaningful role, and it typically develops gradually over years rather than appearing suddenly. Because insulin resistance is central to the disease, the CDC and ADA point to diets high in refined carbohydrates, added sugar, and particularly high fructose corn syrup as accelerants - foods that repeatedly spike blood glucose and insulin demand tend to worsen resistance over time, while trans fats compound the cardiovascular risk that already accompanies diabetes. For many people with prediabetes or early Type 2 diabetes, dietary and lifestyle changes are considered a primary, evidence-based treatment approach, not just a complement to medication.',
       generalSources: [
         { title: 'ADA - Type 2 Diabetes', url: 'https://diabetes.org/about-diabetes/type-2' },
         { title: 'CDC - Type 2 Diabetes', url: 'https://www.cdc.gov/diabetes/basics/type2.html' },
@@ -739,7 +739,7 @@ export interface AilmentIngredientEducation {
     },
     
     'thalassemia-minor': {
-      description: 'Thalassemia minor (also called thalassemia trait) is a mild inherited blood disorder where the body produces slightly less hemoglobin than normal. Most carriers have mild or no anemia and live normal lives, but should be mindful of iron intake.',
+      description: 'Thalassemia minor, also called thalassemia trait, is a mild, inherited blood disorder in which a genetic mutation causes the body to produce a somewhat reduced amount of hemoglobin, the protein in red blood cells that carries oxygen. Most people with thalassemia minor are simply carriers - they have one affected gene rather than two - and live entirely normal lives with mild or no anemia, often discovered incidentally through routine bloodwork rather than because of symptoms. The critical distinction the CDC highlights is that thalassemia minor is frequently mistaken for iron-deficiency anemia because both cause small red blood cells, but unlike iron-deficiency anemia, thalassemia minor doesn\'t stem from a lack of iron - so taking iron supplements doesn\'t correct it and can instead cause a harmful buildup of iron in the body over time. Because of this, anyone with thalassemia minor considering iron supplementation should first confirm their iron levels are actually low rather than assuming supplementation is appropriate.',
       generalSources: [
         { title: 'CDC - Thalassemia', url: 'https://www.cdc.gov/ncbddd/thalassemia/' },
         { title: 'Mayo Clinic - Thalassemia', url: 'https://www.mayoclinic.org/diseases-conditions/thalassemia/symptoms-causes/syc-20354995' },
@@ -757,7 +757,7 @@ export interface AilmentIngredientEducation {
     },
     
     'thalassemia-major': {
-      description: 'Thalassemia major (Cooley\'s anemia) is a severe inherited blood disorder requiring regular blood transfusions. These transfusions lead to iron overload, making careful management of iron intake critical.',
+      description: 'Thalassemia major (also known as Cooley\'s anemia) is a severe, inherited blood disorder in which both copies of the relevant hemoglobin gene are affected, leaving the body unable to produce enough healthy hemoglobin or red blood cells on its own. Without treatment, this leads to severe anemia beginning in early childhood, which is why thalassemia major is managed with regular blood transfusions, often every two to four weeks, for life. Those repeated transfusions solve the anemia but create a second major problem: the body has no natural way to excrete the extra iron delivered with each transfusion, so iron gradually accumulates in the heart, liver, and endocrine organs and becomes a leading cause of complications in thalassemia major if not actively managed with chelation therapy. Because of this iron overload, the Cooley\'s Anemia Foundation and CDC both stress that additional iron from supplements or high-dose vitamin C - which increases iron absorption - should be avoided without direct medical supervision, since either can accelerate organ damage that\'s already a central risk of the condition.',
       generalSources: [
         { title: 'CDC - Thalassemia', url: 'https://www.cdc.gov/ncbddd/thalassemia/' },
         { title: 'Cooley\'s Anemia Foundation', url: 'https://www.thalassemia.org/learn-about-thalassemia/' },
@@ -779,7 +779,7 @@ export interface AilmentIngredientEducation {
     },
     
     'endometriosis': {
-      description: 'Endometriosis is a chronic condition where tissue similar to the uterine lining grows outside the uterus, causing significant pain, inflammation, and in some cases, fertility issues. An anti-inflammatory diet may help manage symptoms.',
+      description: 'Endometriosis occurs when tissue similar to the uterine lining grows outside the uterus - often on the ovaries, fallopian tubes, or pelvic lining - where it continues to thicken, break down, and bleed in response to the menstrual cycle, but without any way to leave the body. That trapped tissue triggers chronic inflammation, scarring, and adhesions that cause the condition\'s hallmark pelvic pain, painful periods, and, in many cases, difficulty conceiving. Because endometriosis growth is estrogen-sensitive, some research reviewed by the Endometriosis Foundation of America and published in journals like Human Reproduction has looked at whether diet can influence disease activity - trans fats and high red meat intake have been associated with increased risk in observational studies, while alcohol and caffeine may raise estrogen levels in ways that could worsen symptoms. No diet cures or reliably treats endometriosis, but many patients use dietary changes as a complement to medical or surgical treatment in trying to manage inflammation and pain.',
       generalSources: [
         { title: 'Endometriosis Foundation of America', url: 'https://www.endofound.org/' },
         { title: 'Mayo Clinic - Endometriosis', url: 'https://www.mayoclinic.org/diseases-conditions/endometriosis/symptoms-causes/syc-20354656' },
@@ -805,7 +805,7 @@ export interface AilmentIngredientEducation {
     },
     
     'pmdd': {
-      description: 'Premenstrual Dysphoric Disorder (PMDD) is a severe form of PMS causing debilitating mood changes, depression, anxiety, and physical symptoms in the week before menstruation. Diet and lifestyle have a significant impact on symptom severity.',
+      description: 'Premenstrual Dysphoric Disorder (PMDD) is a severe, cyclical mood disorder that emerges in the luteal phase (the one to two weeks before menstruation) and causes debilitating depression, anxiety, irritability, and physical symptoms that resolve once a period begins. Unlike typical PMS, PMDD isn\'t caused by abnormal hormone levels themselves but by an abnormal sensitivity in the brain - particularly in serotonin regulation - to the normal rise and fall of estrogen and progesterone each cycle, which is why it\'s classified as a mood disorder rather than a purely hormonal one. Because blood sugar swings, sleep disruption, and substances that affect mood or fluid balance can compound PMDD\'s underlying sensitivity, ACOG and other sources note that caffeine, alcohol, excess sodium, and refined sugar are commonly reported to worsen symptoms during the luteal phase specifically. PMDD is a recognized psychiatric diagnosis that often requires treatment beyond diet, including therapy or medication, but many patients use dietary adjustments alongside clinical treatment to help manage the physical symptoms that accompany a flare.',
       generalSources: [
         { title: 'ACOG - PMDD', url: 'https://www.acog.org/womens-health/faqs/premenstrual-syndrome' },
         { title: 'Mayo Clinic - PMDD', url: 'https://www.mayoclinic.org/diseases-conditions/premenstrual-syndrome/symptoms-causes/syc-20376780' },
@@ -832,7 +832,7 @@ export interface AilmentIngredientEducation {
   
     // Autoimmune Conditions
     'lupus': {
-      description: 'Lupus is a chronic autoimmune disease where the immune system attacks healthy tissue. Avoiding certain triggers can help manage flare-ups.',
+      description: 'Lupus (systemic lupus erythematosus) is a chronic autoimmune disease in which the immune system attacks healthy tissue throughout the body, including the skin, joints, kidneys, and cardiovascular system, producing a wide and often unpredictable range of symptoms. Flares can be triggered by sun exposure, infection, stress, and - for some patients - certain foods and supplements that stimulate immune activity, such as alfalfa sprouts (which contain the amino acid L-canavanine) and immune-boosting herbs like echinacea and garlic. The Lupus Foundation of America notes that because lupus varies so much between individuals, trigger identification is highly personal, and any dietary or supplement changes are best made in coordination with a rheumatologist.',
       generalSources: [
         { title: 'Lupus Foundation of America', url: 'https://www.lupus.org/resources/what-is-lupus' },
         { title: 'Mayo Clinic - Lupus', url: 'https://www.mayoclinic.org/diseases-conditions/lupus/symptoms-causes/syc-20365789' },
@@ -911,7 +911,7 @@ export interface AilmentIngredientEducation {
   
     // Respiratory Conditions
     'asthma': {
-      description: 'Asthma is a chronic respiratory condition causing airway inflammation and breathing difficulties. Certain foods and additives can trigger symptoms.',
+      description: 'Asthma is a chronic respiratory condition in which the airways become persistently inflamed and hyper-reactive, narrowing suddenly in response to triggers and causing wheezing, coughing, chest tightness, and shortness of breath. While allergens, exercise, cold air, and respiratory infections are the most common triggers, some people with asthma are also sensitive to specific food additives - sulfites and certain preservatives among them - that can provoke bronchospasm through mechanisms separate from typical allergy. A subset of asthma patients also have Samter\'s triad, a combination of asthma, nasal polyps, and sensitivity to aspirin and other salicylate compounds, according to the Cleveland Clinic. Because triggers vary widely from person to person, the American Lung Association recommends that people with asthma identify their own personal triggers, whether environmental or dietary, alongside their prescribed controller and rescue medications.',
       generalSources: [
         { title: 'American Lung Association', url: 'https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma' },
         { title: 'Mayo Clinic - Asthma', url: 'https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653' },
@@ -990,7 +990,7 @@ export interface AilmentIngredientEducation {
   
     // Skin Conditions
     'eczema': {
-      description: 'Eczema (atopic dermatitis) is a chronic inflammatory skin condition causing dry, itchy, and inflamed skin. Managing eczema often involves avoiding irritants and allergens that can trigger flare-ups.',
+      description: 'Eczema (atopic dermatitis) is a chronic inflammatory skin condition rooted in a compromised skin barrier - often linked to mutations in the filaggrin gene - that allows moisture to escape and irritants, allergens, and bacteria to penetrate more easily than in typical skin. This barrier weakness, combined with an overactive immune response, produces the intense itching, dryness, and inflamed patches that define eczema, and it frequently occurs alongside other atopic conditions like asthma and hay fever. Because the skin barrier is already fragile, the National Eczema Association notes that many common skincare ingredients - fragrance, harsh surfactants, and drying alcohols among them - can trigger or worsen flares by stripping natural oils or provoking an allergic response. Managing eczema typically centers on gentle, fragrance-free skincare and consistent moisturizing to help rebuild the barrier, alongside identifying and avoiding personal trigger ingredients.',
       generalSources: [
         { title: 'National Eczema Association', url: 'https://nationaleczema.org/eczema/' },
         { title: 'AAD - Eczema Resource Center', url: 'https://www.aad.org/public/diseases/eczema' },
@@ -1032,7 +1032,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'rosacea': {
-      description: 'Rosacea is a chronic skin condition causing redness, visible blood vessels, and sometimes small bumps on the face. Managing rosacea requires avoiding known triggers that can cause flare-ups.',
+      description: 'Rosacea is a chronic inflammatory skin condition that causes persistent facial redness, visible blood vessels, and sometimes small, acne-like bumps, most commonly across the cheeks, nose, forehead, and chin. Its exact cause isn\'t fully understood, but it\'s thought to involve a combination of blood vessel reactivity, immune system overactivity, and a lower tolerance for irritation than typical skin. The National Rosacea Society\'s own patient surveys consistently identify certain skincare ingredients - fragrance, alcohol, and harsh surfactants like SLS chief among them - as common triggers, since they either irritate an already-reactive skin barrier directly or provoke the flushing response central to a flare, which is why gentle, fragrance-free skincare is a cornerstone of rosacea management alongside any prescribed treatment.',
       generalSources: [
         { title: 'National Rosacea Society', url: 'https://www.rosacea.org/' },
         { title: 'AAD - Rosacea', url: 'https://www.aad.org/public/diseases/rosacea' },
@@ -1066,7 +1066,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'psoriasis': {
-      description: 'Psoriasis is an autoimmune condition that causes rapid skin cell turnover, resulting in thick, scaly patches. Avoiding irritating ingredients helps manage symptoms and prevent flare-ups.',
+      description: 'Psoriasis is a chronic autoimmune condition in which the immune system mistakenly speeds up the skin cell life cycle, causing new cells to form and pile up on the surface every few days instead of the usual few weeks. That rapid turnover produces the condition\'s hallmark thick, scaly, often silvery plaques, most commonly on the elbows, knees, and scalp, and it can also involve the joints in a related condition called psoriatic arthritis. While psoriasis isn\'t caused by anything applied to the skin, the National Psoriasis Foundation notes that fragrance, alcohol, and harsh surfactants can irritate already-inflamed plaques and worsen discomfort, so many people with psoriasis favor gentle, fragrance-free formulations. Stress, infections, certain medications, and - for some people - alcohol and smoking are also recognized triggers that can bring on or worsen a flare.',
       generalSources: [
         { title: 'National Psoriasis Foundation', url: 'https://www.psoriasis.org/' },
         { title: 'AAD - Psoriasis', url: 'https://www.aad.org/public/diseases/psoriasis' },
@@ -1093,7 +1093,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'acne': {
-      description: 'Acne is a skin condition that occurs when hair follicles become clogged with oil and dead skin cells. Avoiding comedogenic ingredients helps prevent breakouts.',
+      description: 'Acne develops when hair follicles become clogged with a combination of excess sebum (oil) and dead skin cells, creating an environment where Cutibacterium acnes bacteria can multiply and trigger the inflammation behind whiteheads, blackheads, and deeper cysts. Oil production is heavily influenced by hormones - particularly androgens - which is why acne often flares around puberty, the menstrual cycle, or with conditions like PCOS, though genetics, stress, and skincare products all play a role too. The AAD notes that certain skincare ingredients are considered comedogenic, meaning they\'re prone to physically blocking pores or mimicking the skin\'s own oils in a way that worsens clogging, so people managing acne often look for non-comedogenic labeling and avoid heavy oils, waxes, and pore-clogging silicones. Diet has a more debatable but still studied role, with some research linking high-glycemic foods and dairy to increased breakout frequency in susceptible people.',
       generalSources: [
         { title: 'AAD - Acne', url: 'https://www.aad.org/public/diseases/acne' },
         { title: 'Mayo Clinic - Acne', url: 'https://www.mayoclinic.org/diseases-conditions/acne/symptoms-causes/syc-20368047' },
@@ -1116,7 +1116,7 @@ export interface AilmentIngredientEducation {
   
     // Food Allergies
     'dairy-allergy': {
-      description: 'Dairy allergy is an immune response to proteins in cow\'s milk, primarily casein and whey. It can affect both diet and topical products containing dairy derivatives.',
+      description: 'A dairy (milk) allergy is an immune system reaction to proteins in cow\'s milk - primarily casein and whey - that\'s distinct from lactose intolerance, which is a digestive inability to break down milk sugar rather than an immune response. Because it\'s IgE-mediated, a true milk allergy can trigger reactions ranging from hives and digestive upset to severe, rapid-onset anaphylaxis, which is why it\'s treated with strict avoidance rather than moderation. Milk is one of the most common childhood food allergies, and while many children outgrow it, milk proteins can hide under less obvious names - casein, whey, lactalbumin, and ghee among them - in processed foods, baked goods, and some personal care products. The FDA requires milk to be declared as a major allergen on food labels, but ACAAI notes that reading full ingredient lists is still essential since dairy derivatives aren\'t always obvious from a product\'s name.',
       generalSources: [
         { title: 'ACAAI - Milk Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/milk-dairy/' },
         { title: 'Mayo Clinic - Milk Allergy', url: 'https://www.mayoclinic.org/diseases-conditions/milk-allergy/symptoms-causes/syc-20375101' },
@@ -1149,7 +1149,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'gluten-intolerance': {
-      description: 'Gluten intolerance (including celiac disease and non-celiac gluten sensitivity) requires avoiding wheat, barley, and rye proteins. This extends to certain personal care products.',
+      description: 'Gluten intolerance is an umbrella term that includes celiac disease as well as non-celiac gluten sensitivity (NCGS), a condition in which people experience bloating, fatigue, brain fog, or digestive discomfort after eating gluten despite testing negative for celiac disease and having no measurable intestinal damage. Researchers are still working out the exact mechanism behind NCGS - some evidence points to a reaction to other wheat components like fermentable carbohydrates (FODMAPs) rather than gluten itself - but for those affected, the practical solution is the same as for celiac disease: avoiding wheat, barley, and rye. Because gluten is used as a binder, stabilizer, and flavoring agent, it turns up in far more products than bread and pasta, including sauces, supplements, and some hair and skin care items, so label reading is central to managing the condition. The Celiac Disease Foundation and Mayo Clinic both recommend ruling out celiac disease first, since it requires stricter, lifelong avoidance and carries different long-term health risks than gluten sensitivity.',
       generalSources: [
         { title: 'Celiac Disease Foundation', url: 'https://celiac.org/' },
         { title: 'Mayo Clinic - Celiac Disease', url: 'https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220' },
@@ -1176,7 +1176,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'soy-allergy': {
-      description: 'Soy allergy is an immune reaction to soy proteins, one of the top 8 food allergens. Soy derivatives appear in many processed foods and some cosmetic products.',
+      description: 'Soy allergy is an immune reaction to proteins in soybeans and is one of the eight most common food allergens tracked by the FDA, though many children outgrow it by their teenage years unlike some other allergies. Reactions are triggered by specific soy proteins and can range from mild hives and digestive upset to, less commonly, severe anaphylaxis, with severity often varying by how much soy protein a given derivative actually contains. Because soy is used so widely as a cheap protein, emulsifier, and filler, it appears in a large share of processed foods, and some derivatives - like highly refined soybean oil or soy lecithin - contain little to no residual protein and are tolerated by many people with soy allergy, while others, like soy protein isolate, are reliably allergenic. ACAAI and FARE both recommend that people with soy allergy discuss which refined soy derivatives are safe for them individually with an allergist, since tolerance can differ from person to person.',
       generalSources: [
         { title: 'ACAAI - Soy Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/soy/' },
         { title: 'FARE - Soy Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/soy' },
@@ -1205,7 +1205,7 @@ export interface AilmentIngredientEducation {
   
     // Neurological Conditions
     'parkinsons': {
-      description: 'Parkinson\'s disease is a progressive neurological disorder affecting movement. Research suggests certain environmental toxins may be associated with increased risk.',
+      description: 'Parkinson\'s disease is a progressive neurological disorder that results from the loss of dopamine-producing neurons in the brain, leading to tremor, stiffness, slowed movement, and balance difficulties that worsen over time. Its exact cause is unknown, but the CDC and multiple large epidemiological studies have identified chronic pesticide exposure as one of the most consistently replicated environmental risk factors, alongside other studied contributors like heavy metal exposure and dietary patterns high in trans fats and sugar that promote neuroinflammation. There\'s no dietary cure, but many people with Parkinson\'s work with their care team on nutrition both to support overall brain health and to manage how certain foods interact with Parkinson\'s medications like levodopa.',
       generalSources: [
         { title: 'Parkinson\'s Foundation', url: 'https://www.parkinson.org/' },
         { title: 'NIH - Parkinson\'s Disease', url: 'https://www.ninds.nih.gov/health-information/disorders/parkinsons-disease' },
@@ -1236,7 +1236,7 @@ export interface AilmentIngredientEducation {
   
     // Digestive Conditions
     'ibs': {
-      description: 'Irritable Bowel Syndrome (IBS) is a chronic digestive disorder affecting the large intestine. Managing IBS often involves identifying and avoiding trigger foods and additives.',
+      description: 'Irritable Bowel Syndrome (IBS) is a chronic disorder of the gut-brain interaction that causes recurring abdominal pain along with diarrhea, constipation, or both, without any visible damage or disease in the digestive tract itself. Researchers believe IBS involves visceral hypersensitivity - nerves in the gut sending pain signals more readily than they should - along with disrupted gut motility and, in some people, an altered balance of gut bacteria. Because there\'s no single structural cause to treat, management is largely built around identifying individual trigger foods, and a low-FODMAP diet (developed by Monash University and validated in multiple clinical trials) is one of the most evidence-backed approaches for reducing the fermentable carbohydrates that provoke gas, bloating, and pain in IBS. Certain other additives, like caffeine and highly processed gums and thickeners, are also commonly reported triggers, though sensitivity varies significantly from person to person.',
       generalSources: [
         { title: 'IFFGD - IBS', url: 'https://aboutibs.org/' },
         { title: 'Mayo Clinic - IBS', url: 'https://www.mayoclinic.org/diseases-conditions/irritable-bowel-syndrome/symptoms-causes/syc-20360016' },
@@ -1269,7 +1269,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'crohns': {
-      description: 'Crohn\'s disease is an inflammatory bowel disease (IBD) that causes chronic inflammation of the digestive tract. Diet management can help reduce symptoms.',
+      description: 'Crohn\'s disease is a form of inflammatory bowel disease that can cause chronic inflammation anywhere along the digestive tract, from the mouth to the anus, though it most often affects the end of the small intestine and the beginning of the colon. Unlike ulcerative colitis, Crohn\'s inflammation can penetrate through multiple layers of the bowel wall, part of why it can lead to complications like strictures and fistulas if unmanaged. Diet doesn\'t cause Crohn\'s, but research reviewed by the Crohn\'s & Colitis Foundation has linked several common food additives - emulsifiers, certain thickeners, and some artificial sweeteners - to gut barrier disruption and bacterial shifts that can worsen flares, which is why many patients track and limit them alongside their prescribed treatment.',
       generalSources: [
         { title: 'Crohn\'s & Colitis Foundation', url: 'https://www.crohnscolitisfoundation.org/' },
         { title: 'Mayo Clinic - Crohn\'s', url: 'https://www.mayoclinic.org/diseases-conditions/crohns-disease/symptoms-causes/syc-20353304' },
@@ -1292,7 +1292,7 @@ export interface AilmentIngredientEducation {
   
     // Thyroid Conditions
     'hashimotos': {
-      description: 'Hashimoto\'s thyroiditis is an autoimmune condition where the immune system attacks the thyroid gland. Managing the condition may involve avoiding certain substances that affect thyroid function.',
+      description: 'Hashimoto\'s thyroiditis is an autoimmune condition in which the immune system gradually attacks the thyroid gland, most often leading to hypothyroidism as thyroid tissue is damaged over time. It\'s the most common cause of hypothyroidism in the United States and is usually managed with thyroid hormone replacement medication. Some researchers have studied "molecular mimicry" - a structural resemblance between gluten\'s gliadin protein and thyroid tissue - as one possible reason some Hashimoto\'s patients report fewer flares gluten-free, and soy and excess iodine are commonly flagged because they can interfere with thyroid hormone absorption or worsen autoimmune activity. None of these dietary choices replace medication, but many patients use them alongside it.',
       generalSources: [
         { title: 'American Thyroid Association', url: 'https://www.thyroid.org/hashimotos-thyroiditis/' },
         { title: 'Mayo Clinic - Hashimoto\'s', url: 'https://www.mayoclinic.org/diseases-conditions/hashimotos-disease/symptoms-causes/syc-20351855' },
@@ -1348,7 +1348,7 @@ export interface AilmentIngredientEducation {
   
     // Skin Conditions (additional)
     'dandruff': {
-      description: 'Dandruff is a common scalp condition causing flaking and itching. It may be caused by a yeast-like fungus, dry skin, or sensitivity to hair products.',
+      description: 'Dandruff is a common scalp condition causing visible flaking and itching, most often linked to an overgrowth of Malassezia, a yeast that naturally lives on the scalp and feeds on the oils it produces, though dry skin and sensitivity to hair product ingredients can cause or worsen it too. Because dandruff can stem from genuinely different mechanisms - an oily, yeast-driven scalp versus a dry, irritated one - the ingredients that help or hurt can differ from person to person: harsh sulfates and drying alcohols tend to worsen the dry type, while heavy oils like coconut oil can feed Malassezia and worsen the yeast-driven type. Persistent or severe flaking is also worth discussing with a dermatologist, since it can overlap with seborrheic dermatitis.',
       generalSources: [
         { title: 'AAD - Dandruff', url: 'https://www.aad.org/public/diseases/a-z/dandruff-how-to-treat' },
         { title: 'Mayo Clinic - Dandruff', url: 'https://www.mayoclinic.org/diseases-conditions/dandruff/symptoms-causes/syc-20353850' },
@@ -1398,7 +1398,7 @@ export interface AilmentIngredientEducation {
   
     // Neurological/Mental Health Conditions
     'adhd': {
-      description: 'Attention Deficit Hyperactivity Disorder (ADHD) is a neurodevelopmental disorder affecting focus, impulse control, and activity levels. Some research explores potential dietary influences.',
+      description: 'Attention-Deficit/Hyperactivity Disorder (ADHD) is a neurodevelopmental condition that affects focus, impulse control, and activity regulation, typically diagnosed in childhood but often persisting into adulthood. Its causes are primarily genetic and neurological, involving differences in dopamine and norepinephrine signaling - diet does not cause ADHD. That said, research including the widely cited UK Southampton study found that certain synthetic food dyes and preservatives can measurably increase hyperactive behavior in a subset of children, which is why the UK and EU (though not the US) require warning labels on foods containing them. Many families managing ADHD choose to limit these additives, added sugar, and caffeine as part of a broader approach alongside medical treatment, though responses vary from person to person.',
       generalSources: [
         { title: 'CHADD - About ADHD', url: 'https://chadd.org/about-adhd/overview/' },
         { title: 'CDC - ADHD', url: 'https://www.cdc.gov/ncbddd/adhd/' },
@@ -1483,7 +1483,7 @@ export interface AilmentIngredientEducation {
   
     // Digestive Conditions (additional)
     'gerd': {
-      description: 'Gastroesophageal Reflux Disease (GERD) is a chronic condition where stomach acid flows back into the esophagus, causing heartburn and other symptoms.',
+      description: 'Gastroesophageal Reflux Disease (GERD) is a chronic condition in which stomach acid frequently flows backward into the esophagus, causing heartburn, regurgitation, and sometimes damage to the esophageal lining over time. It happens when the lower esophageal sphincter - the muscular valve between the stomach and esophagus - relaxes or weakens more than it should. According to the Mayo Clinic and NIH, certain foods and drinks are well-documented triggers because they either relax that sphincter directly (caffeine, peppermint, chocolate) or add extra acid load to a stomach that\'s already refluxing too easily (citrus, tomato, vinegar), which is why identifying and limiting personal trigger foods is a first-line recommendation alongside any prescribed acid-reducing medication.',
       generalSources: [
         { title: 'NIDDK - GERD', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults' },
         { title: 'Mayo Clinic - GERD', url: 'https://www.mayoclinic.org/diseases-conditions/gerd/symptoms-causes/syc-20361940' },
@@ -1567,7 +1567,7 @@ export interface AilmentIngredientEducation {
   
     // Women\'s Health
     'pcos': {
-    description: 'Polycystic Ovary Syndrome (PCOS) is a hormonal disorder affecting women of reproductive age, causing irregular periods, excess androgen levels, and sometimes small cysts on the ovaries. Diet plays a significant role in managing insulin resistance, inflammation, and hormonal balance.',
+    description: 'Polycystic Ovary Syndrome (PCOS) is a common hormonal disorder in which the ovaries produce excess androgens (male hormones) and often develop small, fluid-filled follicles, leading to irregular or absent periods, acne, excess hair growth, and difficulty with fertility. At the root of PCOS for many patients is insulin resistance - cells respond less effectively to insulin, so the body produces more of it, and elevated insulin in turn drives the ovaries to produce even more androgen, creating a self-reinforcing cycle. Because of this link, diet is one of the most evidence-backed tools for managing PCOS: the Journal of the Academy of Nutrition and Dietetics and other research bodies note that added sugar, refined carbohydrates, and certain inflammatory fats can worsen insulin resistance, while some patients also report symptom changes tied to dairy and soy intake, though evidence there is more mixed. ACOG emphasizes that PCOS management is highly individualized, and dietary changes are typically used alongside medical treatment rather than as a replacement for it.',
     generalSources: [
       { title: 'ACOG - PCOS', url: 'https://www.acog.org/womens-health/faqs/polycystic-ovary-syndrome-pcos' },
       { title: 'Mayo Clinic - PCOS', url: 'https://www.mayoclinic.org/diseases-conditions/pcos/symptoms-causes/syc-20353439' },
@@ -1592,7 +1592,7 @@ export interface AilmentIngredientEducation {
     },
   },
   'hormonal-acne': {
-    description: 'Hormonal acne is triggered by fluctuations in hormones — particularly androgens like testosterone — that increase oil production and clog pores. It typically appears along the jawline, chin, and neck and is influenced by diet, stress, and skincare products.',
+    description: 'Hormonal acne is a form of acne driven primarily by fluctuations in androgens - hormones that stimulate the skin\'s oil glands to produce more sebum, which in turn increases the likelihood of clogged, inflamed pores. It\'s why breakouts often cluster along the jawline, chin, and neck, and why flares commonly track with the menstrual cycle, puberty, PCOS, or other periods of hormonal change rather than appearing randomly across the face. Diet has a documented, if still-debated, connection to hormonal acne: the AAD points to research linking high-glycemic foods and dairy - which contains hormones and growth factors like IGF-1 - to increased insulin and androgen activity that can worsen breakouts in susceptible people. Because hormonal acne often responds differently to standard topical treatments than other acne types, dermatologists frequently recommend addressing it through a combination of skincare, diet, and, when appropriate, hormonal treatment discussed with a provider.',
     generalSources: [
       { title: 'AAD - Hormonal Acne', url: 'https://www.aad.org/public/diseases/acne/causes/hormonal' },
       { title: 'Mayo Clinic - Acne', url: 'https://www.mayoclinic.org/diseases-conditions/acne/symptoms-causes/syc-20368047' },
@@ -1620,7 +1620,7 @@ export interface AilmentIngredientEducation {
     },
   },
     'breastfeeding': {
-      description: 'While breastfeeding, certain ingredients in food, drink, and personal care products can pass through breast milk to your baby. Being mindful of what you consume and apply helps protect your newborn\'s health and development.',
+      description: 'While breastfeeding, substances consumed in food and drink, as well as some ingredients applied to the skin, can pass into breast milk and reach a nursing infant, whose liver and kidneys are far less equipped than an adult\'s to process and clear them. The degree of transfer varies enormously by substance - caffeine and alcohol pass into milk readily and in amounts roughly proportional to what\'s in the mother\'s bloodstream, while other compounds accumulate more gradually or barely transfer at all - which is why blanket avoidance isn\'t necessary for everything but targeted caution is warranted for specific ingredients. The CDC, AAP, and La Leche League all publish guidance on which substances warrant real caution during breastfeeding, from mercury in certain fish to specific herbs long used to reduce milk supply, and from topical retinoids to endocrine-disrupting chemicals like parabens and BPA that have been detected in breast milk. Because an infant\'s exposure is entirely dependent on what a nursing parent eats, drinks, or applies, many breastfeeding parents choose to extend some of the same precautions used during pregnancy through the nursing period.',
       generalSources: [
         { title: 'La Leche League - Foods and Breastfeeding', url: 'https://www.llli.org/breastfeeding-info/food/' },
         { title: 'CDC - Breastfeeding Nutrition', url: 'https://www.cdc.gov/breastfeeding/breastfeeding-special-circumstances/diet-and-micronutrients/maternal-diet.html' },
@@ -1715,7 +1715,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'pregnant': {
-      description: 'Pregnancy is a time when what you eat, drink, and apply to your skin can affect both your health and your baby\'s development. Certain ingredients in food, skincare, and household products should be avoided or minimized during pregnancy.',
+      description: 'Pregnancy involves major physiological changes - increased blood volume, hormonal shifts, and a developing placenta that exchanges nutrients, oxygen, and unfortunately many other substances between mother and fetus. Because the placenta doesn\'t block everything, certain compounds that are harmless for most adults - some medications, high-dose vitamin A derivatives, specific chemicals, and heavy metals like mercury - can cross into fetal circulation during critical windows of development and are classified as teratogens capable of causing birth defects or developmental harm. ACOG and the CDC note that risk isn\'t limited to what\'s eaten or taken by mouth either: some topically applied ingredients, like certain UV filters and retinoids, are absorbed through the skin in meaningful enough amounts to warrant caution. Because the fetus is most vulnerable during specific developmental windows and there\'s often no way to know exposure risk after the fact, providers generally recommend a precautionary approach - avoiding known or suspected risks - rather than waiting for definitive proof of harm in every individual ingredient.',
       generalSources: [
         { title: 'ACOG - Nutrition During Pregnancy', url: 'https://www.acog.org/womens-health/faqs/nutrition-during-pregnancy' },
         { title: 'CDC - Pregnancy Health', url: 'https://www.cdc.gov/pregnancy/index.html' },
@@ -1814,7 +1814,8 @@ export interface AilmentIngredientEducation {
       },
     },
     'postpartum': {
-      description: 'The postpartum period is a time of physical recovery and hormonal shifts after childbirth. Whether or not you are breastfeeding, certain ingredients in food, personal care products, and household items may affect your recovery, hormone balance, and overall wellbeing during this sensitive time.',    generalSources: [
+      description: 'The postpartum period covers the weeks and months after childbirth when the body is recovering from delivery, hormone levels are resetting after months of pregnancy, and - for those breastfeeding - milk production adds another channel through which consumed or applied substances can reach a newborn. Even for mothers who aren\'t breastfeeding, this is a time of significant physical healing, sleep disruption, and hormonal fluctuation that can make skin, digestion, and mood more reactive to certain ingredients than usual. For breastfeeding mothers specifically, the CDC and La Leche League note that caffeine, alcohol, and some medications and topical treatments pass into breast milk in varying amounts and can affect a nursing infant, so many of the same precautions used during pregnancy are commonly extended through this period. Because recovery needs and breastfeeding status vary so much between individuals, providers generally recommend discussing supplements, medications, and skincare actives with a doctor before resuming them postpartum.',
+      generalSources: [
         { title: 'La Leche League - Foods and Breastfeeding', url: 'https://www.llli.org/breastfeeding-info/food/' },
         { title: 'CDC - Breastfeeding Nutrition', url: 'https://www.cdc.gov/breastfeeding/breastfeeding-special-circumstances/diet-and-micronutrients/maternal-diet.html' },
         { title: 'Mayo Clinic - Breastfeeding Nutrition', url: 'https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/breastfeeding-nutrition/art-20046912' },
@@ -1908,7 +1909,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'perimenopause': {
-      description: 'Perimenopause is the transition period before menopause when hormone levels fluctuate. Certain substances may worsen symptoms like hot flashes and mood changes.',
+      description: 'Perimenopause is the transition period leading up to menopause, often lasting several years, during which estrogen and progesterone levels fluctuate unpredictably rather than declining steadily. This hormonal instability - not a hormone deficit outright - is what makes perimenopause symptoms like irregular periods, hot flashes, mood swings, and sleep disruption often feel more erratic than post-menopausal symptoms. Because the fluctuations themselves drive many symptoms, some people find that stabilizing blood sugar and moderating stimulants like caffeine and alcohol helps smooth out day-to-day symptom severity, though the underlying hormonal shifts continue regardless of diet until the transition completes.',
       generalSources: [
         { title: 'Mayo Clinic - Perimenopause', url: 'https://www.mayoclinic.org/diseases-conditions/perimenopause/symptoms-causes/syc-20354666' },
         { title: 'NAMS - Perimenopause', url: 'https://www.menopause.org/for-women/menopauseflashes/menopause-symptoms-and-treatments/menopause-101-a-primer-for-the-perimenopausal' },
@@ -1942,7 +1943,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'bariatric': {
-      description: 'Bariatric surgery includes procedures like gastric bypass and sleeve gastrectomy that help with weight loss by restricting food intake or nutrient absorption. Post-surgery, dietary management is critical to prevent complications like dumping syndrome and nutritional deficiencies.',
+      description: 'Bariatric surgery is an umbrella term for procedures like gastric bypass and sleeve gastrectomy that support significant weight loss by restricting how much food the stomach can hold, altering how nutrients are absorbed, or both. These anatomical changes mean food and drink move through the digestive system very differently than before surgery - sugar and fat can trigger dumping syndrome, alcohol is absorbed faster and more intensely, and carbonation has far less room to expand comfortably in a much smaller stomach pouch. Because these changes are permanent, careful post-surgery dietary management - eating slowly, prioritizing protein, and working closely with a bariatric dietitian - is critical both to prevent complications and to support the intended long-term outcomes of the surgery.',
       generalSources: [
         { title: 'American Society for Metabolic and Bariatric Surgery', url: 'https://asmbs.org/patients/bariatric-surgery-procedures' },
         { title: 'Mayo Clinic - Bariatric Surgery', url: 'https://www.mayoclinic.org/tests-procedures/bariatric-surgery/about/pac-20394258' },
@@ -1968,7 +1969,7 @@ export interface AilmentIngredientEducation {
     },
     
     'gastrectomy': {
-      description: 'Gastrectomy is the surgical removal of all or part of the stomach, typically performed for stomach cancer or severe ulcers. It significantly changes how food is digested and absorbed, requiring careful dietary management.',
+      description: 'Gastrectomy is the surgical removal of all or part of the stomach, typically performed to treat stomach cancer, severe ulcers, or other serious stomach conditions. Because the stomach normally regulates how quickly food moves into the small intestine, removing part or all of it changes that timing dramatically - food, especially sugar, can reach the small intestine too fast, pulling in fluid and triggering dumping syndrome (cramping, nausea, and a rapid heartbeat), while functions like lactose digestion and nutrient absorption are often disrupted too. Careful, often lifelong dietary management - smaller meals, limited sugar and fat, and monitoring for nutrient deficiencies - is a central part of recovery and long-term health after gastrectomy.',
       generalSources: [
         { title: 'Mayo Clinic - Gastrectomy', url: 'https://www.mayoclinic.org/tests-procedures/gastrectomy/about/pac-20384556' },
         { title: 'Cancer Research UK - Life After Gastrectomy', url: 'https://www.cancerresearchuk.org/about-cancer/stomach-cancer/treatment/surgery/total-gastrectomy' },
@@ -1994,7 +1995,7 @@ export interface AilmentIngredientEducation {
     },
     
     'rheumatoid': {
-      description: 'Rheumatoid arthritis (RA) is a chronic autoimmune disease where the immune system attacks the joints, causing painful swelling, stiffness, and eventual joint damage. An anti-inflammatory diet may help reduce symptom severity.',
+      description: 'Rheumatoid arthritis (RA) is a chronic autoimmune disease in which the immune system mistakenly attacks the synovium, the lining of the joints, causing painful swelling, stiffness, and - left untreated - progressive joint damage and deformity. Unlike osteoarthritis, which results from mechanical wear, RA is systemic and can also affect the eyes, lungs, and cardiovascular system. Diet doesn\'t cause or cure RA, but the Arthritis Foundation and multiple studies note that inflammatory markers like CRP - the same ones doctors track to monitor RA activity - respond to dietary patterns, which is why many RA patients pair their prescribed medication with an anti-inflammatory approach that limits refined sugar, trans fats, and omega-6-heavy seed oils.',
       generalSources: [
         { title: 'Arthritis Foundation - RA', url: 'https://www.arthritis.org/diseases/rheumatoid-arthritis' },
         { title: 'Mayo Clinic - Rheumatoid Arthritis', url: 'https://www.mayoclinic.org/diseases-conditions/rheumatoid-arthritis/symptoms-causes/syc-20353648' },
@@ -2021,7 +2022,7 @@ export interface AilmentIngredientEducation {
     },
     
     'anemia': {
-      description: 'Anemia is a condition where the blood lacks enough healthy red blood cells to carry adequate oxygen to the body\'s tissues. Iron-deficiency anemia is the most common type. Certain ingredients can interfere with iron absorption.',
+      description: 'Anemia is a condition in which the blood lacks enough healthy red blood cells, or enough hemoglobin within them, to carry adequate oxygen to the body\'s tissues - producing fatigue, weakness, and pale skin. Iron-deficiency anemia is the most common type worldwide, according to the NIH, often resulting from inadequate dietary iron, blood loss, or poor absorption. Because iron absorption is a delicate process, several everyday food compounds - tannins in tea, phytates in whole grains, calcium in dairy and supplements, and polyphenols in coffee - can meaningfully reduce how much iron the body actually absorbs from a meal, which is why people managing anemia are often advised to separate these from iron-rich foods or supplements by a couple of hours.',
       generalSources: [
         { title: 'Mayo Clinic - Anemia', url: 'https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360' },
         { title: 'NIH - Anemia', url: 'https://www.nhlbi.nih.gov/health/anemia' },
@@ -2048,7 +2049,7 @@ export interface AilmentIngredientEducation {
     },
     
     'neuropathy': {
-      description: 'Peripheral neuropathy is damage to the peripheral nerves, causing weakness, numbness, and pain — usually in the hands and feet. It can be caused by diabetes, nutritional deficiencies, toxins, or autoimmune conditions. Diet and avoiding certain substances may help slow progression.',
+      description: 'Peripheral neuropathy is damage to the peripheral nerves - the network outside the brain and spinal cord - causing weakness, numbness, tingling, or pain that usually starts in the hands and feet. Diabetes is the leading cause, since chronically high blood sugar damages small nerve fibers over time, but nutritional deficiencies, toxin exposure, chemotherapy, and autoimmune conditions can all cause it as well. Because nerve damage from high blood sugar and inflammation tends to be cumulative, the NIH and Mayo Clinic both note that tightly managing blood sugar and limiting inflammatory foods - added sugar, trans fats, and for some patients gluten - is one of the few modifiable ways to help slow further nerve damage alongside any underlying medical treatment.',
       generalSources: [
         { title: 'Mayo Clinic - Peripheral Neuropathy', url: 'https://www.mayoclinic.org/diseases-conditions/peripheral-neuropathy/symptoms-causes/syc-20352061' },
         { title: 'NIH - Peripheral Neuropathy', url: 'https://www.ninds.nih.gov/health-information/disorders/peripheral-neuropathy' },
@@ -2079,7 +2080,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sensitive-skin': {
-      description: 'Sensitive skin is a common condition where the skin is easily irritated by products, environmental factors, or lifestyle choices. It often presents as redness, itching, burning, or dryness in response to triggers that do not affect most people.',
+      description: 'Sensitive skin isn\'t a single diagnosed disease but a widely recognized syndrome in which skin reacts more readily than typical skin to products, temperature changes, or friction, often because of a weakened skin barrier and heightened nerve fiber reactivity that lets irritants penetrate more easily and trigger a stronger response. It commonly overlaps with, or is an early sign of, other skin conditions like eczema, rosacea, or contact dermatitis, though many people have sensitive skin without a formal diagnosis of any of these. Because the barrier is already compromised, ingredients that are only mildly irritating for most people - fragrance, harsh surfactants like SLS, drying alcohols, and some active ingredients like retinol - can provoke a disproportionate reaction of redness, stinging, or burning. The AAD recommends a minimalist skincare routine with fragrance-free, gentle formulations as the standard approach for managing sensitive skin and reducing the frequency of reactions.',
       generalSources: [
         { title: 'AAD - Sensitive Skin', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/sensitive/sensitive-skin-care' },
         { title: 'Cleveland Clinic - Sensitive Skin', url: 'https://my.clevelandclinic.org/health/diseases/21987-sensitive-skin' },
@@ -2113,7 +2114,7 @@ export interface AilmentIngredientEducation {
     },
     
     'celiac': {
-      description: 'Celiac disease is a serious autoimmune disorder where the ingestion of gluten leads to damage in the small intestine. It affects about 1 in 100 people worldwide and requires strict lifelong adherence to a gluten-free diet.',
+      description: 'Celiac disease is an autoimmune disorder in which eating gluten - a protein found in wheat, barley, and rye - triggers the immune system to attack the lining of the small intestine, damaging the finger-like villi that absorb nutrients. Over time, unchecked inflammation can lead to malabsorption, anemia, osteoporosis, and an increased risk of other autoimmune conditions, which is why the only established treatment is strict, lifelong avoidance of gluten rather than moderation. Unlike a food allergy, celiac disease doesn\'t cause immediate anaphylaxis, but even small amounts of cross-contamination can trigger an internal immune response and intestinal damage without obvious symptoms. Because gluten can hide in unexpected places - sauces, medications, and some cosmetics and personal care products - the Celiac Disease Foundation and NIDDK both emphasize careful label reading as central to managing the condition.',
       generalSources: [
         { title: 'Celiac Disease Foundation', url: 'https://celiac.org/about-celiac-disease/what-is-celiac-disease/' },
         { title: 'Mayo Clinic - Celiac Disease', url: 'https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220' },
@@ -2144,7 +2145,7 @@ export interface AilmentIngredientEducation {
     },
     
     'nut-allergy': {
-      description: 'Nut allergy is one of the most common and potentially severe food allergies, involving an immune reaction to proteins in tree nuts or peanuts. Reactions can range from mild (hives, itching) to life-threatening anaphylaxis.',
+      description: 'Nut allergy refers to an IgE-mediated immune reaction to proteins in tree nuts (like almonds, cashews, and walnuts) or peanuts, which are technically legumes but are grouped with nut allergies because reactions and management look similar. Unlike some childhood food allergies, tree nut and peanut allergies are often lifelong, and they\'re responsible for a disproportionate share of severe and fatal anaphylactic reactions, which is why avoidance is typically strict rather than a matter of tolerance-building. Because someone allergic to one tree nut has a meaningfully elevated chance of reacting to others (cross-reactivity), and nut proteins can appear in unexpected places - natural flavorings, cross-contaminated manufacturing lines, and even some cosmetics - FARE and ACAAI both recommend careful label reading and carrying emergency epinephrine for anyone with a diagnosed nut allergy. Even trace exposure can trigger a reaction in highly sensitive individuals, which sets nut allergies apart from milder food sensitivities.',
       generalSources: [
         { title: 'FARE - Tree Nut Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut' },
         { title: 'ACAAI - Nut Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/tree-nut/' },
@@ -2175,7 +2176,7 @@ export interface AilmentIngredientEducation {
     },
     
     'migraines': {
-      description: 'Chronic migraines are recurring headaches occurring 15 or more days per month, often accompanied by nausea, light sensitivity, and visual disturbances. Identifying and avoiding dietary triggers is a key part of migraine management.',
+      description: 'Chronic migraine is a neurological condition, not just a severe headache, involving waves of abnormal electrical activity across the brain and the activation of the trigeminal nerve system, which releases inflammatory compounds like CGRP that produce the throbbing pain, nausea, and light and sound sensitivity characteristic of an attack. It\'s diagnosed when headaches occur 15 or more days a month, at least eight of which have migraine features, and it can significantly disrupt daily functioning during and between attacks. While migraine has genetic and hormonal underpinnings that no diet can fully control, many people identify specific dietary triggers - common culprits include tyramine-rich aged foods, nitrates in processed meats, alcohol (especially red wine), caffeine withdrawal, and additives like MSG - that appear to lower an individual\'s threshold for an attack. The American Migraine Foundation recommends keeping a headache diary to identify personal triggers, since they vary significantly from person to person and often work in combination with sleep, stress, and hormonal factors rather than as a single cause.',
       generalSources: [
         { title: 'American Migraine Foundation', url: 'https://americanmigrainefoundation.org/resource-library/what-is-migraine/' },
         { title: 'Mayo Clinic - Chronic Migraine', url: 'https://www.mayoclinic.org/diseases-conditions/chronic-daily-headaches/symptoms-causes/syc-20370891' },
@@ -2210,7 +2211,7 @@ export interface AilmentIngredientEducation {
     },
     
     'fibromyalgia': {
-      description: 'Fibromyalgia is a chronic condition causing widespread musculoskeletal pain, fatigue, sleep issues, and cognitive difficulties. While its exact cause is unknown, certain dietary factors may influence symptom severity.',
+      description: 'Fibromyalgia is a chronic condition marked by widespread musculoskeletal pain, profound fatigue, unrefreshing sleep, and cognitive difficulties often described as "fibro fog." Researchers believe it involves central sensitization - the nervous system amplifying pain signals - rather than damage to muscles or joints themselves, which is part of why fibromyalgia doesn\'t show up on standard imaging or bloodwork. While no single diet causes or cures fibromyalgia, many patients and the Mayo Clinic note that certain foods can worsen the inflammation, sleep disruption, and pain sensitivity that define a flare. Common approaches include limiting added sugar, artificial sweeteners, and excitotoxin-type additives like MSG alongside a broader anti-inflammatory eating pattern, though individual triggers vary and any major dietary change is best discussed with a healthcare provider.',
       generalSources: [
         { title: 'Mayo Clinic - Fibromyalgia', url: 'https://www.mayoclinic.org/diseases-conditions/fibromyalgia/symptoms-causes/syc-20354780' },
         { title: 'NIH - Fibromyalgia', url: 'https://www.niams.nih.gov/health-topics/fibromyalgia' },
@@ -2240,7 +2241,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'menopause': {
-      description: 'Menopause marks the end of menstrual cycles, typically occurring in the late 40s to early 50s. Managing symptoms often involves lifestyle and dietary adjustments.',
+      description: 'Menopause is the point marking the end of menstrual cycles, typically occurring in the late 40s to early 50s and diagnosed after twelve consecutive months without a period. It results from the ovaries producing less estrogen and progesterone, a hormonal shift that can bring hot flashes, night sweats, mood changes, sleep disruption, and long-term effects on bone and cardiovascular health. According to the North American Menopause Society and the Mayo Clinic, foods and drinks like caffeine, alcohol, and spicy or sugary items are commonly reported to trigger or worsen hot flashes and disrupt already-fragile sleep, so many people going through menopause choose to moderate them as one part of symptom management alongside medical options like hormone therapy.',
       generalSources: [
         { title: 'NAMS - Menopause', url: 'https://www.menopause.org/' },
         { title: 'Mayo Clinic - Menopause', url: 'https://www.mayoclinic.org/diseases-conditions/menopause/symptoms-causes/syc-20353397' },
@@ -2319,7 +2320,7 @@ export interface AilmentIngredientEducation {
   
     // Skin Conditions (additional)
     'perioral-dermatitis': {
-      description: 'Perioral dermatitis is a facial rash that causes bumps, redness, and scaling around the mouth, nose, and sometimes eyes. It commonly affects women aged 20-45 and can be triggered or worsened by certain skincare products and topical steroids.',
+      description: 'Perioral dermatitis is an inflammatory facial rash - small red bumps, sometimes with scaling - that clusters around the mouth, and sometimes the nose and eyes, most commonly in women between 20 and 45. Its exact cause isn\'t fully understood, but topical corticosteroids are the most well-documented trigger: they can temporarily calm the rash while actually feeding an underlying rebound cycle, so that stopping the steroid causes a flare that\'s often worse than the original rash, according to the AAD. Heavy, occlusive moisturizers, fluoride toothpaste, and certain cosmetic ingredients are also commonly reported triggers, likely because they either clog pores around already-irritated skin or introduce a mild irritant to a compromised barrier. Because topical steroids can worsen the underlying condition even as they mask symptoms, DermNet and the AAD both recommend stopping steroid use (under medical guidance, since abrupt stopping can cause a rebound flare) and switching to gentle, fragrance-free skincare as the primary treatment.',
       generalSources: [
         { title: 'AAD - Perioral Dermatitis', url: 'https://www.aad.org/public/diseases/a-z/perioral-dermatitis-overview' },
         { title: 'Mayo Clinic - Perioral Dermatitis', url: 'https://www.mayoclinic.org/diseases-conditions/perioral-dermatitis/symptoms-causes/syc-20376957' },

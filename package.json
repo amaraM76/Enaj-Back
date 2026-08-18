@@ -13,7 +13,10 @@
     "prisma:migrate:prod": "npx prisma migrate deploy",
     "prisma:studio:local": "dotenv -e .env.local -- npx prisma studio --port 5555",
     "prisma:studio:prod": "npx prisma studio --port 5556",
-    "prisma:generate": "dotenv -e .env.local -- npx prisma generate"
+    "prisma:generate": "dotenv -e .env.local -- npx prisma generate",
+    "encrypt:backfill": "tsx scripts/encrypt-existing-data.ts",
+    "products:dedupe": "tsx scripts/dedupe-products.ts",
+    "products:dedupe:apply": "tsx scripts/dedupe-products.ts --apply"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.0.7",

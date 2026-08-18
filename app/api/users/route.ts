@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField } from "@/app/lib/crypto";
 
 // POST /api/users
 // Creates a new user profile during onboarding.
@@ -18,7 +19,19 @@ export async function POST(request: Request) {
     }
 
     const user = await prisma.userProfile.create({
-      data: { firstName, lastName, email, location, age, gender, shoppingStores },
+      data: {
+        firstName,
+        lastName,
+        email,
+        location,
+        age,
+        gender,
+        shoppingStores,
+        locationEnc: location ? encryptField(String(location)) : undefined,
+        ageEnc: age ? encryptField(String(age)) : undefined,
+        genderEnc: gender ? encryptField(String(gender)) : undefined,
+        shoppingStoresEnc: shoppingStores ? encryptField(String(shoppingStores)) : undefined,
+      },
     });
 
     return NextResponse.json({ user }, { status: 201 });

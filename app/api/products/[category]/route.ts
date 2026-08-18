@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
-import {
-  scanProduct,
-  ailmentsToFlagInputs,
-  preferencesToFlagInputs,
-  journalEntriesToFlagInputs,
-} from "@/app/lib/scan-product";
+import { scanProduct } from "@/app/lib/scan-product";
+import { getUserFlagSources } from "@/app/lib/user-flags";
 
 const VALID_CATEGORIES: Record<string, string> = {
   "skin-body": "SKIN_BODY",
@@ -51,30 +47,7 @@ export async function GET(
       return NextResponse.json({ products });
     }
 
-    const userAilments = await prisma.userAilment.findMany({
-      where: { userId, ailmentId: { not: null } },
-      include: {
-        ailment: {
-          include: { flaggedIngredients: true },
-        },
-      },
-    });
-
-    const userPreferences = await prisma.userPreference.findMany({
-      where: { userId },
-      include: { preference: true },
-    });
-
-    const userJournalEntries = await prisma.userJournalEntry.findMany({
-      where: { userId, conditionId: { not: null } },
-      include: { condition: true },
-    });
-
-    const flagSources = {
-      ailments: ailmentsToFlagInputs(userAilments),
-      preferences: preferencesToFlagInputs(userPreferences),
-      journalEntries: journalEntriesToFlagInputs(userJournalEntries),
-    };
+    const flagSources = await getUserFlagSources(userId);
 
     const productsWithScan = products.map((product) => {
       const flaggedIngredients = scanProduct(product, flagSources);

@@ -35,13 +35,15 @@ export async function POST(request: Request) {
       .replace(/^-+|-+$/g, "")
       .substring(0, 80);
 
-    // Try to find by barcode first (if provided), then by slug
+    // Dedup on the real, indexed barcode column when we have one - this is
+    // what stops the same scanned product from being saved over and over.
+    // The old behavior (matching on a slug string prefix) is kept only as
+    // a fallback for barcode-less imports, where there's nothing else to
+    // key on.
     let existing = null;
 
     if (barcode) {
-      existing = await prisma.product.findFirst({
-        where: { slug: { startsWith: `off-${barcode}` } },
-      });
+      existing = await prisma.product.findUnique({ where: { barcode } });
     }
 
     if (!existing) {
@@ -51,7 +53,8 @@ export async function POST(request: Request) {
     }
 
     if (existing) {
-      // Update ingredients/packaging/allergens in case parsing improved
+      // Update ingredients/packaging/allergens in case parsing improved,
+      // and backfill barcode on older rows that predate this column.
       const updated = await prisma.product.update({
         where: { id: existing.id },
         data: {
@@ -59,6 +62,7 @@ export async function POST(request: Request) {
           packaging: packaging || existing.packaging,
           allergens: allergens || existing.allergens,
           image: image || existing.image,
+          barcode: existing.barcode || barcode || undefined,
         },
       });
       return NextResponse.json({ product: updated, created: false });
@@ -80,23 +84,38 @@ export async function POST(request: Request) {
     // Create the slug with barcode prefix for uniqueness
     const slug = barcode ? `off-${barcode}-${baseSlug}` : `off-${baseSlug}-${Date.now()}`;
 
-    const product = await prisma.product.create({
-      data: {
-        slug,
-        name,
-        brand: brand || "Unknown Brand",
-        image: image || null,
-        price: "",
-        url: barcode ? `https://world.openfoodfacts.org/product/${barcode}` : null,
-        ingredients: ingredients || [],
-        packaging: packaging || [],
-        allergens: allergens || [],
-        category: categoryEnum as any,
-        isActive: true,
-      },
-    });
+    try {
+      const product = await prisma.product.create({
+        data: {
+          slug,
+          barcode: barcode || null,
+          name,
+          brand: brand || "Unknown Brand",
+          image: image || null,
+          price: "",
+          url: barcode ? `https://world.openfoodfacts.org/product/${barcode}` : null,
+          ingredients: ingredients || [],
+          packaging: packaging || [],
+          allergens: allergens || [],
+          category: categoryEnum as any,
+          isActive: true,
+        },
+      });
 
-    return NextResponse.json({ product, created: true }, { status: 201 });
+      return NextResponse.json({ product, created: true }, { status: 201 });
+    } catch (createError: any) {
+      // Two near-simultaneous scans of the same new barcode (e.g. the
+      // extension and the web scanner) can both pass the lookup above
+      // before either has inserted - the loser hits this unique
+      // violation instead of creating a duplicate row.
+      if (createError?.code === "P2002" && barcode) {
+        const raceWinner = await prisma.product.findUnique({ where: { barcode } });
+        if (raceWinner) {
+          return NextResponse.json({ product: raceWinner, created: false });
+        }
+      }
+      throw createError;
+    }
   } catch (error: any) {
     console.error("Error importing product:", error);
     return NextResponse.json(

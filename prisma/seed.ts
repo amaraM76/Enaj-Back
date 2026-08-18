@@ -144,12 +144,12 @@ async function main() {
 
   // --- Contact Dermatitis ---
   const contactDermatitisIngredients = [
-    { slug: "fragrance-cd", name: "Synthetic Fragrance", reason: "The most common allergen causing contact dermatitis" },
-    { slug: "nickel-cd", name: "Nickel", reason: "Common metal allergen that triggers contact dermatitis" },
-    { slug: "parabens-cd", name: "Parabens", reason: "Preservatives that commonly cause allergic contact dermatitis" },
-    { slug: "formaldehyde-cd", name: "Formaldehyde", reason: "Known sensitizer and irritant that triggers contact dermatitis" },
-    { slug: "sls-cd", name: "Sodium Lauryl Sulfate", reason: "Irritant that strips skin barrier and causes contact dermatitis" },
-    { slug: "rubber-cd", name: "Thiuram Mix", reason: "Rubber accelerator found in gloves, a common contact allergen" },
+    { slug: "fragrance-cd", name: "Synthetic Fragrance", reason: "Patch testing studies consistently identify fragrance mixes as the single most common cause of allergic contact dermatitis, since fragrance blends often contain dozens of individual sensitizing compounds under one label term." },
+    { slug: "nickel-cd", name: "Nickel", reason: "The most common metal allergen worldwide; once the immune system is sensitized to nickel, even brief skin contact can trigger a delayed, itchy rash 24-48 hours later." },
+    { slug: "parabens-cd", name: "Parabens", reason: "Well-documented preservative allergens, especially on skin that's already broken or irritated, where they're more likely to penetrate and trigger a sensitized immune reaction." },
+    { slug: "formaldehyde-cd", name: "Formaldehyde", reason: "A potent sensitizer and irritant on its own, and formaldehyde-releasing preservatives (which slowly release small amounts of it) are among the top allergens identified through dermatology patch testing." },
+    { slug: "sls-cd", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips protective oils from the skin's outer layer, making it easier for other allergens to penetrate and increasing the likelihood of an irritant reaction on its own." },
+    { slug: "rubber-cd", name: "Thiuram Mix", reason: "A rubber accelerator chemical used in latex gloves and elastic bands; it's one of the most frequently positive allergens on standard contact dermatitis patch test panels." },
   ]
   for (const ing of contactDermatitisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["contact-dermatitis"] } })
@@ -157,10 +157,10 @@ async function main() {
 
   // --- Keratosis Pilaris ---
   const kpIngredients = [
-    { slug: "sls-kp", name: "Sodium Lauryl Sulfate", reason: "Strips moisture from already dry KP-prone skin" },
-    { slug: "fragrance-kp", name: "Synthetic Fragrance", reason: "Can irritate sensitive bumpy skin" },
-    { slug: "mineral-oil-kp", name: "Mineral Oil", reason: "Can clog follicles already blocked in KP" },
-    { slug: "alcohol-kp", name: "Alcohol Denat", reason: "Dries out skin, worsening KP texture and redness" },
+    { slug: "sls-kp", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the skin's already-limited natural oils, worsening the dryness that makes KP's rough, bumpy texture more pronounced." },
+    { slug: "fragrance-kp", name: "Synthetic Fragrance", reason: "A common irritant for skin already inflamed around clogged hair follicles, capable of increasing the redness surrounding KP bumps." },
+    { slug: "mineral-oil-kp", name: "Mineral Oil", reason: "An occlusive ingredient that can sit on skin and further block hair follicles already plugged with keratin in KP, though lighter, non-comedogenic grades are sometimes better tolerated." },
+    { slug: "alcohol-kp", name: "Alcohol Denat", reason: "Evaporates quickly and dries the skin surface, which can worsen the rough texture and redness that define keratosis pilaris." },
   ]
   for (const ing of kpIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["keratosis-pilaris"] } })
@@ -168,11 +168,11 @@ async function main() {
 
   // --- Sulfite Sensitivity ---
   const sulfiteSensitivityIngredients = [
-    { slug: "sodium-sulfite", name: "Sodium Sulfite", reason: "Direct sulfite that triggers sensitivity reactions" },
-    { slug: "sodium-bisulfite", name: "Sodium Bisulfite", reason: "Sulfite preservative that causes reactions in sensitive individuals" },
-    { slug: "potassium-metabisulfite", name: "Potassium Metabisulfite", reason: "Common sulfite used in wine and dried fruits" },
-    { slug: "sulfur-dioxide", name: "Sulfur Dioxide", reason: "Gas form of sulfite used as food preservative" },
-    { slug: "sodium-metabisulfite", name: "Sodium Metabisulfite", reason: "Sulfite preservative linked to asthma and allergic reactions" },
+    { slug: "sodium-sulfite", name: "Sodium Sulfite", reason: "Releases sulfur dioxide gas when it reacts with stomach acid, and it's inhaling or ingesting that gas that triggers reactions like wheezing and flushing in sulfite-sensitive people." },
+    { slug: "sodium-bisulfite", name: "Sodium Bisulfite", reason: "Converts to sulfur dioxide in the body, the same reactive compound the FDA estimates causes reactions in roughly 1 in 100 people, and a much higher share of people with asthma." },
+    { slug: "potassium-metabisulfite", name: "Potassium Metabisulfite", reason: "Widely used to prevent oxidation and browning in wine and dried fruit; the FDA has required sulfite labeling on packaged foods since 1986 specifically because of reactions like these." },
+    { slug: "sulfur-dioxide", name: "Sulfur Dioxide", reason: "The gas form of sulfite and the compound directly responsible for triggering airway irritation, hives, or gastrointestinal symptoms in sensitive individuals." },
+    { slug: "sodium-metabisulfite", name: "Sodium Metabisulfite", reason: "One of the sulfite preservatives most frequently linked to asthma exacerbation, since inhaled sulfur dioxide can directly trigger bronchospasm in susceptible people." },
   ]
   for (const ing of sulfiteSensitivityIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sulfite-sensitivity"] } })
@@ -180,12 +180,12 @@ async function main() {
 
   // --- SIBO ---
   const siboIngredients = [
-    { slug: "fructose-sibo", name: "Fructose", reason: "Feeds bacterial overgrowth in the small intestine" },
-    { slug: "lactose-sibo", name: "Lactose", reason: "Poorly absorbed sugar that feeds SIBO bacteria" },
-    { slug: "inulin-sibo", name: "Inulin", reason: "Prebiotic fiber that can worsen SIBO symptoms" },
-    { slug: "sorbitol-sibo", name: "Sorbitol", reason: "Sugar alcohol that ferments and feeds bacterial overgrowth" },
-    { slug: "guar-gum-sibo", name: "Guar Gum", reason: "Fermentable fiber that can worsen SIBO" },
-    { slug: "xylitol-sibo", name: "Xylitol", reason: "Sugar alcohol that feeds bacterial overgrowth" },
+    { slug: "fructose-sibo", name: "Fructose", reason: "In SIBO, bacteria that should mostly live in the colon overgrow in the small intestine, where they ferment poorly absorbed sugars like excess fructose, producing the gas and bloating typical of a SIBO flare." },
+    { slug: "lactose-sibo", name: "Lactose", reason: "Many people with SIBO also develop secondary lactose intolerance from bacterial damage to the gut lining, so undigested lactose reaching the overgrown bacteria produces excess gas and bloating." },
+    { slug: "inulin-sibo", name: "Inulin", reason: "An excellent prebiotic fiber for a healthy colon, but it can dramatically worsen SIBO, since it's rapidly fermented by the very small-intestinal bacteria that are already overgrown." },
+    { slug: "sorbitol-sibo", name: "Sorbitol", reason: "A sugar alcohol the small intestine absorbs slowly, giving SIBO bacteria extra time and substrate to ferment it into gas." },
+    { slug: "guar-gum-sibo", name: "Guar Gum", reason: "A highly fermentable fiber thickener that the bacterial overgrowth in the small intestine can rapidly ferment into gas, often making SIBO bloating worse." },
+    { slug: "xylitol-sibo", name: "Xylitol", reason: "Like other sugar alcohols, xylitol is poorly absorbed and readily fermented by small intestinal bacteria, a combination that frequently triggers SIBO symptoms." },
   ]
   for (const ing of siboIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sibo"] } })
@@ -193,12 +193,12 @@ async function main() {
 
   // --- Gastritis ---
   const gastritisIngredients = [
-    { slug: "alcohol-gastritis", name: "Alcohol", reason: "Directly irritates the stomach lining and worsens gastritis" },
-    { slug: "caffeine-gastritis", name: "Caffeine", reason: "Stimulates acid production, irritating an inflamed stomach" },
-    { slug: "citric-acid-gastritis", name: "Citric Acid", reason: "Acidic ingredient that can aggravate gastritis symptoms" },
-    { slug: "capsaicin-gastritis", name: "Capsaicin", reason: "Spicy compounds irritate the stomach lining in gastritis" },
-    { slug: "artificial-sweeteners-gastritis", name: "Artificial Sweeteners", reason: "May disrupt gut bacteria and irritate the stomach" },
-    { slug: "vinegar-gastritis", name: "Vinegar", reason: "High acidity irritates an already inflamed stomach lining" },
+    { slug: "alcohol-gastritis", name: "Alcohol", reason: "Directly damages the protective mucus layer of the stomach and increases acid secretion, a combination that can erode an already inflamed lining and raise ulcer risk." },
+    { slug: "caffeine-gastritis", name: "Caffeine", reason: "Stimulates the stomach to secrete more acid, which can further irritate a lining that's already inflamed and slower to heal in gastritis." },
+    { slug: "citric-acid-gastritis", name: "Citric Acid", reason: "Its high acidity can directly irritate an inflamed stomach lining and lower the overall pH of stomach contents, worsening discomfort during a gastritis flare." },
+    { slug: "capsaicin-gastritis", name: "Capsaicin", reason: "The compound responsible for chili heat directly stimulates pain receptors in the stomach lining, which can intensify the burning and discomfort of gastritis even though it doesn't damage tissue in most people." },
+    { slug: "artificial-sweeteners-gastritis", name: "Artificial Sweeteners", reason: "Some non-nutritive sweeteners have been shown to shift gut bacteria balance, a change that may compound the digestive irritation already present in gastritis." },
+    { slug: "vinegar-gastritis", name: "Vinegar", reason: "Highly acidic and capable of directly irritating a stomach lining that's already inflamed, often worsening the burning sensation associated with gastritis." },
   ]
   for (const ing of gastritisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["gastritis"] } })
@@ -206,10 +206,10 @@ async function main() {
 
   // --- Diverticulosis ---
   const diverticulosisIngredients = [
-    { slug: "red-meat-diver", name: "Red Meat", reason: "High red meat consumption is associated with increased diverticulosis risk" },
-    { slug: "refined-grains-diver", name: "Refined Grains", reason: "Low-fiber refined grains slow digestion and increase diverticulosis risk" },
-    { slug: "seed-oils-diver", name: "Seed Oils", reason: "Excess omega-6 from seed oils may promote gut inflammation in diverticulosis" },
-    { slug: "artificial-sweeteners-diver", name: "Artificial Sweeteners", reason: "May disrupt gut microbiome contributing to diverticulosis flares" },
+    { slug: "red-meat-diver", name: "Red Meat", reason: "Large prospective studies, including one published in the journal Gut, have linked high red meat consumption to increased diverticulosis risk, possibly through its effects on gut bacteria and inflammation." },
+    { slug: "refined-grains-diver", name: "Refined Grains", reason: "Low in fiber compared to whole grains, refined grains produce smaller, harder stools that require more pressure to pass - the same colon pressure thought to drive pouch formation in diverticulosis." },
+    { slug: "seed-oils-diver", name: "Seed Oils", reason: "Diets high in omega-6 fats from seed oils skew the body toward producing more pro-inflammatory compounds, which may contribute to the gut inflammation associated with diverticular flares." },
+    { slug: "artificial-sweeteners-diver", name: "Artificial Sweeteners", reason: "Some non-nutritive sweeteners have been shown to alter the gut microbiome, a shift some researchers believe could influence diverticular disease activity." },
   ]
   for (const ing of diverticulosisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diverticulosis"] } })
@@ -217,13 +217,13 @@ async function main() {
 
   // --- Egg Allergy ---
   const eggAllergyIngredients = [
-    { slug: "egg-whole", name: "Egg", reason: "Primary allergen for egg allergy" },
-    { slug: "egg-white", name: "Egg White", reason: "Contains main allergenic proteins including ovalbumin" },
-    { slug: "egg-yolk", name: "Egg Yolk", reason: "Contains allergenic proteins, though less than whites" },
-    { slug: "albumin-egg", name: "Albumin", reason: "Egg-derived protein found in many processed foods" },
-    { slug: "lysozyme-egg", name: "Lysozyme", reason: "Egg-derived enzyme used as a preservative" },
-    { slug: "mayonnaise-egg", name: "Mayonnaise", reason: "Egg-based condiment that triggers egg allergy" },
-    { slug: "lecithin-egg", name: "Egg Lecithin", reason: "Egg-derived emulsifier found in some products" },
+    { slug: "egg-whole", name: "Egg", reason: "Contains ovalbumin and ovomucoid, the two proteins most responsible for triggering IgE-mediated allergic reactions to egg." },
+    { slug: "egg-white", name: "Egg White", reason: "Carries the majority of egg's allergenic protein load, including ovalbumin, the single protein most commonly implicated in egg allergy reactions." },
+    { slug: "egg-yolk", name: "Egg Yolk", reason: "Contains allergenic proteins like livetin, and while typically less reactive than egg white, it can still trigger a reaction in people with a true egg allergy." },
+    { slug: "albumin-egg", name: "Albumin", reason: "A general term for the egg-white proteins responsible for most egg allergy reactions; it appears in many processed and baked foods as a hidden source of egg exposure." },
+    { slug: "lysozyme-egg", name: "Lysozyme", reason: "An egg-derived antimicrobial enzyme used to extend shelf life in some cheeses and processed meats - a lesser-known but real hidden source of egg protein." },
+    { slug: "mayonnaise-egg", name: "Mayonnaise", reason: "An egg-yolk-based emulsion that carries egg allergens even though many people don't think of it as an 'egg' product." },
+    { slug: "lecithin-egg", name: "Egg Lecithin", reason: "Egg-derived lecithin retains trace allergenic protein, unlike the far more common soy lecithin, so it's worth checking the source when lecithin is listed on a label." },
   ]
   for (const ing of eggAllergyIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["egg-allergy"] } })
@@ -231,14 +231,14 @@ async function main() {
 
   // --- Histamine Intolerance ---
   const histamineIngredients = [
-    { slug: "vinegar-histamine", name: "Vinegar", reason: "Fermented food high in histamine that triggers intolerance reactions" },
-    { slug: "alcohol-histamine", name: "Alcohol", reason: "Contains and triggers histamine release" },
-    { slug: "aged-cheese-histamine", name: "Aged Cheese", reason: "Very high in histamine due to fermentation" },
-    { slug: "fermented-foods-histamine", name: "Fermented Foods", reason: "Sauerkraut, kimchi, kefir are high in histamine" },
-    { slug: "artificial-dyes-histamine", name: "Artificial Colors", reason: "Food dyes can trigger histamine release in sensitive individuals" },
-    { slug: "msg-histamine", name: "Monosodium Glutamate", reason: "Can trigger histamine-like reactions in sensitive individuals" },
-    { slug: "tomatoes-histamine", name: "Tomatoes", reason: "Tomatoes are naturally high in histamine" },
-    { slug: "spinach-histamine", name: "Spinach", reason: "Histamine-rich vegetable that triggers intolerance reactions" },
+    { slug: "vinegar-histamine", name: "Vinegar", reason: "A fermented product that accumulates histamine during processing; in people who don't break down dietary histamine efficiently (often due to lower DAO enzyme activity), it can trigger flushing, headache, or hives." },
+    { slug: "alcohol-histamine", name: "Alcohol", reason: "Contains histamine from fermentation and also inhibits the DAO enzyme responsible for breaking histamine down - a double effect that makes alcohol one of the most reliable histamine intolerance triggers." },
+    { slug: "aged-cheese-histamine", name: "Aged Cheese", reason: "Histamine accumulates the longer a cheese ages, so aged varieties like cheddar and parmesan carry some of the highest histamine levels of any food." },
+    { slug: "fermented-foods-histamine", name: "Fermented Foods", reason: "The fermentation process behind sauerkraut, kimchi, and kefir also generates histamine as a byproduct, often at levels many times higher than the fresh vegetable." },
+    { slug: "artificial-dyes-histamine", name: "Artificial Colors", reason: "Some synthetic dyes can trigger direct histamine release from mast cells, independent of dietary histamine load, compounding symptoms in sensitive individuals." },
+    { slug: "msg-histamine", name: "Monosodium Glutamate", reason: "While not itself a histamine source, MSG has been reported to trigger histamine-like flushing and headache reactions in some sensitive individuals." },
+    { slug: "tomatoes-histamine", name: "Tomatoes", reason: "Naturally high in histamine and also a histamine liberator, meaning they can trigger the body's own mast cells to release additional histamine." },
+    { slug: "spinach-histamine", name: "Spinach", reason: "One of the few vegetables naturally high in histamine, making it a commonly flagged trigger for people managing histamine intolerance." },
   ]
   for (const ing of histamineIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["histamine-intolerance"] } })
@@ -246,14 +246,14 @@ async function main() {
 
   // --- MCAS ---
   const mcasIngredients = [
-    { slug: "alcohol-mcas", name: "Alcohol", reason: "Triggers mast cell degranulation in MCAS patients" },
-    { slug: "artificial-dyes-mcas", name: "Artificial Colors", reason: "Common MCAS trigger causing mast cell activation" },
-    { slug: "msg-mcas", name: "Monosodium Glutamate", reason: "Excitotoxin that can trigger mast cell reactions" },
-    { slug: "artificial-sweeteners-mcas", name: "Artificial Sweeteners", reason: "May trigger mast cell reactions in MCAS" },
-    { slug: "fragrance-mcas", name: "Synthetic Fragrance", reason: "Fragrances are a major environmental MCAS trigger" },
-    { slug: "sulfites-mcas", name: "Sulfites", reason: "Sulfite preservatives frequently trigger MCAS reactions" },
-    { slug: "benzoates-mcas", name: "Sodium Benzoate", reason: "Preservative that triggers mast cell activation" },
-    { slug: "histamine-mcas", name: "High-Histamine Foods", reason: "Histamine directly triggers mast cells in MCAS" },
+    { slug: "alcohol-mcas", name: "Alcohol", reason: "A well-documented direct trigger of mast cell degranulation, the process at the core of MCAS symptoms like flushing, hives, and gastrointestinal upset." },
+    { slug: "artificial-dyes-mcas", name: "Artificial Colors", reason: "One of the most frequently reported non-IgE mast cell triggers in MCAS, capable of provoking a reaction independent of any true allergy." },
+    { slug: "msg-mcas", name: "Monosodium Glutamate", reason: "Some MCAS patients report MSG as a direct trigger of mast cell activation, producing flushing or headache reactions shortly after eating it." },
+    { slug: "artificial-sweeteners-mcas", name: "Artificial Sweeteners", reason: "Reported by some MCAS patients as a trigger of mast cell symptoms, though the exact mechanism isn't well characterized in the research." },
+    { slug: "fragrance-mcas", name: "Synthetic Fragrance", reason: "Airborne fragrance chemicals are among the most consistently reported environmental MCAS triggers, capable of provoking a reaction from inhalation alone." },
+    { slug: "sulfites-mcas", name: "Sulfites", reason: "Sulfite preservatives are well documented to trigger mast cell degranulation directly, making them one of the more predictable dietary MCAS triggers." },
+    { slug: "benzoates-mcas", name: "Sodium Benzoate", reason: "A preservative frequently implicated in non-IgE mast cell activation, triggering MCAS symptoms through a different pathway than a true food allergy." },
+    { slug: "histamine-mcas", name: "High-Histamine Foods", reason: "Histamine is one of the primary mediators mast cells release, so histamine-rich foods can directly add to the symptom burden in MCAS on top of what the cells release on their own." },
   ]
   for (const ing of mcasIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["mcas"] } })
@@ -261,10 +261,10 @@ async function main() {
 
   // --- POTS ---
   const potsIngredients = [
-    { slug: "alcohol-pots", name: "Alcohol", reason: "Causes vasodilation and worsens POTS symptoms including dizziness and tachycardia" },
-    { slug: "caffeine-pots", name: "Caffeine", reason: "Can worsen heart rate irregularities and dehydration in POTS" },
-    { slug: "artificial-sweeteners-pots", name: "Artificial Sweeteners", reason: "May affect autonomic nervous system function in POTS" },
-    { slug: "high-sugar-pots", name: "Refined Sugar", reason: "Blood sugar spikes worsen POTS symptoms and energy crashes" },
+    { slug: "alcohol-pots", name: "Alcohol", reason: "Widens blood vessels (vasodilation) and promotes fluid loss, a combination that can drop blood pressure further and intensify the dizziness and racing heart already characteristic of POTS." },
+    { slug: "caffeine-pots", name: "Caffeine", reason: "A diuretic that increases fluid loss, working against the increased fluid intake POTS management typically relies on, while also directly aggravating heart rate irregularities in sensitive individuals." },
+    { slug: "artificial-sweeteners-pots", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners may influence autonomic nervous system signaling, the same system that's already dysregulated in POTS." },
+    { slug: "high-sugar-pots", name: "Refined Sugar", reason: "Causes rapid blood sugar spikes followed by crashes that can compound the fatigue, lightheadedness, and energy instability many people with POTS already experience." },
   ]
   for (const ing of potsIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["pots"] } })
@@ -272,12 +272,12 @@ async function main() {
 
   // --- IBD ---
   const ibdIngredients = [
-    { slug: "emulsifiers-ibd", name: "Polysorbate 80", reason: "Emulsifier linked to gut barrier disruption in IBD" },
-    { slug: "carrageenan-ibd", name: "Carrageenan", reason: "Thickener that promotes gut inflammation in IBD" },
-    { slug: "artificial-sweeteners-ibd", name: "Artificial Sweeteners", reason: "Disrupt gut microbiome and worsen IBD symptoms" },
-    { slug: "gluten-ibd", name: "Gluten", reason: "May worsen inflammation and symptoms in IBD patients" },
-    { slug: "seed-oils-ibd", name: "Seed Oils", reason: "High omega-6 oils promote inflammation in IBD" },
-    { slug: "alcohol-ibd", name: "Alcohol", reason: "Irritates the gut lining and worsens IBD flares" },
+    { slug: "emulsifiers-ibd", name: "Polysorbate 80", reason: "Lab studies have shown this emulsifier can erode the protective mucus layer lining the gut, letting bacteria get closer to the intestinal wall and triggering the immune response central to IBD." },
+    { slug: "carrageenan-ibd", name: "Carrageenan", reason: "Derived from seaweed, carrageenan has been shown in animal and cell studies to provoke gut inflammation, making it one of the most commonly cited additives of concern for people with IBD." },
+    { slug: "artificial-sweeteners-ibd", name: "Artificial Sweeteners", reason: "Several non-nutritive sweeteners have been shown to shift the balance of gut bacteria in ways that may promote the intestinal inflammation central to IBD." },
+    { slug: "gluten-ibd", name: "Gluten", reason: "Gluten's effect on intestinal permeability - sometimes called 'leaky gut' - is theorized to aggravate the immune response already elevated in IBD, though findings across studies are inconsistent." },
+    { slug: "seed-oils-ibd", name: "Seed Oils", reason: "Diets high in omega-6 seed oils skew the body toward producing pro-inflammatory compounds, a pattern researchers have linked to more frequent IBD flares." },
+    { slug: "alcohol-ibd", name: "Alcohol", reason: "Irritates and increases the permeability of the intestinal lining, a combination that frequently triggers flares in both Crohn's disease and ulcerative colitis." },
   ]
   for (const ing of ibdIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["ibd"] } })
@@ -285,12 +285,12 @@ async function main() {
 
   // --- Sjögren's Syndrome ---
   const sjogrensIngredients = [
-    { slug: "alcohol-sjogrens", name: "Alcohol", reason: "Worsens dryness symptoms and dehydration in Sjögren's" },
-    { slug: "caffeine-sjogrens", name: "Caffeine", reason: "Diuretic effect worsens dry mouth and dry eye symptoms" },
-    { slug: "gluten-sjogrens", name: "Gluten", reason: "May exacerbate autoimmune activity in Sjögren's" },
-    { slug: "sugar-sjogrens", name: "Refined Sugar", reason: "Promotes inflammation and dental decay risk from dry mouth" },
-    { slug: "fragrance-sjogrens", name: "Synthetic Fragrance", reason: "Can irritate dry, sensitive skin and eyes in Sjögren's" },
-    { slug: "sls-sjogrens", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that worsens oral dryness and irritation" },
+    { slug: "alcohol-sjogrens", name: "Alcohol", reason: "A diuretic that promotes further fluid loss, compounding the dry mouth and dry eyes already caused by Sjögren's attack on moisture-producing glands." },
+    { slug: "caffeine-sjogrens", name: "Caffeine", reason: "Its diuretic effect increases fluid loss throughout the body, which can measurably worsen the dry mouth and dry eye symptoms that define Sjögren's." },
+    { slug: "gluten-sjogrens", name: "Gluten", reason: "Sjögren's frequently co-occurs with celiac disease and other autoimmune conditions, and some patients report reduced overall autoimmune symptom burden avoiding gluten, though evidence specific to Sjögren's is limited." },
+    { slug: "sugar-sjogrens", name: "Refined Sugar", reason: "With saliva's natural cavity-fighting flow already reduced by Sjögren's, sugar left sitting on teeth for longer periods raises the risk of the dental decay Sjögren's patients are already prone to." },
+    { slug: "fragrance-sjogrens", name: "Synthetic Fragrance", reason: "Skin and eyes that are already dry and under-lubricated from Sjögren's tend to react more readily to common irritants like synthetic fragrance." },
+    { slug: "sls-sjogrens", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant in toothpaste and cleansers that can further irritate oral tissue already compromised by the chronic dry mouth central to Sjögren's." },
   ]
   for (const ing of sjogrensIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sjogrens"] } })
@@ -298,11 +298,11 @@ async function main() {
 
   // --- Graves' Disease ---
   const gravesDiseaseIngredients = [
-    { slug: "iodine-graves", name: "Iodine", reason: "Excess iodine can worsen hyperthyroidism in Graves' disease" },
-    { slug: "caffeine-graves", name: "Caffeine", reason: "Worsens heart palpitations and anxiety from hyperthyroidism" },
-    { slug: "soy-graves", name: "Soy", reason: "May interfere with thyroid medication absorption" },
-    { slug: "gluten-graves", name: "Gluten", reason: "Some evidence links gluten sensitivity to autoimmune thyroid disease" },
-    { slug: "sugar-graves", name: "Refined Sugar", reason: "Promotes inflammation and worsens metabolic effects of Graves'" },
+    { slug: "iodine-graves", name: "Iodine", reason: "The thyroid needs iodine as a raw material to make thyroid hormone, so excess dietary iodine can provide more fuel for the already-overactive thyroid in Graves' disease and worsen hyperthyroid symptoms." },
+    { slug: "caffeine-graves", name: "Caffeine", reason: "Stimulates the heart and nervous system in a way that layers on top of - and can intensify - the palpitations, tremors, and anxiety already caused by excess thyroid hormone in Graves' disease." },
+    { slug: "soy-graves", name: "Soy", reason: "Compounds in soy can bind to thyroid medication in the gut and reduce its absorption, so taking soy products too close to thyroid medication may blunt its effectiveness." },
+    { slug: "gluten-graves", name: "Gluten", reason: "Autoimmune thyroid conditions like Graves' disease co-occur with celiac disease and gluten sensitivity more often than chance would predict, leading some patients and researchers to explore gluten's role in autoimmune thyroid activity." },
+    { slug: "sugar-graves", name: "Refined Sugar", reason: "Promotes the kind of systemic inflammation that can compound the metabolic strain an already-overactive thyroid places on the body in Graves' disease." },
   ]
   for (const ing of gravesDiseaseIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["graves-disease"] } })
@@ -310,11 +310,11 @@ async function main() {
 
   // --- Ankylosing Spondylitis ---
   const ankylSpondIngredients = [
-    { slug: "starch-as", name: "Refined Starch", reason: "Feeds Klebsiella bacteria thought to trigger AS flares" },
-    { slug: "sugar-as", name: "Refined Sugar", reason: "Promotes inflammation that worsens joint pain in AS" },
-    { slug: "gluten-as", name: "Gluten", reason: "Some AS patients report improvement on a low-starch/gluten-free diet" },
-    { slug: "seed-oils-as", name: "Seed Oils", reason: "High omega-6 promotes the systemic inflammation driving AS" },
-    { slug: "alcohol-as", name: "Alcohol", reason: "May worsen inflammation and interact with AS medications" },
+    { slug: "starch-as", name: "Refined Starch", reason: "The London AS Diet theory holds that starchy foods feed Klebsiella bacteria in the gut, and that this bacterial overgrowth may trigger or sustain the autoimmune response driving AS flares in genetically susceptible people." },
+    { slug: "sugar-as", name: "Refined Sugar", reason: "Promotes the kind of systemic, low-grade inflammation that can worsen the joint pain and stiffness central to AS." },
+    { slug: "gluten-as", name: "Gluten", reason: "Often eliminated alongside starch under the low-starch AS diet theory, and some AS patients report reduced joint symptoms after cutting both." },
+    { slug: "seed-oils-as", name: "Seed Oils", reason: "High omega-6 fat intake shifts the body toward producing more pro-inflammatory compounds, a pattern the Arthritis Foundation links to worsened symptoms across inflammatory arthritis conditions including AS." },
+    { slug: "alcohol-as", name: "Alcohol", reason: "Can promote systemic inflammation and may also interact with NSAIDs and other medications commonly used to manage AS, raising the risk of gastrointestinal side effects." },
   ]
   for (const ing of ankylSpondIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["ankylosing-spondylitis"] } })
@@ -322,12 +322,12 @@ async function main() {
 
   // --- Psoriatic Arthritis ---
   const psoriaticArthritisIngredients = [
-    { slug: "sugar-pa", name: "Refined Sugar", reason: "Increases inflammation and worsens joint pain in psoriatic arthritis" },
-    { slug: "gluten-pa", name: "Gluten", reason: "Some psoriatic arthritis patients show improvement avoiding gluten" },
-    { slug: "seed-oils-pa", name: "Seed Oils", reason: "High omega-6 oils promote joint and skin inflammation" },
-    { slug: "alcohol-pa", name: "Alcohol", reason: "Worsens psoriatic arthritis symptoms and reduces medication efficacy" },
-    { slug: "dairy-pa", name: "Dairy", reason: "May promote inflammation in some psoriatic arthritis patients" },
-    { slug: "fragrance-pa", name: "Synthetic Fragrance", reason: "Can irritate psoriatic skin plaques and trigger flares" },
+    { slug: "sugar-pa", name: "Refined Sugar", reason: "Raises inflammatory markers in the bloodstream, a pathway shared by both the joint pain and skin plaques that define psoriatic arthritis." },
+    { slug: "gluten-pa", name: "Gluten", reason: "Some psoriatic arthritis patients report improvement in both joint and skin symptoms on a gluten-free diet, particularly those with an undiagnosed gluten sensitivity." },
+    { slug: "seed-oils-pa", name: "Seed Oils", reason: "High omega-6 fat intake promotes pro-inflammatory compounds that can worsen both the joint and skin inflammation central to psoriatic arthritis." },
+    { slug: "alcohol-pa", name: "Alcohol", reason: "Linked to worsened psoriasis and psoriatic arthritis flares, and can also reduce the effectiveness of - or interact dangerously with - methotrexate and other common PsA medications." },
+    { slug: "dairy-pa", name: "Dairy", reason: "Some psoriatic arthritis patients report that dairy worsens inflammation and skin flares, though the evidence is more anecdotal than for other triggers like sugar and alcohol." },
+    { slug: "fragrance-pa", name: "Synthetic Fragrance", reason: "Can irritate the psoriatic skin plaques that often accompany psoriatic arthritis, triggering itching and inflammation on already-compromised skin." },
   ]
   for (const ing of psoriaticArthritisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["psoriatic-arthritis"] } })
@@ -335,13 +335,13 @@ async function main() {
 
   // --- Interstitial Cystitis ---
   const icIngredients = [
-    { slug: "caffeine-ic", name: "Caffeine", reason: "Bladder irritant that triggers IC flares" },
-    { slug: "alcohol-ic", name: "Alcohol", reason: "Highly acidic and irritates the bladder lining in IC" },
-    { slug: "citric-acid-ic", name: "Citric Acid", reason: "Common bladder irritant found in citrus and many beverages" },
-    { slug: "artificial-sweeteners-ic", name: "Artificial Sweeteners", reason: "Bladder irritants that worsen IC symptoms" },
-    { slug: "vinegar-ic", name: "Vinegar", reason: "Acidic ingredient that irritates the bladder in IC" },
-    { slug: "msg-ic", name: "Monosodium Glutamate", reason: "Reported bladder irritant for many IC patients" },
-    { slug: "carbonation-ic", name: "Carbonated Water", reason: "Sparkling beverages can aggravate IC bladder symptoms" },
+    { slug: "caffeine-ic", name: "Caffeine", reason: "Acts as both a bladder irritant and a diuretic, increasing urine acidity and frequency in a way that's one of the most consistently reported IC triggers." },
+    { slug: "alcohol-ic", name: "Alcohol", reason: "Highly acidic and a diuretic, a combination that directly irritates the already-inflamed bladder lining in interstitial cystitis." },
+    { slug: "citric-acid-ic", name: "Citric Acid", reason: "Found in citrus fruit and many packaged beverages, its high acidity is one of the most commonly cited dietary triggers among IC patients." },
+    { slug: "artificial-sweeteners-ic", name: "Artificial Sweeteners", reason: "Several non-nutritive sweeteners are frequently reported by IC patients as symptom triggers, thought to act as direct bladder irritants in sensitive individuals." },
+    { slug: "vinegar-ic", name: "Vinegar", reason: "Highly acidic, and acidity is one of the most consistently reported irritant properties for the sensitized bladder lining in IC." },
+    { slug: "msg-ic", name: "Monosodium Glutamate", reason: "Reported by many IC patients as a trigger, possibly through a direct irritant effect on the bladder lining, though the mechanism isn't fully understood." },
+    { slug: "carbonation-ic", name: "Carbonated Water", reason: "Carbonation itself, independent of any sweetener, is frequently reported by IC patients to aggravate bladder pain and urgency." },
   ]
   for (const ing of icIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["interstitial-cystitis"] } })
@@ -349,10 +349,10 @@ async function main() {
 
   // --- Diabetes Type 1 ---
   const diabetes1Ingredients = [
-    { slug: "refined-sugar-d1", name: "Refined Sugar", reason: "Causes rapid blood sugar spikes requiring careful insulin management in Type 1" },
-    { slug: "hfcs-d1", name: "High Fructose Corn Syrup", reason: "Rapidly raises blood glucose in Type 1 diabetes" },
-    { slug: "artificial-sweeteners-d1", name: "Artificial Sweeteners", reason: "May affect gut microbiome and complicate blood sugar management" },
-    { slug: "trans-fats-d1", name: "Trans Fats", reason: "Increases insulin resistance and cardiovascular risk in Type 1" },
+    { slug: "refined-sugar-d1", name: "Refined Sugar", reason: "Because Type 1 diabetes leaves the body unable to produce its own insulin, refined sugar's rapid glucose spike has to be precisely matched with an insulin dose, making it one of the harder carbohydrates to manage safely." },
+    { slug: "hfcs-d1", name: "High Fructose Corn Syrup", reason: "Raises blood glucose quickly and unpredictably, complicating the insulin dosing that people with Type 1 diabetes rely on to keep blood sugar in range." },
+    { slug: "artificial-sweeteners-d1", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners can alter gut bacteria in ways that affect blood glucose response, adding an extra layer of unpredictability to insulin dosing." },
+    { slug: "trans-fats-d1", name: "Trans Fats", reason: "Raise LDL cholesterol and promote insulin resistance, compounding the elevated cardiovascular risk that already accompanies Type 1 diabetes over time." },
   ]
   for (const ing of diabetes1Ingredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diabetes-type-1"] } })
@@ -360,12 +360,12 @@ async function main() {
 
   // --- Diabetes Type 2 ---
   const diabetes2Ingredients = [
-    { slug: "refined-sugar-d2", name: "Refined Sugar", reason: "Directly raises blood sugar and worsens insulin resistance in Type 2" },
-    { slug: "hfcs-d2", name: "High Fructose Corn Syrup", reason: "Strongly linked to insulin resistance and Type 2 diabetes progression" },
-    { slug: "trans-fats-d2", name: "Trans Fats", reason: "Increases insulin resistance and cardiovascular risk" },
-    { slug: "artificial-sweeteners-d2", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome" },
-    { slug: "seed-oils-d2", name: "Seed Oils", reason: "Promotes chronic inflammation linked to insulin resistance" },
-    { slug: "refined-carbs-d2", name: "Refined Grains", reason: "Quickly converted to glucose, spiking blood sugar in Type 2 diabetes" },
+    { slug: "refined-sugar-d2", name: "Refined Sugar", reason: "Repeated blood sugar spikes from refined sugar force the pancreas to release more and more insulin over time, a pattern that drives the worsening insulin resistance at the core of Type 2 diabetes." },
+    { slug: "hfcs-d2", name: "High Fructose Corn Syrup", reason: "Metabolized differently than regular sugar in ways researchers, including a widely cited Princeton study, have linked to promoting the insulin resistance central to Type 2 diabetes development and progression." },
+    { slug: "trans-fats-d2", name: "Trans Fats", reason: "Interferes with normal insulin signaling at the cellular level while also raising LDL cholesterol, compounding both the insulin resistance and cardiovascular risk that define Type 2 diabetes." },
+    { slug: "artificial-sweeteners-d2", name: "Artificial Sweeteners", reason: "Some studies suggest non-nutritive sweeteners can alter gut bacteria and blunt normal insulin signaling, potentially working against the blood sugar control Type 2 diabetes management depends on." },
+    { slug: "seed-oils-d2", name: "Seed Oils", reason: "High omega-6 fat intake promotes the chronic, low-grade inflammation that research increasingly links to worsening insulin resistance in Type 2 diabetes." },
+    { slug: "refined-carbs-d2", name: "Refined Grains", reason: "Stripped of the fiber that slows digestion, refined grains convert to glucose quickly, producing the kind of blood sugar spike that's hardest to manage with existing insulin resistance." },
   ]
   for (const ing of diabetes2Ingredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["diabetes-type-2"] } })
@@ -373,9 +373,9 @@ async function main() {
 
   // --- Thalassemia Minor ---
   const thalMinorIngredients = [
-    { slug: "iron-supplements-thal-minor", name: "Iron Supplements", reason: "Iron can accumulate in thalassemia minor; supplementation without testing can cause iron overload" },
-    { slug: "alcohol-thal-minor", name: "Alcohol", reason: "Worsens anemia and liver stress associated with thalassemia" },
-    { slug: "caffeine-thal-minor", name: "Caffeine", reason: "Inhibits iron absorption, which can worsen mild anemia in thalassemia minor" },
+    { slug: "iron-supplements-thal-minor", name: "Iron Supplements", reason: "Unlike iron-deficiency anemia, thalassemia minor isn't caused by low iron, so supplementing without first confirming an actual deficiency can build up excess iron in the body over time." },
+    { slug: "alcohol-thal-minor", name: "Alcohol", reason: "Places extra strain on the liver, which already plays a role in processing and storing iron, and can worsen the mild anemia some people with thalassemia minor experience." },
+    { slug: "caffeine-thal-minor", name: "Caffeine", reason: "Inhibits the body's absorption of dietary iron, which can push already-mild anemia in thalassemia minor slightly lower." },
   ]
   for (const ing of thalMinorIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["thalassemia-minor"] } })
@@ -383,9 +383,9 @@ async function main() {
 
   // --- Thalassemia Major ---
   const thalMajorIngredients = [
-    { slug: "iron-rich-thal-major", name: "Iron Supplements", reason: "Thalassemia major already causes iron overload from transfusions; additional iron is dangerous" },
-    { slug: "alcohol-thal-major", name: "Alcohol", reason: "Further stresses the liver already affected by iron overload in thalassemia major" },
-    { slug: "vitamin-c-supplements-thal", name: "Vitamin C Supplements", reason: "High dose vitamin C increases iron absorption, worsening iron overload in thalassemia major" },
+    { slug: "iron-rich-thal-major", name: "Iron Supplements", reason: "Regular blood transfusions already deliver more iron than the body can naturally excrete in thalassemia major, so additional iron from supplements can accelerate the organ damage chelation therapy is meant to prevent." },
+    { slug: "alcohol-thal-major", name: "Alcohol", reason: "The liver is already one of the organs most burdened by transfusion-related iron overload in thalassemia major, and alcohol adds further stress that can accelerate liver damage." },
+    { slug: "vitamin-c-supplements-thal", name: "Vitamin C Supplements", reason: "Vitamin C significantly boosts how much iron the body absorbs from food, which is the opposite of what's needed when transfusion-related iron overload is already a central risk in thalassemia major." },
   ]
   for (const ing of thalMajorIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["thalassemia-major"] } })
@@ -393,13 +393,13 @@ async function main() {
 
   // --- Endometriosis ---
   const endometriosisIngredients = [
-    { slug: "trans-fats-endo", name: "Trans Fats", reason: "Associated with higher endometriosis risk and promotes pelvic inflammation" },
-    { slug: "red-meat-endo", name: "Red Meat", reason: "High red meat intake linked to increased endometriosis risk in studies" },
-    { slug: "alcohol-endo", name: "Alcohol", reason: "Raises estrogen levels, which can worsen endometriosis symptoms" },
-    { slug: "caffeine-endo", name: "Caffeine", reason: "May increase estrogen levels and worsen endometriosis pain" },
-    { slug: "seed-oils-endo", name: "Seed Oils", reason: "High omega-6 promotes the inflammatory processes driving endometriosis" },
-    { slug: "gluten-endo", name: "Gluten", reason: "Some endometriosis patients report reduced pain on a gluten-free diet" },
-    { slug: "dairy-endo", name: "Dairy", reason: "May promote inflammation in endometriosis in some individuals" },
+    { slug: "trans-fats-endo", name: "Trans Fats", reason: "A 2010 study in Human Reproduction associated higher trans fat intake with increased endometriosis risk, likely through its role in promoting the pelvic inflammation that drives the condition." },
+    { slug: "red-meat-endo", name: "Red Meat", reason: "Research published in the American Journal of Obstetrics & Gynecology has linked high red meat consumption to increased endometriosis risk, possibly through its influence on estrogen metabolism and inflammation." },
+    { slug: "alcohol-endo", name: "Alcohol", reason: "Can raise circulating estrogen levels, and since endometrial-like tissue growth in endometriosis is estrogen-sensitive, this may fuel further tissue growth and worsen symptoms." },
+    { slug: "caffeine-endo", name: "Caffeine", reason: "Some research has associated higher caffeine intake with elevated estrogen levels, a hormonal shift that could theoretically stimulate the estrogen-sensitive tissue growth central to endometriosis." },
+    { slug: "seed-oils-endo", name: "Seed Oils", reason: "High omega-6 fat intake promotes pro-inflammatory compounds that can compound the chronic pelvic inflammation already driving endometriosis pain." },
+    { slug: "gluten-endo", name: "Gluten", reason: "Some endometriosis patients report meaningful pain reduction on a gluten-free diet, though the mechanism isn't fully understood and evidence is still preliminary." },
+    { slug: "dairy-endo", name: "Dairy", reason: "Contains hormones and growth factors that some endometriosis patients find worsen inflammation and pelvic pain, though individual response varies." },
   ]
   for (const ing of endometriosisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["endometriosis"] } })
@@ -407,24 +407,24 @@ async function main() {
 
   // --- PMDD ---
   const pmddIngredients = [
-    { slug: "caffeine-pmdd", name: "Caffeine", reason: "Worsens anxiety, breast tenderness, and sleep disruption in PMDD" },
-    { slug: "alcohol-pmdd", name: "Alcohol", reason: "Depressant that worsens mood symptoms and hormonal fluctuations in PMDD" },
-    { slug: "refined-sugar-pmdd", name: "Refined Sugar", reason: "Blood sugar instability worsens mood swings and fatigue in PMDD" },
-    { slug: "salt-pmdd", name: "Excess Salt", reason: "Worsens bloating and water retention during the luteal phase" },
-    { slug: "artificial-sweeteners-pmdd", name: "Artificial Sweeteners", reason: "May affect serotonin pathways and worsen PMDD mood symptoms" },
-    { slug: "seed-oils-pmdd", name: "Seed Oils", reason: "Excess omega-6 promotes inflammation that amplifies PMDD symptoms" },
+    { slug: "caffeine-pmdd", name: "Caffeine", reason: "A stimulant that can heighten anxiety and disrupt sleep, both of which compound the mood symptoms already amplified during PMDD's luteal-phase sensitivity." },
+    { slug: "alcohol-pmdd", name: "Alcohol", reason: "A depressant that can directly worsen the depression and mood instability that define PMDD, particularly during the luteal phase when the brain's serotonin sensitivity is already disrupted." },
+    { slug: "refined-sugar-pmdd", name: "Refined Sugar", reason: "The blood sugar swings that follow refined sugar intake can compound the mood instability and fatigue PMDD already produces during the luteal phase." },
+    { slug: "salt-pmdd", name: "Excess Salt", reason: "Promotes water retention that adds to the bloating and physical discomfort many people with PMDD already experience in the days before their period." },
+    { slug: "artificial-sweeteners-pmdd", name: "Artificial Sweeteners", reason: "Some research has explored whether certain sweeteners affect serotonin pathways, the same neurotransmitter system implicated in PMDD's heightened sensitivity to hormonal shifts." },
+    { slug: "seed-oils-pmdd", name: "Seed Oils", reason: "High omega-6 fat intake promotes systemic inflammation that may compound the physical and mood symptoms that intensify during PMDD's luteal phase." },
   ]
   for (const ing of pmddIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["pmdd"] } })
   }
   // --- Rosacea ---
   const rosaceaIngredients = [
-    { slug: "alcohol-denat", name: "Alcohol Denat", reason: "Can cause skin irritation and flare-ups", sources: [{ title: "National Rosacea Society - Skin Care Ingredients to Avoid", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }, { title: "American Academy of Dermatology - Rosacea Triggers", url: "https://www.aad.org/public/diseases/rosacea/triggers/find" }] },
-    { slug: "fragrance-rosacea", name: "Synthetic Fragrance", reason: "Common trigger for rosacea flare-ups", sources: [{ title: "National Rosacea Society - Triggers Survey", url: "https://www.rosacea.org/patients/materials/triggersgraph.php" }, { title: "Journal of Clinical and Aesthetic Dermatology", url: "https://jcadonline.com/rosacea-triggers/" }] },
-    { slug: "menthol", name: "Menthol", reason: "Can cause skin irritation and redness", sources: [{ title: "National Rosacea Society - Skin Care Ingredients", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }] },
-    { slug: "witch-hazel", name: "Witch Hazel", reason: "May aggravate rosacea symptoms", sources: [{ title: "American Academy of Dermatology - Rosacea Treatment", url: "https://www.aad.org/public/diseases/rosacea/treatment" }] },
-    { slug: "eucalyptus", name: "Eucalyptus Oil", reason: "Known irritant for rosacea-prone skin", sources: [{ title: "DermNet NZ - Rosacea", url: "https://dermnetnz.org/topics/rosacea" }] },
-    { slug: "sodium-lauryl", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that can trigger flare-ups", sources: [{ title: "Environmental Working Group - SLS Safety", url: "https://www.ewg.org/skindeep/ingredient/706110/SODIUM_LAURYL_SULFATE/" }, { title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "alcohol-denat", name: "Alcohol Denat", reason: "Dehydrates the skin surface and disrupts the barrier, a combination strongly linked in the National Rosacea Society's own patient-reported trigger surveys to flare-ups involving redness and stinging.", sources: [{ title: "National Rosacea Society - Skin Care Ingredients to Avoid", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }, { title: "American Academy of Dermatology - Rosacea Triggers", url: "https://www.aad.org/public/diseases/rosacea/triggers/find" }] },
+    { slug: "fragrance-rosacea", name: "Synthetic Fragrance", reason: "Consistently ranks among the top reported rosacea triggers in patient surveys, likely because fragrance compounds directly irritate skin that's already more reactive and permeable than typical skin.", sources: [{ title: "National Rosacea Society - Triggers Survey", url: "https://www.rosacea.org/patients/materials/triggersgraph.php" }, { title: "Journal of Clinical and Aesthetic Dermatology", url: "https://jcadonline.com/rosacea-triggers/" }] },
+    { slug: "menthol", name: "Menthol", reason: "Creates a cooling sensation by stimulating nerve receptors in the skin, a stimulation that can trigger the flushing response central to a rosacea flare.", sources: [{ title: "National Rosacea Society - Skin Care Ingredients", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }] },
+    { slug: "witch-hazel", name: "Witch Hazel", reason: "Contains tannins that, despite its astringent reputation, can irritate and dry the already-compromised skin barrier common in rosacea.", sources: [{ title: "American Academy of Dermatology - Rosacea Treatment", url: "https://www.aad.org/public/diseases/rosacea/treatment" }] },
+    { slug: "eucalyptus", name: "Eucalyptus Oil", reason: "A volatile plant oil frequently identified as an irritant for rosacea-prone skin, capable of triggering the stinging and redness of a flare.", sources: [{ title: "DermNet NZ - Rosacea", url: "https://dermnetnz.org/topics/rosacea" }] },
+    { slug: "sodium-lauryl", name: "Sodium Lauryl Sulfate", reason: "Strips the skin's protective lipid barrier, and a weakened barrier is one of the underlying features that makes rosacea-prone skin more reactive to everyday products.", sources: [{ title: "Environmental Working Group - SLS Safety", url: "https://www.ewg.org/skindeep/ingredient/706110/SODIUM_LAURYL_SULFATE/" }, { title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
   ];
 
   for (const ing of rosaceaIngredients) {
@@ -443,12 +443,12 @@ async function main() {
 
   // --- Eczema ---
   const eczemaIngredients = [
-    { slug: "fragrance-eczema", name: "Artificial Fragrance", reason: "Common irritant for eczema", sources: [{ title: "National Eczema Association - Ingredients to Avoid", url: "https://nationaleczema.org/eczema-products/" }] },
-    { slug: "parabens-eczema", name: "Parabens", reason: "Can trigger eczema flare-ups", sources: [{ title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
-    { slug: "sls-eczema", name: "Sodium Lauryl Sulfate", reason: "Strips natural oils from skin", sources: [{ title: "National Eczema Association - SLS and Eczema", url: "https://nationaleczema.org/eczema-products/" }] },
-    { slug: "coconut-oil-eczema", name: "Coconut Oil", reason: "Can clog pores and worsen eczema for some", sources: [] },
-    { slug: "lanolin", name: "Lanolin", reason: "Common allergen for eczema sufferers", sources: [{ title: "DermNet NZ - Lanolin Allergy", url: "https://dermnetnz.org/topics/lanolin-allergy" }] },
-    { slug: "propylene-glycol", name: "Propylene Glycol", reason: "Can cause contact dermatitis", sources: [] },
+    { slug: "fragrance-eczema", name: "Artificial Fragrance", reason: "One of the most frequently reported eczema triggers - fragrance chemicals can penetrate an already-compromised skin barrier and set off an inflammatory flare.", sources: [{ title: "National Eczema Association - Ingredients to Avoid", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "parabens-eczema", name: "Parabens", reason: "Preservatives that some people with eczema find irritating to already-sensitized skin, though the reaction is less common than with fragrance.", sources: [{ title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "sls-eczema", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the skin's natural oils and disrupts the already-weakened eczema skin barrier, worsening dryness and itching.", sources: [{ title: "National Eczema Association - SLS and Eczema", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "coconut-oil-eczema", name: "Coconut Oil", reason: "Moisturizing for some, but its comedogenic (pore-clogging) properties and lauric acid content can worsen eczema in others - individual tolerance varies widely.", sources: [{ title: "National Eczema Association - Natural Oils", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "lanolin", name: "Lanolin", reason: "Derived from sheep's wool wax and one of the more common contact allergens in people with eczema, despite being marketed as a gentle moisturizer.", sources: [{ title: "DermNet NZ - Lanolin Allergy", url: "https://dermnetnz.org/topics/lanolin-allergy" }] },
+    { slug: "propylene-glycol", name: "Propylene Glycol", reason: "A common humectant and solvent that is one of the more frequently identified contact allergens in patch testing for eczema and contact dermatitis.", sources: [{ title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
   ];
 
   for (const ing of eczemaIngredients) {
@@ -467,12 +467,12 @@ async function main() {
 
   // --- Celiac ---
   const celiacIngredients = [
-    { slug: "gluten", name: "Gluten", reason: "Triggers autoimmune response in celiac disease" },
-    { slug: "wheat", name: "Wheat", reason: "Contains gluten" },
-    { slug: "barley", name: "Barley", reason: "Contains gluten" },
-    { slug: "rye", name: "Rye", reason: "Contains gluten" },
-    { slug: "malt", name: "Malt", reason: "Derived from barley, contains gluten" },
-    { slug: "brewers-yeast", name: "Brewer's Yeast", reason: "Often contains gluten" },
+    { slug: "gluten", name: "Gluten", reason: "Directly triggers the autoimmune response that damages the small intestine's lining in celiac disease, even in trace amounts." },
+    { slug: "wheat", name: "Wheat", reason: "The most common dietary source of gluten; wheat's gliadin protein is what the immune system reacts to in celiac disease." },
+    { slug: "barley", name: "Barley", reason: "Contains hordein, a gluten protein that triggers the same autoimmune intestinal damage as wheat gluten in celiac disease." },
+    { slug: "rye", name: "Rye", reason: "Contains secalin, a gluten protein structurally similar to wheat gluten that can trigger celiac's autoimmune response." },
+    { slug: "malt", name: "Malt", reason: "Usually derived from barley, so malt and malt extract carry gluten proteins unless specifically labeled gluten-free." },
+    { slug: "brewers-yeast", name: "Brewer's Yeast", reason: "Often cultured on a barley or wheat substrate, so it can carry gluten residue even though yeast itself is gluten-free." },
   ];
 
   for (const ing of celiacIngredients) {
@@ -483,9 +483,9 @@ async function main() {
 
   // --- Asthma ---
   const asthmaIngredients = [
-    { slug: "sulfites-asthma", name: "Sulfites", reason: "Common asthma trigger" },
-    { slug: "artificial-colors-asthma", name: "Artificial Colors", reason: "May trigger asthma symptoms" },
-    { slug: "benzoates", name: "Benzoates", reason: "Can worsen asthma symptoms" },
+    { slug: "sulfites-asthma", name: "Sulfites", reason: "A well-documented asthma trigger - sulfite preservatives release sulfur dioxide gas that can irritate the airways and provoke bronchospasm in sulfite-sensitive asthmatics." },
+    { slug: "artificial-colors-asthma", name: "Artificial Colors", reason: "Some synthetic dyes, particularly tartrazine (Yellow 5), have been reported to trigger asthma symptoms in a subset of sensitive individuals." },
+    { slug: "benzoates", name: "Benzoates", reason: "Preservatives like sodium benzoate can trigger bronchospasm in aspirin-sensitive asthmatics and are sometimes grouped with sulfites as a food-additive respiratory trigger." },
   ];
 
   for (const ing of asthmaIngredients) {
@@ -496,11 +496,11 @@ async function main() {
 
   // --- IBS ---
   const ibsIngredients = [
-    { slug: "artificial-sweeteners-ibs", name: "Artificial Sweeteners", reason: "Can trigger IBS symptoms" },
-    { slug: "high-fructose", name: "High Fructose Corn Syrup", reason: "FODMAPs trigger for IBS" },
-    { slug: "sorbitol", name: "Sorbitol", reason: "Sugar alcohol that can cause digestive distress" },
-    { slug: "inulin", name: "Inulin", reason: "High FODMAP ingredient" },
-    { slug: "lactose", name: "Lactose", reason: "Common trigger for IBS symptoms" },
+    { slug: "artificial-sweeteners-ibs", name: "Artificial Sweeteners", reason: "Sugar alcohols and some non-nutritive sweeteners are poorly absorbed in the small intestine and can ferment in the gut, drawing in water and gas that trigger IBS bloating and cramping." },
+    { slug: "high-fructose", name: "High Fructose Corn Syrup", reason: "A high-FODMAP sweetener - excess fructose that isn't fully absorbed reaches the colon, where gut bacteria ferment it and produce the gas and bloating typical of an IBS flare." },
+    { slug: "sorbitol", name: "Sorbitol", reason: "A sugar alcohol that the gut absorbs slowly and incompletely; the unabsorbed portion ferments in the colon and has a laxative effect, commonly triggering IBS diarrhea and cramping." },
+    { slug: "inulin", name: "Inulin", reason: "A high-FODMAP prebiotic fiber that resists digestion and is rapidly fermented by colon bacteria, a common source of the gas and bloating that trigger IBS symptoms." },
+    { slug: "lactose", name: "Lactose", reason: "Many people with IBS also have some degree of lactose malabsorption, so undigested lactose ferments in the colon and can trigger classic IBS symptoms like bloating and diarrhea." },
   ];
 
   for (const ing of ibsIngredients) {
@@ -511,16 +511,16 @@ async function main() {
 
   // --- Nut Allergy ---
   const nutAllergyIngredients = [
-    { slug: "peanuts", name: "Peanuts", reason: "Common nut allergen" },
-    { slug: "almonds", name: "Almonds", reason: "Tree nut allergen" },
-    { slug: "cashews", name: "Cashews", reason: "Tree nut allergen" },
-    { slug: "walnuts", name: "Walnuts", reason: "Tree nut allergen" },
-    { slug: "pecans", name: "Pecans", reason: "Tree nut allergen" },
-    { slug: "pistachios", name: "Pistachios", reason: "Tree nut allergen" },
-    { slug: "macadamia", name: "Macadamia Nuts", reason: "Tree nut allergen" },
-    { slug: "hazelnuts", name: "Hazelnuts", reason: "Tree nut allergen" },
-    { slug: "brazil-nuts", name: "Brazil Nuts", reason: "Tree nut allergen" },
-    { slug: "pine-nuts", name: "Pine Nuts", reason: "Tree nut allergen" },
+    { slug: "peanuts", name: "Peanuts", reason: "A legume rather than a true tree nut, but one of the most common food allergens and a frequent cause of severe, potentially life-threatening reactions." },
+    { slug: "almonds", name: "Almonds", reason: "A tree nut allergen; proteins in almonds can trigger reactions ranging from hives and swelling to anaphylaxis." },
+    { slug: "cashews", name: "Cashews", reason: "A tree nut allergen closely related to pistachios, and among the tree nuts most associated with severe allergic reactions." },
+    { slug: "walnuts", name: "Walnuts", reason: "A tree nut allergen that frequently cross-reacts with pecans due to their close botanical relation." },
+    { slug: "pecans", name: "Pecans", reason: "A tree nut allergen closely related to walnuts; people allergic to one often react to the other." },
+    { slug: "pistachios", name: "Pistachios", reason: "A tree nut allergen closely related to cashews; cross-reactivity between the two is common." },
+    { slug: "macadamia", name: "Macadamia Nuts", reason: "A tree nut allergen; less common than other tree nut allergies, but reactions can still be severe." },
+    { slug: "hazelnuts", name: "Hazelnuts", reason: "A tree nut allergen widely used in chocolate and baked goods, which makes accidental exposure especially common." },
+    { slug: "brazil-nuts", name: "Brazil Nuts", reason: "A tree nut allergen containing potent seed storage proteins that can trigger reactions even in small amounts." },
+    { slug: "pine-nuts", name: "Pine Nuts", reason: "Technically a seed rather than a true tree nut, but commonly grouped with tree nut allergens and capable of triggering similar reactions." },
   ];
 
   for (const ing of nutAllergyIngredients) {
@@ -531,21 +531,21 @@ async function main() {
 
   // --- Dairy Allergy ---
   const dairyAllergyIngredients = [
-    { slug: "milk-dairy", name: "Milk", reason: "Contains dairy" },
-    { slug: "cream-dairy", name: "Cream", reason: "Contains dairy" },
-    { slug: "butter-dairy", name: "Butter", reason: "Contains dairy" },
-    { slug: "butterfat-dairy", name: "Butterfat", reason: "Contains dairy" },
-    { slug: "cheese-dairy", name: "Cheese", reason: "Contains dairy" },
-    { slug: "casein-dairy", name: "Casein", reason: "Dairy-derived protein" },
-    { slug: "caseinate-dairy", name: "Caseinate", reason: "Dairy-derived protein" },
-    { slug: "whey-dairy", name: "Whey", reason: "Dairy-derived protein" },
-    { slug: "lactose-dairy", name: "Lactose", reason: "Milk sugar" },
-    { slug: "lactalbumin-dairy", name: "Lactalbumin", reason: "Dairy-derived protein" },
-    { slug: "lactoglobulin-dairy", name: "Lactoglobulin", reason: "Dairy-derived protein" },
-    { slug: "milk-solids-dairy", name: "Milk Solids", reason: "Contains dairy" },
-    { slug: "milk-powder-dairy", name: "Milk Powder", reason: "Contains dairy" },
-    { slug: "yogurt-dairy", name: "Yogurt", reason: "Contains dairy" },
-    { slug: "ghee-dairy", name: "Ghee", reason: "Clarified butter, contains dairy" },
+    { slug: "milk-dairy", name: "Milk", reason: "Contains the casein and whey proteins responsible for milk allergy reactions, plus lactose for those with lactose intolerance." },
+    { slug: "cream-dairy", name: "Cream", reason: "A milk-derived product that carries the same casein and whey proteins that trigger milk allergy reactions." },
+    { slug: "butter-dairy", name: "Butter", reason: "Made from milk fat, but can retain trace casein and whey - enough to trigger a reaction in highly milk-allergic individuals." },
+    { slug: "butterfat-dairy", name: "Butterfat", reason: "The fat portion of milk, which can carry residual milk proteins capable of triggering a reaction in those with milk allergy." },
+    { slug: "cheese-dairy", name: "Cheese", reason: "Made by concentrating milk proteins, so it carries a high concentration of the casein responsible for most milk allergy reactions." },
+    { slug: "casein-dairy", name: "Casein", reason: "The primary milk protein and one of the two main triggers, along with whey, of true milk allergy reactions." },
+    { slug: "caseinate-dairy", name: "Caseinate", reason: "A processed form of casein, such as sodium or calcium caseinate, used as an additive that still carries the allergenic milk protein." },
+    { slug: "whey-dairy", name: "Whey", reason: "One of the two primary milk proteins, along with casein, responsible for milk allergy reactions; common in protein powders and baked goods." },
+    { slug: "lactose-dairy", name: "Lactose", reason: "Milk sugar rather than a protein, so it doesn't trigger a true allergic reaction, but it is what causes symptoms in lactose intolerance." },
+    { slug: "lactalbumin-dairy", name: "Lactalbumin", reason: "A whey protein fraction of milk that can trigger a reaction in people allergic to milk proteins." },
+    { slug: "lactoglobulin-dairy", name: "Lactoglobulin", reason: "The major whey protein in cow's milk and a common trigger of milk allergy reactions." },
+    { slug: "milk-solids-dairy", name: "Milk Solids", reason: "Concentrated milk proteins and sugars, including casein and lactose, that can trigger both milk allergy and lactose intolerance." },
+    { slug: "milk-powder-dairy", name: "Milk Powder", reason: "Dehydrated milk that retains its full protein and lactose content, carrying the same allergy and intolerance risk as liquid milk." },
+    { slug: "yogurt-dairy", name: "Yogurt", reason: "A fermented milk product; fermentation reduces lactose somewhat, but the casein and whey proteins remain and can still trigger milk allergy." },
+    { slug: "ghee-dairy", name: "Ghee", reason: "Clarified butter with most milk solids removed, but trace casein can remain - potentially enough to trigger a reaction in highly sensitive individuals." },
   ];
 
   for (const ing of dairyAllergyIngredients) {
@@ -556,17 +556,17 @@ async function main() {
 
   // --- Soy Allergy ---
   const soyAllergyIngredients = [
-    { slug: "soy-allergy", name: "Soy", reason: "Contains soy" },
-    { slug: "soybean-allergy", name: "Soybean", reason: "Contains soy" },
-    { slug: "soy-lecithin-allergy", name: "Soy Lecithin", reason: "Soy-derived emulsifier" },
-    { slug: "soy-protein-allergy", name: "Soy Protein", reason: "Contains soy" },
-    { slug: "soy-flour-allergy", name: "Soy Flour", reason: "Contains soy" },
-    { slug: "soybean-oil-allergy", name: "Soybean Oil", reason: "Soy-derived oil" },
-    { slug: "tofu-allergy", name: "Tofu", reason: "Soy-based product" },
-    { slug: "tempeh-allergy", name: "Tempeh", reason: "Soy-based product" },
-    { slug: "miso-allergy", name: "Miso", reason: "Soy-based product" },
-    { slug: "edamame-allergy", name: "Edamame", reason: "Soy-based product" },
-    { slug: "hydrolyzed-soy-allergy", name: "Hydrolyzed Soy Protein", reason: "Soy-derived" },
+    { slug: "soy-allergy", name: "Soy", reason: "Soy protein is one of the most common food allergens and can trigger reactions ranging from mild hives to anaphylaxis." },
+    { slug: "soybean-allergy", name: "Soybean", reason: "The whole legume that soy allergens derive from, containing the storage proteins responsible for most soy allergy reactions." },
+    { slug: "soy-lecithin-allergy", name: "Soy Lecithin", reason: "A soy-derived emulsifier; manufacturing removes most of the protein, but trace amounts can still trigger a reaction in highly sensitive individuals." },
+    { slug: "soy-protein-allergy", name: "Soy Protein", reason: "A concentrated or isolated soy protein additive that carries the same allergenic proteins responsible for soy allergy." },
+    { slug: "soy-flour-allergy", name: "Soy Flour", reason: "Ground whole soybeans, retaining the full protein content responsible for soy allergy reactions." },
+    { slug: "soybean-oil-allergy", name: "Soybean Oil", reason: "Highly refined soybean oil typically contains only trace protein, but cold-pressed or unrefined versions can carry more." },
+    { slug: "tofu-allergy", name: "Tofu", reason: "Made from soy protein curds, so it carries the full allergenic protein load of soybeans." },
+    { slug: "tempeh-allergy", name: "Tempeh", reason: "A fermented whole-soybean product; fermentation doesn't eliminate the proteins responsible for soy allergic reactions." },
+    { slug: "miso-allergy", name: "Miso", reason: "A fermented soybean paste that retains soy allergens even after the fermentation process." },
+    { slug: "edamame-allergy", name: "Edamame", reason: "Whole immature soybeans, carrying the same allergenic proteins as mature soybeans." },
+    { slug: "hydrolyzed-soy-allergy", name: "Hydrolyzed Soy Protein", reason: "Soy protein broken down into smaller peptides for use as a flavor enhancer or filler; can still trigger a reaction in soy-allergic individuals." },
   ];
 
   for (const ing of soyAllergyIngredients) {
@@ -577,21 +577,21 @@ async function main() {
 
   // --- Gluten Intolerance ---
   const glutenIntoleranceIngredients = [
-    { slug: "wheat-gluten", name: "Wheat", reason: "Contains gluten" },
-    { slug: "barley-gluten", name: "Barley", reason: "Contains gluten" },
-    { slug: "rye-gluten", name: "Rye", reason: "Contains gluten" },
-    { slug: "spelt-gluten", name: "Spelt", reason: "Contains gluten" },
-    { slug: "kamut-gluten", name: "Kamut", reason: "Contains gluten" },
-    { slug: "triticale-gluten", name: "Triticale", reason: "Contains gluten" },
-    { slug: "semolina-gluten", name: "Semolina", reason: "Wheat-derived, contains gluten" },
-    { slug: "durum-gluten", name: "Durum", reason: "Wheat-derived, contains gluten" },
-    { slug: "wheat-flour-gluten", name: "Wheat Flour", reason: "Contains gluten" },
-    { slug: "wheat-starch-gluten", name: "Wheat Starch", reason: "May contain gluten" },
-    { slug: "barley-malt-gluten", name: "Barley Malt Extract", reason: "Contains gluten" },
-    { slug: "gluten-gluten", name: "Gluten", reason: "Contains gluten" },
-    { slug: "seitan-gluten", name: "Seitan", reason: "Pure wheat gluten" },
-    { slug: "couscous-gluten", name: "Couscous", reason: "Wheat-based, contains gluten" },
-    { slug: "bulgur-gluten", name: "Bulgur", reason: "Wheat-based, contains gluten" },
+    { slug: "wheat-gluten", name: "Wheat", reason: "The most common source of dietary gluten; its gliadin protein is what triggers digestive and systemic symptoms in gluten sensitivity." },
+    { slug: "barley-gluten", name: "Barley", reason: "Contains hordein, a gluten protein that can trigger the same digestive and inflammatory symptoms as wheat gluten." },
+    { slug: "rye-gluten", name: "Rye", reason: "Contains secalin, a gluten protein similar to wheat gluten, commonly found in rye bread and crackers." },
+    { slug: "spelt-gluten", name: "Spelt", reason: "An ancient wheat variety that still contains gluten, despite sometimes being marketed as easier to digest." },
+    { slug: "kamut-gluten", name: "Kamut", reason: "An ancient wheat relative that contains gluten and can trigger the same symptoms as modern wheat." },
+    { slug: "triticale-gluten", name: "Triticale", reason: "A wheat-rye hybrid grain that carries gluten from both parent grains." },
+    { slug: "semolina-gluten", name: "Semolina", reason: "Milled from durum wheat, so it carries the full gluten content of wheat; common in pasta." },
+    { slug: "durum-gluten", name: "Durum", reason: "A high-gluten wheat variety used mainly in pasta, and one of the more concentrated dietary gluten sources." },
+    { slug: "wheat-flour-gluten", name: "Wheat Flour", reason: "Ground wheat retains its full gluten content, making it one of the most common hidden sources of gluten in processed foods." },
+    { slug: "wheat-starch-gluten", name: "Wheat Starch", reason: "Most gluten protein is removed during processing, but residual amounts can remain unless the product is specifically labeled gluten-free." },
+    { slug: "barley-malt-gluten", name: "Barley Malt Extract", reason: "Derived from barley, so it carries gluten and is a common hidden source in cereals, candy, and flavored snacks." },
+    { slug: "gluten-gluten", name: "Gluten", reason: "The general term for the wheat, barley, and rye proteins responsible for digestive and systemic symptoms in gluten sensitivity." },
+    { slug: "seitan-gluten", name: "Seitan", reason: "Made almost entirely of concentrated wheat gluten, making it one of the highest-gluten foods commonly eaten." },
+    { slug: "couscous-gluten", name: "Couscous", reason: "Made from semolina wheat, so it carries a significant gluten content despite its small, grain-like appearance." },
+    { slug: "bulgur-gluten", name: "Bulgur", reason: "A cracked wheat product that retains the full gluten content of the wheat kernel." },
   ];
 
   for (const ing of glutenIntoleranceIngredients) {
@@ -602,13 +602,13 @@ async function main() {
 
   // --- Sensitive Skin ---
   const sensitiveSkinIngredients = [
-    { slug: "fragrance-sensitive", name: "Sythetic Fragrance", reason: "Top irritant for sensitive skin" },
-    { slug: "alcohol-sensitive", name: "Alcohol", reason: "Dries and irritates sensitive skin" },
-    { slug: "retinol-sensitive", name: "Retinol", reason: "Can cause redness and peeling" },
-    { slug: "aha-sensitive", name: "Alpha Hydroxy Acids", reason: "Can over-exfoliate sensitive skin" },
-    { slug: "essential-oils-sensitive", name: "Essential Oils", reason: "Can cause allergic reactions" },
-    { slug: "formaldehyde-sensitive", name: "Formaldehyde", reason: "Known skin irritant" },
-    { slug: "sls-sensitive", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that strips natural oils" },
+    { slug: "fragrance-sensitive", name: "Sythetic Fragrance", reason: "The single most frequently reported cause of cosmetic contact reactions - a listed 'fragrance' can be dozens of undisclosed chemicals, any of which can irritate reactive skin." },
+    { slug: "alcohol-sensitive", name: "Alcohol", reason: "Short-chain drying alcohols evaporate quickly and strip the skin's protective lipid barrier, which reactive skin depends on more than most." },
+    { slug: "retinol-sensitive", name: "Retinol", reason: "Increases skin cell turnover, which is effective for many but can cause redness, peeling, and heightened sensitivity to other irritants, especially at higher strengths." },
+    { slug: "aha-sensitive", name: "Alpha Hydroxy Acids", reason: "Chemical exfoliants that dissolve the bonds between dead skin cells - useful in moderation, but can over-exfoliate and compromise the barrier on already-reactive skin." },
+    { slug: "essential-oils-sensitive", name: "Essential Oils", reason: "Concentrated plant compounds (like citrus, lavender, or tea tree oil) that are among the most common causes of allergic contact reactions in sensitive skin, despite being 'natural.'" },
+    { slug: "formaldehyde-sensitive", name: "Formaldehyde", reason: "A recognized skin sensitizer and irritant; even the low levels released by formaldehyde-donor preservatives can be enough to trigger a reaction in sensitive skin." },
+    { slug: "sls-sensitive", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant designed to strip oil and dirt, which also strips the skin's own protective oils, often leaving reactive skin drier and more irritated." },
   ];
 
   for (const ing of sensitiveSkinIngredients) {
@@ -619,12 +619,12 @@ async function main() {
 
   // --- Psoriasis ---
   const psoriasisIngredients = [
-    { slug: "alcohol-psoriasis", name: "Alcohol", reason: "Can dry out and irritate plaques" },
-    { slug: "fragrance-psoriasis", name: "Synthetic Fragrance", reason: "Can trigger flare-ups" },
-    { slug: "dyes-psoriasis", name: "Synthetic Dyes", reason: "May irritate psoriatic skin" },
-    { slug: "sulfates-psoriasis", name: "Sodium Lauryl Sulfate", reason: "Can strip moisture and worsen patches" },
-    { slug: "retinoid-psoriasis", name: "Retinoids", reason: "Can thin already compromised skin" },
-    { slug: "salicylic-psoriasis", name: "Salicylic Acid", reason: "Can cause irritation when used on active plaques" },
+    { slug: "alcohol-psoriasis", name: "Alcohol", reason: "Drying alcohols evaporate quickly and pull moisture from psoriasis plaques, worsening the scaling and cracking that already make the skin barrier fragile." },
+    { slug: "fragrance-psoriasis", name: "Synthetic Fragrance", reason: "A frequently reported trigger for psoriasis flare-ups - fragrance chemicals can irritate skin that is already inflamed and more permeable than typical skin." },
+    { slug: "dyes-psoriasis", name: "Synthetic Dyes", reason: "Some synthetic colorants can irritate psoriatic skin directly, and a subset of people with psoriasis report dye sensitivity as part of broader chemical sensitivity." },
+    { slug: "sulfates-psoriasis", name: "Sodium Lauryl Sulfate", reason: "A harsh cleansing surfactant that strips lipids from the skin surface, worsening the dryness and moisture loss that already accompany psoriasis plaques." },
+    { slug: "retinoid-psoriasis", name: "Retinoids", reason: "Increase skin cell turnover and can thin the epidermis, which may worsen irritation on plaques unless used under a dermatologist's specific guidance for psoriasis." },
+    { slug: "salicylic-psoriasis", name: "Salicylic Acid", reason: "A keratolytic used in some psoriasis treatments to soften scale, but it can sting and irritate when applied to actively inflamed or cracked plaques." },
   ];
 
   for (const ing of psoriasisIngredients) {
@@ -635,13 +635,13 @@ async function main() {
 
   // --- Perioral Dermatitis ---
   const perioralIngredients = [
-    { slug: "sls-pd", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that can trigger perioral dermatitis flare-ups" },
-    { slug: "fluoride-pd", name: "Fluoride", reason: "Fluoride in toothpaste is a common trigger for perioral dermatitis" },
-    { slug: "fragrance-pd", name: "Synthetic Fragrance", reason: "Synthetic fragrances can worsen perioral dermatitis" },
-    { slug: "steroids-pd", name: "Topical Steroids", reason: "Can cause rebound flare-ups and worsen the condition" },
-    { slug: "heavy-moisturizers-pd", name: "Petrolatum", reason: "Occlusive products can aggravate perioral dermatitis" },
-    { slug: "cinnamon-pd", name: "Cinnamon", reason: "Known skin irritant that can trigger flare-ups around the mouth" },
-    { slug: "paraben-pd", name: "Parabens", reason: "Preservatives that can irritate perioral dermatitis" },
+    { slug: "sls-pd", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the skin's natural oils and can irritate the already-compromised barrier around the mouth in perioral dermatitis, worsening redness and bumps." },
+    { slug: "fluoride-pd", name: "Fluoride", reason: "Fluoride toothpaste is one of the most frequently reported triggers for perioral dermatitis, possibly because residual toothpaste around the mouth acts as a mild, repeated irritant to sensitive skin there." },
+    { slug: "fragrance-pd", name: "Synthetic Fragrance", reason: "A common irritant for the sensitive, already-inflamed skin around the mouth affected by perioral dermatitis, capable of triggering or worsening a flare." },
+    { slug: "steroids-pd", name: "Topical Steroids", reason: "Often used to calm the rash short-term, but corticosteroids can feed an underlying rebound cycle in perioral dermatitis, where symptoms return worse than before once the steroid is stopped." },
+    { slug: "heavy-moisturizers-pd", name: "Petrolatum", reason: "Thick, occlusive products can trap moisture, bacteria, and irritants against skin already inflamed by perioral dermatitis, potentially prolonging a flare rather than helping it heal." },
+    { slug: "cinnamon-pd", name: "Cinnamon", reason: "A well-documented skin irritant and allergen, often found in flavored lip products and toothpaste, that can directly trigger flare-ups on the sensitive skin around the mouth." },
+    { slug: "paraben-pd", name: "Parabens", reason: "Preservatives that some people find irritating on skin that's already inflamed and barrier-compromised, as is typical in an active perioral dermatitis flare." },
   ];
 
   for (const ing of perioralIngredients) {
@@ -652,13 +652,13 @@ async function main() {
 
   // --- Acne ---
   const acneIngredients = [
-    { slug: "coconut-oil-acne", name: "Coconut Oil", reason: "Highly comedogenic, clogs pores" },
-    { slug: "isopropyl-myristate-acne", name: "Isopropyl Myristate", reason: "Known pore-clogging ingredient" },
-    { slug: "lanolin-acne", name: "Lanolin", reason: "Can clog pores and cause breakouts" },
-    { slug: "mineral-oil-acne", name: "Mineral Oil", reason: "May trap bacteria in pores" },
-    { slug: "dimethicone-acne", name: "Dimethicone", reason: "Silicone that can trap debris in pores" },
-    { slug: "cocoa-butter-acne", name: "Cocoa Butter", reason: "Comedogenic, can clog pores" },
-    { slug: "algae-acne", name: "Algae Extract", reason: "Can be comedogenic for acne-prone skin" },
+    { slug: "coconut-oil-acne", name: "Coconut Oil", reason: "Rated highly comedogenic on standard scales - its fatty acid profile is prone to clogging pores and can worsen breakouts in acne-prone skin." },
+    { slug: "isopropyl-myristate-acne", name: "Isopropyl Myristate", reason: "A synthetic emollient commonly flagged in dermatology comedogenicity studies for clogging pores and contributing to acne breakouts." },
+    { slug: "lanolin-acne", name: "Lanolin", reason: "A moderately comedogenic wax-based moisturizer that can sit on the skin surface and block pores in those prone to acne." },
+    { slug: "mineral-oil-acne", name: "Mineral Oil", reason: "An occlusive ingredient that seals the skin surface; in acne-prone skin it can trap oil, dead skin cells, and bacteria inside the pore, contributing to breakouts." },
+    { slug: "dimethicone-acne", name: "Dimethicone", reason: "A silicone that forms a film on skin; while non-comedogenic for most people, it can trap debris and oil against the skin in those prone to congestion and breakouts." },
+    { slug: "cocoa-butter-acne", name: "Cocoa Butter", reason: "A rich, waxy butter that is highly comedogenic for many, meaning it's especially likely to clog pores and contribute to breakouts in acne-prone skin." },
+    { slug: "algae-acne", name: "Algae Extract", reason: "Some algae and seaweed extracts are moderately comedogenic and can contribute to clogged pores in those with acne-prone skin, despite their 'natural' marketing." },
   ];
 
   for (const ing of acneIngredients) {
@@ -669,12 +669,12 @@ async function main() {
 
   // --- Dandruff ---
   const dandruffIngredients = [
-    { slug: "sls-dandruff", name: "Sodium Lauryl Sulfate", reason: "Strips natural scalp oils, worsening dryness and flaking" },
-    { slug: "alcohol-dandruff", name: "Alcohol Denat", reason: "Dries out the scalp and can increase flaking" },
-    { slug: "fragrance-dandruff", name: "Synthetic Fragrance", reason: "Can irritate a sensitive scalp and trigger flaking" },
-    { slug: "coconut-oil-dandruff", name: "Coconut Oil", reason: "Can feed Malassezia yeast on the scalp, worsening dandruff" },
-    { slug: "dimethicone-dandruff", name: "Dimethicone", reason: "Silicone buildup on scalp can trap flakes and irritants" },
-    { slug: "parabens-dandruff", name: "Parabens", reason: "May irritate an already sensitive, flaky scalp" },
+    { slug: "sls-dandruff", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the scalp's natural protective oils, leaving skin more prone to the dryness and flaking that define dandruff." },
+    { slug: "alcohol-dandruff", name: "Alcohol Denat", reason: "Evaporates quickly and pulls moisture from the scalp, which can worsen flaking - especially for the dry-skin type of dandruff rather than the oily, yeast-driven type." },
+    { slug: "fragrance-dandruff", name: "Synthetic Fragrance", reason: "A frequently reported scalp irritant capable of triggering the itching and inflammation that accompany a dandruff flare-up." },
+    { slug: "coconut-oil-dandruff", name: "Coconut Oil", reason: "Its fatty acid profile is a preferred food source for Malassezia, the yeast most strongly linked to dandruff, so it can worsen flaking in some people despite its moisturizing reputation." },
+    { slug: "dimethicone-dandruff", name: "Dimethicone", reason: "A film-forming silicone that can build up on the scalp with repeated use, trapping dead skin flakes and irritants against the skin." },
+    { slug: "parabens-dandruff", name: "Parabens", reason: "Preservatives that some people with an already inflamed, sensitive scalp find irritating, potentially compounding dandruff symptoms." },
   ];
 
   for (const ing of dandruffIngredients) {
@@ -685,13 +685,13 @@ async function main() {
 
   // --- Crohn's Disease ---
   const crohnsIngredients = [
-    { slug: "carrageenan-crohns", name: "Carrageenan", reason: "Linked to gut inflammation and may trigger Crohn's flare-ups" },
-    { slug: "food-dyes-crohns", name: "Artificial Colors", reason: "May worsen intestinal inflammation" },
-    { slug: "emulsifiers-crohns", name: "Polysorbate 80", reason: "Emulsifier linked to gut barrier damage" },
-    { slug: "cmc-crohns", name: "Carboxymethylcellulose", reason: "Emulsifier that may promote gut inflammation" },
-    { slug: "maltodextrin-crohns", name: "Maltodextrin", reason: "May promote harmful gut bacteria growth" },
-    { slug: "artificial-sweeteners-crohns", name: "Artificial Sweeteners", reason: "Can disrupt gut microbiome balance" },
-    { slug: "sulfites-crohns", name: "Sulfites", reason: "Can trigger digestive symptoms in Crohn's patients" },
+    { slug: "carrageenan-crohns", name: "Carrageenan", reason: "Shown in animal studies to trigger gut inflammation and ulceration patterns resembling those seen in Crohn's flares, which is why it's a frequently cited additive of concern for the condition." },
+    { slug: "food-dyes-crohns", name: "Artificial Colors", reason: "Some synthetic dyes have been shown in lab studies to increase intestinal permeability, a mechanism that could worsen the gut barrier dysfunction already present in Crohn's disease." },
+    { slug: "emulsifiers-crohns", name: "Polysorbate 80", reason: "Erodes the protective mucus lining of the gut in animal studies, exposing the intestinal wall to bacteria in a way that can provoke the inflammatory response driving Crohn's flares." },
+    { slug: "cmc-crohns", name: "Carboxymethylcellulose", reason: "A common thickener shown in controlled trials to alter gut bacteria composition and promote low-grade intestinal inflammation, raising concern for people managing Crohn's disease." },
+    { slug: "maltodextrin-crohns", name: "Maltodextrin", reason: "May suppress beneficial gut bacteria while encouraging the growth of species linked to intestinal inflammation, a shift of particular concern in Crohn's disease." },
+    { slug: "artificial-sweeteners-crohns", name: "Artificial Sweeteners", reason: "Some sweeteners alter the balance of gut bacteria in ways researchers believe can promote the chronic intestinal inflammation central to Crohn's disease." },
+    { slug: "sulfites-crohns", name: "Sulfites", reason: "Sulfite preservatives can act as a direct gut irritant, and some Crohn's patients report them as a trigger for digestive flares." },
   ];
 
   for (const ing of crohnsIngredients) {
@@ -702,12 +702,12 @@ async function main() {
 
   // --- GERD / Acid Reflux ---
   const gerdIngredients = [
-    { slug: "caffeine-gerd", name: "Caffeine", reason: "Relaxes the lower esophageal sphincter, worsening acid reflux" },
-    { slug: "citric-acid-gerd", name: "Citric Acid", reason: "Acidic ingredient that can trigger reflux" },
-    { slug: "peppermint-gerd", name: "Peppermint", reason: "Relaxes the esophageal sphincter and can worsen reflux" },
-    { slug: "chocolate-gerd", name: "Chocolate", reason: "Contains compounds that relax the esophageal sphincter" },
-    { slug: "tomato-gerd", name: "Tomato", reason: "Highly acidic, common reflux trigger" },
-    { slug: "vinegar-gerd", name: "Vinegar", reason: "Acidic ingredient that can trigger reflux symptoms" },
+    { slug: "caffeine-gerd", name: "Caffeine", reason: "Relaxes the lower esophageal sphincter, the muscular valve that normally keeps stomach acid from rising into the esophagus, making reflux more likely." },
+    { slug: "citric-acid-gerd", name: "Citric Acid", reason: "Highly acidic, and can directly irritate an esophagus already sensitized by repeated acid exposure, worsening the burning sensation of reflux." },
+    { slug: "peppermint-gerd", name: "Peppermint", reason: "Relaxes the lower esophageal sphincter in the same way caffeine does, which is why peppermint - often thought of as a stomach soother - can actually make reflux worse." },
+    { slug: "chocolate-gerd", name: "Chocolate", reason: "Contains methylxanthines and fat that both relax the esophageal sphincter, making chocolate one of the most consistently reported GERD triggers." },
+    { slug: "tomato-gerd", name: "Tomato", reason: "Highly acidic, and its acidity can directly irritate the esophageal lining as well as lower the pH of stomach contents that reflux upward." },
+    { slug: "vinegar-gerd", name: "Vinegar", reason: "Highly acidic, capable of increasing stomach acidity and irritating an esophagus already inflamed by frequent reflux episodes." },
   ];
 
   for (const ing of gerdIngredients) {
@@ -718,11 +718,11 @@ async function main() {
 
   // --- Parkinson's Disease ---
   const parkinsonsIngredients = [
-    { slug: "msg-parkinsons", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect neurological function" },
-    { slug: "artificial-sweeteners-parkinsons", name: "Artificial Sweeteners", reason: "May affect dopamine pathways" },
-    { slug: "pesticide-residue-parkinsons", name: "Pesticide Residue", reason: "Linked to increased Parkinson's risk" },
-    { slug: "trans-fats-parkinsons", name: "Trans Fats", reason: "Promotes neuroinflammation" },
-    { slug: "hfcs-parkinsons", name: "High Fructose Corn Syrup", reason: "May contribute to neuroinflammation" },
+    { slug: "msg-parkinsons", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate overstimulation is one of several mechanisms researchers have studied in the neurodegeneration that characterizes Parkinson's." },
+    { slug: "artificial-sweeteners-parkinsons", name: "Artificial Sweeteners", reason: "Some research has looked at whether non-nutritive sweeteners affect dopamine signaling, the neurotransmitter pathway most directly affected in Parkinson's, though evidence remains preliminary." },
+    { slug: "pesticide-residue-parkinsons", name: "Pesticide Residue", reason: "Among the most consistently replicated environmental risk factors for Parkinson's - large epidemiological studies have linked chronic pesticide exposure to a significantly elevated risk of developing the disease." },
+    { slug: "trans-fats-parkinsons", name: "Trans Fats", reason: "Promotes the neuroinflammation researchers increasingly believe plays a role in the progressive neuron loss underlying Parkinson's." },
+    { slug: "hfcs-parkinsons", name: "High Fructose Corn Syrup", reason: "Chronic high sugar intake promotes systemic and neural inflammation, a pathway of ongoing interest in Parkinson's disease progression." },
   ];
 
   for (const ing of parkinsonsIngredients) {
@@ -733,11 +733,11 @@ async function main() {
 
   // --- Dementia ---
   const dementiaIngredients = [
-    { slug: "artificial-sweeteners-dementia", name: "Artificial Sweeteners", reason: "Associated with cognitive decline in some studies" },
-    { slug: "trans-fats-dementia", name: "Trans Fats", reason: "Linked to increased risk of cognitive decline" },
-    { slug: "msg-dementia", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect brain health" },
-    { slug: "aluminum-dementia", name: "Aluminum", reason: "Found in some additives, debated link to cognitive decline" },
-    { slug: "nitrates-dementia", name: "Sodium Nitrite", reason: "May contribute to oxidative stress in the brain" },
+    { slug: "artificial-sweeteners-dementia", name: "Artificial Sweeteners", reason: "Large cohort studies have found an association between daily consumption of artificially sweetened beverages and a higher risk of dementia and stroke, though a causal mechanism hasn't been confirmed." },
+    { slug: "trans-fats-dementia", name: "Trans Fats", reason: "Longitudinal studies link higher trans fat intake to smaller brain volume and a greater risk of cognitive decline, likely through their effects on vascular health and inflammation." },
+    { slug: "msg-dementia", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate is theorized by some researchers to contribute to the neuronal damage seen in progressive cognitive decline, though this remains an active area of research." },
+    { slug: "aluminum-dementia", name: "Aluminum", reason: "Detected in the brain plaques associated with some forms of dementia, but major health bodies consider the evidence for aluminum as a direct cause inconclusive rather than settled." },
+    { slug: "nitrates-dementia", name: "Sodium Nitrite", reason: "Converts to nitrosamines in the body, compounds studied for their role in the oxidative stress implicated in the neuronal damage underlying dementia." },
   ];
 
   for (const ing of dementiaIngredients) {
@@ -748,11 +748,11 @@ async function main() {
 
   // --- Alzheimer's Disease ---
   const alzheimersIngredients = [
-    { slug: "trans-fats-alzheimers", name: "Trans Fats", reason: "Strongly linked to increased Alzheimer's risk" },
-    { slug: "nitrates-alzheimers", name: "Sodium Nitrite", reason: "Nitrosamines may contribute to neurodegeneration" },
-    { slug: "aluminum-alzheimers", name: "Aluminum", reason: "Debated link to Alzheimer's plaques" },
-    { slug: "hfcs-alzheimers", name: "High Fructose Corn Syrup", reason: "Excess sugar linked to cognitive decline" },
-    { slug: "artificial-colors-alzheimers", name: "Artificial Colors", reason: "Some dyes may cross the blood-brain barrier" },
+    { slug: "trans-fats-alzheimers", name: "Trans Fats", reason: "Multiple longitudinal studies have linked higher trans fat intake to increased Alzheimer's risk and worse cognitive test performance, likely via effects on vascular and brain health." },
+    { slug: "nitrates-alzheimers", name: "Sodium Nitrite", reason: "Nitrosamines formed from nitrites have been studied for a possible role in the brain insulin resistance some researchers describe as a contributor to Alzheimer's-related decline." },
+    { slug: "aluminum-alzheimers", name: "Aluminum", reason: "Found concentrated in Alzheimer's brain plaques, though the Alzheimer's Association and most researchers now consider it a bystander rather than a proven cause." },
+    { slug: "hfcs-alzheimers", name: "High Fructose Corn Syrup", reason: "Chronic high sugar intake is linked to insulin resistance in the brain, a mechanism increasingly studied as a contributor to Alzheimer's-related cognitive decline." },
+    { slug: "artificial-colors-alzheimers", name: "Artificial Colors", reason: "Research into whether some synthetic dyes can cross the blood-brain barrier and affect neural tissue is ongoing, though evidence specific to Alzheimer's risk is limited." },
   ];
 
   for (const ing of alzheimersIngredients) {
@@ -777,11 +777,11 @@ async function main() {
 
   // --- Epilepsy ---
   const epilepsyIngredients = [
-    { slug: "msg-epilepsy", name: "Monosodium Glutamate", reason: "Excitotoxin that may lower seizure threshold" },
-    { slug: "aspartame-epilepsy", name: "Aspartame", reason: "May trigger seizures in sensitive individuals" },
-    { slug: "food-dyes-epilepsy", name: "Artificial Colors", reason: "Some dyes may affect neurological function" },
-    { slug: "caffeine-epilepsy", name: "Caffeine", reason: "Can lower seizure threshold in high amounts" },
-    { slug: "sucralose-epilepsy", name: "Sucralose", reason: "May affect neural activity" },
+    { slug: "msg-epilepsy", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate can overexcite neurons, and some people with epilepsy report it lowers their seizure threshold, though rigorous controlled evidence in humans is limited." },
+    { slug: "aspartame-epilepsy", name: "Aspartame", reason: "Breaks down partly into aspartic acid, another excitatory amino acid; some individuals with epilepsy report increased seizure activity after consuming aspartame-sweetened products." },
+    { slug: "food-dyes-epilepsy", name: "Artificial Colors", reason: "Some synthetic dyes have been studied for effects on neuronal excitability, and a subset of people with epilepsy self-report certain dyes as a personal trigger." },
+    { slug: "caffeine-epilepsy", name: "Caffeine", reason: "High doses can overstimulate the central nervous system and have been documented to lower the seizure threshold in susceptible individuals." },
+    { slug: "sucralose-epilepsy", name: "Sucralose", reason: "Emerging research suggests non-nutritive sweeteners can affect neural signaling and gut-brain communication, an area of ongoing study for people with seizure disorders." },
   ];
 
   for (const ing of epilepsyIngredients) {
@@ -792,11 +792,11 @@ async function main() {
 
   // --- Multiple Sclerosis ---
   const msIngredients = [
-    { slug: "gluten-ms", name: "Gluten", reason: "May exacerbate autoimmune response in MS" },
-    { slug: "dairy-ms", name: "Dairy", reason: "Butyrophilin in dairy may trigger immune response" },
-    { slug: "saturated-fat-ms", name: "Saturated Fat", reason: "May promote inflammation in MS" },
-    { slug: "sugar-ms", name: "Refined Sugar", reason: "Promotes systemic inflammation" },
-    { slug: "artificial-sweeteners-ms", name: "Artificial Sweeteners", reason: "May affect gut microbiome and immune function" },
+    { slug: "gluten-ms", name: "Gluten", reason: "Some MS patients report symptom improvement on a gluten-free diet, and researchers have explored whether gluten-triggered intestinal permeability could influence the autoimmune activity driving MS." },
+    { slug: "dairy-ms", name: "Dairy", reason: "Dairy proteins share a structural similarity with myelin oligodendrocyte glycoprotein, a component of the myelin sheath MS attacks - a resemblance researchers have studied as a possible immune trigger, dubbed butyrophilin cross-reactivity." },
+    { slug: "saturated-fat-ms", name: "Saturated Fat", reason: "Cohort studies have associated diets high in saturated fat with more active MS lesions and faster disability progression, part of the reasoning behind low-saturated-fat approaches like the Swank diet." },
+    { slug: "sugar-ms", name: "Refined Sugar", reason: "Promotes the systemic inflammation that some studies have linked to more frequent MS relapses." },
+    { slug: "artificial-sweeteners-ms", name: "Artificial Sweeteners", reason: "Gut bacteria play a role in regulating immune function, and some non-nutritive sweeteners have been shown to alter that bacterial balance in ways researchers are still studying for MS relevance." },
   ];
 
   for (const ing of msIngredients) {
@@ -807,13 +807,13 @@ async function main() {
 
   // --- Chronic Migraines ---
   const migraineIngredients = [
-    { slug: "msg-migraines", name: "Monosodium Glutamate", reason: "Common migraine trigger" },
-    { slug: "nitrates-migraines", name: "Sodium Nitrite", reason: "Vasodilator that can trigger migraines" },
-    { slug: "artificial-sweeteners-migraines", name: "Aspartame", reason: "Frequently reported migraine trigger" },
-    { slug: "tyramine-migraines", name: "Tyramine", reason: "Found in aged foods, common migraine trigger" },
-    { slug: "sulfites-migraines", name: "Sulfites", reason: "Can trigger migraines in sensitive individuals" },
-    { slug: "caffeine-migraines", name: "Caffeine", reason: "Can trigger migraines, especially during withdrawal" },
-    { slug: "phenylethylamine-migraines", name: "Chocolate", reason: "Contains phenylethylamine, a known migraine trigger" },
+    { slug: "msg-migraines", name: "Monosodium Glutamate", reason: "One of the most frequently self-reported migraine triggers - some researchers believe MSG can affect blood vessels and nerve signaling in susceptible people, though evidence is mixed." },
+    { slug: "nitrates-migraines", name: "Sodium Nitrite", reason: "A vasodilator (widens blood vessels) used in cured and processed meats; the resulting change in blood flow is a well-documented migraine trigger sometimes called 'hot dog headache.'" },
+    { slug: "artificial-sweeteners-migraines", name: "Aspartame", reason: "One of the most frequently reported dietary migraine triggers in patient surveys, though controlled studies on the mechanism have produced mixed results." },
+    { slug: "tyramine-migraines", name: "Tyramine", reason: "A compound that builds up in aged, fermented, and cured foods; it can affect blood vessel tone and is a well-established migraine trigger, especially for those on certain medications." },
+    { slug: "sulfites-migraines", name: "Sulfites", reason: "Preservatives common in wine and dried fruit that can trigger migraines in sensitive individuals, likely through a vascular or histamine-related mechanism." },
+    { slug: "caffeine-migraines", name: "Caffeine", reason: "Can trigger a migraine directly in some people, but is more often a problem in withdrawal - a missed dose causes blood vessels to dilate rebound-style, setting off a headache." },
+    { slug: "phenylethylamine-migraines", name: "Chocolate", reason: "Contains phenylethylamine and some caffeine-like compounds that can affect blood vessels and neurotransmitter levels, making chocolate a commonly reported migraine trigger." },
   ];
 
   for (const ing of migraineIngredients) {
@@ -824,11 +824,11 @@ async function main() {
 
   // --- Peripheral Neuropathy ---
   const neuropathyIngredients = [
-    { slug: "msg-neuropathy", name: "Monosodium Glutamate", reason: "Excitotoxin that may worsen nerve damage" },
-    { slug: "artificial-sweeteners-neuropathy", name: "Artificial Sweeteners", reason: "May affect peripheral nerve function" },
-    { slug: "gluten-neuropathy", name: "Gluten", reason: "Gluten sensitivity linked to peripheral neuropathy" },
-    { slug: "sugar-neuropathy", name: "Refined Sugar", reason: "High blood sugar damages peripheral nerves" },
-    { slug: "trans-fats-neuropathy", name: "Trans Fats", reason: "Promotes inflammation that can worsen nerve damage" },
+    { slug: "msg-neuropathy", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate can overstimulate nerve receptors, a mechanism some researchers believe may aggravate the nerve pain and hypersensitivity of peripheral neuropathy." },
+    { slug: "artificial-sweeteners-neuropathy", name: "Artificial Sweeteners", reason: "Some non-nutritive sweeteners have been studied for effects on peripheral nerve signaling and gut-nerve interactions, though evidence specific to neuropathy remains preliminary." },
+    { slug: "gluten-neuropathy", name: "Gluten", reason: "Gluten sensitivity, including in people without confirmed celiac disease, has been linked in case studies to peripheral nerve damage that can improve on a gluten-free diet." },
+    { slug: "sugar-neuropathy", name: "Refined Sugar", reason: "Chronically high blood sugar is the leading cause of diabetic peripheral neuropathy, damaging small nerve fibers over time through a well-documented mechanism." },
+    { slug: "trans-fats-neuropathy", name: "Trans Fats", reason: "Promotes vascular inflammation that can impair blood flow to peripheral nerves, worsening the nerve damage underlying neuropathy." },
   ];
 
   for (const ing of neuropathyIngredients) {
@@ -839,12 +839,12 @@ async function main() {
 
   // --- ADHD ---
   const adhdIngredients = [
-    { slug: "food-dyes-adhd", name: "Artificial Colors", reason: "Multiple studies link food dyes to hyperactivity" },
-    { slug: "hfcs-adhd", name: "High Fructose Corn Syrup", reason: "Excess sugar worsens ADHD symptoms" },
-    { slug: "artificial-flavors-adhd", name: "Artificial Flavors", reason: "Synthetic additives may worsen hyperactivity" },
-    { slug: "sodium-benzoate-adhd", name: "Sodium Benzoate", reason: "Preservative linked to increased hyperactivity" },
-    { slug: "msg-adhd", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect attention and focus" },
-    { slug: "caffeine-adhd", name: "Caffeine", reason: "Can disrupt sleep patterns and worsen ADHD symptoms" },
+    { slug: "food-dyes-adhd", name: "Artificial Colors", reason: "Randomized trials, including the widely cited Southampton study, found synthetic dyes like Red 40 and Yellow 5 measurably increased hyperactivity in children, which is why the UK and EU (though not the US) now require a warning label on foods containing them." },
+    { slug: "hfcs-adhd", name: "High Fructose Corn Syrup", reason: "Diets high in added sugar cause blood sugar swings that some studies link to worsened impulsivity and attention difficulties, particularly in children already diagnosed with ADHD." },
+    { slug: "artificial-flavors-adhd", name: "Artificial Flavors", reason: "Grouped alongside synthetic dyes in pediatric additive studies as part of a broader mix shown to increase hyperactive behavior in sensitive children." },
+    { slug: "sodium-benzoate-adhd", name: "Sodium Benzoate", reason: "The same Southampton study that flagged synthetic dyes found sodium benzoate amplified their effect on hyperactivity when the two were consumed together." },
+    { slug: "msg-adhd", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate is theorized to overstimulate neural pathways involved in attention and impulse control, though evidence specific to ADHD is limited." },
+    { slug: "caffeine-adhd", name: "Caffeine", reason: "Can make it harder to fall and stay asleep, and poor sleep reliably worsens inattention and irritability the next day in both children and adults with ADHD." },
   ];
 
   for (const ing of adhdIngredients) {
@@ -855,11 +855,11 @@ async function main() {
 
   // --- Fibromyalgia ---
   const fibromyalgiaIngredients = [
-    { slug: "msg-fibro", name: "Monosodium Glutamate", reason: "Excitotoxin that may worsen fibromyalgia pain" },
-    { slug: "aspartame-fibro", name: "Aspartame", reason: "May increase pain sensitivity in fibromyalgia" },
-    { slug: "gluten-fibro", name: "Gluten", reason: "Some fibromyalgia patients report improvement when avoiding gluten" },
-    { slug: "sugar-fibro", name: "Refined Sugar", reason: "Can worsen inflammation and pain" },
-    { slug: "caffeine-fibro", name: "Caffeine", reason: "Can disrupt sleep and worsen fatigue" },
+    { slug: "msg-fibro", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate can overactivate pain-signaling neurons; some fibromyalgia patients report flares after high-MSG meals, though clinical trials on dietary glutamate restriction have produced mixed results." },
+    { slug: "aspartame-fibro", name: "Aspartame", reason: "Breaks down into phenylalanine and aspartic acid, compounds some researchers believe can amplify the central pain sensitization seen in fibromyalgia, though the mechanism remains debated." },
+    { slug: "gluten-fibro", name: "Gluten", reason: "Even without confirmed celiac disease, some fibromyalgia patients report less pain and fatigue on a gluten-free trial, possibly reflecting an overlapping subset with non-celiac gluten sensitivity." },
+    { slug: "sugar-fibro", name: "Refined Sugar", reason: "Blood sugar spikes and crashes can deepen the fatigue and brain fog that already accompany fibromyalgia, and added sugar promotes the low-grade inflammation linked to heightened pain sensitivity." },
+    { slug: "caffeine-fibro", name: "Caffeine", reason: "Late-day caffeine can fragment the deep sleep fibromyalgia patients already struggle to get, and poor sleep is one of the most consistent drivers of next-day pain flares in the condition." },
   ];
 
   for (const ing of fibromyalgiaIngredients) {
@@ -870,12 +870,12 @@ async function main() {
 
   // --- Lupus ---
   const lupusIngredients = [
-    { slug: "alfalfa-lupus", name: "Alfalfa Sprouts", reason: "Contains L-canavanine which can trigger lupus flares" },
-    { slug: "garlic-lupus", name: "Garlic", reason: "May stimulate immune system and worsen lupus" },
-    { slug: "echinacea-lupus", name: "Echinacea", reason: "Immune stimulant that can trigger lupus flares" },
-    { slug: "sulfites-lupus", name: "Sulfites", reason: "Can trigger sensitivity reactions in lupus patients" },
-    { slug: "saturated-fat-lupus", name: "Saturated Fat", reason: "Promotes inflammation in autoimmune conditions" },
-    { slug: "trans-fats-lupus", name: "Trans Fats", reason: "Increases systemic inflammation" },
+    { slug: "alfalfa-lupus", name: "Alfalfa Sprouts", reason: "Contains L-canavanine, an amino acid documented in case reports to reactivate or worsen lupus symptoms by stimulating an already overactive immune system." },
+    { slug: "garlic-lupus", name: "Garlic", reason: "Contains compounds like allicin that stimulate immune activity, which some lupus patients find worsens flares of a condition already driven by excess immune response." },
+    { slug: "echinacea-lupus", name: "Echinacea", reason: "Marketed to 'boost' the immune system - exactly the mechanism that makes it risky in lupus, an autoimmune condition where excess immune activation drives disease flares." },
+    { slug: "sulfites-lupus", name: "Sulfites", reason: "Sulfite preservatives have been reported to trigger sensitivity reactions in some lupus patients, potentially compounding the photosensitivity and skin flares many already experience." },
+    { slug: "saturated-fat-lupus", name: "Saturated Fat", reason: "Diets high in saturated fat are linked to higher inflammatory markers, which can aggravate the systemic inflammation that defines a lupus flare." },
+    { slug: "trans-fats-lupus", name: "Trans Fats", reason: "Raises inflammatory markers and impairs blood vessel function, both especially relevant in lupus, which already carries an elevated risk of cardiovascular complications." },
   ];
 
   for (const ing of lupusIngredients) {
@@ -886,11 +886,11 @@ async function main() {
 
   // --- Hashimoto's Thyroiditis ---
   const hashimotosIngredients = [
-    { slug: "gluten-hashimotos", name: "Gluten", reason: "Molecular mimicry with thyroid tissue can trigger flares" },
-    { slug: "soy-hashimotos", name: "Soy", reason: "May interfere with thyroid hormone absorption" },
-    { slug: "excess-iodine-hashimotos", name: "Iodine", reason: "Excess iodine can worsen Hashimoto's" },
-    { slug: "processed-sugar-hashimotos", name: "Refined Sugar", reason: "Promotes inflammation affecting thyroid" },
-    { slug: "seed-oils-hashimotos", name: "Seed Oils", reason: "Omega-6 fatty acids promote thyroid inflammation" },
+    { slug: "gluten-hashimotos", name: "Gluten", reason: "Gluten's gliadin protein shares a structural resemblance to thyroid tissue, a phenomenon called molecular mimicry that some researchers believe can confuse the immune system and worsen thyroid antibody activity." },
+    { slug: "soy-hashimotos", name: "Soy", reason: "Isoflavones in soy can interfere with the absorption of levothyroxine and other thyroid medications, and some studies suggest they may also affect thyroid peroxidase enzyme function." },
+    { slug: "excess-iodine-hashimotos", name: "Iodine", reason: "While iodine is essential for thyroid hormone production, excess intake can accelerate autoimmune thyroid damage in people already predisposed to Hashimoto's." },
+    { slug: "processed-sugar-hashimotos", name: "Refined Sugar", reason: "Promotes the low-grade systemic inflammation that can aggravate autoimmune thyroid activity and worsen the fatigue already common in Hashimoto's." },
+    { slug: "seed-oils-hashimotos", name: "Seed Oils", reason: "Their high omega-6 content skews the body's inflammatory balance, potentially intensifying the autoimmune inflammation driving Hashimoto's." },
   ];
 
   for (const ing of hashimotosIngredients) {
@@ -901,12 +901,12 @@ async function main() {
 
   // --- Rheumatoid Arthritis ---
   const rheumatoidIngredients = [
-    { slug: "seed-oils-ra", name: "Seed Oils", reason: "High omega-6 promotes joint inflammation" },
-    { slug: "gluten-ra", name: "Gluten", reason: "May trigger autoimmune response in RA" },
-    { slug: "sugar-ra", name: "Refined Sugar", reason: "Increases inflammatory markers" },
-    { slug: "trans-fats-ra", name: "Trans Fats", reason: "Promotes systemic inflammation" },
-    { slug: "msg-ra", name: "Monosodium Glutamate", reason: "May worsen joint inflammation" },
-    { slug: "nightshades-ra", name: "Nightshade", reason: "Solanine in nightshades may trigger joint inflammation" },
+    { slug: "seed-oils-ra", name: "Seed Oils", reason: "Their high omega-6 content promotes the production of inflammatory prostaglandins, compounds implicated in the joint swelling and pain that characterize RA flares." },
+    { slug: "gluten-ra", name: "Gluten", reason: "Some RA patients, particularly those with an underlying gluten sensitivity, report fewer flares on a gluten-free diet, though evidence for a direct autoimmune trigger is still preliminary." },
+    { slug: "sugar-ra", name: "Refined Sugar", reason: "Raises inflammatory markers like CRP - one of the same markers doctors use in bloodwork to track RA disease activity." },
+    { slug: "trans-fats-ra", name: "Trans Fats", reason: "Measurably raises systemic inflammatory markers, and cohort studies have linked higher trans fat intake to an increased risk of developing RA." },
+    { slug: "msg-ra", name: "Monosodium Glutamate", reason: "Some RA patients report increased joint pain after eating MSG-heavy foods, though large controlled studies linking it specifically to RA activity are limited." },
+    { slug: "nightshades-ra", name: "Nightshade", reason: "Solanine content is anecdotally linked to worsened joint pain in a subset of RA patients, though rigorous clinical evidence for a nightshade-arthritis connection remains thin." },
   ];
 
   for (const ing of rheumatoidIngredients) {
@@ -917,11 +917,11 @@ async function main() {
 
   // --- Anemia ---
   const anemiaIngredients = [
-    { slug: "calcium-anemia", name: "Calcium Carbonate", reason: "High calcium can block iron absorption" },
-    { slug: "tannins-anemia", name: "Tannins", reason: "Found in tea and wine, inhibit iron absorption" },
-    { slug: "phytates-anemia", name: "Phytic Acid", reason: "Found in grains, binds to iron and reduces absorption" },
-    { slug: "oxalates-anemia", name: "Oxalic Acid", reason: "Can reduce iron absorption" },
-    { slug: "caffeine-anemia", name: "Caffeine", reason: "Can interfere with iron absorption" },
+    { slug: "calcium-anemia", name: "Calcium Carbonate", reason: "Calcium competes with iron for the same absorption pathway in the small intestine, so a high-calcium supplement or meal taken alongside iron-rich food can significantly reduce how much iron the body actually absorbs." },
+    { slug: "tannins-anemia", name: "Tannins", reason: "Tannins in tea and wine bind to dietary iron in the gut, forming a compound the body can't absorb - drinking tea with an iron-rich meal can blunt iron uptake substantially." },
+    { slug: "phytates-anemia", name: "Phytic Acid", reason: "Found in whole grains, legumes, and nuts, phytic acid binds to non-heme iron in the gut and is one of the most well-documented dietary inhibitors of iron absorption." },
+    { slug: "oxalates-anemia", name: "Oxalic Acid", reason: "Found in foods like spinach and rhubarb, oxalic acid can bind iron in the digestive tract and reduce the amount that's actually absorbed into the bloodstream." },
+    { slug: "caffeine-anemia", name: "Caffeine", reason: "Compounds in coffee and tea, including caffeine and polyphenols, can reduce iron absorption by as much as half when consumed alongside an iron-rich meal." },
   ];
 
   for (const ing of anemiaIngredients) {
@@ -932,12 +932,12 @@ async function main() {
 
   // --- Menopause ---
   const menopauseIngredients = [
-    { slug: "caffeine-menopause", name: "Caffeine", reason: "Can worsen hot flashes and sleep disruption" },
-    { slug: "sugar-menopause", name: "Refined Sugar", reason: "Can worsen mood swings and hormonal imbalance" },
-    { slug: "alcohol-menopause", name: "Alcohol", reason: "Can trigger hot flashes and disrupt sleep" },
-    { slug: "spicy-menopause", name: "Capsaicin", reason: "Spicy ingredients can trigger hot flashes" },
-    { slug: "msg-menopause", name: "Monosodium Glutamate", reason: "May worsen headaches during menopause" },
-    { slug: "artificial-sweeteners-menopause", name: "Artificial Sweeteners", reason: "May affect hormonal balance" },
+    { slug: "caffeine-menopause", name: "Caffeine", reason: "Stimulates the nervous system in a way that can trigger or intensify hot flashes, while also disrupting the sleep that hormonal changes already make harder to get." },
+    { slug: "sugar-menopause", name: "Refined Sugar", reason: "Blood sugar swings compound the mood volatility that declining estrogen already causes, and some studies link higher added-sugar intake to more frequent hot flashes." },
+    { slug: "alcohol-menopause", name: "Alcohol", reason: "A well-documented hot flash and night sweat trigger; it dilates blood vessels and disrupts the sleep architecture that hormonal changes have already made fragile." },
+    { slug: "spicy-menopause", name: "Capsaicin", reason: "Triggers the body's heat and sweat response directly, which is why spicy foods set off flashes for many people going through menopause." },
+    { slug: "msg-menopause", name: "Monosodium Glutamate", reason: "Some people notice MSG-triggered headaches becoming more frequent during the hormonal fluctuations of menopause, though a direct causal link isn't well established." },
+    { slug: "artificial-sweeteners-menopause", name: "Artificial Sweeteners", reason: "Emerging research on how non-nutritive sweeteners affect the gut microbiome is relevant here, since gut bacteria play a role in how the body metabolizes and recycles estrogen." },
   ];
 
   for (const ing of menopauseIngredients) {
@@ -948,11 +948,11 @@ async function main() {
 
   // --- Perimenopause ---
   const perimenopauseIngredients = [
-    { slug: "caffeine-perimeno", name: "Caffeine", reason: "Can worsen hot flashes and anxiety" },
-    { slug: "sugar-perimeno", name: "Refined Sugar", reason: "Can worsen mood swings and hormonal fluctuations" },
-    { slug: "alcohol-perimeno", name: "Alcohol", reason: "Can trigger hot flashes and disrupt hormone balance" },
-    { slug: "soy-perimeno", name: "Soy", reason: "Phytoestrogens may affect fluctuating hormone levels" },
-    { slug: "artificial-sweeteners-perimeno", name: "Artificial Sweeteners", reason: "May affect mood and hormonal balance" },
+    { slug: "caffeine-perimeno", name: "Caffeine", reason: "Overstimulates a nervous system already sensitized by fluctuating estrogen, which is why many people find caffeine intensifies both hot flashes and the anxiety common in perimenopause." },
+    { slug: "sugar-perimeno", name: "Refined Sugar", reason: "Blood sugar spikes and crashes layer on top of the hormonal swings already driving mood instability during perimenopause, often making both worse together." },
+    { slug: "alcohol-perimeno", name: "Alcohol", reason: "Dilates blood vessels and disrupts sleep, a combination that frequently triggers hot flashes and night sweats during the unpredictable hormone swings of perimenopause." },
+    { slug: "soy-perimeno", name: "Soy", reason: "Contains phytoestrogens - plant compounds that weakly bind estrogen receptors - which can have an unpredictable effect on symptoms during a phase when the body's own estrogen is already fluctuating erratically." },
+    { slug: "artificial-sweeteners-perimeno", name: "Artificial Sweeteners", reason: "Some research links non-nutritive sweeteners to shifts in gut bacteria, which play a role in hormone metabolism and may compound the mood and symptom fluctuations of perimenopause." },
   ];
 
   for (const ing of perimenopauseIngredients) {
@@ -1034,12 +1034,12 @@ for (const ing of breastfeedingIngredients) {
 
 // --- PCOS ---
 const pcosIngredients = [
-  { slug: "refined-sugar-pcos", name: "Refined Sugar", reason: "Worsens insulin resistance, a key driver of PCOS symptoms" },
-  { slug: "hfcs-pcos", name: "High Fructose Corn Syrup", reason: "Spikes blood sugar and promotes insulin resistance in PCOS" },
-  { slug: "artificial-sweeteners-pcos", name: "Artificial Sweeteners", reason: "May disrupt insulin response and gut microbiome in PCOS" },
-  { slug: "seed-oils-pcos", name: "Seed Oils", reason: "Promotes inflammation that worsens hormonal imbalance in PCOS" },
-  { slug: "dairy-pcos", name: "Dairy", reason: "May increase androgen levels and worsen PCOS symptoms in some women" },
-  { slug: "soy-pcos", name: "Soy", reason: "Phytoestrogens in soy may interfere with hormonal balance in PCOS" },
+  { slug: "refined-sugar-pcos", name: "Refined Sugar", reason: "Drives the insulin spikes that, in PCOS, feed back into higher androgen production - the same cycle that underlies irregular periods, acne, and excess hair growth." },
+  { slug: "hfcs-pcos", name: "High Fructose Corn Syrup", reason: "Rapidly raises blood sugar and insulin levels, reinforcing the insulin resistance that sits at the center of PCOS for many patients." },
+  { slug: "artificial-sweeteners-pcos", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners can alter gut bacteria and blunt normal insulin response, potentially working against the insulin sensitivity that's central to managing PCOS." },
+  { slug: "seed-oils-pcos", name: "Seed Oils", reason: "High omega-6 fat intake promotes the kind of chronic inflammation that research has linked to worsened insulin resistance and hormonal imbalance in PCOS." },
+  { slug: "dairy-pcos", name: "Dairy", reason: "Contains hormones and growth factors like IGF-1 that some studies suggest can raise androgen activity, potentially worsening the excess androgen levels that define PCOS." },
+  { slug: "soy-pcos", name: "Soy", reason: "Its plant-based phytoestrogens can interact with the body's hormone receptors, and while research is mixed, some PCOS patients report symptom changes tied to soy intake." },
 ]
 
 for (const ing of pcosIngredients) {
@@ -1050,14 +1050,14 @@ for (const ing of pcosIngredients) {
 
 // --- Hormonal Acne ---
 const hormonalAcneIngredients = [
-  { slug: "dairy-hormonal-acne", name: "Dairy", reason: "Dairy contains hormones and growth factors that can trigger hormonal acne breakouts" },
-  { slug: "whey-hormonal-acne", name: "Whey Protein", reason: "Whey spikes IGF-1 and insulin, both linked to hormonal acne" },
-  { slug: "refined-sugar-hormonal-acne", name: "Refined Sugar", reason: "Causes insulin spikes that increase androgen production and sebum" },
-  { slug: "hfcs-hormonal-acne", name: "High Fructose Corn Syrup", reason: "Promotes inflammation and insulin spikes linked to acne" },
-  { slug: "seed-oils-hormonal-acne", name: "Seed Oils", reason: "High omega-6 content promotes skin inflammation and breakouts" },
-  { slug: "artificial-sweeteners-hormonal-acne", name: "Artificial Sweeteners", reason: "May disrupt gut microbiome and hormonal balance contributing to acne" },
-  { slug: "coconut-oil-hormonal-acne", name: "Coconut Oil", reason: "Highly comedogenic, clogs pores and worsens hormonal acne breakouts" },
-  { slug: "isopropyl-hormonal-acne", name: "Isopropyl Myristate", reason: "Known pore-clogging ingredient that worsens acne" },
+  { slug: "dairy-hormonal-acne", name: "Dairy", reason: "Contains naturally occurring hormones and growth factors like IGF-1 that stimulate oil glands and increase androgen activity, directly feeding the mechanism behind hormonal acne breakouts." },
+  { slug: "whey-hormonal-acne", name: "Whey Protein", reason: "Spikes both insulin and IGF-1 more sharply than most other proteins, a hormonal combination that increases sebum production and androgen activity linked to hormonal acne." },
+  { slug: "refined-sugar-hormonal-acne", name: "Refined Sugar", reason: "High-glycemic foods cause rapid insulin spikes that in turn trigger androgen production and increased sebum output, worsening hormonal acne." },
+  { slug: "hfcs-hormonal-acne", name: "High Fructose Corn Syrup", reason: "Produces a sharp insulin spike similar to refined sugar, driving the same androgen and sebum response that worsens hormonal acne." },
+  { slug: "seed-oils-hormonal-acne", name: "Seed Oils", reason: "High omega-6 fat content promotes skin inflammation that can compound the hormonally driven breakouts characteristic of this acne type." },
+  { slug: "artificial-sweeteners-hormonal-acne", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners can alter gut bacteria in ways that may influence hormonal balance and, in turn, acne activity." },
+  { slug: "coconut-oil-hormonal-acne", name: "Coconut Oil", reason: "Rated highly comedogenic on standard scales, meaning its fatty acid profile is especially likely to clog pores already prone to breakouts from hormonal fluctuations." },
+  { slug: "isopropyl-hormonal-acne", name: "Isopropyl Myristate", reason: "A synthetic emollient frequently flagged in dermatology comedogenicity studies for clogging pores, adding another breakout risk on top of hormonally driven oil production." },
 ]
 
 for (const ing of hormonalAcneIngredients) {
@@ -1068,12 +1068,12 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Gastrectomy Surgery ---
   const gastrectomyIngredients = [
-    { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "Can cause dumping syndrome after gastrectomy" },
-    { slug: "hfcs-gastrectomy", name: "High Fructose Corn Syrup", reason: "Can cause dumping syndrome" },
-    { slug: "artificial-sweeteners-gastrectomy", name: "Artificial Sweeteners", reason: "May cause digestive distress" },
-    { slug: "lactose-gastrectomy", name: "Lactose", reason: "Lactose intolerance common after gastrectomy" },
-    { slug: "carbonation-gastrectomy", name: "Carbonated Water", reason: "Can cause bloating and discomfort" },
-    { slug: "fat-gastrectomy", name: "High Fat Content", reason: "Difficult to digest after stomach surgery" },
+    { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "With a smaller or bypassed stomach, sugar reaches the small intestine too quickly, pulling in fluid and triggering dumping syndrome - cramping, nausea, and a rapid heart rate." },
+    { slug: "hfcs-gastrectomy", name: "High Fructose Corn Syrup", reason: "Rapidly absorbed sugars like high fructose corn syrup can flood the shortened digestive tract and trigger dumping syndrome after gastrectomy." },
+    { slug: "artificial-sweeteners-gastrectomy", name: "Artificial Sweeteners", reason: "Some sugar substitutes, particularly sugar alcohols, can cause gas and diarrhea in a digestive system that's already adjusting to a smaller stomach." },
+    { slug: "lactose-gastrectomy", name: "Lactose", reason: "Gastrectomy can reduce the enzyme activity needed to digest lactose, making new or worsened lactose intolerance common after surgery." },
+    { slug: "carbonation-gastrectomy", name: "Carbonated Water", reason: "A smaller stomach has far less room to accommodate gas, so carbonated drinks are a common cause of post-gastrectomy bloating and discomfort." },
+    { slug: "fat-gastrectomy", name: "High Fat Content", reason: "With reduced stomach capacity and altered digestive enzyme timing, high-fat foods are harder to break down after gastrectomy and can cause nausea or diarrhea." },
   ];
 
   for (const ing of gastrectomyIngredients) {
@@ -1084,12 +1084,12 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Bariatric Surgery ---
   const bariatricIngredients = [
-    { slug: "sugar-bariatric", name: "Refined Sugar", reason: "Can cause dumping syndrome after bariatric surgery" },
-    { slug: "hfcs-bariatric", name: "High Fructose Corn Syrup", reason: "Can cause dumping syndrome and weight regain" },
-    { slug: "artificial-sweeteners-bariatric", name: "Artificial Sweeteners", reason: "May cause digestive distress and cravings" },
-    { slug: "carbonation-bariatric", name: "Carbonated Water", reason: "Can cause painful gas and bloating" },
-    { slug: "alcohol-bariatric", name: "Alcohol", reason: "Absorbed much faster after bariatric surgery" },
-    { slug: "fat-bariatric", name: "High Fat Content", reason: "Can cause nausea and dumping syndrome" },
+    { slug: "sugar-bariatric", name: "Refined Sugar", reason: "Rapidly absorbed sugar reaching the shortened small intestine too quickly is the classic trigger for dumping syndrome after bariatric surgery, causing cramping, nausea, and a rapid heartbeat." },
+    { slug: "hfcs-bariatric", name: "High Fructose Corn Syrup", reason: "Quickly digested sugars like high fructose corn syrup can trigger dumping syndrome and are calorie-dense in a way that can undermine post-surgery weight loss." },
+    { slug: "artificial-sweeteners-bariatric", name: "Artificial Sweeteners", reason: "Some patients find sweet-tasting substitutes keep sugar cravings active, and certain sugar alcohols can cause gas and diarrhea in the altered post-surgery gut." },
+    { slug: "carbonation-bariatric", name: "Carbonated Water", reason: "A much smaller stomach pouch has little room for gas expansion, making carbonated beverages a common source of pain and bloating after bariatric surgery." },
+    { slug: "alcohol-bariatric", name: "Alcohol", reason: "Bariatric surgery changes stomach anatomy so alcohol reaches the bloodstream faster and in higher concentrations, meaning intoxication and impairment set in much more quickly than before surgery." },
+    { slug: "fat-bariatric", name: "High Fat Content", reason: "A smaller stomach and altered bile flow make fat harder to digest after bariatric surgery, often causing nausea or dumping syndrome." },
   ];
 
   for (const ing of bariatricIngredients) {
@@ -1165,6 +1165,7 @@ for (const ing of hormonalAcneIngredients) {
       // Environmental
       { slug: "no-pfas", name: "PFAS (Forever Chemicals)", description: "Avoid per- and polyfluoroalkyl substances that persist in the body", categoryId: prefCatMap["environmental-forever"] },
       { slug: "no-microplastics", name: "Microplastics", description: "Avoid products with microplastic particles", categoryId: prefCatMap["environmental-forever"] },
+      { slug: "no-polyester", name: "Polyester", description: "Avoid polyester and polyester blends, a plastic-based synthetic fiber", categoryId: prefCatMap["environmental-forever"] },
       { slug: "no-bleached-fabrics", name: "Bleached Fabrics", description: "Avoid chlorine-bleached textiles and products", categoryId: prefCatMap["environmental-forever"] },
       { slug: "animal-cruelty-free", name: "Animal Cruelty Free", description: "Only products not tested on animals and no animal-derived ingredients", categoryId: prefCatMap["environmental-forever"] },
       { slug: "eco-packaging", name: "Eco-Friendly Packaging", description: "Prefer sustainable packaging", categoryId: prefCatMap["environmental-forever"] },
@@ -1275,6 +1276,7 @@ for (const ing of hormonalAcneIngredients) {
         commonlyFoundIn: edu.commonlyFoundIn,
         whyPeopleAvoid: edu.whyPeopleAvoid,
         sources: edu.sources as any,
+        sections: edu.sections as any,
       },
     })
   }

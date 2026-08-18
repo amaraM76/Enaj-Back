@@ -7,6 +7,11 @@ export interface PreferenceEducation {
     commonlyFoundIn: string[]
     whyPeopleAvoid: string
     sources: { title: string; url: string }[]
+    // Optional structured breakdown, rendered instead of whyPeopleAvoid when
+    // present - each section gets a bold+underlined header, a one-line
+    // description, and a bulleted "see more" list. Only enaj-baseline uses
+    // this today (it spans many distinct sub-categories).
+    sections?: { header: string; description: string; bullets: string[] }[]
   }
   
   // Helper function to find education content by slug with flexible matching
@@ -959,9 +964,9 @@ export interface PreferenceEducation {
       ],
     },
     'non-gmo': {
-      whatItIs: 'Non-GMO products are made without genetically modified organisms. GMOs are plants or animals whose genetic material has been altered using genetic engineering techniques that do not occur naturally.',
+      whatItIs: 'Non-GMO products are made without genetically modified organisms - plants or animals whose DNA has been altered in a lab using genetic engineering techniques that wouldn\'t occur through conventional breeding, most often to make a crop resistant to pests, herbicides, or drought.',
       commonlyFoundIn: ['Corn', 'Soy', 'Cotton (cottonseed oil)', 'Canola', 'Sugar beets', 'Papaya', 'Zucchini', 'Some dairy products'],
-      whyPeopleAvoid: 'People avoid GMOs due to environmental concerns (impact on biodiversity, pesticide use), potential unknown health effects, preference for traditional agriculture methods, or desire for more "natural" foods.',
+      whyPeopleAvoid: 'Major health bodies including the FDA and WHO consider currently approved GMO foods safe to eat, so avoidance is driven less by an established health risk than by other concerns: many GMO crops are engineered to tolerate heavy herbicide use, which raises questions about pesticide residue and environmental impact, and some people simply prefer foods bred through traditional methods or want to support non-GMO and organic farming practices. Because GMO crops are so concentrated in a handful of commodity ingredients - corn, soy, and canola chief among them - they show up widely in processed foods even when it isn\'t obvious from a product\'s name.',
       sources: [
         { title: 'Non-GMO Project', url: 'https://www.nongmoproject.org/gmo-facts/' },
         { title: 'FDA - GMOs', url: 'https://www.fda.gov/food/agricultural-biotechnology/how-gmos-are-regulated-united-states' },
@@ -1117,6 +1122,15 @@ export interface PreferenceEducation {
         { title: 'WHO - Microplastics in Water', url: 'https://www.who.int/news/item/22-08-2019-who-calls-for-more-research-into-microplastics-and-a-crackdown-on-plastic-pollution' },
       ],
     },
+    'polyester': {
+      whatItIs: 'Polyester is a synthetic, plastic-based fiber (polyethylene terephthalate, or PET) made from petroleum. It\'s the most widely used man-made fiber in the world, prized for being cheap, durable, wrinkle-resistant, and quick-drying. It shows up on its own or blended with natural fibers like cotton to cut cost and add stretch/durability.',
+      commonlyFoundIn: ['Clothing and activewear', 'Bedding and pillows', 'Upholstery and carpets', 'Reusable and single-use bags', 'Some tea bags and food packaging', 'Fleece and synthetic insulation', 'Blended fabrics (poly-cotton, poly-blend)'],
+      whyPeopleAvoid: 'Polyester sheds microplastic fibers with every wash and wear, which end up in waterways, soil, and the food chain, and it does not biodegrade. It\'s also less breathable than natural fibers, which can trap heat, sweat, and odor against the skin and irritate sensitive or eczema-prone skin. Because it\'s made from fossil fuels, some also avoid it for environmental/sustainability reasons.',
+      sources: [
+        { title: 'NOAA - Microfibers', url: 'https://oceanservice.noaa.gov/facts/microplastics.html' },
+        { title: 'EPA - Microplastics', url: 'https://www.epa.gov/trash-free-waters/plastic-pollution' },
+      ],
+    },
     'trans-fat': {
       whatItIs: 'Trans fats are unsaturated fats that have been hydrogenated to make them solid at room temperature. They were widely used in processed foods for their stability and long shelf life. Artificial trans fats are now banned in the US but may still appear in some products.',
       commonlyFoundIn: ['Margarine', 'Fried foods', 'Baked goods', 'Snack foods', 'Coffee creamers', 'Frozen pizza', 'Refrigerated doughs', 'Some imported foods'],
@@ -1172,6 +1186,66 @@ export interface PreferenceEducation {
         { title: 'Healthline - Polysorbate 80', url: 'https://www.healthline.com/nutrition/polysorbate-80' },
       ],
     },
+    'no-alcohol-skin': {
+      whatItIs: 'Alcohol in skin products generally refers to short-chain "drying" alcohols like SD alcohol, denatured alcohol, alcohol denat, isopropyl alcohol, and ethanol, added to help formulas feel lightweight, dissolve other ingredients, and evaporate quickly. This is different from fatty alcohols (cetyl, stearyl, cetearyl alcohol), which are moisturizing and generally well tolerated even by people avoiding drying alcohol.',
+      commonlyFoundIn: ['Toners and astringents', 'Acne spot treatments', 'Hand sanitizers', 'Setting sprays', 'Some serums and lightweight moisturizers', 'Aftershaves', 'Hair sprays and styling products', 'Perfume and cologne bases'],
+      whyPeopleAvoid: 'Drying alcohols evaporate quickly and can strip the skin\'s natural lipid barrier with repeated use, leading to dryness, flaking, and increased sensitivity over time. Some people with eczema, rosacea, or perioral dermatitis choose to avoid alcohol in skin products because it can worsen redness and irritation, and dermatologists note that compromising the skin barrier can make other irritants penetrate more easily. Occasional or low-concentration use in a well-formulated product isn\'t necessarily a problem for everyone, but those with reactive or already-dry skin often prefer to avoid it altogether.',
+      sources: [
+        { title: 'AAD - Rosacea Triggers', url: 'https://www.aad.org/public/diseases/rosacea/triggers/find' },
+        { title: 'Paula\'s Choice - Alcohol in Skincare', url: 'https://www.paulaschoice.com/expert-advice/skincare-advice/basic-skin-care-tips/alcohol-in-skincare-the-facts.html' },
+        { title: 'Cleveland Clinic - Skin Barrier', url: 'https://health.clevelandclinic.org/skin-barrier' },
+      ],
+    },
+    'no-gums-fillers': {
+      whatItIs: 'Gums and fillers are additives used to thicken, stabilize, or bulk up a product without changing its core function. In food, common gums include xanthan gum, guar gum, carrageenan, locust bean gum, and cellulose gum; in supplements, fillers like maltodextrin, magnesium stearate, and rice flour are used to bind capsules or tablets and add volume.',
+      commonlyFoundIn: ['Ice cream and frozen desserts', 'Non-dairy milks', 'Gluten-free baked goods', 'Salad dressings and sauces', 'Yogurt', 'Protein powders and shakes', 'Capsule and tablet supplements', 'Processed and packaged foods'],
+      whyPeopleAvoid: 'Some people experience bloating, gas, or digestive discomfort from gums, particularly carrageenan, which animal studies have linked to gut inflammation, and people with IBS or other sensitive digestive systems often notice these effects most. Fillers in supplements can dilute the active ingredient per dose and occasionally introduce allergens (like wheat-derived fillers) that aren\'t obvious from the product name. Many people who prefer simpler, less-processed ingredient lists choose to avoid gums and fillers as a general rule rather than reacting to one specific compound.',
+      sources: [
+        { title: 'NIH - Carrageenan and Gut Health', url: 'https://pubmed.ncbi.nlm.nih.gov/28028998/' },
+        { title: 'Healthline - Common Food Gums', url: 'https://www.healthline.com/nutrition/xanthan-gum' },
+        { title: 'ConsumerLab - Supplement Fillers and Additives', url: 'https://www.consumerlab.com/answers/what-are-common-fillers-additives-in-supplements/supplement-additives/' },
+      ],
+    },
+    'vegan-beauty': {
+      whatItIs: 'Vegan beauty products are formulated without any animal-derived ingredients — not just the obvious ones like collagen or carmine (a red dye from crushed insects), but also less obvious ones like lanolin (from sheep wool), beeswax, honey, keratin, and squalene when sourced from shark liver rather than plants. Vegan is a claim about ingredients, which is distinct from "cruelty-free," a claim about animal testing — a product can be one without being the other.',
+      commonlyFoundIn: ['Lipsticks and lip balms (carmine, lanolin, beeswax)', 'Moisturizers and creams (collagen, squalene, honey)', 'Shampoos and conditioners (keratin, silk protein)', 'Nail polish (guanine, a pearlescent ingredient from fish scales)', 'Mascara (beeswax, carmine)', 'Soaps (tallow, goat milk)'],
+      whyPeopleAvoid: 'People choose vegan beauty products primarily for ethical reasons around animal welfare, since many animal-derived cosmetic ingredients are byproducts of farming practices they\'d rather not support, and secondarily for environmental reasons, as animal agriculture has a larger land and water footprint than plant-based ingredient sourcing. Some also choose vegan formulas expecting they\'ll be gentler or less likely to trigger allergic reactions, though that isn\'t guaranteed — plant-derived ingredients can be irritating too, so it\'s worth checking a full ingredient list rather than relying on the vegan label alone.',
+      sources: [
+        { title: 'The Vegan Society - Definition of Veganism', url: 'https://www.vegansociety.com/go-vegan/definition-veganism' },
+        { title: 'PETA - Animal Ingredients Resource', url: 'https://www.peta.org/living/food/animal-ingredients-list/' },
+        { title: 'FDA - Cosmetic Labeling Claims', url: 'https://www.fda.gov/cosmetics/cosmetics-labeling/cosmetics-labeling-claims' },
+      ],
+    },
+    'no-high-fructose': {
+      whatItIs: 'High-fructose corn syrup (HFCS) is a liquid sweetener made from corn starch that has been enzymatically processed to convert much of its glucose into fructose, typically to a 55% fructose / 45% glucose blend for beverages. It became the dominant sweetener in American processed foods and drinks starting in the 1970s and 1980s because it\'s cheaper and easier to transport and blend into liquids than table sugar.',
+      commonlyFoundIn: ['Soft drinks and sodas', 'Fruit juices and juice drinks', 'Candy', 'Bread and baked goods', 'Ketchup and condiments', 'Breakfast cereals', 'Flavored yogurt', 'Salad dressings'],
+      whyPeopleAvoid: 'Because HFCS is nearly always found in ultra-processed foods and sweetened beverages, higher intake is associated with weight gain, higher triglycerides, and increased risk of type 2 diabetes and metabolic syndrome in observational studies. Fructose is metabolized differently than glucose — mostly in the liver — and consuming large amounts in liquid form (as in soda) doesn\'t trigger the same fullness signals as solid food, which researchers believe makes it easy to overconsume. Whether HFCS itself is meaningfully worse than an equivalent amount of table sugar is still debated, but many people avoid it as a simple marker of a highly processed product and as part of reducing total added sugar.',
+      sources: [
+        { title: 'Harvard Health - The Sweet Danger of Sugar', url: 'https://www.health.harvard.edu/heart-health/the-sweet-danger-of-sugar' },
+        { title: 'Mayo Clinic - High-Fructose Corn Syrup FAQ', url: 'https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/high-fructose-corn-syrup/faq-20058201' },
+        { title: 'CDC - Get the Facts on Added Sugars', url: 'https://www.cdc.gov/nutrition/php/data-research/added-sugars.html' },
+      ],
+    },
+    'animal-cruelty-free': {
+      whatItIs: 'This preference combines two related but distinct ideas: "cruelty-free," meaning the finished product and its individual ingredients were not tested on animals at any stage, and being free of animal-derived ingredients entirely (the vegan standard). A product needs to meet both to satisfy this preference — a brand can be cruelty-free but still use ingredients like beeswax or carmine, or be fully vegan but still test on animals where required by certain regulators, such as in mainland China for some product categories.',
+      commonlyFoundIn: ['Cosmetics and makeup', 'Skincare and moisturizers', 'Haircare products', 'Household cleaners', 'Personal care items (soap, deodorant)', 'Candles and fragrance products'],
+      whyPeopleAvoid: 'People seek products that are both animal-testing-free and free of animal-derived ingredients primarily out of concern for animal welfare, since standard toxicology testing on animals (skin and eye irritation tests, for example) can cause significant animal suffering and modern in-vitro and computer-modeling alternatives now exist for most of it. Many countries and the EU have banned cosmetic animal testing outright, and consumer demand has pushed a growing number of brands toward third-party certifications like Leaping Bunny that verify both the product and its ingredient suppliers avoid animal testing.',
+      sources: [
+        { title: 'Leaping Bunny - Certification Standard', url: 'https://www.leapingbunny.org/about/the-standard' },
+        { title: 'Humane Society International - Animal Testing FAQ', url: 'https://www.hsi.org/news-media/cosmetics-animal-testing-faq/' },
+        { title: 'PETA - Animal Ingredients Resource', url: 'https://www.peta.org/living/food/animal-ingredients-list/' },
+      ],
+    },
+    'eco-packaging': {
+      whatItIs: 'Eco-friendly packaging refers to materials and designs chosen to reduce environmental impact — recyclable or compostable materials (paper, glass, aluminum, certain bioplastics), reduced or minimal packaging overall, refillable containers, and packaging free of materials like PVC or non-recyclable multi-layer plastics that most municipal recycling programs can\'t actually process.',
+      commonlyFoundIn: ['Skincare and cosmetics (glass jars, refill pouches)', 'Food packaging (compostable wraps, paper-based cartons)', 'Household cleaning products (concentrate refills, aluminum bottles)', 'Shipping and mailer materials', 'Personal care products (bar soaps and shampoos with minimal packaging)'],
+      whyPeopleAvoid: 'Conventional plastic packaging is a major contributor to landfill waste and ocean pollution, and most plastic that is technically "recyclable" is never actually recycled due to contamination, mixed materials, or a lack of local processing capacity — a large share ends up in landfills or the environment regardless of the label on it. People who prioritize eco-friendly packaging are typically trying to reduce their contribution to plastic waste and microplastic pollution, support a shift toward genuinely reusable or compostable systems, and avoid packaging materials (like certain colored or multi-layer plastics) that can leach chemicals into food or personal care products they\'re in contact with.',
+      sources: [
+        { title: 'EPA - Facts and Figures about Materials, Waste and Recycling', url: 'https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling' },
+        { title: 'UNEP - Our Planet is Choking on Plastic', url: 'https://www.unep.org/interactives/beat-plastic-pollution/' },
+        { title: 'How2Recycle - Understanding Recyclability', url: 'https://how2recycle.info/' },
+      ],
+    },
     'enaj-baseline': {
       whatItIs: 'The enaJ Non-Toxic Baseline is for people who want to live a healthier lifestyle but aren\'t sure exactly what to avoid yet. It\'s a curated list of the most commonly flagged toxic and harmful ingredients that health-conscious people typically avoid. Enable this one preference and Enaj will monitor for all of them across every product you scan.',
       commonlyFoundIn: [
@@ -1208,6 +1282,57 @@ export interface PreferenceEducation {
         { title: 'NIH - Microplastics Health Effects', url: 'https://www.niehs.nih.gov/health/topics/agents/microplastics' },
         { title: 'AHA - Trans Fats', url: 'https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats/trans-fat' },
         { title: 'American Cancer Society - Processed Meat', url: 'https://www.cancer.org/cancer/risk-prevention/diet-physical-activity/does-eating-processed-or-red-meat-cause-cancer.html' },
+      ],
+      sections: [
+        {
+          header: 'Synthetic Chemicals & Preservatives',
+          description: 'These are commonly found in personal care products and are linked to hormone disruption, skin irritation, and long-term health concerns.',
+          bullets: [
+            'Fragrance and parfum (which can hide hundreds of undisclosed chemicals)',
+            'Parabens (methylparaben, propylparaben, butylparaben)',
+            'Formaldehyde and formaldehyde-releasing preservatives (DMDM hydantoin, diazolidinyl urea, imidazolidinyl urea)',
+            'Phthalates',
+            'Triclosan and triclocarban',
+            'Sulfates (SLS and SLES)',
+          ],
+        },
+        {
+          header: 'Plastics & Forever Chemicals',
+          description: 'Known as "forever chemicals" because they don\'t break down in the body or environment - linked to cancer, thyroid disease, immune system effects, and reproductive issues.',
+          bullets: [
+            'BPA and other bisphenol compounds (BPS, etc.)',
+            'PFAS, PFOA, and other perfluoro chemicals',
+          ],
+        },
+        {
+          header: 'Harmful Food Additives',
+          description: 'Common in processed and packaged foods; some are linked to metabolic issues, hyperactivity, and gut inflammation.',
+          bullets: [
+            'High fructose corn syrup',
+            'Artificial flavors and colors (Red 40, Yellow 5, Yellow 6, Blue 1, FD&C dyes)',
+            'MSG',
+            'Artificial sweeteners (aspartame, sucralose, saccharin, acesulfame)',
+            'Sodium nitrite and nitrate',
+            'Carrageenan, polysorbate 80, and carboxymethylcellulose',
+            'Gums and fillers (xanthan gum, guar gum, cellulose gum, locust bean gum)',
+            'Trans fats and partially hydrogenated oils',
+          ],
+        },
+        {
+          header: 'Inflammatory Seed Oils',
+          description: 'Heavily processed oils high in omega-6 fatty acids, avoided by many following anti-inflammatory or ancestral diets.',
+          bullets: ['Canola oil', 'Soybean oil', 'Sunflower oil', 'Corn oil', 'Cottonseed oil'],
+        },
+        {
+          header: 'Heavy Metals, Toxins & Chemical UV Filters',
+          description: 'Linked to neurological damage and hormonal disruption - oxybenzone and octinoxate in particular are banned in several locations for damaging coral reefs.',
+          bullets: ['Lead', 'Mercury', 'Aluminum compounds', 'Talc', 'Oxybenzone', 'Octinoxate'],
+        },
+        {
+          header: 'Microplastics',
+          description: 'Don\'t biodegrade and have been detected in human blood, lungs, and organs.',
+          bullets: ['Polyethylene beads', 'Polypropylene beads'],
+        },
       ],
     },
   }

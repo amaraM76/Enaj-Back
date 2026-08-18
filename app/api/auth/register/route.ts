@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import * as bcrypt from "bcrypt";
+import { encryptField } from "@/app/lib/crypto";
 
 const GENDER_MAP: Record<string, string> = {
   male: "MALE",
@@ -42,6 +43,10 @@ export async function POST(request: Request) {
         age: age || undefined,
         gender: mappedGender as any,
         shoppingStores,
+        locationEnc: location ? encryptField(String(location)) : undefined,
+        ageEnc: age ? encryptField(String(age)) : undefined,
+        genderEnc: mappedGender ? encryptField(String(mappedGender)) : undefined,
+        shoppingStoresEnc: shoppingStores ? encryptField(String(shoppingStores)) : undefined,
       },
     });
 

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField } from "@/app/lib/crypto";
 
 export async function GET(
   request: Request,
@@ -166,6 +167,18 @@ export async function PUT(
       ? GENDER_MAP[String(gender).toLowerCase()] ?? undefined
       : undefined;
 
+    // Dual-write AES-256-GCM encrypted counterparts alongside the
+    // plaintext columns until a verified backfill removes the latter.
+    const encryptedFields = {
+      locationEnc: location !== undefined && location !== null ? encryptField(String(location)) : undefined,
+      ageEnc: age !== undefined && age !== null ? encryptField(String(age)) : undefined,
+      genderEnc: mappedGender ? encryptField(mappedGender) : undefined,
+      shoppingStoresEnc:
+        shoppingStores !== undefined && shoppingStores !== null
+          ? encryptField(String(shoppingStores))
+          : undefined,
+    };
+
     const existingAuth = await prisma.userAuth.findUnique({
       where: { clerkId: userId },
       include: { user: true },
@@ -184,6 +197,7 @@ export async function PUT(
           age,
           gender: mappedGender,
           shoppingStores,
+          ...encryptedFields,
         },
       });
     } else {
@@ -201,6 +215,7 @@ export async function PUT(
             age,
             gender: mappedGender,
             shoppingStores,
+            ...encryptedFields,
             auth: {
               upsert: {
                 create: {
@@ -223,6 +238,7 @@ export async function PUT(
             age,
             gender: mappedGender,
             shoppingStores,
+            ...encryptedFields,
             auth: {
               create: {
                 clerkId: userId,
