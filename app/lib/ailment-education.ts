@@ -911,7 +911,7 @@ export interface AilmentIngredientEducation {
   
     // Respiratory Conditions
     'asthma': {
-      description: 'Asthma is a chronic respiratory condition causing airway inflammation and breathing difficulties. Certain foods and additives can trigger symptoms.',
+      description: 'Asthma is a chronic respiratory condition in which the airways become persistently inflamed and hyper-reactive, narrowing suddenly in response to triggers and causing wheezing, coughing, chest tightness, and shortness of breath. While allergens, exercise, cold air, and respiratory infections are the most common triggers, some people with asthma are also sensitive to specific food additives - sulfites and certain preservatives among them - that can provoke bronchospasm through mechanisms separate from typical allergy. A subset of asthma patients also have Samter\'s triad, a combination of asthma, nasal polyps, and sensitivity to aspirin and other salicylate compounds, according to the Cleveland Clinic. Because triggers vary widely from person to person, the American Lung Association recommends that people with asthma identify their own personal triggers, whether environmental or dietary, alongside their prescribed controller and rescue medications.',
       generalSources: [
         { title: 'American Lung Association', url: 'https://www.lung.org/lung-health-diseases/lung-disease-lookup/asthma' },
         { title: 'Mayo Clinic - Asthma', url: 'https://www.mayoclinic.org/diseases-conditions/asthma/symptoms-causes/syc-20369653' },
@@ -990,7 +990,7 @@ export interface AilmentIngredientEducation {
   
     // Skin Conditions
     'eczema': {
-      description: 'Eczema (atopic dermatitis) is a chronic inflammatory skin condition causing dry, itchy, and inflamed skin. Managing eczema often involves avoiding irritants and allergens that can trigger flare-ups.',
+      description: 'Eczema (atopic dermatitis) is a chronic inflammatory skin condition rooted in a compromised skin barrier - often linked to mutations in the filaggrin gene - that allows moisture to escape and irritants, allergens, and bacteria to penetrate more easily than in typical skin. This barrier weakness, combined with an overactive immune response, produces the intense itching, dryness, and inflamed patches that define eczema, and it frequently occurs alongside other atopic conditions like asthma and hay fever. Because the skin barrier is already fragile, the National Eczema Association notes that many common skincare ingredients - fragrance, harsh surfactants, and drying alcohols among them - can trigger or worsen flares by stripping natural oils or provoking an allergic response. Managing eczema typically centers on gentle, fragrance-free skincare and consistent moisturizing to help rebuild the barrier, alongside identifying and avoiding personal trigger ingredients.',
       generalSources: [
         { title: 'National Eczema Association', url: 'https://nationaleczema.org/eczema/' },
         { title: 'AAD - Eczema Resource Center', url: 'https://www.aad.org/public/diseases/eczema' },
@@ -1066,7 +1066,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'psoriasis': {
-      description: 'Psoriasis is an autoimmune condition that causes rapid skin cell turnover, resulting in thick, scaly patches. Avoiding irritating ingredients helps manage symptoms and prevent flare-ups.',
+      description: 'Psoriasis is a chronic autoimmune condition in which the immune system mistakenly speeds up the skin cell life cycle, causing new cells to form and pile up on the surface every few days instead of the usual few weeks. That rapid turnover produces the condition\'s hallmark thick, scaly, often silvery plaques, most commonly on the elbows, knees, and scalp, and it can also involve the joints in a related condition called psoriatic arthritis. While psoriasis isn\'t caused by anything applied to the skin, the National Psoriasis Foundation notes that fragrance, alcohol, and harsh surfactants can irritate already-inflamed plaques and worsen discomfort, so many people with psoriasis favor gentle, fragrance-free formulations. Stress, infections, certain medications, and - for some people - alcohol and smoking are also recognized triggers that can bring on or worsen a flare.',
       generalSources: [
         { title: 'National Psoriasis Foundation', url: 'https://www.psoriasis.org/' },
         { title: 'AAD - Psoriasis', url: 'https://www.aad.org/public/diseases/psoriasis' },
@@ -1093,7 +1093,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'acne': {
-      description: 'Acne is a skin condition that occurs when hair follicles become clogged with oil and dead skin cells. Avoiding comedogenic ingredients helps prevent breakouts.',
+      description: 'Acne develops when hair follicles become clogged with a combination of excess sebum (oil) and dead skin cells, creating an environment where Cutibacterium acnes bacteria can multiply and trigger the inflammation behind whiteheads, blackheads, and deeper cysts. Oil production is heavily influenced by hormones - particularly androgens - which is why acne often flares around puberty, the menstrual cycle, or with conditions like PCOS, though genetics, stress, and skincare products all play a role too. The AAD notes that certain skincare ingredients are considered comedogenic, meaning they\'re prone to physically blocking pores or mimicking the skin\'s own oils in a way that worsens clogging, so people managing acne often look for non-comedogenic labeling and avoid heavy oils, waxes, and pore-clogging silicones. Diet has a more debatable but still studied role, with some research linking high-glycemic foods and dairy to increased breakout frequency in susceptible people.',
       generalSources: [
         { title: 'AAD - Acne', url: 'https://www.aad.org/public/diseases/acne' },
         { title: 'Mayo Clinic - Acne', url: 'https://www.mayoclinic.org/diseases-conditions/acne/symptoms-causes/syc-20368047' },
@@ -1116,7 +1116,7 @@ export interface AilmentIngredientEducation {
   
     // Food Allergies
     'dairy-allergy': {
-      description: 'Dairy allergy is an immune response to proteins in cow\'s milk, primarily casein and whey. It can affect both diet and topical products containing dairy derivatives.',
+      description: 'A dairy (milk) allergy is an immune system reaction to proteins in cow\'s milk - primarily casein and whey - that\'s distinct from lactose intolerance, which is a digestive inability to break down milk sugar rather than an immune response. Because it\'s IgE-mediated, a true milk allergy can trigger reactions ranging from hives and digestive upset to severe, rapid-onset anaphylaxis, which is why it\'s treated with strict avoidance rather than moderation. Milk is one of the most common childhood food allergies, and while many children outgrow it, milk proteins can hide under less obvious names - casein, whey, lactalbumin, and ghee among them - in processed foods, baked goods, and some personal care products. The FDA requires milk to be declared as a major allergen on food labels, but ACAAI notes that reading full ingredient lists is still essential since dairy derivatives aren\'t always obvious from a product\'s name.',
       generalSources: [
         { title: 'ACAAI - Milk Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/milk-dairy/' },
         { title: 'Mayo Clinic - Milk Allergy', url: 'https://www.mayoclinic.org/diseases-conditions/milk-allergy/symptoms-causes/syc-20375101' },
@@ -1149,7 +1149,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'gluten-intolerance': {
-      description: 'Gluten intolerance (including celiac disease and non-celiac gluten sensitivity) requires avoiding wheat, barley, and rye proteins. This extends to certain personal care products.',
+      description: 'Gluten intolerance is an umbrella term that includes celiac disease as well as non-celiac gluten sensitivity (NCGS), a condition in which people experience bloating, fatigue, brain fog, or digestive discomfort after eating gluten despite testing negative for celiac disease and having no measurable intestinal damage. Researchers are still working out the exact mechanism behind NCGS - some evidence points to a reaction to other wheat components like fermentable carbohydrates (FODMAPs) rather than gluten itself - but for those affected, the practical solution is the same as for celiac disease: avoiding wheat, barley, and rye. Because gluten is used as a binder, stabilizer, and flavoring agent, it turns up in far more products than bread and pasta, including sauces, supplements, and some hair and skin care items, so label reading is central to managing the condition. The Celiac Disease Foundation and Mayo Clinic both recommend ruling out celiac disease first, since it requires stricter, lifelong avoidance and carries different long-term health risks than gluten sensitivity.',
       generalSources: [
         { title: 'Celiac Disease Foundation', url: 'https://celiac.org/' },
         { title: 'Mayo Clinic - Celiac Disease', url: 'https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220' },
@@ -1176,7 +1176,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'soy-allergy': {
-      description: 'Soy allergy is an immune reaction to soy proteins, one of the top 8 food allergens. Soy derivatives appear in many processed foods and some cosmetic products.',
+      description: 'Soy allergy is an immune reaction to proteins in soybeans and is one of the eight most common food allergens tracked by the FDA, though many children outgrow it by their teenage years unlike some other allergies. Reactions are triggered by specific soy proteins and can range from mild hives and digestive upset to, less commonly, severe anaphylaxis, with severity often varying by how much soy protein a given derivative actually contains. Because soy is used so widely as a cheap protein, emulsifier, and filler, it appears in a large share of processed foods, and some derivatives - like highly refined soybean oil or soy lecithin - contain little to no residual protein and are tolerated by many people with soy allergy, while others, like soy protein isolate, are reliably allergenic. ACAAI and FARE both recommend that people with soy allergy discuss which refined soy derivatives are safe for them individually with an allergist, since tolerance can differ from person to person.',
       generalSources: [
         { title: 'ACAAI - Soy Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/soy/' },
         { title: 'FARE - Soy Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/soy' },
