@@ -264,6 +264,15 @@ export const PREFERENCE_INGREDIENT_MAP: Record<string, string[]> = {
       "chlorine bleach", "sodium hypochlorite", "bleached",
       "chlorine", "optical brightener",
     ],
+
+    // Its own preference so it fires on any product/fabric containing or
+    // blended with polyester, independent of whether "Microplastics" is
+    // also selected.
+    "Polyester": [
+      "polyester", "poly-blend", "polyblend", "poly blend",
+      "polyethylene terephthalate", "PET fiber", "PET fabric",
+      "spun polyester", "recycled polyester", "rPET",
+    ],
   
     "Animal Cruelty Free": [
       // Same as Cruelty-Free — certification check, not ingredient match.

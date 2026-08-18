@@ -1117,6 +1117,15 @@ export interface PreferenceEducation {
         { title: 'WHO - Microplastics in Water', url: 'https://www.who.int/news/item/22-08-2019-who-calls-for-more-research-into-microplastics-and-a-crackdown-on-plastic-pollution' },
       ],
     },
+    'polyester': {
+      whatItIs: 'Polyester is a synthetic, plastic-based fiber (polyethylene terephthalate, or PET) made from petroleum. It\'s the most widely used man-made fiber in the world, prized for being cheap, durable, wrinkle-resistant, and quick-drying. It shows up on its own or blended with natural fibers like cotton to cut cost and add stretch/durability.',
+      commonlyFoundIn: ['Clothing and activewear', 'Bedding and pillows', 'Upholstery and carpets', 'Reusable and single-use bags', 'Some tea bags and food packaging', 'Fleece and synthetic insulation', 'Blended fabrics (poly-cotton, poly-blend)'],
+      whyPeopleAvoid: 'Polyester sheds microplastic fibers with every wash and wear, which end up in waterways, soil, and the food chain, and it does not biodegrade. It\'s also less breathable than natural fibers, which can trap heat, sweat, and odor against the skin and irritate sensitive or eczema-prone skin. Because it\'s made from fossil fuels, some also avoid it for environmental/sustainability reasons.',
+      sources: [
+        { title: 'NOAA - Microfibers', url: 'https://oceanservice.noaa.gov/facts/microplastics.html' },
+        { title: 'EPA - Microplastics', url: 'https://www.epa.gov/trash-free-waters/plastic-pollution' },
+      ],
+    },
     'trans-fat': {
       whatItIs: 'Trans fats are unsaturated fats that have been hydrogenated to make them solid at room temperature. They were widely used in processed foods for their stability and long shelf life. Artificial trans fats are now banned in the US but may still appear in some products.',
       commonlyFoundIn: ['Margarine', 'Fried foods', 'Baked goods', 'Snack foods', 'Coffee creamers', 'Frozen pizza', 'Refrigerated doughs', 'Some imported foods'],

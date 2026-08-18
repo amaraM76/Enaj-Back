@@ -1165,6 +1165,7 @@ for (const ing of hormonalAcneIngredients) {
       // Environmental
       { slug: "no-pfas", name: "PFAS (Forever Chemicals)", description: "Avoid per- and polyfluoroalkyl substances that persist in the body", categoryId: prefCatMap["environmental-forever"] },
       { slug: "no-microplastics", name: "Microplastics", description: "Avoid products with microplastic particles", categoryId: prefCatMap["environmental-forever"] },
+      { slug: "no-polyester", name: "Polyester", description: "Avoid polyester and polyester blends, a plastic-based synthetic fiber", categoryId: prefCatMap["environmental-forever"] },
       { slug: "no-bleached-fabrics", name: "Bleached Fabrics", description: "Avoid chlorine-bleached textiles and products", categoryId: prefCatMap["environmental-forever"] },
       { slug: "animal-cruelty-free", name: "Animal Cruelty Free", description: "Only products not tested on animals and no animal-derived ingredients", categoryId: prefCatMap["environmental-forever"] },
       { slug: "eco-packaging", name: "Eco-Friendly Packaging", description: "Prefer sustainable packaging", categoryId: prefCatMap["environmental-forever"] },
