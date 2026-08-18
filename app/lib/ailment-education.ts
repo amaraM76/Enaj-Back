@@ -1942,7 +1942,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'bariatric': {
-      description: 'Bariatric surgery includes procedures like gastric bypass and sleeve gastrectomy that help with weight loss by restricting food intake or nutrient absorption. Post-surgery, dietary management is critical to prevent complications like dumping syndrome and nutritional deficiencies.',
+      description: 'Bariatric surgery is an umbrella term for procedures like gastric bypass and sleeve gastrectomy that support significant weight loss by restricting how much food the stomach can hold, altering how nutrients are absorbed, or both. These anatomical changes mean food and drink move through the digestive system very differently than before surgery - sugar and fat can trigger dumping syndrome, alcohol is absorbed faster and more intensely, and carbonation has far less room to expand comfortably in a much smaller stomach pouch. Because these changes are permanent, careful post-surgery dietary management - eating slowly, prioritizing protein, and working closely with a bariatric dietitian - is critical both to prevent complications and to support the intended long-term outcomes of the surgery.',
       generalSources: [
         { title: 'American Society for Metabolic and Bariatric Surgery', url: 'https://asmbs.org/patients/bariatric-surgery-procedures' },
         { title: 'Mayo Clinic - Bariatric Surgery', url: 'https://www.mayoclinic.org/tests-procedures/bariatric-surgery/about/pac-20394258' },
@@ -1968,7 +1968,7 @@ export interface AilmentIngredientEducation {
     },
     
     'gastrectomy': {
-      description: 'Gastrectomy is the surgical removal of all or part of the stomach, typically performed for stomach cancer or severe ulcers. It significantly changes how food is digested and absorbed, requiring careful dietary management.',
+      description: 'Gastrectomy is the surgical removal of all or part of the stomach, typically performed to treat stomach cancer, severe ulcers, or other serious stomach conditions. Because the stomach normally regulates how quickly food moves into the small intestine, removing part or all of it changes that timing dramatically - food, especially sugar, can reach the small intestine too fast, pulling in fluid and triggering dumping syndrome (cramping, nausea, and a rapid heartbeat), while functions like lactose digestion and nutrient absorption are often disrupted too. Careful, often lifelong dietary management - smaller meals, limited sugar and fat, and monitoring for nutrient deficiencies - is a central part of recovery and long-term health after gastrectomy.',
       generalSources: [
         { title: 'Mayo Clinic - Gastrectomy', url: 'https://www.mayoclinic.org/tests-procedures/gastrectomy/about/pac-20384556' },
         { title: 'Cancer Research UK - Life After Gastrectomy', url: 'https://www.cancerresearchuk.org/about-cancer/stomach-cancer/treatment/surgery/total-gastrectomy' },
