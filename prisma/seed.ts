@@ -602,13 +602,13 @@ async function main() {
 
   // --- Sensitive Skin ---
   const sensitiveSkinIngredients = [
-    { slug: "fragrance-sensitive", name: "Sythetic Fragrance", reason: "Top irritant for sensitive skin" },
-    { slug: "alcohol-sensitive", name: "Alcohol", reason: "Dries and irritates sensitive skin" },
-    { slug: "retinol-sensitive", name: "Retinol", reason: "Can cause redness and peeling" },
-    { slug: "aha-sensitive", name: "Alpha Hydroxy Acids", reason: "Can over-exfoliate sensitive skin" },
-    { slug: "essential-oils-sensitive", name: "Essential Oils", reason: "Can cause allergic reactions" },
-    { slug: "formaldehyde-sensitive", name: "Formaldehyde", reason: "Known skin irritant" },
-    { slug: "sls-sensitive", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that strips natural oils" },
+    { slug: "fragrance-sensitive", name: "Sythetic Fragrance", reason: "The single most frequently reported cause of cosmetic contact reactions - a listed 'fragrance' can be dozens of undisclosed chemicals, any of which can irritate reactive skin." },
+    { slug: "alcohol-sensitive", name: "Alcohol", reason: "Short-chain drying alcohols evaporate quickly and strip the skin's protective lipid barrier, which reactive skin depends on more than most." },
+    { slug: "retinol-sensitive", name: "Retinol", reason: "Increases skin cell turnover, which is effective for many but can cause redness, peeling, and heightened sensitivity to other irritants, especially at higher strengths." },
+    { slug: "aha-sensitive", name: "Alpha Hydroxy Acids", reason: "Chemical exfoliants that dissolve the bonds between dead skin cells - useful in moderation, but can over-exfoliate and compromise the barrier on already-reactive skin." },
+    { slug: "essential-oils-sensitive", name: "Essential Oils", reason: "Concentrated plant compounds (like citrus, lavender, or tea tree oil) that are among the most common causes of allergic contact reactions in sensitive skin, despite being 'natural.'" },
+    { slug: "formaldehyde-sensitive", name: "Formaldehyde", reason: "A recognized skin sensitizer and irritant; even the low levels released by formaldehyde-donor preservatives can be enough to trigger a reaction in sensitive skin." },
+    { slug: "sls-sensitive", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant designed to strip oil and dirt, which also strips the skin's own protective oils, often leaving reactive skin drier and more irritated." },
   ];
 
   for (const ing of sensitiveSkinIngredients) {
@@ -619,12 +619,12 @@ async function main() {
 
   // --- Psoriasis ---
   const psoriasisIngredients = [
-    { slug: "alcohol-psoriasis", name: "Alcohol", reason: "Can dry out and irritate plaques" },
-    { slug: "fragrance-psoriasis", name: "Synthetic Fragrance", reason: "Can trigger flare-ups" },
-    { slug: "dyes-psoriasis", name: "Synthetic Dyes", reason: "May irritate psoriatic skin" },
-    { slug: "sulfates-psoriasis", name: "Sodium Lauryl Sulfate", reason: "Can strip moisture and worsen patches" },
-    { slug: "retinoid-psoriasis", name: "Retinoids", reason: "Can thin already compromised skin" },
-    { slug: "salicylic-psoriasis", name: "Salicylic Acid", reason: "Can cause irritation when used on active plaques" },
+    { slug: "alcohol-psoriasis", name: "Alcohol", reason: "Drying alcohols evaporate quickly and pull moisture from psoriasis plaques, worsening the scaling and cracking that already make the skin barrier fragile." },
+    { slug: "fragrance-psoriasis", name: "Synthetic Fragrance", reason: "A frequently reported trigger for psoriasis flare-ups - fragrance chemicals can irritate skin that is already inflamed and more permeable than typical skin." },
+    { slug: "dyes-psoriasis", name: "Synthetic Dyes", reason: "Some synthetic colorants can irritate psoriatic skin directly, and a subset of people with psoriasis report dye sensitivity as part of broader chemical sensitivity." },
+    { slug: "sulfates-psoriasis", name: "Sodium Lauryl Sulfate", reason: "A harsh cleansing surfactant that strips lipids from the skin surface, worsening the dryness and moisture loss that already accompany psoriasis plaques." },
+    { slug: "retinoid-psoriasis", name: "Retinoids", reason: "Increase skin cell turnover and can thin the epidermis, which may worsen irritation on plaques unless used under a dermatologist's specific guidance for psoriasis." },
+    { slug: "salicylic-psoriasis", name: "Salicylic Acid", reason: "A keratolytic used in some psoriasis treatments to soften scale, but it can sting and irritate when applied to actively inflamed or cracked plaques." },
   ];
 
   for (const ing of psoriasisIngredients) {
@@ -652,13 +652,13 @@ async function main() {
 
   // --- Acne ---
   const acneIngredients = [
-    { slug: "coconut-oil-acne", name: "Coconut Oil", reason: "Highly comedogenic, clogs pores" },
-    { slug: "isopropyl-myristate-acne", name: "Isopropyl Myristate", reason: "Known pore-clogging ingredient" },
-    { slug: "lanolin-acne", name: "Lanolin", reason: "Can clog pores and cause breakouts" },
-    { slug: "mineral-oil-acne", name: "Mineral Oil", reason: "May trap bacteria in pores" },
-    { slug: "dimethicone-acne", name: "Dimethicone", reason: "Silicone that can trap debris in pores" },
-    { slug: "cocoa-butter-acne", name: "Cocoa Butter", reason: "Comedogenic, can clog pores" },
-    { slug: "algae-acne", name: "Algae Extract", reason: "Can be comedogenic for acne-prone skin" },
+    { slug: "coconut-oil-acne", name: "Coconut Oil", reason: "Rated highly comedogenic on standard scales - its fatty acid profile is prone to clogging pores and can worsen breakouts in acne-prone skin." },
+    { slug: "isopropyl-myristate-acne", name: "Isopropyl Myristate", reason: "A synthetic emollient commonly flagged in dermatology comedogenicity studies for clogging pores and contributing to acne breakouts." },
+    { slug: "lanolin-acne", name: "Lanolin", reason: "A moderately comedogenic wax-based moisturizer that can sit on the skin surface and block pores in those prone to acne." },
+    { slug: "mineral-oil-acne", name: "Mineral Oil", reason: "An occlusive ingredient that seals the skin surface; in acne-prone skin it can trap oil, dead skin cells, and bacteria inside the pore, contributing to breakouts." },
+    { slug: "dimethicone-acne", name: "Dimethicone", reason: "A silicone that forms a film on skin; while non-comedogenic for most people, it can trap debris and oil against the skin in those prone to congestion and breakouts." },
+    { slug: "cocoa-butter-acne", name: "Cocoa Butter", reason: "A rich, waxy butter that is highly comedogenic for many, meaning it's especially likely to clog pores and contribute to breakouts in acne-prone skin." },
+    { slug: "algae-acne", name: "Algae Extract", reason: "Some algae and seaweed extracts are moderately comedogenic and can contribute to clogged pores in those with acne-prone skin, despite their 'natural' marketing." },
   ];
 
   for (const ing of acneIngredients) {
