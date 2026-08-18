@@ -1276,6 +1276,7 @@ for (const ing of hormonalAcneIngredients) {
         commonlyFoundIn: edu.commonlyFoundIn,
         whyPeopleAvoid: edu.whyPeopleAvoid,
         sources: edu.sources as any,
+        sections: edu.sections as any,
       },
     })
   }

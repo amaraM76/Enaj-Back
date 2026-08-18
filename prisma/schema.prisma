@@ -365,6 +365,11 @@ model PreferenceEducation {
   commonlyFoundIn String[]
   whyPeopleAvoid  String?
   sources         Json?      // { title: string; url: string }[]
+  // Optional structured breakdown used instead of the flat whyPeopleAvoid
+  // paragraph when a preference covers many sub-categories (currently only
+  // the enaJ Non-Toxic Baseline) - each section gets a bold+underlined
+  // header, a one-line description, and a bulleted "see more" list.
+  sections        Json?      // { header: string; description: string; bullets: string[] }[]
 
   @@map("preference_education")
 }

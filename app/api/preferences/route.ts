@@ -31,6 +31,7 @@ export async function GET() {
         commonlyFoundIn: p.education?.commonlyFoundIn ?? [],
         whyPeopleAvoid: p.education?.whyPeopleAvoid ?? undefined,
         educationSources: (p.education?.sources as any) ?? [],
+        educationSections: (p.education?.sections as any) ?? undefined,
       })),
     }));
     

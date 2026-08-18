@@ -7,6 +7,11 @@ export interface PreferenceEducation {
     commonlyFoundIn: string[]
     whyPeopleAvoid: string
     sources: { title: string; url: string }[]
+    // Optional structured breakdown, rendered instead of whyPeopleAvoid when
+    // present - each section gets a bold+underlined header, a one-line
+    // description, and a bulleted "see more" list. Only enaj-baseline uses
+    // this today (it spans many distinct sub-categories).
+    sections?: { header: string; description: string; bullets: string[] }[]
   }
   
   // Helper function to find education content by slug with flexible matching
@@ -1217,6 +1222,57 @@ export interface PreferenceEducation {
         { title: 'NIH - Microplastics Health Effects', url: 'https://www.niehs.nih.gov/health/topics/agents/microplastics' },
         { title: 'AHA - Trans Fats', url: 'https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats/trans-fat' },
         { title: 'American Cancer Society - Processed Meat', url: 'https://www.cancer.org/cancer/risk-prevention/diet-physical-activity/does-eating-processed-or-red-meat-cause-cancer.html' },
+      ],
+      sections: [
+        {
+          header: 'Synthetic Chemicals & Preservatives',
+          description: 'These are commonly found in personal care products and are linked to hormone disruption, skin irritation, and long-term health concerns.',
+          bullets: [
+            'Fragrance and parfum (which can hide hundreds of undisclosed chemicals)',
+            'Parabens (methylparaben, propylparaben, butylparaben)',
+            'Formaldehyde and formaldehyde-releasing preservatives (DMDM hydantoin, diazolidinyl urea, imidazolidinyl urea)',
+            'Phthalates',
+            'Triclosan and triclocarban',
+            'Sulfates (SLS and SLES)',
+          ],
+        },
+        {
+          header: 'Plastics & Forever Chemicals',
+          description: 'Known as "forever chemicals" because they don\'t break down in the body or environment - linked to cancer, thyroid disease, immune system effects, and reproductive issues.',
+          bullets: [
+            'BPA and other bisphenol compounds (BPS, etc.)',
+            'PFAS, PFOA, and other perfluoro chemicals',
+          ],
+        },
+        {
+          header: 'Harmful Food Additives',
+          description: 'Common in processed and packaged foods; some are linked to metabolic issues, hyperactivity, and gut inflammation.',
+          bullets: [
+            'High fructose corn syrup',
+            'Artificial flavors and colors (Red 40, Yellow 5, Yellow 6, Blue 1, FD&C dyes)',
+            'MSG',
+            'Artificial sweeteners (aspartame, sucralose, saccharin, acesulfame)',
+            'Sodium nitrite and nitrate',
+            'Carrageenan, polysorbate 80, and carboxymethylcellulose',
+            'Gums and fillers (xanthan gum, guar gum, cellulose gum, locust bean gum)',
+            'Trans fats and partially hydrogenated oils',
+          ],
+        },
+        {
+          header: 'Inflammatory Seed Oils',
+          description: 'Heavily processed oils high in omega-6 fatty acids, avoided by many following anti-inflammatory or ancestral diets.',
+          bullets: ['Canola oil', 'Soybean oil', 'Sunflower oil', 'Corn oil', 'Cottonseed oil'],
+        },
+        {
+          header: 'Heavy Metals, Toxins & Chemical UV Filters',
+          description: 'Linked to neurological damage and hormonal disruption - oxybenzone and octinoxate in particular are banned in several locations for damaging coral reefs.',
+          bullets: ['Lead', 'Mercury', 'Aluminum compounds', 'Talc', 'Oxybenzone', 'Octinoxate'],
+        },
+        {
+          header: 'Microplastics',
+          description: 'Don\'t biodegrade and have been detected in human blood, lungs, and organs.',
+          bullets: ['Polyethylene beads', 'Polypropylene beads'],
+        },
       ],
     },
   }
