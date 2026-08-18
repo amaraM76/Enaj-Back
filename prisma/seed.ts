@@ -246,14 +246,14 @@ async function main() {
 
   // --- MCAS ---
   const mcasIngredients = [
-    { slug: "alcohol-mcas", name: "Alcohol", reason: "Triggers mast cell degranulation in MCAS patients" },
-    { slug: "artificial-dyes-mcas", name: "Artificial Colors", reason: "Common MCAS trigger causing mast cell activation" },
-    { slug: "msg-mcas", name: "Monosodium Glutamate", reason: "Excitotoxin that can trigger mast cell reactions" },
-    { slug: "artificial-sweeteners-mcas", name: "Artificial Sweeteners", reason: "May trigger mast cell reactions in MCAS" },
-    { slug: "fragrance-mcas", name: "Synthetic Fragrance", reason: "Fragrances are a major environmental MCAS trigger" },
-    { slug: "sulfites-mcas", name: "Sulfites", reason: "Sulfite preservatives frequently trigger MCAS reactions" },
-    { slug: "benzoates-mcas", name: "Sodium Benzoate", reason: "Preservative that triggers mast cell activation" },
-    { slug: "histamine-mcas", name: "High-Histamine Foods", reason: "Histamine directly triggers mast cells in MCAS" },
+    { slug: "alcohol-mcas", name: "Alcohol", reason: "A well-documented direct trigger of mast cell degranulation, the process at the core of MCAS symptoms like flushing, hives, and gastrointestinal upset." },
+    { slug: "artificial-dyes-mcas", name: "Artificial Colors", reason: "One of the most frequently reported non-IgE mast cell triggers in MCAS, capable of provoking a reaction independent of any true allergy." },
+    { slug: "msg-mcas", name: "Monosodium Glutamate", reason: "Some MCAS patients report MSG as a direct trigger of mast cell activation, producing flushing or headache reactions shortly after eating it." },
+    { slug: "artificial-sweeteners-mcas", name: "Artificial Sweeteners", reason: "Reported by some MCAS patients as a trigger of mast cell symptoms, though the exact mechanism isn't well characterized in the research." },
+    { slug: "fragrance-mcas", name: "Synthetic Fragrance", reason: "Airborne fragrance chemicals are among the most consistently reported environmental MCAS triggers, capable of provoking a reaction from inhalation alone." },
+    { slug: "sulfites-mcas", name: "Sulfites", reason: "Sulfite preservatives are well documented to trigger mast cell degranulation directly, making them one of the more predictable dietary MCAS triggers." },
+    { slug: "benzoates-mcas", name: "Sodium Benzoate", reason: "A preservative frequently implicated in non-IgE mast cell activation, triggering MCAS symptoms through a different pathway than a true food allergy." },
+    { slug: "histamine-mcas", name: "High-Histamine Foods", reason: "Histamine is one of the primary mediators mast cells release, so histamine-rich foods can directly add to the symptom burden in MCAS on top of what the cells release on their own." },
   ]
   for (const ing of mcasIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["mcas"] } })
@@ -335,13 +335,13 @@ async function main() {
 
   // --- Interstitial Cystitis ---
   const icIngredients = [
-    { slug: "caffeine-ic", name: "Caffeine", reason: "Bladder irritant that triggers IC flares" },
-    { slug: "alcohol-ic", name: "Alcohol", reason: "Highly acidic and irritates the bladder lining in IC" },
-    { slug: "citric-acid-ic", name: "Citric Acid", reason: "Common bladder irritant found in citrus and many beverages" },
-    { slug: "artificial-sweeteners-ic", name: "Artificial Sweeteners", reason: "Bladder irritants that worsen IC symptoms" },
-    { slug: "vinegar-ic", name: "Vinegar", reason: "Acidic ingredient that irritates the bladder in IC" },
-    { slug: "msg-ic", name: "Monosodium Glutamate", reason: "Reported bladder irritant for many IC patients" },
-    { slug: "carbonation-ic", name: "Carbonated Water", reason: "Sparkling beverages can aggravate IC bladder symptoms" },
+    { slug: "caffeine-ic", name: "Caffeine", reason: "Acts as both a bladder irritant and a diuretic, increasing urine acidity and frequency in a way that's one of the most consistently reported IC triggers." },
+    { slug: "alcohol-ic", name: "Alcohol", reason: "Highly acidic and a diuretic, a combination that directly irritates the already-inflamed bladder lining in interstitial cystitis." },
+    { slug: "citric-acid-ic", name: "Citric Acid", reason: "Found in citrus fruit and many packaged beverages, its high acidity is one of the most commonly cited dietary triggers among IC patients." },
+    { slug: "artificial-sweeteners-ic", name: "Artificial Sweeteners", reason: "Several non-nutritive sweeteners are frequently reported by IC patients as symptom triggers, thought to act as direct bladder irritants in sensitive individuals." },
+    { slug: "vinegar-ic", name: "Vinegar", reason: "Highly acidic, and acidity is one of the most consistently reported irritant properties for the sensitized bladder lining in IC." },
+    { slug: "msg-ic", name: "Monosodium Glutamate", reason: "Reported by many IC patients as a trigger, possibly through a direct irritant effect on the bladder lining, though the mechanism isn't fully understood." },
+    { slug: "carbonation-ic", name: "Carbonated Water", reason: "Carbonation itself, independent of any sweetener, is frequently reported by IC patients to aggravate bladder pain and urgency." },
   ]
   for (const ing of icIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["interstitial-cystitis"] } })
@@ -1068,12 +1068,12 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Gastrectomy Surgery ---
   const gastrectomyIngredients = [
-    { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "Can cause dumping syndrome after gastrectomy" },
-    { slug: "hfcs-gastrectomy", name: "High Fructose Corn Syrup", reason: "Can cause dumping syndrome" },
-    { slug: "artificial-sweeteners-gastrectomy", name: "Artificial Sweeteners", reason: "May cause digestive distress" },
-    { slug: "lactose-gastrectomy", name: "Lactose", reason: "Lactose intolerance common after gastrectomy" },
-    { slug: "carbonation-gastrectomy", name: "Carbonated Water", reason: "Can cause bloating and discomfort" },
-    { slug: "fat-gastrectomy", name: "High Fat Content", reason: "Difficult to digest after stomach surgery" },
+    { slug: "sugar-gastrectomy", name: "Refined Sugar", reason: "With a smaller or bypassed stomach, sugar reaches the small intestine too quickly, pulling in fluid and triggering dumping syndrome - cramping, nausea, and a rapid heart rate." },
+    { slug: "hfcs-gastrectomy", name: "High Fructose Corn Syrup", reason: "Rapidly absorbed sugars like high fructose corn syrup can flood the shortened digestive tract and trigger dumping syndrome after gastrectomy." },
+    { slug: "artificial-sweeteners-gastrectomy", name: "Artificial Sweeteners", reason: "Some sugar substitutes, particularly sugar alcohols, can cause gas and diarrhea in a digestive system that's already adjusting to a smaller stomach." },
+    { slug: "lactose-gastrectomy", name: "Lactose", reason: "Gastrectomy can reduce the enzyme activity needed to digest lactose, making new or worsened lactose intolerance common after surgery." },
+    { slug: "carbonation-gastrectomy", name: "Carbonated Water", reason: "A smaller stomach has far less room to accommodate gas, so carbonated drinks are a common cause of post-gastrectomy bloating and discomfort." },
+    { slug: "fat-gastrectomy", name: "High Fat Content", reason: "With reduced stomach capacity and altered digestive enzyme timing, high-fat foods are harder to break down after gastrectomy and can cause nausea or diarrhea." },
   ];
 
   for (const ing of gastrectomyIngredients) {
@@ -1084,12 +1084,12 @@ for (const ing of hormonalAcneIngredients) {
 
   // --- Bariatric Surgery ---
   const bariatricIngredients = [
-    { slug: "sugar-bariatric", name: "Refined Sugar", reason: "Can cause dumping syndrome after bariatric surgery" },
-    { slug: "hfcs-bariatric", name: "High Fructose Corn Syrup", reason: "Can cause dumping syndrome and weight regain" },
-    { slug: "artificial-sweeteners-bariatric", name: "Artificial Sweeteners", reason: "May cause digestive distress and cravings" },
-    { slug: "carbonation-bariatric", name: "Carbonated Water", reason: "Can cause painful gas and bloating" },
-    { slug: "alcohol-bariatric", name: "Alcohol", reason: "Absorbed much faster after bariatric surgery" },
-    { slug: "fat-bariatric", name: "High Fat Content", reason: "Can cause nausea and dumping syndrome" },
+    { slug: "sugar-bariatric", name: "Refined Sugar", reason: "Rapidly absorbed sugar reaching the shortened small intestine too quickly is the classic trigger for dumping syndrome after bariatric surgery, causing cramping, nausea, and a rapid heartbeat." },
+    { slug: "hfcs-bariatric", name: "High Fructose Corn Syrup", reason: "Quickly digested sugars like high fructose corn syrup can trigger dumping syndrome and are calorie-dense in a way that can undermine post-surgery weight loss." },
+    { slug: "artificial-sweeteners-bariatric", name: "Artificial Sweeteners", reason: "Some patients find sweet-tasting substitutes keep sugar cravings active, and certain sugar alcohols can cause gas and diarrhea in the altered post-surgery gut." },
+    { slug: "carbonation-bariatric", name: "Carbonated Water", reason: "A much smaller stomach pouch has little room for gas expansion, making carbonated beverages a common source of pain and bloating after bariatric surgery." },
+    { slug: "alcohol-bariatric", name: "Alcohol", reason: "Bariatric surgery changes stomach anatomy so alcohol reaches the bloodstream faster and in higher concentrations, meaning intoxication and impairment set in much more quickly than before surgery." },
+    { slug: "fat-bariatric", name: "High Fat Content", reason: "A smaller stomach and altered bile flow make fat harder to digest after bariatric surgery, often causing nausea or dumping syndrome." },
   ];
 
   for (const ing of bariatricIngredients) {
