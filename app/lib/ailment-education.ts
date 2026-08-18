@@ -2080,7 +2080,7 @@ export interface AilmentIngredientEducation {
     },
     
     'sensitive-skin': {
-      description: 'Sensitive skin is a common condition where the skin is easily irritated by products, environmental factors, or lifestyle choices. It often presents as redness, itching, burning, or dryness in response to triggers that do not affect most people.',
+      description: 'Sensitive skin isn\'t a single diagnosed disease but a widely recognized syndrome in which skin reacts more readily than typical skin to products, temperature changes, or friction, often because of a weakened skin barrier and heightened nerve fiber reactivity that lets irritants penetrate more easily and trigger a stronger response. It commonly overlaps with, or is an early sign of, other skin conditions like eczema, rosacea, or contact dermatitis, though many people have sensitive skin without a formal diagnosis of any of these. Because the barrier is already compromised, ingredients that are only mildly irritating for most people - fragrance, harsh surfactants like SLS, drying alcohols, and some active ingredients like retinol - can provoke a disproportionate reaction of redness, stinging, or burning. The AAD recommends a minimalist skincare routine with fragrance-free, gentle formulations as the standard approach for managing sensitive skin and reducing the frequency of reactions.',
       generalSources: [
         { title: 'AAD - Sensitive Skin', url: 'https://www.aad.org/public/everyday-care/skin-care-basics/sensitive/sensitive-skin-care' },
         { title: 'Cleveland Clinic - Sensitive Skin', url: 'https://my.clevelandclinic.org/health/diseases/21987-sensitive-skin' },
@@ -2114,7 +2114,7 @@ export interface AilmentIngredientEducation {
     },
     
     'celiac': {
-      description: 'Celiac disease is a serious autoimmune disorder where the ingestion of gluten leads to damage in the small intestine. It affects about 1 in 100 people worldwide and requires strict lifelong adherence to a gluten-free diet.',
+      description: 'Celiac disease is an autoimmune disorder in which eating gluten - a protein found in wheat, barley, and rye - triggers the immune system to attack the lining of the small intestine, damaging the finger-like villi that absorb nutrients. Over time, unchecked inflammation can lead to malabsorption, anemia, osteoporosis, and an increased risk of other autoimmune conditions, which is why the only established treatment is strict, lifelong avoidance of gluten rather than moderation. Unlike a food allergy, celiac disease doesn\'t cause immediate anaphylaxis, but even small amounts of cross-contamination can trigger an internal immune response and intestinal damage without obvious symptoms. Because gluten can hide in unexpected places - sauces, medications, and some cosmetics and personal care products - the Celiac Disease Foundation and NIDDK both emphasize careful label reading as central to managing the condition.',
       generalSources: [
         { title: 'Celiac Disease Foundation', url: 'https://celiac.org/about-celiac-disease/what-is-celiac-disease/' },
         { title: 'Mayo Clinic - Celiac Disease', url: 'https://www.mayoclinic.org/diseases-conditions/celiac-disease/symptoms-causes/syc-20352220' },
@@ -2145,7 +2145,7 @@ export interface AilmentIngredientEducation {
     },
     
     'nut-allergy': {
-      description: 'Nut allergy is one of the most common and potentially severe food allergies, involving an immune reaction to proteins in tree nuts or peanuts. Reactions can range from mild (hives, itching) to life-threatening anaphylaxis.',
+      description: 'Nut allergy refers to an IgE-mediated immune reaction to proteins in tree nuts (like almonds, cashews, and walnuts) or peanuts, which are technically legumes but are grouped with nut allergies because reactions and management look similar. Unlike some childhood food allergies, tree nut and peanut allergies are often lifelong, and they\'re responsible for a disproportionate share of severe and fatal anaphylactic reactions, which is why avoidance is typically strict rather than a matter of tolerance-building. Because someone allergic to one tree nut has a meaningfully elevated chance of reacting to others (cross-reactivity), and nut proteins can appear in unexpected places - natural flavorings, cross-contaminated manufacturing lines, and even some cosmetics - FARE and ACAAI both recommend careful label reading and carrying emergency epinephrine for anyone with a diagnosed nut allergy. Even trace exposure can trigger a reaction in highly sensitive individuals, which sets nut allergies apart from milder food sensitivities.',
       generalSources: [
         { title: 'FARE - Tree Nut Allergy', url: 'https://www.foodallergy.org/living-food-allergies/food-allergy-essentials/common-allergens/tree-nut' },
         { title: 'ACAAI - Nut Allergy', url: 'https://acaai.org/allergies/allergic-conditions/food/tree-nut/' },
@@ -2176,7 +2176,7 @@ export interface AilmentIngredientEducation {
     },
     
     'migraines': {
-      description: 'Chronic migraines are recurring headaches occurring 15 or more days per month, often accompanied by nausea, light sensitivity, and visual disturbances. Identifying and avoiding dietary triggers is a key part of migraine management.',
+      description: 'Chronic migraine is a neurological condition, not just a severe headache, involving waves of abnormal electrical activity across the brain and the activation of the trigeminal nerve system, which releases inflammatory compounds like CGRP that produce the throbbing pain, nausea, and light and sound sensitivity characteristic of an attack. It\'s diagnosed when headaches occur 15 or more days a month, at least eight of which have migraine features, and it can significantly disrupt daily functioning during and between attacks. While migraine has genetic and hormonal underpinnings that no diet can fully control, many people identify specific dietary triggers - common culprits include tyramine-rich aged foods, nitrates in processed meats, alcohol (especially red wine), caffeine withdrawal, and additives like MSG - that appear to lower an individual\'s threshold for an attack. The American Migraine Foundation recommends keeping a headache diary to identify personal triggers, since they vary significantly from person to person and often work in combination with sleep, stress, and hormonal factors rather than as a single cause.',
       generalSources: [
         { title: 'American Migraine Foundation', url: 'https://americanmigrainefoundation.org/resource-library/what-is-migraine/' },
         { title: 'Mayo Clinic - Chronic Migraine', url: 'https://www.mayoclinic.org/diseases-conditions/chronic-daily-headaches/symptoms-causes/syc-20370891' },
@@ -2320,7 +2320,7 @@ export interface AilmentIngredientEducation {
   
     // Skin Conditions (additional)
     'perioral-dermatitis': {
-      description: 'Perioral dermatitis is a facial rash that causes bumps, redness, and scaling around the mouth, nose, and sometimes eyes. It commonly affects women aged 20-45 and can be triggered or worsened by certain skincare products and topical steroids.',
+      description: 'Perioral dermatitis is an inflammatory facial rash - small red bumps, sometimes with scaling - that clusters around the mouth, and sometimes the nose and eyes, most commonly in women between 20 and 45. Its exact cause isn\'t fully understood, but topical corticosteroids are the most well-documented trigger: they can temporarily calm the rash while actually feeding an underlying rebound cycle, so that stopping the steroid causes a flare that\'s often worse than the original rash, according to the AAD. Heavy, occlusive moisturizers, fluoride toothpaste, and certain cosmetic ingredients are also commonly reported triggers, likely because they either clog pores around already-irritated skin or introduce a mild irritant to a compromised barrier. Because topical steroids can worsen the underlying condition even as they mask symptoms, DermNet and the AAD both recommend stopping steroid use (under medical guidance, since abrupt stopping can cause a rebound flare) and switching to gentle, fragrance-free skincare as the primary treatment.',
       generalSources: [
         { title: 'AAD - Perioral Dermatitis', url: 'https://www.aad.org/public/diseases/a-z/perioral-dermatitis-overview' },
         { title: 'Mayo Clinic - Perioral Dermatitis', url: 'https://www.mayoclinic.org/diseases-conditions/perioral-dermatitis/symptoms-causes/syc-20376957' },
