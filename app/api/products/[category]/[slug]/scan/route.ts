@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
-import {
-  scanProduct,
-  ailmentsToFlagInputs,
-  preferencesToFlagInputs,
-  journalEntriesToFlagInputs,
-} from "@/app/lib/scan-product";
+import { scanProduct } from "@/app/lib/scan-product";
+import { getUserFlagSources } from "@/app/lib/user-flags";
 
 async function resolveUserId(userId: string): Promise<string | null> {
   if (!userId.startsWith('user_')) return userId
@@ -42,30 +38,7 @@ export async function GET(
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    const userAilments = await prisma.userAilment.findMany({
-      where: { userId: dbUserId, ailmentId: { not: null } },
-      include: {
-        ailment: {
-          include: { flaggedIngredients: { include: { sources: true } } },
-        },
-      },
-    });
-
-    const userPreferences = await prisma.userPreference.findMany({
-      where: { userId: dbUserId },
-      include: { preference: true },
-    });
-
-    const userJournalEntries = await prisma.userJournalEntry.findMany({
-      where: { userId: dbUserId, conditionId: { not: null } },
-      include: { condition: true },
-    });
-
-    const flagSources = {
-      ailments: ailmentsToFlagInputs(userAilments),
-      preferences: preferencesToFlagInputs(userPreferences),
-      journalEntries: journalEntriesToFlagInputs(userJournalEntries),
-    };
+    const flagSources = await getUserFlagSources(dbUserId, { includeIngredientSources: true });
 
     const flaggedIngredients = scanProduct(product, flagSources);
 

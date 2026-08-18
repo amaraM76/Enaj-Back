@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField, blindIndex } from "@/app/lib/crypto";
 
 // POST /api/users/:userId/ailments
 // Saves the user's selected ailments from the Health Conditions page.
@@ -21,7 +22,13 @@ export async function POST(
         const ailment = await prisma.ailment.findUnique({ where: { slug } });
         if (ailment) {
           await prisma.userAilment.create({
-            data: { userId, ailmentId: ailment.id, source: "SELECTED" },
+            data: {
+              userId,
+              ailmentId: ailment.id,
+              ailmentIdEnc: encryptField(ailment.id),
+              ailmentIdBlind: blindIndex(`${userId}:${ailment.id}`),
+              source: "SELECTED",
+            },
           });
         }
       }
@@ -30,7 +37,12 @@ export async function POST(
     // Save custom entry if provided
     if (customEntry) {
       await prisma.userAilment.create({
-        data: { userId, customEntry, source: "CUSTOM" },
+        data: {
+          userId,
+          customEntry,
+          customEntryEnc: encryptField(customEntry),
+          source: "CUSTOM",
+        },
       });
     }
 

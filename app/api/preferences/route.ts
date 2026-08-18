@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField, blindIndex } from "@/app/lib/crypto";
 
 // GET /api/preferences
 // Returns all preference categories with their preferences.
@@ -69,13 +70,24 @@ export async function POST(request: Request) {
         const found = await prisma.preference.findUnique({ where: { slug: pref.preferenceSlug } });
         if (found) {
           await prisma.userPreference.create({
-            data: { userId: dbUserId, preferenceId: found.id, source: pref.source },
+            data: {
+              userId: dbUserId,
+              preferenceId: found.id,
+              preferenceIdEnc: encryptField(found.id),
+              preferenceIdBlind: blindIndex(`${dbUserId}:${found.id}`),
+              source: pref.source,
+            },
           });
           savedCount++;
         }
       } else if (pref.customEntry) {
         await prisma.userPreference.create({
-          data: { userId: dbUserId, customEntry: pref.customEntry, source: "CUSTOM" },
+          data: {
+            userId: dbUserId,
+            customEntry: pref.customEntry,
+            customEntryEnc: encryptField(pref.customEntry),
+            source: "CUSTOM",
+          },
         });
         savedCount++;
       }

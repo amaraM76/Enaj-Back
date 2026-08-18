@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField, blindIndex } from "@/app/lib/crypto";
 
 // POST /api/user-journal
 // Replaces all journal entries for a user with the provided condition
@@ -32,14 +33,25 @@ export async function POST(request: Request) {
       const condition = await prisma.journalCondition.findUnique({ where: { slug } });
       if (condition) {
         await prisma.userJournalEntry.create({
-          data: { userId: dbUserId, conditionId: condition.id, source: "SELECTED" },
+          data: {
+            userId: dbUserId,
+            conditionId: condition.id,
+            conditionIdEnc: encryptField(condition.id),
+            conditionIdBlind: blindIndex(`${dbUserId}:${condition.id}`),
+            source: "SELECTED",
+          },
         });
         savedCount++;
       }
     }
     if (customEntry) {
       await prisma.userJournalEntry.create({
-        data: { userId: dbUserId, customEntry, source: "CUSTOM" },
+        data: {
+          userId: dbUserId,
+          customEntry,
+          customEntryEnc: encryptField(customEntry),
+          source: "CUSTOM",
+        },
       });
       savedCount++;
     }

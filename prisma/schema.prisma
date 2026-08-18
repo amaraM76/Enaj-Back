@@ -84,10 +84,18 @@ model UserProfile {
   firstName        String
   lastName         String
   email            String            @unique
-  location         String?            
-  age              String?              
-  gender           Gender?           
-  shoppingStores   String?           
+  location         String?
+  age              String?
+  gender           Gender?
+  shoppingStores   String?
+  // AES-256-GCM encrypted counterparts of the plaintext fields above
+  // (see app/lib/crypto.ts). Nullable/additive: plaintext columns are
+  // still dual-written and read until a verified backfill + follow-up
+  // migration removes them. Never queried by equality.
+  locationEnc        String?
+  ageEnc              String?
+  genderEnc           String?
+  shoppingStoresEnc   String?
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   auth             UserAuth?
@@ -260,12 +268,21 @@ model UserAilment {
   user        UserProfile     @relation(fields: [userId], references: [id], onDelete: Cascade)
   ailmentId   String?
   ailment     Ailment?        @relation(fields: [ailmentId], references: [id], onDelete: SetNull)
+  // AES-256-GCM encrypted ailmentId, plus an HMAC-SHA256 blind index
+  // of `${userId}:${ailmentId}` (see app/lib/crypto.ts) for dedup
+  // lookups without a directly-comparable plaintext/ciphertext FK.
+  // Nullable/additive until backfill completes.
+  ailmentIdEnc    String?
+  ailmentIdBlind  String?
   customEntry String?
+  // AES-256-GCM encrypted customEntry. Nullable/additive.
+  customEntryEnc  String?
   source      ConditionSource
   createdAt   DateTime        @default(now())
 
   @@index([userId])
   @@index([ailmentId])
+  @@index([ailmentIdBlind])
 }
 
 // ==========================================
@@ -466,13 +483,21 @@ model UserJournalEntry {
   user        UserProfile       @relation(fields: [userId], references: [id], onDelete: Cascade)
   conditionId String?
   condition   JournalCondition? @relation(fields: [conditionId], references: [id], onDelete: SetNull)
+  // AES-256-GCM encrypted conditionId, plus an HMAC-SHA256 blind index
+  // of `${userId}:${conditionId}` (see app/lib/crypto.ts). Nullable/
+  // additive until backfill completes.
+  conditionIdEnc    String?
+  conditionIdBlind  String?
   customEntry String?
+  // AES-256-GCM encrypted customEntry. Nullable/additive.
+  customEntryEnc  String?
   source      ConditionSource
   createdAt   DateTime          @default(now())
 
   @@unique([userId, conditionId])
   @@index([userId])
   @@index([conditionId])
+  @@index([conditionIdBlind])
 }
 
 // ==========================================
@@ -504,13 +529,21 @@ model UserPreference {
   user         UserProfile      @relation(fields: [userId], references: [id], onDelete: Cascade)
   preferenceId String?
   preference   Preference?      @relation(fields: [preferenceId], references: [id], onDelete: SetNull)
+  // AES-256-GCM encrypted preferenceId, plus an HMAC-SHA256 blind
+  // index of `${userId}:${preferenceId}` (see app/lib/crypto.ts).
+  // Nullable/additive until backfill completes.
+  preferenceIdEnc    String?
+  preferenceIdBlind  String?
   customEntry  String?
+  // AES-256-GCM encrypted customEntry. Nullable/additive.
+  customEntryEnc  String?
   source       PreferenceSource
   createdAt    DateTime         @default(now())
 
   @@unique([userId, preferenceId])
   @@index([userId])
   @@index([preferenceId])
+  @@index([preferenceIdBlind])
 }
 
 // ==========================================

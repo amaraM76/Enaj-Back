@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField, blindIndex } from "@/app/lib/crypto";
 
 export async function POST(request: Request) {
   try {
@@ -29,7 +30,13 @@ export async function POST(request: Request) {
         const ailment = await prisma.ailment.findUnique({ where: { slug } });
         if (ailment) {
           await prisma.userAilment.create({
-            data: { userId: dbUserId, ailmentId: ailment.id, source: "SELECTED" },
+            data: {
+              userId: dbUserId,
+              ailmentId: ailment.id,
+              ailmentIdEnc: encryptField(ailment.id),
+              ailmentIdBlind: blindIndex(`${dbUserId}:${ailment.id}`),
+              source: "SELECTED",
+            },
           });
           savedCount++;
         }
@@ -37,7 +44,12 @@ export async function POST(request: Request) {
     }
     if (customEntry) {
       await prisma.userAilment.create({
-        data: { userId: dbUserId, customEntry, source: "CUSTOM" },
+        data: {
+          userId: dbUserId,
+          customEntry,
+          customEntryEnc: encryptField(customEntry),
+          source: "CUSTOM",
+        },
       });
       savedCount++;
     }

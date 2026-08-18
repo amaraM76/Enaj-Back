@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
+import { encryptField } from "@/app/lib/crypto";
 
 const GENDER_MAP: Record<string, string> = {
   male: "MALE",
@@ -34,11 +35,22 @@ export async function PUT(
     if (firstName !== undefined) updateData.firstName = firstName;
     if (lastName !== undefined) updateData.lastName = lastName;
     if (email !== undefined) updateData.email = email;
-    if (location !== undefined) updateData.location = location;
-    if (age !== undefined) updateData.age = parseInt(age, 10);
-    if (shoppingStores !== undefined) updateData.shoppingStores = shoppingStores;
+    if (location !== undefined) {
+      updateData.location = location;
+      updateData.locationEnc = location !== null ? encryptField(String(location)) : null;
+    }
+    if (age !== undefined) {
+      updateData.age = parseInt(age, 10);
+      updateData.ageEnc = age !== null ? encryptField(String(age)) : null;
+    }
+    if (shoppingStores !== undefined) {
+      updateData.shoppingStores = shoppingStores;
+      updateData.shoppingStoresEnc = shoppingStores !== null ? encryptField(String(shoppingStores)) : null;
+    }
     if (gender !== undefined) {
-      updateData.gender = GENDER_MAP[gender.toLowerCase()] || null;
+      const mappedGender = GENDER_MAP[gender.toLowerCase()] || null;
+      updateData.gender = mappedGender;
+      updateData.genderEnc = mappedGender ? encryptField(mappedGender) : null;
     }
 
     if (Object.keys(updateData).length === 0) {
