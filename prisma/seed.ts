@@ -157,10 +157,10 @@ async function main() {
 
   // --- Keratosis Pilaris ---
   const kpIngredients = [
-    { slug: "sls-kp", name: "Sodium Lauryl Sulfate", reason: "Strips moisture from already dry KP-prone skin" },
-    { slug: "fragrance-kp", name: "Synthetic Fragrance", reason: "Can irritate sensitive bumpy skin" },
-    { slug: "mineral-oil-kp", name: "Mineral Oil", reason: "Can clog follicles already blocked in KP" },
-    { slug: "alcohol-kp", name: "Alcohol Denat", reason: "Dries out skin, worsening KP texture and redness" },
+    { slug: "sls-kp", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the skin's already-limited natural oils, worsening the dryness that makes KP's rough, bumpy texture more pronounced." },
+    { slug: "fragrance-kp", name: "Synthetic Fragrance", reason: "A common irritant for skin already inflamed around clogged hair follicles, capable of increasing the redness surrounding KP bumps." },
+    { slug: "mineral-oil-kp", name: "Mineral Oil", reason: "An occlusive ingredient that can sit on skin and further block hair follicles already plugged with keratin in KP, though lighter, non-comedogenic grades are sometimes better tolerated." },
+    { slug: "alcohol-kp", name: "Alcohol Denat", reason: "Evaporates quickly and dries the skin surface, which can worsen the rough texture and redness that define keratosis pilaris." },
   ]
   for (const ing of kpIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["keratosis-pilaris"] } })
@@ -168,11 +168,11 @@ async function main() {
 
   // --- Sulfite Sensitivity ---
   const sulfiteSensitivityIngredients = [
-    { slug: "sodium-sulfite", name: "Sodium Sulfite", reason: "Direct sulfite that triggers sensitivity reactions" },
-    { slug: "sodium-bisulfite", name: "Sodium Bisulfite", reason: "Sulfite preservative that causes reactions in sensitive individuals" },
-    { slug: "potassium-metabisulfite", name: "Potassium Metabisulfite", reason: "Common sulfite used in wine and dried fruits" },
-    { slug: "sulfur-dioxide", name: "Sulfur Dioxide", reason: "Gas form of sulfite used as food preservative" },
-    { slug: "sodium-metabisulfite", name: "Sodium Metabisulfite", reason: "Sulfite preservative linked to asthma and allergic reactions" },
+    { slug: "sodium-sulfite", name: "Sodium Sulfite", reason: "Releases sulfur dioxide gas when it reacts with stomach acid, and it's inhaling or ingesting that gas that triggers reactions like wheezing and flushing in sulfite-sensitive people." },
+    { slug: "sodium-bisulfite", name: "Sodium Bisulfite", reason: "Converts to sulfur dioxide in the body, the same reactive compound the FDA estimates causes reactions in roughly 1 in 100 people, and a much higher share of people with asthma." },
+    { slug: "potassium-metabisulfite", name: "Potassium Metabisulfite", reason: "Widely used to prevent oxidation and browning in wine and dried fruit; the FDA has required sulfite labeling on packaged foods since 1986 specifically because of reactions like these." },
+    { slug: "sulfur-dioxide", name: "Sulfur Dioxide", reason: "The gas form of sulfite and the compound directly responsible for triggering airway irritation, hives, or gastrointestinal symptoms in sensitive individuals." },
+    { slug: "sodium-metabisulfite", name: "Sodium Metabisulfite", reason: "One of the sulfite preservatives most frequently linked to asthma exacerbation, since inhaled sulfur dioxide can directly trigger bronchospasm in susceptible people." },
   ]
   for (const ing of sulfiteSensitivityIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sulfite-sensitivity"] } })
@@ -180,12 +180,12 @@ async function main() {
 
   // --- SIBO ---
   const siboIngredients = [
-    { slug: "fructose-sibo", name: "Fructose", reason: "Feeds bacterial overgrowth in the small intestine" },
-    { slug: "lactose-sibo", name: "Lactose", reason: "Poorly absorbed sugar that feeds SIBO bacteria" },
-    { slug: "inulin-sibo", name: "Inulin", reason: "Prebiotic fiber that can worsen SIBO symptoms" },
-    { slug: "sorbitol-sibo", name: "Sorbitol", reason: "Sugar alcohol that ferments and feeds bacterial overgrowth" },
-    { slug: "guar-gum-sibo", name: "Guar Gum", reason: "Fermentable fiber that can worsen SIBO" },
-    { slug: "xylitol-sibo", name: "Xylitol", reason: "Sugar alcohol that feeds bacterial overgrowth" },
+    { slug: "fructose-sibo", name: "Fructose", reason: "In SIBO, bacteria that should mostly live in the colon overgrow in the small intestine, where they ferment poorly absorbed sugars like excess fructose, producing the gas and bloating typical of a SIBO flare." },
+    { slug: "lactose-sibo", name: "Lactose", reason: "Many people with SIBO also develop secondary lactose intolerance from bacterial damage to the gut lining, so undigested lactose reaching the overgrown bacteria produces excess gas and bloating." },
+    { slug: "inulin-sibo", name: "Inulin", reason: "An excellent prebiotic fiber for a healthy colon, but it can dramatically worsen SIBO, since it's rapidly fermented by the very small-intestinal bacteria that are already overgrown." },
+    { slug: "sorbitol-sibo", name: "Sorbitol", reason: "A sugar alcohol the small intestine absorbs slowly, giving SIBO bacteria extra time and substrate to ferment it into gas." },
+    { slug: "guar-gum-sibo", name: "Guar Gum", reason: "A highly fermentable fiber thickener that the bacterial overgrowth in the small intestine can rapidly ferment into gas, often making SIBO bloating worse." },
+    { slug: "xylitol-sibo", name: "Xylitol", reason: "Like other sugar alcohols, xylitol is poorly absorbed and readily fermented by small intestinal bacteria, a combination that frequently triggers SIBO symptoms." },
   ]
   for (const ing of siboIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sibo"] } })
@@ -217,13 +217,13 @@ async function main() {
 
   // --- Egg Allergy ---
   const eggAllergyIngredients = [
-    { slug: "egg-whole", name: "Egg", reason: "Primary allergen for egg allergy" },
-    { slug: "egg-white", name: "Egg White", reason: "Contains main allergenic proteins including ovalbumin" },
-    { slug: "egg-yolk", name: "Egg Yolk", reason: "Contains allergenic proteins, though less than whites" },
-    { slug: "albumin-egg", name: "Albumin", reason: "Egg-derived protein found in many processed foods" },
-    { slug: "lysozyme-egg", name: "Lysozyme", reason: "Egg-derived enzyme used as a preservative" },
-    { slug: "mayonnaise-egg", name: "Mayonnaise", reason: "Egg-based condiment that triggers egg allergy" },
-    { slug: "lecithin-egg", name: "Egg Lecithin", reason: "Egg-derived emulsifier found in some products" },
+    { slug: "egg-whole", name: "Egg", reason: "Contains ovalbumin and ovomucoid, the two proteins most responsible for triggering IgE-mediated allergic reactions to egg." },
+    { slug: "egg-white", name: "Egg White", reason: "Carries the majority of egg's allergenic protein load, including ovalbumin, the single protein most commonly implicated in egg allergy reactions." },
+    { slug: "egg-yolk", name: "Egg Yolk", reason: "Contains allergenic proteins like livetin, and while typically less reactive than egg white, it can still trigger a reaction in people with a true egg allergy." },
+    { slug: "albumin-egg", name: "Albumin", reason: "A general term for the egg-white proteins responsible for most egg allergy reactions; it appears in many processed and baked foods as a hidden source of egg exposure." },
+    { slug: "lysozyme-egg", name: "Lysozyme", reason: "An egg-derived antimicrobial enzyme used to extend shelf life in some cheeses and processed meats - a lesser-known but real hidden source of egg protein." },
+    { slug: "mayonnaise-egg", name: "Mayonnaise", reason: "An egg-yolk-based emulsion that carries egg allergens even though many people don't think of it as an 'egg' product." },
+    { slug: "lecithin-egg", name: "Egg Lecithin", reason: "Egg-derived lecithin retains trace allergenic protein, unlike the far more common soy lecithin, so it's worth checking the source when lecithin is listed on a label." },
   ]
   for (const ing of eggAllergyIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["egg-allergy"] } })
@@ -231,14 +231,14 @@ async function main() {
 
   // --- Histamine Intolerance ---
   const histamineIngredients = [
-    { slug: "vinegar-histamine", name: "Vinegar", reason: "Fermented food high in histamine that triggers intolerance reactions" },
-    { slug: "alcohol-histamine", name: "Alcohol", reason: "Contains and triggers histamine release" },
-    { slug: "aged-cheese-histamine", name: "Aged Cheese", reason: "Very high in histamine due to fermentation" },
-    { slug: "fermented-foods-histamine", name: "Fermented Foods", reason: "Sauerkraut, kimchi, kefir are high in histamine" },
-    { slug: "artificial-dyes-histamine", name: "Artificial Colors", reason: "Food dyes can trigger histamine release in sensitive individuals" },
-    { slug: "msg-histamine", name: "Monosodium Glutamate", reason: "Can trigger histamine-like reactions in sensitive individuals" },
-    { slug: "tomatoes-histamine", name: "Tomatoes", reason: "Tomatoes are naturally high in histamine" },
-    { slug: "spinach-histamine", name: "Spinach", reason: "Histamine-rich vegetable that triggers intolerance reactions" },
+    { slug: "vinegar-histamine", name: "Vinegar", reason: "A fermented product that accumulates histamine during processing; in people who don't break down dietary histamine efficiently (often due to lower DAO enzyme activity), it can trigger flushing, headache, or hives." },
+    { slug: "alcohol-histamine", name: "Alcohol", reason: "Contains histamine from fermentation and also inhibits the DAO enzyme responsible for breaking histamine down - a double effect that makes alcohol one of the most reliable histamine intolerance triggers." },
+    { slug: "aged-cheese-histamine", name: "Aged Cheese", reason: "Histamine accumulates the longer a cheese ages, so aged varieties like cheddar and parmesan carry some of the highest histamine levels of any food." },
+    { slug: "fermented-foods-histamine", name: "Fermented Foods", reason: "The fermentation process behind sauerkraut, kimchi, and kefir also generates histamine as a byproduct, often at levels many times higher than the fresh vegetable." },
+    { slug: "artificial-dyes-histamine", name: "Artificial Colors", reason: "Some synthetic dyes can trigger direct histamine release from mast cells, independent of dietary histamine load, compounding symptoms in sensitive individuals." },
+    { slug: "msg-histamine", name: "Monosodium Glutamate", reason: "While not itself a histamine source, MSG has been reported to trigger histamine-like flushing and headache reactions in some sensitive individuals." },
+    { slug: "tomatoes-histamine", name: "Tomatoes", reason: "Naturally high in histamine and also a histamine liberator, meaning they can trigger the body's own mast cells to release additional histamine." },
+    { slug: "spinach-histamine", name: "Spinach", reason: "One of the few vegetables naturally high in histamine, making it a commonly flagged trigger for people managing histamine intolerance." },
   ]
   for (const ing of histamineIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["histamine-intolerance"] } })
@@ -419,12 +419,12 @@ async function main() {
   }
   // --- Rosacea ---
   const rosaceaIngredients = [
-    { slug: "alcohol-denat", name: "Alcohol Denat", reason: "Can cause skin irritation and flare-ups", sources: [{ title: "National Rosacea Society - Skin Care Ingredients to Avoid", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }, { title: "American Academy of Dermatology - Rosacea Triggers", url: "https://www.aad.org/public/diseases/rosacea/triggers/find" }] },
-    { slug: "fragrance-rosacea", name: "Synthetic Fragrance", reason: "Common trigger for rosacea flare-ups", sources: [{ title: "National Rosacea Society - Triggers Survey", url: "https://www.rosacea.org/patients/materials/triggersgraph.php" }, { title: "Journal of Clinical and Aesthetic Dermatology", url: "https://jcadonline.com/rosacea-triggers/" }] },
-    { slug: "menthol", name: "Menthol", reason: "Can cause skin irritation and redness", sources: [{ title: "National Rosacea Society - Skin Care Ingredients", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }] },
-    { slug: "witch-hazel", name: "Witch Hazel", reason: "May aggravate rosacea symptoms", sources: [{ title: "American Academy of Dermatology - Rosacea Treatment", url: "https://www.aad.org/public/diseases/rosacea/treatment" }] },
-    { slug: "eucalyptus", name: "Eucalyptus Oil", reason: "Known irritant for rosacea-prone skin", sources: [{ title: "DermNet NZ - Rosacea", url: "https://dermnetnz.org/topics/rosacea" }] },
-    { slug: "sodium-lauryl", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that can trigger flare-ups", sources: [{ title: "Environmental Working Group - SLS Safety", url: "https://www.ewg.org/skindeep/ingredient/706110/SODIUM_LAURYL_SULFATE/" }, { title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
+    { slug: "alcohol-denat", name: "Alcohol Denat", reason: "Dehydrates the skin surface and disrupts the barrier, a combination strongly linked in the National Rosacea Society's own patient-reported trigger surveys to flare-ups involving redness and stinging.", sources: [{ title: "National Rosacea Society - Skin Care Ingredients to Avoid", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }, { title: "American Academy of Dermatology - Rosacea Triggers", url: "https://www.aad.org/public/diseases/rosacea/triggers/find" }] },
+    { slug: "fragrance-rosacea", name: "Synthetic Fragrance", reason: "Consistently ranks among the top reported rosacea triggers in patient surveys, likely because fragrance compounds directly irritate skin that's already more reactive and permeable than typical skin.", sources: [{ title: "National Rosacea Society - Triggers Survey", url: "https://www.rosacea.org/patients/materials/triggersgraph.php" }, { title: "Journal of Clinical and Aesthetic Dermatology", url: "https://jcadonline.com/rosacea-triggers/" }] },
+    { slug: "menthol", name: "Menthol", reason: "Creates a cooling sensation by stimulating nerve receptors in the skin, a stimulation that can trigger the flushing response central to a rosacea flare.", sources: [{ title: "National Rosacea Society - Skin Care Ingredients", url: "https://www.rosacea.org/patients/skin-care-and-cosmetics" }] },
+    { slug: "witch-hazel", name: "Witch Hazel", reason: "Contains tannins that, despite its astringent reputation, can irritate and dry the already-compromised skin barrier common in rosacea.", sources: [{ title: "American Academy of Dermatology - Rosacea Treatment", url: "https://www.aad.org/public/diseases/rosacea/treatment" }] },
+    { slug: "eucalyptus", name: "Eucalyptus Oil", reason: "A volatile plant oil frequently identified as an irritant for rosacea-prone skin, capable of triggering the stinging and redness of a flare.", sources: [{ title: "DermNet NZ - Rosacea", url: "https://dermnetnz.org/topics/rosacea" }] },
+    { slug: "sodium-lauryl", name: "Sodium Lauryl Sulfate", reason: "Strips the skin's protective lipid barrier, and a weakened barrier is one of the underlying features that makes rosacea-prone skin more reactive to everyday products.", sources: [{ title: "Environmental Working Group - SLS Safety", url: "https://www.ewg.org/skindeep/ingredient/706110/SODIUM_LAURYL_SULFATE/" }, { title: "National Eczema Association", url: "https://nationaleczema.org/eczema-products/" }] },
   ];
 
   for (const ing of rosaceaIngredients) {
@@ -669,12 +669,12 @@ async function main() {
 
   // --- Dandruff ---
   const dandruffIngredients = [
-    { slug: "sls-dandruff", name: "Sodium Lauryl Sulfate", reason: "Strips natural scalp oils, worsening dryness and flaking" },
-    { slug: "alcohol-dandruff", name: "Alcohol Denat", reason: "Dries out the scalp and can increase flaking" },
-    { slug: "fragrance-dandruff", name: "Synthetic Fragrance", reason: "Can irritate a sensitive scalp and trigger flaking" },
-    { slug: "coconut-oil-dandruff", name: "Coconut Oil", reason: "Can feed Malassezia yeast on the scalp, worsening dandruff" },
-    { slug: "dimethicone-dandruff", name: "Dimethicone", reason: "Silicone buildup on scalp can trap flakes and irritants" },
-    { slug: "parabens-dandruff", name: "Parabens", reason: "May irritate an already sensitive, flaky scalp" },
+    { slug: "sls-dandruff", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant that strips the scalp's natural protective oils, leaving skin more prone to the dryness and flaking that define dandruff." },
+    { slug: "alcohol-dandruff", name: "Alcohol Denat", reason: "Evaporates quickly and pulls moisture from the scalp, which can worsen flaking - especially for the dry-skin type of dandruff rather than the oily, yeast-driven type." },
+    { slug: "fragrance-dandruff", name: "Synthetic Fragrance", reason: "A frequently reported scalp irritant capable of triggering the itching and inflammation that accompany a dandruff flare-up." },
+    { slug: "coconut-oil-dandruff", name: "Coconut Oil", reason: "Its fatty acid profile is a preferred food source for Malassezia, the yeast most strongly linked to dandruff, so it can worsen flaking in some people despite its moisturizing reputation." },
+    { slug: "dimethicone-dandruff", name: "Dimethicone", reason: "A film-forming silicone that can build up on the scalp with repeated use, trapping dead skin flakes and irritants against the skin." },
+    { slug: "parabens-dandruff", name: "Parabens", reason: "Preservatives that some people with an already inflamed, sensitive scalp find irritating, potentially compounding dandruff symptoms." },
   ];
 
   for (const ing of dandruffIngredients) {
