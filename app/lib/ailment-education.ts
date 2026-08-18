@@ -59,7 +59,7 @@ export interface AilmentIngredientEducation {
   export const ailmentEducationData: Record<string, AilmentEducation> = {
     // Neurological Conditions
     'alzheimers': {
-      description: 'Alzheimer\'s disease is a progressive neurological disorder that causes brain cells to degenerate and die, leading to memory loss and cognitive decline. Research suggests certain environmental factors and dietary choices may influence risk.',
+      description: 'Alzheimer\'s disease is a progressive neurodegenerative disorder in which brain cells gradually degenerate and die, driven in part by the buildup of amyloid plaques and tau tangles, leading to worsening memory loss, confusion, and cognitive decline over years. It\'s the most common cause of dementia, and while age and genetics are the strongest risk factors, the Alzheimer\'s Association and NIH point to a growing body of research linking modifiable factors - including diets high in trans fats and added sugar, associated with vascular damage and brain insulin resistance - to elevated risk. No diet has been shown to prevent or cure Alzheimer\'s, but many researchers consider heart-healthy eating patterns like the Mediterranean or MIND diet a reasonable part of a broader risk-reduction strategy.',
       generalSources: [
         { title: 'Alzheimer\'s Association', url: 'https://www.alz.org/alzheimers-dementia/what-is-alzheimers' },
         { title: 'NIH - Alzheimer\'s Disease', url: 'https://www.nia.nih.gov/health/alzheimers-and-dementia/alzheimers-disease-fact-sheet' },
@@ -94,7 +94,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'dementia': {
-      description: 'Dementia is a general term for loss of memory, language, problem-solving and other thinking abilities severe enough to interfere with daily life. Alzheimer\'s is the most common cause.',
+      description: 'Dementia is a general term - not a single disease - for a decline in memory, language, problem-solving, and other cognitive abilities severe enough to interfere with daily life. Alzheimer\'s disease is the most common underlying cause, but vascular dementia, Lewy body dementia, and other conditions can also produce dementia symptoms, often with overlapping risk factors related to cardiovascular and metabolic health. The World Health Organization and Alzheimer\'s Association note that several modifiable lifestyle factors - including diets high in added sugar, trans fats, and processed meats - are associated with higher dementia risk in long-term studies, likely through their effects on blood vessels, blood sugar regulation, and chronic inflammation in the brain, which is why heart-healthy eating patterns are commonly recommended as part of dementia risk reduction.',
       generalSources: [
         { title: 'Alzheimer\'s Association - What Is Dementia', url: 'https://www.alz.org/alzheimers-dementia/what-is-dementia' },
         { title: 'WHO - Dementia', url: 'https://www.who.int/news-room/fact-sheets/detail/dementia' },
@@ -154,7 +154,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'ms': {
-      description: 'Multiple Sclerosis (MS) is a chronic autoimmune disease where the immune system attacks the myelin sheath protecting nerve fibers, disrupting communication between the brain and body. Diet and lifestyle factors may help manage inflammation and symptoms.',
+      description: 'Multiple Sclerosis (MS) is a chronic autoimmune disease in which the immune system attacks myelin, the protective sheath insulating nerve fibers in the brain and spinal cord, disrupting communication between the brain and the rest of the body and producing symptoms from fatigue and numbness to vision problems and mobility issues. While no diet treats MS directly, the National MS Society highlights research into dietary patterns like the Swank diet - which limits saturated fat - and notes that some patients report fewer symptoms avoiding dairy and gluten, theorized to relate to structural similarities between certain food proteins and myelin itself. Evidence for specific foods remains preliminary, so dietary changes are generally recommended as a complement to, not a replacement for, disease-modifying medication.',
       generalSources: [
         { title: 'National MS Society', url: 'https://www.nationalmssociety.org/What-is-MS' },
         { title: 'Mayo Clinic - MS', url: 'https://www.mayoclinic.org/diseases-conditions/multiple-sclerosis/symptoms-causes/syc-20350269' },
@@ -240,7 +240,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'epilepsy': {
-      description: 'Epilepsy is a neurological disorder characterized by recurrent seizures. Certain substances and dietary factors may influence seizure activity.',
+      description: 'Epilepsy is a neurological disorder characterized by a tendency toward recurrent, unprovoked seizures, caused by abnormal, excessive electrical activity in the brain. It has many possible underlying causes, from genetics to brain injury, and treatment usually centers on anti-seizure medication, though therapeutic diets like the ketogenic diet are also an established treatment option for some forms of drug-resistant epilepsy. Outside of formal dietary therapy, some people with epilepsy identify specific personal triggers - excitotoxin-type additives like MSG and aspartame, or high caffeine intake, both of which can overstimulate neural activity - though the evidence for these as triggers is largely from self-report rather than controlled trials, so any changes to diet or medication should go through a neurologist.',
       generalSources: [
         { title: 'Epilepsy Foundation', url: 'https://www.epilepsy.com/what-is-epilepsy' },
         { title: 'Mayo Clinic - Epilepsy', url: 'https://www.mayoclinic.org/diseases-conditions/epilepsy/symptoms-causes/syc-20350093' },
@@ -832,7 +832,7 @@ export interface AilmentIngredientEducation {
   
     // Autoimmune Conditions
     'lupus': {
-      description: 'Lupus is a chronic autoimmune disease where the immune system attacks healthy tissue. Avoiding certain triggers can help manage flare-ups.',
+      description: 'Lupus (systemic lupus erythematosus) is a chronic autoimmune disease in which the immune system attacks healthy tissue throughout the body, including the skin, joints, kidneys, and cardiovascular system, producing a wide and often unpredictable range of symptoms. Flares can be triggered by sun exposure, infection, stress, and - for some patients - certain foods and supplements that stimulate immune activity, such as alfalfa sprouts (which contain the amino acid L-canavanine) and immune-boosting herbs like echinacea and garlic. The Lupus Foundation of America notes that because lupus varies so much between individuals, trigger identification is highly personal, and any dietary or supplement changes are best made in coordination with a rheumatologist.',
       generalSources: [
         { title: 'Lupus Foundation of America', url: 'https://www.lupus.org/resources/what-is-lupus' },
         { title: 'Mayo Clinic - Lupus', url: 'https://www.mayoclinic.org/diseases-conditions/lupus/symptoms-causes/syc-20365789' },
@@ -1205,7 +1205,7 @@ export interface AilmentIngredientEducation {
   
     // Neurological Conditions
     'parkinsons': {
-      description: 'Parkinson\'s disease is a progressive neurological disorder affecting movement. Research suggests certain environmental toxins may be associated with increased risk.',
+      description: 'Parkinson\'s disease is a progressive neurological disorder that results from the loss of dopamine-producing neurons in the brain, leading to tremor, stiffness, slowed movement, and balance difficulties that worsen over time. Its exact cause is unknown, but the CDC and multiple large epidemiological studies have identified chronic pesticide exposure as one of the most consistently replicated environmental risk factors, alongside other studied contributors like heavy metal exposure and dietary patterns high in trans fats and sugar that promote neuroinflammation. There\'s no dietary cure, but many people with Parkinson\'s work with their care team on nutrition both to support overall brain health and to manage how certain foods interact with Parkinson\'s medications like levodopa.',
       generalSources: [
         { title: 'Parkinson\'s Foundation', url: 'https://www.parkinson.org/' },
         { title: 'NIH - Parkinson\'s Disease', url: 'https://www.ninds.nih.gov/health-information/disorders/parkinsons-disease' },
@@ -2021,7 +2021,7 @@ export interface AilmentIngredientEducation {
     },
     
     'anemia': {
-      description: 'Anemia is a condition where the blood lacks enough healthy red blood cells to carry adequate oxygen to the body\'s tissues. Iron-deficiency anemia is the most common type. Certain ingredients can interfere with iron absorption.',
+      description: 'Anemia is a condition in which the blood lacks enough healthy red blood cells, or enough hemoglobin within them, to carry adequate oxygen to the body\'s tissues - producing fatigue, weakness, and pale skin. Iron-deficiency anemia is the most common type worldwide, according to the NIH, often resulting from inadequate dietary iron, blood loss, or poor absorption. Because iron absorption is a delicate process, several everyday food compounds - tannins in tea, phytates in whole grains, calcium in dairy and supplements, and polyphenols in coffee - can meaningfully reduce how much iron the body actually absorbs from a meal, which is why people managing anemia are often advised to separate these from iron-rich foods or supplements by a couple of hours.',
       generalSources: [
         { title: 'Mayo Clinic - Anemia', url: 'https://www.mayoclinic.org/diseases-conditions/anemia/symptoms-causes/syc-20351360' },
         { title: 'NIH - Anemia', url: 'https://www.nhlbi.nih.gov/health/anemia' },
@@ -2048,7 +2048,7 @@ export interface AilmentIngredientEducation {
     },
     
     'neuropathy': {
-      description: 'Peripheral neuropathy is damage to the peripheral nerves, causing weakness, numbness, and pain — usually in the hands and feet. It can be caused by diabetes, nutritional deficiencies, toxins, or autoimmune conditions. Diet and avoiding certain substances may help slow progression.',
+      description: 'Peripheral neuropathy is damage to the peripheral nerves - the network outside the brain and spinal cord - causing weakness, numbness, tingling, or pain that usually starts in the hands and feet. Diabetes is the leading cause, since chronically high blood sugar damages small nerve fibers over time, but nutritional deficiencies, toxin exposure, chemotherapy, and autoimmune conditions can all cause it as well. Because nerve damage from high blood sugar and inflammation tends to be cumulative, the NIH and Mayo Clinic both note that tightly managing blood sugar and limiting inflammatory foods - added sugar, trans fats, and for some patients gluten - is one of the few modifiable ways to help slow further nerve damage alongside any underlying medical treatment.',
       generalSources: [
         { title: 'Mayo Clinic - Peripheral Neuropathy', url: 'https://www.mayoclinic.org/diseases-conditions/peripheral-neuropathy/symptoms-causes/syc-20352061' },
         { title: 'NIH - Peripheral Neuropathy', url: 'https://www.ninds.nih.gov/health-information/disorders/peripheral-neuropathy' },
