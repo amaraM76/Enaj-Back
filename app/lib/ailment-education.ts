@@ -559,7 +559,7 @@ export interface AilmentIngredientEducation {
     },
     
     'ibd': {
-      description: 'Inflammatory Bowel Disease (IBD) is an umbrella term for chronic inflammation of the GI tract, including Crohn\'s disease and ulcerative colitis. Diet does not cause IBD but can significantly influence symptoms and flare-ups.',
+      description: 'Inflammatory Bowel Disease (IBD) is an umbrella term for a group of conditions - primarily Crohn\'s disease and ulcerative colitis - that cause chronic, relapsing inflammation of the digestive tract, driven by an immune system that overreacts to the gut\'s own bacteria and tissue. Diet does not cause IBD, but the Crohn\'s & Colitis Foundation and a growing body of research point to specific food additives - emulsifiers like polysorbate 80, thickeners like carrageenan, and certain artificial sweeteners - that can erode the gut\'s protective mucus layer or shift bacterial balance in ways that promote the inflammation central to flares. Because individual trigger foods vary widely between patients, many people with IBD work with a gastroenterologist or dietitian to identify their own pattern rather than following one fixed diet.',
       generalSources: [
         { title: 'Crohn\'s & Colitis Foundation', url: 'https://www.crohnscolitisfoundation.org/what-is-ibd' },
         { title: 'Mayo Clinic - IBD', url: 'https://www.mayoclinic.org/diseases-conditions/inflammatory-bowel-disease/symptoms-causes/syc-20353315' },
@@ -1269,7 +1269,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'crohns': {
-      description: 'Crohn\'s disease is an inflammatory bowel disease (IBD) that causes chronic inflammation of the digestive tract. Diet management can help reduce symptoms.',
+      description: 'Crohn\'s disease is a form of inflammatory bowel disease that can cause chronic inflammation anywhere along the digestive tract, from the mouth to the anus, though it most often affects the end of the small intestine and the beginning of the colon. Unlike ulcerative colitis, Crohn\'s inflammation can penetrate through multiple layers of the bowel wall, part of why it can lead to complications like strictures and fistulas if unmanaged. Diet doesn\'t cause Crohn\'s, but research reviewed by the Crohn\'s & Colitis Foundation has linked several common food additives - emulsifiers, certain thickeners, and some artificial sweeteners - to gut barrier disruption and bacterial shifts that can worsen flares, which is why many patients track and limit them alongside their prescribed treatment.',
       generalSources: [
         { title: 'Crohn\'s & Colitis Foundation', url: 'https://www.crohnscolitisfoundation.org/' },
         { title: 'Mayo Clinic - Crohn\'s', url: 'https://www.mayoclinic.org/diseases-conditions/crohns-disease/symptoms-causes/syc-20353304' },
@@ -1292,7 +1292,7 @@ export interface AilmentIngredientEducation {
   
     // Thyroid Conditions
     'hashimotos': {
-      description: 'Hashimoto\'s thyroiditis is an autoimmune condition where the immune system attacks the thyroid gland. Managing the condition may involve avoiding certain substances that affect thyroid function.',
+      description: 'Hashimoto\'s thyroiditis is an autoimmune condition in which the immune system gradually attacks the thyroid gland, most often leading to hypothyroidism as thyroid tissue is damaged over time. It\'s the most common cause of hypothyroidism in the United States and is usually managed with thyroid hormone replacement medication. Some researchers have studied "molecular mimicry" - a structural resemblance between gluten\'s gliadin protein and thyroid tissue - as one possible reason some Hashimoto\'s patients report fewer flares gluten-free, and soy and excess iodine are commonly flagged because they can interfere with thyroid hormone absorption or worsen autoimmune activity. None of these dietary choices replace medication, but many patients use them alongside it.',
       generalSources: [
         { title: 'American Thyroid Association', url: 'https://www.thyroid.org/hashimotos-thyroiditis/' },
         { title: 'Mayo Clinic - Hashimoto\'s', url: 'https://www.mayoclinic.org/diseases-conditions/hashimotos-disease/symptoms-causes/syc-20351855' },
@@ -1398,7 +1398,7 @@ export interface AilmentIngredientEducation {
   
     // Neurological/Mental Health Conditions
     'adhd': {
-      description: 'Attention Deficit Hyperactivity Disorder (ADHD) is a neurodevelopmental disorder affecting focus, impulse control, and activity levels. Some research explores potential dietary influences.',
+      description: 'Attention-Deficit/Hyperactivity Disorder (ADHD) is a neurodevelopmental condition that affects focus, impulse control, and activity regulation, typically diagnosed in childhood but often persisting into adulthood. Its causes are primarily genetic and neurological, involving differences in dopamine and norepinephrine signaling - diet does not cause ADHD. That said, research including the widely cited UK Southampton study found that certain synthetic food dyes and preservatives can measurably increase hyperactive behavior in a subset of children, which is why the UK and EU (though not the US) require warning labels on foods containing them. Many families managing ADHD choose to limit these additives, added sugar, and caffeine as part of a broader approach alongside medical treatment, though responses vary from person to person.',
       generalSources: [
         { title: 'CHADD - About ADHD', url: 'https://chadd.org/about-adhd/overview/' },
         { title: 'CDC - ADHD', url: 'https://www.cdc.gov/ncbddd/adhd/' },
@@ -1483,7 +1483,7 @@ export interface AilmentIngredientEducation {
   
     // Digestive Conditions (additional)
     'gerd': {
-      description: 'Gastroesophageal Reflux Disease (GERD) is a chronic condition where stomach acid flows back into the esophagus, causing heartburn and other symptoms.',
+      description: 'Gastroesophageal Reflux Disease (GERD) is a chronic condition in which stomach acid frequently flows backward into the esophagus, causing heartburn, regurgitation, and sometimes damage to the esophageal lining over time. It happens when the lower esophageal sphincter - the muscular valve between the stomach and esophagus - relaxes or weakens more than it should. According to the Mayo Clinic and NIH, certain foods and drinks are well-documented triggers because they either relax that sphincter directly (caffeine, peppermint, chocolate) or add extra acid load to a stomach that\'s already refluxing too easily (citrus, tomato, vinegar), which is why identifying and limiting personal trigger foods is a first-line recommendation alongside any prescribed acid-reducing medication.',
       generalSources: [
         { title: 'NIDDK - GERD', url: 'https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults' },
         { title: 'Mayo Clinic - GERD', url: 'https://www.mayoclinic.org/diseases-conditions/gerd/symptoms-causes/syc-20361940' },
@@ -1908,7 +1908,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'perimenopause': {
-      description: 'Perimenopause is the transition period before menopause when hormone levels fluctuate. Certain substances may worsen symptoms like hot flashes and mood changes.',
+      description: 'Perimenopause is the transition period leading up to menopause, often lasting several years, during which estrogen and progesterone levels fluctuate unpredictably rather than declining steadily. This hormonal instability - not a hormone deficit outright - is what makes perimenopause symptoms like irregular periods, hot flashes, mood swings, and sleep disruption often feel more erratic than post-menopausal symptoms. Because the fluctuations themselves drive many symptoms, some people find that stabilizing blood sugar and moderating stimulants like caffeine and alcohol helps smooth out day-to-day symptom severity, though the underlying hormonal shifts continue regardless of diet until the transition completes.',
       generalSources: [
         { title: 'Mayo Clinic - Perimenopause', url: 'https://www.mayoclinic.org/diseases-conditions/perimenopause/symptoms-causes/syc-20354666' },
         { title: 'NAMS - Perimenopause', url: 'https://www.menopause.org/for-women/menopauseflashes/menopause-symptoms-and-treatments/menopause-101-a-primer-for-the-perimenopausal' },
@@ -1994,7 +1994,7 @@ export interface AilmentIngredientEducation {
     },
     
     'rheumatoid': {
-      description: 'Rheumatoid arthritis (RA) is a chronic autoimmune disease where the immune system attacks the joints, causing painful swelling, stiffness, and eventual joint damage. An anti-inflammatory diet may help reduce symptom severity.',
+      description: 'Rheumatoid arthritis (RA) is a chronic autoimmune disease in which the immune system mistakenly attacks the synovium, the lining of the joints, causing painful swelling, stiffness, and - left untreated - progressive joint damage and deformity. Unlike osteoarthritis, which results from mechanical wear, RA is systemic and can also affect the eyes, lungs, and cardiovascular system. Diet doesn\'t cause or cure RA, but the Arthritis Foundation and multiple studies note that inflammatory markers like CRP - the same ones doctors track to monitor RA activity - respond to dietary patterns, which is why many RA patients pair their prescribed medication with an anti-inflammatory approach that limits refined sugar, trans fats, and omega-6-heavy seed oils.',
       generalSources: [
         { title: 'Arthritis Foundation - RA', url: 'https://www.arthritis.org/diseases/rheumatoid-arthritis' },
         { title: 'Mayo Clinic - Rheumatoid Arthritis', url: 'https://www.mayoclinic.org/diseases-conditions/rheumatoid-arthritis/symptoms-causes/syc-20353648' },
@@ -2210,7 +2210,7 @@ export interface AilmentIngredientEducation {
     },
     
     'fibromyalgia': {
-      description: 'Fibromyalgia is a chronic condition causing widespread musculoskeletal pain, fatigue, sleep issues, and cognitive difficulties. While its exact cause is unknown, certain dietary factors may influence symptom severity.',
+      description: 'Fibromyalgia is a chronic condition marked by widespread musculoskeletal pain, profound fatigue, unrefreshing sleep, and cognitive difficulties often described as "fibro fog." Researchers believe it involves central sensitization - the nervous system amplifying pain signals - rather than damage to muscles or joints themselves, which is part of why fibromyalgia doesn\'t show up on standard imaging or bloodwork. While no single diet causes or cures fibromyalgia, many patients and the Mayo Clinic note that certain foods can worsen the inflammation, sleep disruption, and pain sensitivity that define a flare. Common approaches include limiting added sugar, artificial sweeteners, and excitotoxin-type additives like MSG alongside a broader anti-inflammatory eating pattern, though individual triggers vary and any major dietary change is best discussed with a healthcare provider.',
       generalSources: [
         { title: 'Mayo Clinic - Fibromyalgia', url: 'https://www.mayoclinic.org/diseases-conditions/fibromyalgia/symptoms-causes/syc-20354780' },
         { title: 'NIH - Fibromyalgia', url: 'https://www.niams.nih.gov/health-topics/fibromyalgia' },
@@ -2240,7 +2240,7 @@ export interface AilmentIngredientEducation {
       },
     },
     'menopause': {
-      description: 'Menopause marks the end of menstrual cycles, typically occurring in the late 40s to early 50s. Managing symptoms often involves lifestyle and dietary adjustments.',
+      description: 'Menopause is the point marking the end of menstrual cycles, typically occurring in the late 40s to early 50s and diagnosed after twelve consecutive months without a period. It results from the ovaries producing less estrogen and progesterone, a hormonal shift that can bring hot flashes, night sweats, mood changes, sleep disruption, and long-term effects on bone and cardiovascular health. According to the North American Menopause Society and the Mayo Clinic, foods and drinks like caffeine, alcohol, and spicy or sugary items are commonly reported to trigger or worsen hot flashes and disrupt already-fragile sleep, so many people going through menopause choose to moderate them as one part of symptom management alongside medical options like hormone therapy.',
       generalSources: [
         { title: 'NAMS - Menopause', url: 'https://www.menopause.org/' },
         { title: 'Mayo Clinic - Menopause', url: 'https://www.mayoclinic.org/diseases-conditions/menopause/symptoms-causes/syc-20353397' },
