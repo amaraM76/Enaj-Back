@@ -272,12 +272,12 @@ async function main() {
 
   // --- IBD ---
   const ibdIngredients = [
-    { slug: "emulsifiers-ibd", name: "Polysorbate 80", reason: "Emulsifier linked to gut barrier disruption in IBD" },
-    { slug: "carrageenan-ibd", name: "Carrageenan", reason: "Thickener that promotes gut inflammation in IBD" },
-    { slug: "artificial-sweeteners-ibd", name: "Artificial Sweeteners", reason: "Disrupt gut microbiome and worsen IBD symptoms" },
-    { slug: "gluten-ibd", name: "Gluten", reason: "May worsen inflammation and symptoms in IBD patients" },
-    { slug: "seed-oils-ibd", name: "Seed Oils", reason: "High omega-6 oils promote inflammation in IBD" },
-    { slug: "alcohol-ibd", name: "Alcohol", reason: "Irritates the gut lining and worsens IBD flares" },
+    { slug: "emulsifiers-ibd", name: "Polysorbate 80", reason: "Lab studies have shown this emulsifier can erode the protective mucus layer lining the gut, letting bacteria get closer to the intestinal wall and triggering the immune response central to IBD." },
+    { slug: "carrageenan-ibd", name: "Carrageenan", reason: "Derived from seaweed, carrageenan has been shown in animal and cell studies to provoke gut inflammation, making it one of the most commonly cited additives of concern for people with IBD." },
+    { slug: "artificial-sweeteners-ibd", name: "Artificial Sweeteners", reason: "Several non-nutritive sweeteners have been shown to shift the balance of gut bacteria in ways that may promote the intestinal inflammation central to IBD." },
+    { slug: "gluten-ibd", name: "Gluten", reason: "Gluten's effect on intestinal permeability - sometimes called 'leaky gut' - is theorized to aggravate the immune response already elevated in IBD, though findings across studies are inconsistent." },
+    { slug: "seed-oils-ibd", name: "Seed Oils", reason: "Diets high in omega-6 seed oils skew the body toward producing pro-inflammatory compounds, a pattern researchers have linked to more frequent IBD flares." },
+    { slug: "alcohol-ibd", name: "Alcohol", reason: "Irritates and increases the permeability of the intestinal lining, a combination that frequently triggers flares in both Crohn's disease and ulcerative colitis." },
   ]
   for (const ing of ibdIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["ibd"] } })
@@ -685,13 +685,13 @@ async function main() {
 
   // --- Crohn's Disease ---
   const crohnsIngredients = [
-    { slug: "carrageenan-crohns", name: "Carrageenan", reason: "Linked to gut inflammation and may trigger Crohn's flare-ups" },
-    { slug: "food-dyes-crohns", name: "Artificial Colors", reason: "May worsen intestinal inflammation" },
-    { slug: "emulsifiers-crohns", name: "Polysorbate 80", reason: "Emulsifier linked to gut barrier damage" },
-    { slug: "cmc-crohns", name: "Carboxymethylcellulose", reason: "Emulsifier that may promote gut inflammation" },
-    { slug: "maltodextrin-crohns", name: "Maltodextrin", reason: "May promote harmful gut bacteria growth" },
-    { slug: "artificial-sweeteners-crohns", name: "Artificial Sweeteners", reason: "Can disrupt gut microbiome balance" },
-    { slug: "sulfites-crohns", name: "Sulfites", reason: "Can trigger digestive symptoms in Crohn's patients" },
+    { slug: "carrageenan-crohns", name: "Carrageenan", reason: "Shown in animal studies to trigger gut inflammation and ulceration patterns resembling those seen in Crohn's flares, which is why it's a frequently cited additive of concern for the condition." },
+    { slug: "food-dyes-crohns", name: "Artificial Colors", reason: "Some synthetic dyes have been shown in lab studies to increase intestinal permeability, a mechanism that could worsen the gut barrier dysfunction already present in Crohn's disease." },
+    { slug: "emulsifiers-crohns", name: "Polysorbate 80", reason: "Erodes the protective mucus lining of the gut in animal studies, exposing the intestinal wall to bacteria in a way that can provoke the inflammatory response driving Crohn's flares." },
+    { slug: "cmc-crohns", name: "Carboxymethylcellulose", reason: "A common thickener shown in controlled trials to alter gut bacteria composition and promote low-grade intestinal inflammation, raising concern for people managing Crohn's disease." },
+    { slug: "maltodextrin-crohns", name: "Maltodextrin", reason: "May suppress beneficial gut bacteria while encouraging the growth of species linked to intestinal inflammation, a shift of particular concern in Crohn's disease." },
+    { slug: "artificial-sweeteners-crohns", name: "Artificial Sweeteners", reason: "Some sweeteners alter the balance of gut bacteria in ways researchers believe can promote the chronic intestinal inflammation central to Crohn's disease." },
+    { slug: "sulfites-crohns", name: "Sulfites", reason: "Sulfite preservatives can act as a direct gut irritant, and some Crohn's patients report them as a trigger for digestive flares." },
   ];
 
   for (const ing of crohnsIngredients) {
@@ -702,12 +702,12 @@ async function main() {
 
   // --- GERD / Acid Reflux ---
   const gerdIngredients = [
-    { slug: "caffeine-gerd", name: "Caffeine", reason: "Relaxes the lower esophageal sphincter, worsening acid reflux" },
-    { slug: "citric-acid-gerd", name: "Citric Acid", reason: "Acidic ingredient that can trigger reflux" },
-    { slug: "peppermint-gerd", name: "Peppermint", reason: "Relaxes the esophageal sphincter and can worsen reflux" },
-    { slug: "chocolate-gerd", name: "Chocolate", reason: "Contains compounds that relax the esophageal sphincter" },
-    { slug: "tomato-gerd", name: "Tomato", reason: "Highly acidic, common reflux trigger" },
-    { slug: "vinegar-gerd", name: "Vinegar", reason: "Acidic ingredient that can trigger reflux symptoms" },
+    { slug: "caffeine-gerd", name: "Caffeine", reason: "Relaxes the lower esophageal sphincter, the muscular valve that normally keeps stomach acid from rising into the esophagus, making reflux more likely." },
+    { slug: "citric-acid-gerd", name: "Citric Acid", reason: "Highly acidic, and can directly irritate an esophagus already sensitized by repeated acid exposure, worsening the burning sensation of reflux." },
+    { slug: "peppermint-gerd", name: "Peppermint", reason: "Relaxes the lower esophageal sphincter in the same way caffeine does, which is why peppermint - often thought of as a stomach soother - can actually make reflux worse." },
+    { slug: "chocolate-gerd", name: "Chocolate", reason: "Contains methylxanthines and fat that both relax the esophageal sphincter, making chocolate one of the most consistently reported GERD triggers." },
+    { slug: "tomato-gerd", name: "Tomato", reason: "Highly acidic, and its acidity can directly irritate the esophageal lining as well as lower the pH of stomach contents that reflux upward." },
+    { slug: "vinegar-gerd", name: "Vinegar", reason: "Highly acidic, capable of increasing stomach acidity and irritating an esophagus already inflamed by frequent reflux episodes." },
   ];
 
   for (const ing of gerdIngredients) {
@@ -839,12 +839,12 @@ async function main() {
 
   // --- ADHD ---
   const adhdIngredients = [
-    { slug: "food-dyes-adhd", name: "Artificial Colors", reason: "Multiple studies link food dyes to hyperactivity" },
-    { slug: "hfcs-adhd", name: "High Fructose Corn Syrup", reason: "Excess sugar worsens ADHD symptoms" },
-    { slug: "artificial-flavors-adhd", name: "Artificial Flavors", reason: "Synthetic additives may worsen hyperactivity" },
-    { slug: "sodium-benzoate-adhd", name: "Sodium Benzoate", reason: "Preservative linked to increased hyperactivity" },
-    { slug: "msg-adhd", name: "Monosodium Glutamate", reason: "Excitotoxin that may affect attention and focus" },
-    { slug: "caffeine-adhd", name: "Caffeine", reason: "Can disrupt sleep patterns and worsen ADHD symptoms" },
+    { slug: "food-dyes-adhd", name: "Artificial Colors", reason: "Randomized trials, including the widely cited Southampton study, found synthetic dyes like Red 40 and Yellow 5 measurably increased hyperactivity in children, which is why the UK and EU (though not the US) now require a warning label on foods containing them." },
+    { slug: "hfcs-adhd", name: "High Fructose Corn Syrup", reason: "Diets high in added sugar cause blood sugar swings that some studies link to worsened impulsivity and attention difficulties, particularly in children already diagnosed with ADHD." },
+    { slug: "artificial-flavors-adhd", name: "Artificial Flavors", reason: "Grouped alongside synthetic dyes in pediatric additive studies as part of a broader mix shown to increase hyperactive behavior in sensitive children." },
+    { slug: "sodium-benzoate-adhd", name: "Sodium Benzoate", reason: "The same Southampton study that flagged synthetic dyes found sodium benzoate amplified their effect on hyperactivity when the two were consumed together." },
+    { slug: "msg-adhd", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate is theorized to overstimulate neural pathways involved in attention and impulse control, though evidence specific to ADHD is limited." },
+    { slug: "caffeine-adhd", name: "Caffeine", reason: "Can make it harder to fall and stay asleep, and poor sleep reliably worsens inattention and irritability the next day in both children and adults with ADHD." },
   ];
 
   for (const ing of adhdIngredients) {
@@ -855,11 +855,11 @@ async function main() {
 
   // --- Fibromyalgia ---
   const fibromyalgiaIngredients = [
-    { slug: "msg-fibro", name: "Monosodium Glutamate", reason: "Excitotoxin that may worsen fibromyalgia pain" },
-    { slug: "aspartame-fibro", name: "Aspartame", reason: "May increase pain sensitivity in fibromyalgia" },
-    { slug: "gluten-fibro", name: "Gluten", reason: "Some fibromyalgia patients report improvement when avoiding gluten" },
-    { slug: "sugar-fibro", name: "Refined Sugar", reason: "Can worsen inflammation and pain" },
-    { slug: "caffeine-fibro", name: "Caffeine", reason: "Can disrupt sleep and worsen fatigue" },
+    { slug: "msg-fibro", name: "Monosodium Glutamate", reason: "As an excitotoxin, glutamate can overactivate pain-signaling neurons; some fibromyalgia patients report flares after high-MSG meals, though clinical trials on dietary glutamate restriction have produced mixed results." },
+    { slug: "aspartame-fibro", name: "Aspartame", reason: "Breaks down into phenylalanine and aspartic acid, compounds some researchers believe can amplify the central pain sensitization seen in fibromyalgia, though the mechanism remains debated." },
+    { slug: "gluten-fibro", name: "Gluten", reason: "Even without confirmed celiac disease, some fibromyalgia patients report less pain and fatigue on a gluten-free trial, possibly reflecting an overlapping subset with non-celiac gluten sensitivity." },
+    { slug: "sugar-fibro", name: "Refined Sugar", reason: "Blood sugar spikes and crashes can deepen the fatigue and brain fog that already accompany fibromyalgia, and added sugar promotes the low-grade inflammation linked to heightened pain sensitivity." },
+    { slug: "caffeine-fibro", name: "Caffeine", reason: "Late-day caffeine can fragment the deep sleep fibromyalgia patients already struggle to get, and poor sleep is one of the most consistent drivers of next-day pain flares in the condition." },
   ];
 
   for (const ing of fibromyalgiaIngredients) {
@@ -886,11 +886,11 @@ async function main() {
 
   // --- Hashimoto's Thyroiditis ---
   const hashimotosIngredients = [
-    { slug: "gluten-hashimotos", name: "Gluten", reason: "Molecular mimicry with thyroid tissue can trigger flares" },
-    { slug: "soy-hashimotos", name: "Soy", reason: "May interfere with thyroid hormone absorption" },
-    { slug: "excess-iodine-hashimotos", name: "Iodine", reason: "Excess iodine can worsen Hashimoto's" },
-    { slug: "processed-sugar-hashimotos", name: "Refined Sugar", reason: "Promotes inflammation affecting thyroid" },
-    { slug: "seed-oils-hashimotos", name: "Seed Oils", reason: "Omega-6 fatty acids promote thyroid inflammation" },
+    { slug: "gluten-hashimotos", name: "Gluten", reason: "Gluten's gliadin protein shares a structural resemblance to thyroid tissue, a phenomenon called molecular mimicry that some researchers believe can confuse the immune system and worsen thyroid antibody activity." },
+    { slug: "soy-hashimotos", name: "Soy", reason: "Isoflavones in soy can interfere with the absorption of levothyroxine and other thyroid medications, and some studies suggest they may also affect thyroid peroxidase enzyme function." },
+    { slug: "excess-iodine-hashimotos", name: "Iodine", reason: "While iodine is essential for thyroid hormone production, excess intake can accelerate autoimmune thyroid damage in people already predisposed to Hashimoto's." },
+    { slug: "processed-sugar-hashimotos", name: "Refined Sugar", reason: "Promotes the low-grade systemic inflammation that can aggravate autoimmune thyroid activity and worsen the fatigue already common in Hashimoto's." },
+    { slug: "seed-oils-hashimotos", name: "Seed Oils", reason: "Their high omega-6 content skews the body's inflammatory balance, potentially intensifying the autoimmune inflammation driving Hashimoto's." },
   ];
 
   for (const ing of hashimotosIngredients) {
@@ -901,12 +901,12 @@ async function main() {
 
   // --- Rheumatoid Arthritis ---
   const rheumatoidIngredients = [
-    { slug: "seed-oils-ra", name: "Seed Oils", reason: "High omega-6 promotes joint inflammation" },
-    { slug: "gluten-ra", name: "Gluten", reason: "May trigger autoimmune response in RA" },
-    { slug: "sugar-ra", name: "Refined Sugar", reason: "Increases inflammatory markers" },
-    { slug: "trans-fats-ra", name: "Trans Fats", reason: "Promotes systemic inflammation" },
-    { slug: "msg-ra", name: "Monosodium Glutamate", reason: "May worsen joint inflammation" },
-    { slug: "nightshades-ra", name: "Nightshade", reason: "Solanine in nightshades may trigger joint inflammation" },
+    { slug: "seed-oils-ra", name: "Seed Oils", reason: "Their high omega-6 content promotes the production of inflammatory prostaglandins, compounds implicated in the joint swelling and pain that characterize RA flares." },
+    { slug: "gluten-ra", name: "Gluten", reason: "Some RA patients, particularly those with an underlying gluten sensitivity, report fewer flares on a gluten-free diet, though evidence for a direct autoimmune trigger is still preliminary." },
+    { slug: "sugar-ra", name: "Refined Sugar", reason: "Raises inflammatory markers like CRP - one of the same markers doctors use in bloodwork to track RA disease activity." },
+    { slug: "trans-fats-ra", name: "Trans Fats", reason: "Measurably raises systemic inflammatory markers, and cohort studies have linked higher trans fat intake to an increased risk of developing RA." },
+    { slug: "msg-ra", name: "Monosodium Glutamate", reason: "Some RA patients report increased joint pain after eating MSG-heavy foods, though large controlled studies linking it specifically to RA activity are limited." },
+    { slug: "nightshades-ra", name: "Nightshade", reason: "Solanine content is anecdotally linked to worsened joint pain in a subset of RA patients, though rigorous clinical evidence for a nightshade-arthritis connection remains thin." },
   ];
 
   for (const ing of rheumatoidIngredients) {
@@ -932,12 +932,12 @@ async function main() {
 
   // --- Menopause ---
   const menopauseIngredients = [
-    { slug: "caffeine-menopause", name: "Caffeine", reason: "Can worsen hot flashes and sleep disruption" },
-    { slug: "sugar-menopause", name: "Refined Sugar", reason: "Can worsen mood swings and hormonal imbalance" },
-    { slug: "alcohol-menopause", name: "Alcohol", reason: "Can trigger hot flashes and disrupt sleep" },
-    { slug: "spicy-menopause", name: "Capsaicin", reason: "Spicy ingredients can trigger hot flashes" },
-    { slug: "msg-menopause", name: "Monosodium Glutamate", reason: "May worsen headaches during menopause" },
-    { slug: "artificial-sweeteners-menopause", name: "Artificial Sweeteners", reason: "May affect hormonal balance" },
+    { slug: "caffeine-menopause", name: "Caffeine", reason: "Stimulates the nervous system in a way that can trigger or intensify hot flashes, while also disrupting the sleep that hormonal changes already make harder to get." },
+    { slug: "sugar-menopause", name: "Refined Sugar", reason: "Blood sugar swings compound the mood volatility that declining estrogen already causes, and some studies link higher added-sugar intake to more frequent hot flashes." },
+    { slug: "alcohol-menopause", name: "Alcohol", reason: "A well-documented hot flash and night sweat trigger; it dilates blood vessels and disrupts the sleep architecture that hormonal changes have already made fragile." },
+    { slug: "spicy-menopause", name: "Capsaicin", reason: "Triggers the body's heat and sweat response directly, which is why spicy foods set off flashes for many people going through menopause." },
+    { slug: "msg-menopause", name: "Monosodium Glutamate", reason: "Some people notice MSG-triggered headaches becoming more frequent during the hormonal fluctuations of menopause, though a direct causal link isn't well established." },
+    { slug: "artificial-sweeteners-menopause", name: "Artificial Sweeteners", reason: "Emerging research on how non-nutritive sweeteners affect the gut microbiome is relevant here, since gut bacteria play a role in how the body metabolizes and recycles estrogen." },
   ];
 
   for (const ing of menopauseIngredients) {
@@ -948,11 +948,11 @@ async function main() {
 
   // --- Perimenopause ---
   const perimenopauseIngredients = [
-    { slug: "caffeine-perimeno", name: "Caffeine", reason: "Can worsen hot flashes and anxiety" },
-    { slug: "sugar-perimeno", name: "Refined Sugar", reason: "Can worsen mood swings and hormonal fluctuations" },
-    { slug: "alcohol-perimeno", name: "Alcohol", reason: "Can trigger hot flashes and disrupt hormone balance" },
-    { slug: "soy-perimeno", name: "Soy", reason: "Phytoestrogens may affect fluctuating hormone levels" },
-    { slug: "artificial-sweeteners-perimeno", name: "Artificial Sweeteners", reason: "May affect mood and hormonal balance" },
+    { slug: "caffeine-perimeno", name: "Caffeine", reason: "Overstimulates a nervous system already sensitized by fluctuating estrogen, which is why many people find caffeine intensifies both hot flashes and the anxiety common in perimenopause." },
+    { slug: "sugar-perimeno", name: "Refined Sugar", reason: "Blood sugar spikes and crashes layer on top of the hormonal swings already driving mood instability during perimenopause, often making both worse together." },
+    { slug: "alcohol-perimeno", name: "Alcohol", reason: "Dilates blood vessels and disrupts sleep, a combination that frequently triggers hot flashes and night sweats during the unpredictable hormone swings of perimenopause." },
+    { slug: "soy-perimeno", name: "Soy", reason: "Contains phytoestrogens - plant compounds that weakly bind estrogen receptors - which can have an unpredictable effect on symptoms during a phase when the body's own estrogen is already fluctuating erratically." },
+    { slug: "artificial-sweeteners-perimeno", name: "Artificial Sweeteners", reason: "Some research links non-nutritive sweeteners to shifts in gut bacteria, which play a role in hormone metabolism and may compound the mood and symptom fluctuations of perimenopause." },
   ];
 
   for (const ing of perimenopauseIngredients) {
