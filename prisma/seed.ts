@@ -261,10 +261,10 @@ async function main() {
 
   // --- POTS ---
   const potsIngredients = [
-    { slug: "alcohol-pots", name: "Alcohol", reason: "Causes vasodilation and worsens POTS symptoms including dizziness and tachycardia" },
-    { slug: "caffeine-pots", name: "Caffeine", reason: "Can worsen heart rate irregularities and dehydration in POTS" },
-    { slug: "artificial-sweeteners-pots", name: "Artificial Sweeteners", reason: "May affect autonomic nervous system function in POTS" },
-    { slug: "high-sugar-pots", name: "Refined Sugar", reason: "Blood sugar spikes worsen POTS symptoms and energy crashes" },
+    { slug: "alcohol-pots", name: "Alcohol", reason: "Widens blood vessels (vasodilation) and promotes fluid loss, a combination that can drop blood pressure further and intensify the dizziness and racing heart already characteristic of POTS." },
+    { slug: "caffeine-pots", name: "Caffeine", reason: "A diuretic that increases fluid loss, working against the increased fluid intake POTS management typically relies on, while also directly aggravating heart rate irregularities in sensitive individuals." },
+    { slug: "artificial-sweeteners-pots", name: "Artificial Sweeteners", reason: "Some research suggests non-nutritive sweeteners may influence autonomic nervous system signaling, the same system that's already dysregulated in POTS." },
+    { slug: "high-sugar-pots", name: "Refined Sugar", reason: "Causes rapid blood sugar spikes followed by crashes that can compound the fatigue, lightheadedness, and energy instability many people with POTS already experience." },
   ]
   for (const ing of potsIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["pots"] } })
@@ -285,12 +285,12 @@ async function main() {
 
   // --- Sjögren's Syndrome ---
   const sjogrensIngredients = [
-    { slug: "alcohol-sjogrens", name: "Alcohol", reason: "Worsens dryness symptoms and dehydration in Sjögren's" },
-    { slug: "caffeine-sjogrens", name: "Caffeine", reason: "Diuretic effect worsens dry mouth and dry eye symptoms" },
-    { slug: "gluten-sjogrens", name: "Gluten", reason: "May exacerbate autoimmune activity in Sjögren's" },
-    { slug: "sugar-sjogrens", name: "Refined Sugar", reason: "Promotes inflammation and dental decay risk from dry mouth" },
-    { slug: "fragrance-sjogrens", name: "Synthetic Fragrance", reason: "Can irritate dry, sensitive skin and eyes in Sjögren's" },
-    { slug: "sls-sjogrens", name: "Sodium Lauryl Sulfate", reason: "Harsh surfactant that worsens oral dryness and irritation" },
+    { slug: "alcohol-sjogrens", name: "Alcohol", reason: "A diuretic that promotes further fluid loss, compounding the dry mouth and dry eyes already caused by Sjögren's attack on moisture-producing glands." },
+    { slug: "caffeine-sjogrens", name: "Caffeine", reason: "Its diuretic effect increases fluid loss throughout the body, which can measurably worsen the dry mouth and dry eye symptoms that define Sjögren's." },
+    { slug: "gluten-sjogrens", name: "Gluten", reason: "Sjögren's frequently co-occurs with celiac disease and other autoimmune conditions, and some patients report reduced overall autoimmune symptom burden avoiding gluten, though evidence specific to Sjögren's is limited." },
+    { slug: "sugar-sjogrens", name: "Refined Sugar", reason: "With saliva's natural cavity-fighting flow already reduced by Sjögren's, sugar left sitting on teeth for longer periods raises the risk of the dental decay Sjögren's patients are already prone to." },
+    { slug: "fragrance-sjogrens", name: "Synthetic Fragrance", reason: "Skin and eyes that are already dry and under-lubricated from Sjögren's tend to react more readily to common irritants like synthetic fragrance." },
+    { slug: "sls-sjogrens", name: "Sodium Lauryl Sulfate", reason: "A harsh surfactant in toothpaste and cleansers that can further irritate oral tissue already compromised by the chronic dry mouth central to Sjögren's." },
   ]
   for (const ing of sjogrensIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["sjogrens"] } })
@@ -298,11 +298,11 @@ async function main() {
 
   // --- Graves' Disease ---
   const gravesDiseaseIngredients = [
-    { slug: "iodine-graves", name: "Iodine", reason: "Excess iodine can worsen hyperthyroidism in Graves' disease" },
-    { slug: "caffeine-graves", name: "Caffeine", reason: "Worsens heart palpitations and anxiety from hyperthyroidism" },
-    { slug: "soy-graves", name: "Soy", reason: "May interfere with thyroid medication absorption" },
-    { slug: "gluten-graves", name: "Gluten", reason: "Some evidence links gluten sensitivity to autoimmune thyroid disease" },
-    { slug: "sugar-graves", name: "Refined Sugar", reason: "Promotes inflammation and worsens metabolic effects of Graves'" },
+    { slug: "iodine-graves", name: "Iodine", reason: "The thyroid needs iodine as a raw material to make thyroid hormone, so excess dietary iodine can provide more fuel for the already-overactive thyroid in Graves' disease and worsen hyperthyroid symptoms." },
+    { slug: "caffeine-graves", name: "Caffeine", reason: "Stimulates the heart and nervous system in a way that layers on top of - and can intensify - the palpitations, tremors, and anxiety already caused by excess thyroid hormone in Graves' disease." },
+    { slug: "soy-graves", name: "Soy", reason: "Compounds in soy can bind to thyroid medication in the gut and reduce its absorption, so taking soy products too close to thyroid medication may blunt its effectiveness." },
+    { slug: "gluten-graves", name: "Gluten", reason: "Autoimmune thyroid conditions like Graves' disease co-occur with celiac disease and gluten sensitivity more often than chance would predict, leading some patients and researchers to explore gluten's role in autoimmune thyroid activity." },
+    { slug: "sugar-graves", name: "Refined Sugar", reason: "Promotes the kind of systemic inflammation that can compound the metabolic strain an already-overactive thyroid places on the body in Graves' disease." },
   ]
   for (const ing of gravesDiseaseIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["graves-disease"] } })
@@ -310,11 +310,11 @@ async function main() {
 
   // --- Ankylosing Spondylitis ---
   const ankylSpondIngredients = [
-    { slug: "starch-as", name: "Refined Starch", reason: "Feeds Klebsiella bacteria thought to trigger AS flares" },
-    { slug: "sugar-as", name: "Refined Sugar", reason: "Promotes inflammation that worsens joint pain in AS" },
-    { slug: "gluten-as", name: "Gluten", reason: "Some AS patients report improvement on a low-starch/gluten-free diet" },
-    { slug: "seed-oils-as", name: "Seed Oils", reason: "High omega-6 promotes the systemic inflammation driving AS" },
-    { slug: "alcohol-as", name: "Alcohol", reason: "May worsen inflammation and interact with AS medications" },
+    { slug: "starch-as", name: "Refined Starch", reason: "The London AS Diet theory holds that starchy foods feed Klebsiella bacteria in the gut, and that this bacterial overgrowth may trigger or sustain the autoimmune response driving AS flares in genetically susceptible people." },
+    { slug: "sugar-as", name: "Refined Sugar", reason: "Promotes the kind of systemic, low-grade inflammation that can worsen the joint pain and stiffness central to AS." },
+    { slug: "gluten-as", name: "Gluten", reason: "Often eliminated alongside starch under the low-starch AS diet theory, and some AS patients report reduced joint symptoms after cutting both." },
+    { slug: "seed-oils-as", name: "Seed Oils", reason: "High omega-6 fat intake shifts the body toward producing more pro-inflammatory compounds, a pattern the Arthritis Foundation links to worsened symptoms across inflammatory arthritis conditions including AS." },
+    { slug: "alcohol-as", name: "Alcohol", reason: "Can promote systemic inflammation and may also interact with NSAIDs and other medications commonly used to manage AS, raising the risk of gastrointestinal side effects." },
   ]
   for (const ing of ankylSpondIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["ankylosing-spondylitis"] } })
@@ -322,12 +322,12 @@ async function main() {
 
   // --- Psoriatic Arthritis ---
   const psoriaticArthritisIngredients = [
-    { slug: "sugar-pa", name: "Refined Sugar", reason: "Increases inflammation and worsens joint pain in psoriatic arthritis" },
-    { slug: "gluten-pa", name: "Gluten", reason: "Some psoriatic arthritis patients show improvement avoiding gluten" },
-    { slug: "seed-oils-pa", name: "Seed Oils", reason: "High omega-6 oils promote joint and skin inflammation" },
-    { slug: "alcohol-pa", name: "Alcohol", reason: "Worsens psoriatic arthritis symptoms and reduces medication efficacy" },
-    { slug: "dairy-pa", name: "Dairy", reason: "May promote inflammation in some psoriatic arthritis patients" },
-    { slug: "fragrance-pa", name: "Synthetic Fragrance", reason: "Can irritate psoriatic skin plaques and trigger flares" },
+    { slug: "sugar-pa", name: "Refined Sugar", reason: "Raises inflammatory markers in the bloodstream, a pathway shared by both the joint pain and skin plaques that define psoriatic arthritis." },
+    { slug: "gluten-pa", name: "Gluten", reason: "Some psoriatic arthritis patients report improvement in both joint and skin symptoms on a gluten-free diet, particularly those with an undiagnosed gluten sensitivity." },
+    { slug: "seed-oils-pa", name: "Seed Oils", reason: "High omega-6 fat intake promotes pro-inflammatory compounds that can worsen both the joint and skin inflammation central to psoriatic arthritis." },
+    { slug: "alcohol-pa", name: "Alcohol", reason: "Linked to worsened psoriasis and psoriatic arthritis flares, and can also reduce the effectiveness of - or interact dangerously with - methotrexate and other common PsA medications." },
+    { slug: "dairy-pa", name: "Dairy", reason: "Some psoriatic arthritis patients report that dairy worsens inflammation and skin flares, though the evidence is more anecdotal than for other triggers like sugar and alcohol." },
+    { slug: "fragrance-pa", name: "Synthetic Fragrance", reason: "Can irritate the psoriatic skin plaques that often accompany psoriatic arthritis, triggering itching and inflammation on already-compromised skin." },
   ]
   for (const ing of psoriaticArthritisIngredients) {
     await prisma.ailmentFlaggedIngredient.create({ data: { ...ing, ailmentId: ailMap["psoriatic-arthritis"] } })
