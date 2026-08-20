@@ -1785,6 +1785,11 @@ for (const ing of hormonalAcneIngredients) {
   const SALT_ROUNDS = 10;
 
   // --- Sarah: Rosacea, also manually selects Parabens & Cruelty-Free ---
+  // Demo/dev-only profile. Skipped if it already exists (from a prior seed
+  // run) so this script stays safe to re-run against a database that isn't
+  // wiped between runs - see the note above main().
+  const existingSarah = await prisma.userProfile.findUnique({ where: { email: "sarah@example.com" } });
+  if (!existingSarah) {
   const sarah = await prisma.userProfile.create({
     data: { firstName: "Sarah", lastName: "Johnson", email: "sarah@example.com", location: "New York, NY", age: "25-34", gender: "FEMALE", shoppingStores: "Sephora" },
   });
@@ -1798,6 +1803,7 @@ for (const ing of hormonalAcneIngredients) {
     prisma.userPreference.create({ data: { userId: sarah.id, preferenceId: prefMap["cruelty-free"], source: PreferenceSource.SELECTED } }),
   ]);
   await prisma.userJournalEntry.create({ data: { userId: sarah.id, conditionId: journalCondMap["common-cold"], source: ConditionSource.SELECTED } });
+  }
 
   // await Promise.all([
   //   prisma.savedProduct.create({ data: { userId: sarah.id, productId: productMap["pure-mineral-sunscreen"] } }),
@@ -1806,6 +1812,9 @@ for (const ing of hormonalAcneIngredients) {
   // ]);
 
   // --- Marcus: Asthma + eco-conscious ---
+  // Demo/dev-only profile - see the skip-if-exists note above Sarah's block.
+  const existingMarcus = await prisma.userProfile.findUnique({ where: { email: "marcus@example.com" } });
+  if (!existingMarcus) {
   const marcus = await prisma.userProfile.create({
     data: { firstName: "Marcus", lastName: "Chen", email: "marcus@example.com", location: "San Francisco, CA", age: "25-34", gender: "MALE", shoppingStores: "Whole Foods" },
   });
@@ -1817,12 +1826,16 @@ for (const ing of hormonalAcneIngredients) {
     prisma.userPreference.create({ data: { userId: marcus.id, preferenceId: prefMap["no-microplastics"], source: PreferenceSource.SELECTED } }),
     prisma.userPreference.create({ data: { userId: marcus.id, preferenceId: prefMap["eco-packaging"], source: PreferenceSource.SELECTED } }),
   ]);
+  }
   // await Promise.all([
   //   prisma.savedProduct.create({ data: { userId: marcus.id, productId: productMap["plant-based-multi-surface-spray"] } }),
   //   prisma.savedProduct.create({ data: { userId: marcus.id, productId: productMap["soy-candle-vanilla"] } }),
   // ]);
 
   // --- Priya: Celiac + Dairy Allergy + custom condition ---
+  // Demo/dev-only profile - see the skip-if-exists note above Sarah's block.
+  const existingPriya = await prisma.userProfile.findUnique({ where: { email: "priya@example.com" } });
+  if (!existingPriya) {
   const priya = await prisma.userProfile.create({
     data: { firstName: "Priya", lastName: "Patel", email: "priya@example.com", location: "Austin, TX", age: "25-34", gender: "FEMALE", shoppingStores: "Target" },
   });
@@ -1837,6 +1850,7 @@ for (const ing of hormonalAcneIngredients) {
     prisma.userPreference.create({ data: { userId: priya.id, preferenceId: prefMap["organic"], source: PreferenceSource.SELECTED } }),
     prisma.userPreference.create({ data: { userId: priya.id, preferenceId: prefMap["no-food-dyes"], source: PreferenceSource.SELECTED } }),
   ]);
+  }
   // await Promise.all([
   //   prisma.savedProduct.create({ data: { userId: priya.id, productId: productMap["clean-protein-bar"] } }),
   //   prisma.savedProduct.create({ data: { userId: priya.id, productId: productMap["organic-trail-mix"] } }),
