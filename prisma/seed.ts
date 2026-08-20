@@ -6,10 +6,14 @@ import { journalCategoriesSeedData } from '../app/lib/journal-data'
 
 const prisma = new PrismaClient();
 async function main() {
-  // Clear existing data in correct order
-  await prisma.userPreference.deleteMany();
-  await prisma.userJournalEntry.deleteMany();
-  await prisma.userAilment.deleteMany();
+  // Clear existing CATALOG data only (ailments, preferences, products, and
+  // their education/linking tables) so this script can be safely re-run to
+  // push content updates. Deliberately does NOT touch UserAuth, UserProfile,
+  // UserAilment, UserPreference, or UserJournalEntry — those hold real user
+  // accounts and data, and this script must never delete them. (It used to;
+  // that wiped every real user's account/profile/health data in production
+  // on 2026-08-20 when this script was re-run to push a content-only
+  // update. Do not reintroduce those deleteMany calls here.)
   await prisma.ailmentLinkedPreference.deleteMany();
   await prisma.ingredientSource.deleteMany();
   await prisma.ailmentFlaggedIngredient.deleteMany();
@@ -23,8 +27,6 @@ async function main() {
   await prisma.product.deleteMany({
   where: { slug: { not: { startsWith: "off-" } } }
   });
-  await prisma.userAuth.deleteMany();
-  await prisma.userProfile.deleteMany();
 
   // ==========================================
   // Ailment Categories
