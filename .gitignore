@@ -4,3 +4,8 @@ node_modules
 .next/
 backup.sql
 *.log
+.env.production
+.env.*.local
+
+.DS_Store
+**/.DS_Store

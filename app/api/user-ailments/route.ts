@@ -27,7 +27,14 @@ export async function POST(request: Request) {
     let savedCount = 0;
     if (ailmentSlugs?.length) {
       for (const slug of ailmentSlugs) {
-        const ailment = await prisma.ailment.findUnique({ where: { slug } });
+        const ailment = await prisma.ailment.findFirst({
+          where: {
+            OR: [
+              { slug },
+              { id: slug },
+            ],
+          },
+        })
         if (ailment) {
           await prisma.userAilment.create({
             data: {
